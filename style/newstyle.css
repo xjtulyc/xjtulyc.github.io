@@ -155,12 +155,12 @@ img.minishot {
 }
 
 .navbar-inverse .navbar-inner {
-    background-color: #820000;
-    background-image: -moz-linear-gradient(top, #8C1515, #820000);
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#8C1515), to(#820000));
-    background-image: -webkit-linear-gradient(top, #8C1515, #820000);
-    background-image: -o-linear-gradient(top, #8C1515, #820000);
-    background-image: linear-gradient(to bottom, #8C1515, #820000);
+    background-color: #1818da;
+    background-image: -moz-linear-gradient(top, #1818da, #1818da);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#1818da), to(#1818da));
+    background-image: -webkit-linear-gradient(top, #1818da, #1818da);
+    background-image: -o-linear-gradient(top, #1818da, #1818da);
+    background-image: linear-gradient(to bottom, #1818da, #1818da);
     background-repeat: repeat-x;
     border-color: #252525;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff8C1515', endColorstr='#ff820000', GradientType=0);
