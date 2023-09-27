@@ -157,18 +157,7 @@
     </div>
   </div>
 
-  <script>
-    window.onload = function () {
-      fetch('https://api.countapi.xyz/hit/youchengli.com/visits')
-        .then(response => response.json())
-        .then(data => {
-          let visitCount = data.value;
-          let imgElement = document.getElementById('visitorCount');
-          imgElement.src = `https://via.placeholder.com/150?text=${visitCount}+Visits`;
-        })
-        .catch(console.error);
-    };
-  </script>
+
   <div class="content">
     I am a Ph.D. candidate at <a
        href="https://www.cis.pku.edu.cn/">the School of
