@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Machine Learning</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+          crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="../style/bootstrap-theme.min.css">
+    <link href="../style/newstyle.css"
+          rel="stylesheet"
+          type="text/css">
+    <style>
+        table {
+            table-layout: fixed;
+        }
+
+        table td {
+            width: 100px;
+            word-wrap: break-word;
+        }
+    </style>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark">
+        <a
+           href="https://youchengli.com/teaching/machine_learning_23_fall.html">
+            <img src="../resources/pku.png"
+                 style="height:40px; float: left; margin-left: 20px; margin-right: 20px;"></a>
+        <a class="navbar-brand"
+           href="https://youchengli.com/teaching/machine_learning_23_fall.html">Machine
+            Learning</a>
+        <button class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarsExampleDefault"
+                aria-controls="navbarsExampleDefault"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+    </br>
+    <section id="info">
+        <div class="container">
+            <h2>机器学习课程大作业</h2>
+            <p>本项目使用<a
+                   href="https://arxiv.org/abs/2304.02643">SAM</a>在公开的医疗影像数据集进行实验。
+            </p>
+            <p>SAM论文链接：<a
+                   href="https://arxiv.org/abs/2304.02643">https://arxiv.org/abs/2304.02643</a>
+            </p>
+            <p>SAM官方Repo：<a
+                   href="https://github.com/facebookresearch/segment-anything">https://github.com/facebookresearch/segment-anything</a>
+            </p>
+            <h2>数据集介绍</h2>
+            <p>使用<a
+                   href="https://www.synapse.org/#!Synapse:syn3193805/wiki/217752">BTCV</a>数据集，可以通过链接下载。数据集共有30个CT影像，其中24个用于训练，6个用于测试。划分好的数据集见：<a
+                   href="https://drive.google.com/file/d/1t4fIQQkONv7ArTSZe4Nucwkk1KfdUDvW/view">数据集链接</a>。分割的目标包括13个腹部器官，包括脾脏、右肾、左肾、胆囊、食管、肝脏、胃、主动脉、下腔静脉、门脉及脾静脉、胰腺、右肾上腺、左肾上腺。
+            </p>
+            <h2>任务描述</h2>
+            <ol>
+                <li>使用SAM的官方预训练模型在测试数据的二维切片上实现器官分割。</li>
+                <li>对预训练模型的Decoder在训练数据上微调，与之前的结果进行对比。</li>
+                <li>SAM在分割物体时并没有考虑类别，思考如何使模型在分割器官时同时输出类别。模型可输出类别之后，使用grid
+                    points作为prompt分割出测试数据上的各个器官，并评估模型性能，与现有的baseline比较。
+                </li>
+                <li>思考探究：SAM模型还可以如何应用在医疗图像分割任务中？</li>
+            </ol>
+            <h2>任务要求</h2>
+            <ol>
+                <li>使用mDice指标评估模型的性能，即对每个器官分别计算Dice之后取平均值。也可以使用更多指标，但需说明指标的计算方法。
+                </li>
+                <li>对于任务1，比较不同prompt（单点、多点、边界框）的分割效果差异，并写下你的发现。以下是一些prompt参考选取方法：对于单点，可以在ground
+                    truth mask中随机选取，或者选取ground
+                    truth的中心点（即内距离变换最大值处，the
+                    maximal value of the mask’s interior
+                    distance
+                    transform）；对于多点，可以在ground truth
+                    mask中随机选取，或者其中一个点选在ground
+                    truth的中心处；对于边界框，可以使用ground
+                    truth的边界框，或者较之略大的框。prompt的选取方法不作具体要求，合理即可。
+                </li>
+                <li>对于任务2，需写明模型微调时的训练策略以及学习率等必要参数。</li>
+                <li>对于任务3，一个可能的方法是在Decoder的mask query和iou
+                    query之外，加入一个class
+                    query用来预测类别，其他合理的做法行之有效即可。模型有分类功能之后，可对测试集上某个病例的每个二维切片采用grid
+                    points作为prompt，得到每个切片的分割结果后，相同类别便可合成一个3D分割结果。
+                </li>
+                <li>对于任务4，写下自己的思考，也可以根据思考作一些实际的探究。此项为附加项，思考与探究的结果将酌情计入项目的附加分。
+                </li>
+            </ol>
+            <h2>提交要求</h2>
+            <ol>
+                <li>实验报告。包括实验内容、实验结果、结论与分析、程序说明等。</li>
+                <li>实验代码。</li>
+            </ol>
+            <h2>附录1：数据集下载</h2>
+            <style>
+                .image-container {
+                    text-align: center;
+                    margin-top: 20px;
+                }
+            </style>
+
+            <div class="image-container">
+                <!-- <h3>图片1</h3> -->
+                <img src="./major_project/1.png"
+                     alt="图片描述"
+                     style="width: 500px; height: 350px;">
+            </div>
+            <div class="image-container">
+                <!-- <h3>图片2</h3> -->
+                <img src="./major_project/2.png"
+                     alt="图片描述"
+                     style="width: 500px; height: 350px;">
+            </div>
+            <div class="image-container">
+                <!-- <h3>图片3</h3> -->
+                <img src="./major_project/3.png"
+                     alt="图片描述"
+                     style="width: 500px; height: 350px;">
+            </div>
+            <div class="image-container">
+                <!-- <h3>图片4</h3> -->
+                <img src="./major_project/4.png"
+                     alt="图片描述"
+                     style="width: 500px; height: 350px;">
+            </div>
+            <div class="image-container">
+                <!-- <h3>图片5</h3> -->
+                <img src="./major_project/5.png"
+                     alt="图片描述"
+                     style="width: 500px; height: 350px;">
+            </div>
+        </div>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+            integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
+            integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+            crossorigin="anonymous"></script>
+</body>
+
+</html>
