@@ -69,7 +69,7 @@ const links = [
 // 颜色映射
 const colorproj = {
 	"理学部": "orange",
-	"人文学部": "orange",
+	"人文学部": "pink",
 	"其他学校": "Cyan",
 	"信息与工程科学学部": "#8B658B",
 };
@@ -181,10 +181,12 @@ function ended(event) {
 
 // 绘制图例
 const data_legend = [
-	{name: "社会科学学部", color: "orange",},
+	{name: "理学部", color: "orange",},
+	{name: "人文学部", color: "pink",},
 	{name: "其他学校", color: "Cyan",},
-	{name: "前身机构", color: "#8B658B",},
+	{name: "信息与工程科学学部", color: "#8B658B",},
 ]
+
 
 var legend = svg.selectAll(".legend") 
     .data(data_legend)

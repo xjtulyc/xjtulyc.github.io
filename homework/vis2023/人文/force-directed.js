@@ -54,8 +54,6 @@ const links = [
 const colorproj = {
 	"人文学部": "yellow",
 	"其他学校": "Cyan",
-	"前身机构": "#8B658B",
-    "理学部": "grey",
 };
 
 // 新建一个力导向图
@@ -165,10 +163,8 @@ function ended(event) {
 
 // 绘制图例
 const data_legend = [
-	{name: "理学部", color: "grey",},
-    {name: "信息与工程科学部", color: "yellow",},
+    {name: "人文学部", color: "yellow",},
 	{name: "其他学校", color: "Cyan",},
-	{name: "前身机构", color: "#8B658B",},
 ]
 
 var legend = svg.selectAll(".legend") 
