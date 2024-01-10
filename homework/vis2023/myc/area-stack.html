@@ -1,0 +1,182 @@
+<!--
+	此示例下载自 https://echarts.apache.org/examples/zh/editor.html?c=area-stack
+-->
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+<head>
+  <meta charset="utf-8">
+</head>
+<body style="height: 100%; margin: 0">
+  <div id="container" style="height: 100%"></div>
+
+  
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/5.4.3/files/dist/echarts.min.js"></script>
+  <!-- Uncomment this line if you want to dataTool extension
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/5.4.3/files/dist/extension/dataTool.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use gl extension
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts-gl/2/files/dist/echarts-gl.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to echarts-stat extension
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts-stat/latest/files/dist/ecStat.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use map
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/4.9.0/files/map/js/china.js"></script>
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/4.9.0/files/map/js/world.js"></script>
+  -->
+  <!-- Uncomment these two lines if you want to use bmap extension
+  <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=YOUR_API_KEY"></script>
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/5.4.3/files/dist/extension/bmap.min.js"></script>
+  -->
+
+  <script type="text/javascript">
+    var dom = document.getElementById('container');
+    var myChart = echarts.init(dom, null, {
+      renderer: 'canvas',
+      useDirtyRect: false
+    });
+    var app = {};
+    
+    var option;
+
+    option = {
+  title: {
+    text: '学院谷歌指数可视化'
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'cross',
+      label: {
+        backgroundColor: '#6a7985'
+      }
+    }
+  },
+  legend: {
+    data: ['医学部', '理学部', '信息与工程科学部', '人文学部', '社会科学学部','经济与管理学部','跨学科类','深圳研究生院']
+  },
+  toolbox: {
+    feature: {
+      saveAsImage: {}
+    }
+  },
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+  xAxis: [
+    {
+      type: 'category',
+      boundaryGap: false,
+      data: ["22/12/11","22/12/18","22/12/25","23/1/1","23/1/8","23/1/15","23/1/22","23/1/29","23/2/5","23/2/12","23/2/19","23/2/26","23/3/5","23/3/12","23/3/19","23/3/26","23/4/2","23/4/9","23/4/16","23/4/23","23/4/30","23/5/7","23/5/14","23/5/21","23/5/28","23/6/4","23/6/11","23/6/18","23/6/25","23/7/2","23/7/9","23/7/16","23/7/23","23/7/30","23/8/6","23/8/13","23/8/20","23/8/27","23/9/3","23/9/10","23/9/17","23/9/24","23/10/1","23/10/8","23/10/15","23/10/22","23/10/29","23/11/5","23/11/12","23/11/19","23/11/26"]
+  }
+  ],
+  yAxis: [
+    {
+      type: 'value'
+    }
+  ],
+  series: [
+    {
+      name: '深圳研究生院',
+      type: 'line',
+      stack: 'Total',
+      areaStyle: {},
+      emphasis: {
+        focus: 'series'
+      },
+      data: [16,0,13,0,19,0,0,0,33,0,0,0,0,0,0,0,0,40,0,12,0,0,0,0,12,0,0,0,23,0,0,19,27,10,0,22,26,0,0,0,0,0,0,11,0,0,18,0,0,19,0]
+    },
+    {
+      name: '跨学科类',
+      type: 'line',
+      stack: 'Total',
+      areaStyle: {},
+      emphasis: {
+        focus: 'series'
+      },
+      data: [19,45,53,15,94,100,78,60,21,55,36,21,72,0,0,35,0,83,0,12,26,39,26,14,0,95,12,57,78,0,0,22,18,40,56,55,39,110,40,68,23,34,0,120,38,77,46,30,86,63,42]
+    },
+    {
+      name: '医学部',
+      type: 'line',
+      stack: 'Total',
+      areaStyle: {},
+      emphasis: {
+        focus: 'series'
+      },
+      data: [28,27,33,29,35,0,30,34,47,100,13,27,32,38,47,37,70,42,38,34,0,30,30,27,33,43,67,47,52,31,60,57,35,38,37,0,41,56,39,40,52,33,72,28,60,23,33,55,57,33,68]
+    },
+    {
+      name: '社会科学学部',
+      type: 'line',
+      stack: 'Total',
+      areaStyle: {},
+      emphasis: {
+        focus: 'series'
+      },
+      data: [61,121,70,99,85,88,82,58,29,96,99,95,50,66,97,105,49,35,126,42,24,53,45,56,121,17,44,0,152,24,117,189,45,119,0,27,175,63,153,29,217,18,25,63,34,74,193,129,34,109,57]
+
+    },
+    {
+      name: '信息与工程科学部',
+      type: 'line',
+      stack: 'Total',
+      // label: {
+      //   show: true,
+      //   position: 'top'
+      // },
+      areaStyle: {},
+      emphasis: {
+        focus: 'series'
+      },
+      data: [76,17,58,66,14,30,65,90,35,32,190,47,158,67,46,100,133,229,92,17,142,17,47,124,105,160,146,79,148,41,129,87,63,139,0,0,126,215,157,80,105,101,53,77,43,109,45,126,47,16,0]
+
+    },
+    {
+      name: '人文学部',
+      type: 'line',
+      stack: 'Total',
+      areaStyle: {},
+      emphasis: {
+        focus: 'series'
+      },
+      data: [77,221,57,79,93,57,0,65,24,141,81,36,47,54,162,76,119,0,67,68,112,107,111,100,99,119,57,128,90,170,111,123,90,109,187,112,34,78,133,36,226,177,100,217,129,213,112,24,35,32,46]
+    },
+    {
+      name: '经济与管理学部',
+      type: 'line',
+      stack: 'Total',
+      areaStyle: {},
+      emphasis: {
+        focus: 'series'
+      },
+      data: [78,71,54,103,64,37,53,35,51,46,90,78,72,68,143,61,50,132,108,52,64,126,90,75,87,72,68,58,107,65,92,52,130,51,73,63,55,106,75,102,53,87,55,53,59,74,52,56,37,67,45]
+    },
+    {
+      name: '理学部',
+      type: 'line',
+      stack: 'Total',
+      label: {
+        show: true,
+        position: 'top'
+      },
+      areaStyle: {},
+      emphasis: {
+        focus: 'series'
+      },
+      data: [79,0,89,86,27,0,0,32,29,173,165,25,42,124,92,84,58,37,74,196,151,30,0,40,32,24,104,63,0,55,163,141,176,55,115,105,43,27,75,122,251,80,64,59,0,144,169,0,107,27,0]
+    },
+  ]
+};
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+</body>
+</html>
