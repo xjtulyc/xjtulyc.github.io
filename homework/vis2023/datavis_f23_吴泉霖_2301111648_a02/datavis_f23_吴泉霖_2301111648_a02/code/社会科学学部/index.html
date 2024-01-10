@@ -1,21 +1,47 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>院系变迁</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet"
+        href="style.css">
   <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    body {
+      position: relative;
+    }
+
+    #background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.1;
+      background-image: url("../../../../images/index-bg.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+  </style>
 </head>
+
 <body>
+  <div id="background"></div>
   <div id="container">
     <div id="left">
-      <a id="image-link" href="https://fss.pku.edu.cn/index.htm">
+      <a id="image-link"
+         href="https://fies.pku.edu.cn/">
         <img src="社会科学学部.png">
       </a>
-      <a id="button-link" href="../index.html">返回</a>
+      <a id="button-link"
+         href="../../../../index.html">返回</a>
     </div>
     <div id="right">
       <script src="force-directed.js"></script>
     </div>
   </div>
 </body>
+
 </html>
