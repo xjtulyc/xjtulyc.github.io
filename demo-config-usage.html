@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuration System Demo</title>
+    <style>
+        body { 
+            font-family: 'Arial', sans-serif; 
+            padding: 20px; 
+            background: #f8f9fa;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .demo-section { 
+            margin: 30px 0; 
+            padding: 20px; 
+            border: 2px solid #e9ecef; 
+            border-radius: 8px; 
+        }
+        .demo-section h2 {
+            color: #495057;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+        .profile-demo {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .profile-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .profile-info h3 {
+            margin: 0 0 5px 0;
+            color: #007bff;
+        }
+        .profile-info p {
+            margin: 5px 0;
+            color: #6c757d;
+        }
+        .news-item {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .news-date {
+            color: #e17055;
+            font-weight: bold;
+        }
+        .publication-item {
+            background: #e3f2fd;
+            border: 1px solid #90caf9;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .award-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .award-year {
+            background: #007bff;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9em;
+        }
+        .social-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 20px;
+            text-decoration: none;
+            color: #495057;
+            transition: all 0.3s ease;
+        }
+        .social-link:hover {
+            background: #007bff;
+            color: white;
+            transform: translateY(-2px);
+        }
+        .code-example {
+            background: #f1f3f4;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+        }
+        .update-example {
+            background: #d4edda;
+            border: 2px solid #c3e6cb;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 个人学术主页配置系统演示</h1>
+        <p>这个演示展示了如何使用配置文件来管理您的学术主页内容。所有内容都从 <code>config/site-config.js</code> 文件中自动加载。</p>
+        
+        <div class="demo-section">
+            <h2>📝 个人信息配置演示</h2>
+            <div id="profile-demo" class="profile-demo">
+                <img id="profile-img" class="profile-image" alt="Profile">
+                <div class="profile-info">
+                    <h3 id="profile-name">Loading...</h3>
+                    <p id="profile-title">Loading...</p>
+                    <p id="profile-institution">Loading...</p>
+                    <p>📧 <span id="profile-email">Loading...</span></p>
+                </div>
+            </div>
+            <div class="update-example">
+                <h4>💡 如何更新个人信息</h4>
+                <p>在 <code>config/site-config.js</code> 中修改：</p>
+                <div class="code-example">
+personal: {
+  name: {
+    english: "你的英文姓名",
+    chinese: "你的中文姓名"
+  },
+  position: {
+    title: "你的职位",
+    institution: "你的机构"
+  },
+  contact: {
+    emails: ["your.email@university.edu"]
+  }
+}
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>📰 最新动态配置演示</h2>
+            <div id="news-demo">Loading news...</div>
+            <div class="update-example">
+                <h4>💡 如何添加新动态</h4>
+                <p>在配置文件的 <code>news.items</code> 数组中添加：</p>
+                <div class="code-example">
+{
+  date: "Dec 2024",
+  title: "新成果发布",
+  content: "我们的最新研究成果...",
+  link: {
+    url: "https://example.com/paper",
+    text: "查看论文 →"
+  },
+  type: "publication"
+}
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>📚 出版物配置演示</h2>
+            <div id="publications-demo">Loading publications...</div>
+            <div class="update-example">
+                <h4>💡 如何添加新论文</h4>
+                <p>在配置文件的 <code>projects.publications</code> 中添加：</p>
+                <div class="code-example">
+{
+  year: "2024",
+  items: [{
+    title: "论文标题",
+    authors: ["作者1", "作者2"],
+    venue: "会议/期刊名称",
+    date: "发表日期",
+    links: [{
+      type: "arxiv",
+      url: "https://arxiv.org/abs/..."
+    }],
+    tags: ["机器学习", "计算机视觉"]
+  }]
+}
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>🏆 奖项荣誉配置演示</h2>
+            <div id="awards-demo">Loading awards...</div>
+            <div class="update-example">
+                <h4>💡 如何添加新奖项</h4>
+                <p>在配置文件的 <code>awards.items</code> 数组中添加：</p>
+                <div class="code-example">
+{
+  name: "奖项名称",
+  year: "2024",
+  type: "scholarship"
+}
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>🔗 社交链接配置演示</h2>
+            <div id="social-demo" class="social-links">Loading social links...</div>
+            <div class="update-example">
+                <h4>💡 如何添加社交链接</h4>
+                <p>在配置文件的 <code>personal.social</code> 数组中添加：</p>
+                <div class="code-example">
+{
+  name: "平台名称",
+  icon: "fab fa-platform-icon",
+  url: "https://platform.com/yourprofile",
+  tooltip: "平台名称"
+}
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>🚀 系统优势</h2>
+            <ul>
+                <li><strong>集中管理</strong>：所有内容在一个配置文件中管理</li>
+                <li><strong>实时更新</strong>：修改配置文件后立即生效</li>
+                <li><strong>多页面同步</strong>：一次修改，多个页面同时更新</li>
+                <li><strong>类型安全</strong>：结构化的配置格式，减少错误</li>
+                <li><strong>易于维护</strong>：详细的中文维护文档</li>
+                <li><strong>扩展性强</strong>：可以轻松添加新的配置项</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Configuration System -->
+    <script src="config/site-config.js"></script>
+    
+    <script>
+        function loadDemo() {
+            if (typeof SITE_CONFIG === 'undefined') {
+                setTimeout(loadDemo, 200);
+                return;
+            }
+
+            try {
+                // Load personal info demo
+                const personal = SITE_CONFIG.personal;
+                document.getElementById('profile-img').src = personal.avatar;
+                document.getElementById('profile-name').textContent = 
+                    `${personal.name.english} (${personal.name.chinese})`;
+                document.getElementById('profile-title').textContent = personal.position.title;
+                document.getElementById('profile-institution').textContent = personal.position.institution;
+                document.getElementById('profile-email').textContent = personal.contact.emails[0];
+
+                // Load news demo (first 3 items)
+                const newsContainer = document.getElementById('news-demo');
+                const newsItems = SITE_CONFIG.news.items.slice(0, 3);
+                newsContainer.innerHTML = newsItems.map(item => `
+                    <div class="news-item">
+                        <div class="news-date">${item.date}</div>
+                        <h4>${item.title}</h4>
+                        <p>${item.content}</p>
+                        ${item.link ? `<a href="${item.link.url}" target="_blank">${item.link.text}</a>` : ''}
+                    </div>
+                `).join('');
+
+                // Load publications demo (first 3 publications)
+                const pubsContainer = document.getElementById('publications-demo');
+                const allPubs = SITE_CONFIG.projects.publications.flatMap(year => 
+                    year.items.map(item => ({...item, year: year.year}))
+                ).slice(0, 3);
+                
+                pubsContainer.innerHTML = allPubs.map(pub => `
+                    <div class="publication-item">
+                        <h4>${pub.title}</h4>
+                        <p><strong>Authors:</strong> ${pub.authors.join(', ')}</p>
+                        <p><strong>Venue:</strong> ${pub.venue}, ${pub.date}</p>
+                        <p><strong>Tags:</strong> ${pub.tags ? pub.tags.join(', ') : 'N/A'}</p>
+                    </div>
+                `).join('');
+
+                // Load awards demo (first 5 awards)
+                const awardsContainer = document.getElementById('awards-demo');
+                const awards = SITE_CONFIG.awards.items.slice(0, 5);
+                awardsContainer.innerHTML = awards.map(award => `
+                    <div class="award-item">
+                        <span>${award.name}</span>
+                        <span class="award-year">${award.year}</span>
+                    </div>
+                `).join('');
+
+                // Load social links demo
+                const socialContainer = document.getElementById('social-demo');
+                const socialLinks = SITE_CONFIG.personal.social.slice(0, 6);
+                socialContainer.innerHTML = socialLinks.map(social => `
+                    <a href="${social.url}" target="_blank" class="social-link">
+                        <i class="${social.icon}"></i>
+                        ${social.name}
+                    </a>
+                `).join('');
+
+            } catch (error) {
+                console.error('Demo loading failed:', error);
+                document.body.innerHTML += `
+                    <div style="background: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; padding: 15px; margin: 20px; border-radius: 5px;">
+                        <strong>演示加载失败：</strong> ${error.message}
+                    </div>
+                `;
+            }
+        }
+
+        // Load FontAwesome for icons
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
+        document.head.appendChild(link);
+
+        // Start demo loading
+        loadDemo();
+    </script>
+</body>
+</html>

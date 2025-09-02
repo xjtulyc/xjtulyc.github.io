@@ -1,0 +1,357 @@
+/* Dark Mode Fixes - Ensuring all elements respond to theme changes */
+
+/* ================== Sidebar Dark Mode ================== */
+[data-theme="dark"] #sidebar {
+  background: linear-gradient(135deg, #1e3a8a 0%, #1e1b4b 100%);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] #sidebar .profile-image {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+[data-theme="dark"] #sidebar .contact-info {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] #sidebar .cv-download {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="dark"] #sidebar .cv-download:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+[data-theme="dark"] #sidebar .social-link {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] #sidebar .social-link:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+[data-theme="dark"] #sidebar .nav-item {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+[data-theme="dark"] #sidebar .nav-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] #sidebar .nav-item.active {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="dark"] #sidebar .sidebar-divider {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ================== Main Content Dark Mode ================== */
+[data-theme="dark"] #main {
+  background: #0f172a;
+}
+
+[data-theme="dark"] .main-container {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .card {
+  background: #1e293b;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .card:hover {
+  border-color: var(--primary-light);
+}
+
+[data-theme="dark"] .section-header {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .section-title {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .section-subtitle {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .badge {
+  background: var(--primary-dark);
+  color: white;
+}
+
+[data-theme="dark"] .badge-secondary {
+  background: #374151;
+}
+
+[data-theme="dark"] .badge-accent {
+  background: #7c3aed;
+}
+
+/* ================== Buttons Dark Mode ================== */
+[data-theme="dark"] .btn-outline {
+  border-color: var(--primary-light);
+  color: var(--primary-light);
+}
+
+[data-theme="dark"] .btn-outline:hover {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+}
+
+[data-theme="dark"] .btn-primary {
+  background: var(--primary-color);
+  color: white;
+}
+
+[data-theme="dark"] .btn-primary:hover {
+  background: var(--primary-light);
+}
+
+/* ================== Theme Toggle Dark Mode ================== */
+[data-theme="dark"] .theme-toggle {
+  background: #1e293b;
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+  background: #334155;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+[data-theme="dark"] .theme-toggle svg {
+  stroke: #fbbf24;
+  fill: #fbbf24;
+}
+
+/* ================== Back to Top Dark Mode ================== */
+[data-theme="dark"] .back-to-top {
+  background: #1e293b;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="dark"] .back-to-top:hover {
+  background: #334155;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* ================== Mobile Menu Dark Mode ================== */
+[data-theme="dark"] .mobile-menu-toggle {
+  background: #1e293b;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="dark"] .mobile-menu-toggle span {
+  background: var(--text-primary);
+}
+
+/* ================== Timeline Dark Mode ================== */
+[data-theme="dark"] .timeline::before {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .timeline-item::before {
+  background: var(--primary-light);
+  border-color: #1e293b;
+}
+
+/* ================== Forms and Inputs Dark Mode ================== */
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select {
+  background: #1e293b;
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] input:focus,
+[data-theme="dark"] textarea:focus,
+[data-theme="dark"] select:focus {
+  border-color: var(--primary-light);
+  outline-color: var(--primary-light);
+}
+
+/* ================== Text Elements Dark Mode ================== */
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6 {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] p {
+  color: var(--text-secondary);
+}
+
+/* ================== Links Dark Mode ================== */
+[data-theme="dark"] a {
+  color: #60a5fa;
+}
+
+[data-theme="dark"] a:hover {
+  color: #93c5fd;
+}
+
+/* ================== Tables Dark Mode ================== */
+[data-theme="dark"] table {
+  background: #1e293b;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] th {
+  background: #334155;
+  color: var(--text-primary);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] td {
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-secondary);
+}
+
+/* ================== Code Blocks Dark Mode ================== */
+[data-theme="dark"] code {
+  background: #1e293b;
+  color: #f472b6;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] pre {
+  background: #1e293b;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ================== Scrollbar Dark Mode ================== */
+[data-theme="dark"]::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+[data-theme="dark"]::-webkit-scrollbar-thumb {
+  background: #475569;
+}
+
+[data-theme="dark"]::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* ================== Specific Component Fixes ================== */
+
+/* Publications */
+[data-theme="dark"] .publication-item {
+  background: #1e293b;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .publication-venue {
+  color: #60a5fa;
+}
+
+/* Projects */
+[data-theme="dark"] .project-card {
+  background: #1e293b;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .project-card:hover {
+  border-color: var(--primary-light);
+}
+
+/* Teaching */
+[data-theme="dark"] .teaching-card {
+  background: #1e293b;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .course-info i {
+  color: #60a5fa;
+}
+
+/* Resources */
+[data-theme="dark"] .resource-card {
+  background: #1e293b;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .resource-card:hover {
+  border-color: var(--primary-light);
+}
+
+[data-theme="dark"] .resource-icon {
+  color: #60a5fa;
+}
+
+[data-theme="dark"] .quick-link-item {
+  background: #1e293b;
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .quick-link-item:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+/* Year badges */
+[data-theme="dark"] .year-badge {
+  background: #334155;
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .year-badge:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+[data-theme="dark"] .year-badge.active {
+  background: var(--primary-color);
+  color: white;
+}
+
+/* Mission statement */
+[data-theme="dark"] .mission-statement {
+  background: rgba(37, 99, 235, 0.1);
+  border-left-color: #60a5fa;
+}
+
+/* Category titles */
+[data-theme="dark"] .category-title {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .category-title i {
+  color: #60a5fa;
+}
+
+/* Subsection titles */
+[data-theme="dark"] .subsection-title {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Filter buttons */
+[data-theme="dark"] .filter-btn {
+  background: #334155;
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .filter-btn:hover {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+[data-theme="dark"] .filter-btn.active {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}

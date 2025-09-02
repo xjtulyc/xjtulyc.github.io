@@ -27,6 +27,7 @@
   <!-- Custom Styles -->
   <link rel="stylesheet" href="style/modern-style.css">
   <link rel="stylesheet" href="style/sidebar-enhanced.css">
+  <link rel="stylesheet" href="style/dark-mode-fixes.css">
 </head>
 <body>
   <!-- Mobile Menu Toggle -->
@@ -110,9 +111,17 @@
         
         <!-- Navigation -->
         <nav class="navigation">
-          <a href="index.html" class="nav-item">
-            <i class="fas fa-home nav-icon"></i>
-            Home
+          <a href="index.html#about" class="nav-item">
+            <i class="fas fa-user nav-icon"></i>
+            About
+          </a>
+          <a href="index.html#news" class="nav-item">
+            <i class="fas fa-newspaper nav-icon"></i>
+            News
+          </a>
+          <a href="index.html#research" class="nav-item">
+            <i class="fas fa-microscope nav-icon"></i>
+            Research
           </a>
           <a href="#projects" class="nav-item active">
             <i class="fas fa-project-diagram nav-icon"></i>
@@ -121,6 +130,10 @@
           <a href="#publications" class="nav-item">
             <i class="fas fa-book nav-icon"></i>
             Publications
+          </a>
+          <a href="index.html#awards" class="nav-item">
+            <i class="fas fa-trophy nav-icon"></i>
+            Awards
           </a>
           <a href="teaching.html" class="nav-item">
             <i class="fas fa-chalkboard-teacher nav-icon"></i>
@@ -313,8 +326,13 @@
   <!-- Bootstrap 5 JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   
+  <!-- Configuration System - Added for dynamic content management -->
+  <script src="config/site-config.js"></script>
+  <script src="js/config-loader.js"></script>
+
   <!-- Custom JavaScript -->
   <script src="js/modern-script.js"></script>
+  <script src="js/unified-nav.js"></script>
   
   <style>
     /* Project Specific Styles */

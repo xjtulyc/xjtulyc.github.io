@@ -159,7 +159,13 @@ a:hover {
   color: white;
   overflow-y: auto;
   z-index: 1000;
-  transition: transform var(--transition-base);
+  transition: transform var(--transition-base), background var(--transition-base);
+}
+
+/* Dark mode sidebar */
+[data-theme="dark"] #sidebar {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  border-right: 1px solid var(--border-color);
 }
 
 #sidebar .sidebar-content {

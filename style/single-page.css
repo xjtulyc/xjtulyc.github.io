@@ -1,0 +1,778 @@
+/**
+ * Single Page Application Styles
+ * Custom styles for SPA functionality including collapsible sections,
+ * animations, progress indicators, and responsive layouts
+ * 
+ * @author Youcheng Li
+ * @version 1.0.0
+ */
+
+/* ========================================
+   Progress Indicator
+   ======================================== */
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
+  z-index: 9999;
+  transition: width 0.25s ease;
+  box-shadow: 0 0 10px rgba(var(--primary-rgb), 0.5);
+}
+
+/* ========================================
+   Back to Top Button Enhanced
+   ======================================== */
+
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all var(--transition-base);
+  z-index: 1000;
+  box-shadow: var(--shadow-lg);
+}
+
+.back-to-top:hover {
+  background: var(--primary-dark);
+  transform: translateY(0) scale(1.1);
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* ========================================
+   Collapsible Sections
+   ======================================== */
+
+.collapsible-content {
+  overflow: hidden;
+  transition: max-height var(--transition-slow) ease;
+}
+
+.collapsible-content.collapsed {
+  max-height: 0 !important;
+}
+
+.collapse-toggle {
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  transition: all var(--transition-fast);
+}
+
+.collapse-toggle:hover {
+  color: var(--primary-dark);
+}
+
+.collapse-toggle i {
+  transition: transform var(--transition-base);
+}
+
+/* ========================================
+   Timeline Enhancements (News Section)
+   ======================================== */
+
+.timeline {
+  position: relative;
+  padding-left: 30px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--primary-color), var(--primary-light));
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: var(--space-6);
+  opacity: 1;
+  transform: translateX(0);
+  transition: all var(--transition-base);
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -34px;
+  top: 30px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  border: 2px solid var(--bg-primary);
+  box-shadow: 0 0 0 4px var(--bg-secondary);
+  transition: all var(--transition-base);
+}
+
+.timeline-item:hover::before {
+  transform: scale(1.2);
+  box-shadow: 0 0 0 6px var(--bg-secondary), 0 0 20px rgba(var(--primary-rgb), 0.3);
+}
+
+.timeline-item.hidden-news {
+  margin-bottom: 0;
+}
+
+.expand-news-btn {
+  margin-top: var(--space-4);
+  width: 100%;
+  justify-content: center;
+  gap: var(--space-2);
+}
+
+/* ========================================
+   Project Cards and Filters
+   ======================================== */
+
+.filter-buttons {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-6);
+  justify-content: center;
+}
+
+.filter-btn {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-sm);
+  border: 2px solid var(--border-color);
+  background: transparent;
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.filter-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-color);
+  transition: left var(--transition-base);
+  z-index: -1;
+}
+
+.filter-btn:hover::before,
+.filter-btn.active::before {
+  left: 0;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  color: white;
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: var(--space-6);
+  margin-bottom: var(--space-10);
+}
+
+.project-card {
+  height: 100%;
+  overflow: hidden;
+  transition: all var(--transition-base);
+  position: relative;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
+  transition: left var(--transition-slow);
+}
+
+.project-card:hover::before {
+  left: 0;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Project Image Styles */
+.project-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-3);
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-base);
+}
+
+.project-card:hover .project-image img {
+  transform: scale(1.05);
+}
+
+.expand-project-btn {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-size: var(--text-sm);
+  padding: 0;
+  background: none;
+  border: none;
+}
+
+.expand-project-btn:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
+/* ========================================
+   Publications Section
+   ======================================== */
+
+.year-filter {
+  display: flex;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.year-badge {
+  padding: var(--space-2) var(--space-4);
+  background: var(--bg-tertiary);
+  border: 2px solid transparent;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+}
+
+.year-badge::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-color);
+  transition: left var(--transition-base);
+  z-index: -1;
+}
+
+.year-badge:hover::before,
+.year-badge.active::before {
+  left: 0;
+}
+
+.year-badge:hover,
+.year-badge.active {
+  color: white;
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+.year-header {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  margin-bottom: var(--space-4);
+  color: var(--primary-color);
+  padding-bottom: var(--space-2);
+  border-bottom: 2px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all var(--transition-base);
+}
+
+.year-header:hover {
+  color: var(--primary-dark);
+}
+
+.toggle-icon {
+  transition: transform var(--transition-base);
+  font-size: var(--text-lg);
+}
+
+.publication-item {
+  margin-bottom: var(--space-4);
+  transition: all var(--transition-base);
+  border-left: 3px solid transparent;
+}
+
+.publication-item:hover {
+  transform: translateX(8px);
+  border-left-color: var(--primary-color);
+}
+
+/* ========================================
+   Teaching and Course Cards
+   ======================================== */
+
+.course-card {
+  margin-bottom: var(--space-4);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition-base);
+}
+
+.course-card:hover {
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary-light);
+}
+
+.course-header {
+  padding: var(--space-4);
+  background: var(--bg-tertiary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all var(--transition-base);
+}
+
+.course-header:hover {
+  background: var(--primary-light);
+  color: white;
+}
+
+.course-details {
+  padding: var(--space-4);
+  border-top: 1px solid var(--border-color);
+  display: none;
+}
+
+.course-materials {
+  margin-top: var(--space-3);
+}
+
+.material-item {
+  padding: var(--space-2);
+  background: var(--bg-secondary);
+  margin-bottom: var(--space-2);
+  border-radius: var(--radius-md);
+  border-left: 3px solid var(--primary-color);
+}
+
+/* ========================================
+   Talks Section
+   ======================================== */
+
+.talk-item {
+  padding: var(--space-4);
+  margin-bottom: var(--space-3);
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  border-left: 4px solid var(--primary-color);
+  transition: all var(--transition-base);
+}
+
+.talk-item:hover {
+  transform: translateX(4px);
+  box-shadow: var(--shadow-md);
+}
+
+.talk-type-badge {
+  display: inline-block;
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--text-xs);
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.talk-type-badge.invited {
+  background: var(--success-light);
+  color: var(--success-dark);
+}
+
+.talk-type-badge.conference {
+  background: var(--primary-light);
+  color: white;
+}
+
+.expand-talks-btn {
+  margin-top: var(--space-4);
+  width: 100%;
+  justify-content: center;
+  gap: var(--space-2);
+}
+
+/* ========================================
+   Resources Section
+   ======================================== */
+
+.resource-category {
+  margin-bottom: var(--space-6);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.category-header {
+  padding: var(--space-4);
+  background: var(--bg-tertiary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 600;
+  transition: all var(--transition-base);
+}
+
+.category-header:hover {
+  background: var(--primary-light);
+  color: white;
+}
+
+.resource-items {
+  padding: var(--space-4);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: var(--space-4);
+}
+
+.resource-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: all var(--transition-base);
+}
+
+.resource-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.resource-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-md);
+  flex-shrink: 0;
+}
+
+/* ========================================
+   Animations and Transitions
+   ======================================== */
+
+.fade-in {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+.slide-in-up {
+  animation: slideInUp 0.6s ease forwards;
+}
+
+.scale-in {
+  animation: scaleIn 0.4s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Stagger animation for lists */
+.stagger-animation > * {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.6s ease forwards;
+}
+
+.stagger-animation > *:nth-child(1) { animation-delay: 0s; }
+.stagger-animation > *:nth-child(2) { animation-delay: 0.1s; }
+.stagger-animation > *:nth-child(3) { animation-delay: 0.2s; }
+.stagger-animation > *:nth-child(4) { animation-delay: 0.3s; }
+.stagger-animation > *:nth-child(5) { animation-delay: 0.4s; }
+.stagger-animation > *:nth-child(6) { animation-delay: 0.5s; }
+
+/* ========================================
+   Scroll Animations
+   ======================================== */
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.animate-on-scroll.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========================================
+   Responsive Design
+   ======================================== */
+
+@media (max-width: 1200px) {
+  .projects-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+  
+  .resource-items {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .back-to-top {
+    bottom: 15px;
+    right: 15px;
+    width: 45px;
+    height: 45px;
+    font-size: 16px;
+  }
+  
+  .filter-buttons {
+    justify-content: center;
+  }
+  
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+  
+  .year-filter {
+    justify-content: center;
+    gap: var(--space-2);
+  }
+  
+  .year-badge {
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--text-sm);
+  }
+  
+  .resource-items {
+    grid-template-columns: 1fr;
+  }
+  
+  .timeline {
+    padding-left: 20px;
+  }
+  
+  .timeline-item::before {
+    left: -24px;
+  }
+  
+  .course-header {
+    padding: var(--space-3);
+  }
+  
+  .course-details {
+    padding: var(--space-3);
+  }
+}
+
+@media (max-width: 480px) {
+  .filter-btn,
+  .year-badge {
+    font-size: var(--text-xs);
+    padding: var(--space-1) var(--space-3);
+  }
+  
+  .expand-news-btn,
+  .expand-talks-btn {
+    font-size: var(--text-sm);
+    padding: var(--space-2) var(--space-3);
+  }
+}
+
+/* ========================================
+   Mobile View Adjustments
+   ======================================== */
+
+.mobile-view .timeline {
+  padding-left: 15px;
+}
+
+.mobile-view .timeline-item::before {
+  left: -19px;
+  width: 8px;
+  height: 8px;
+}
+
+.mobile-view .project-card:hover {
+  transform: none;
+}
+
+.mobile-view .publication-item:hover {
+  transform: translateX(4px);
+}
+
+/* ========================================
+   Dark Mode Adjustments
+   ======================================== */
+
+[data-theme="dark"] .scroll-progress {
+  box-shadow: 0 0 10px rgba(var(--primary-rgb), 0.7);
+}
+
+[data-theme="dark"] .timeline::before {
+  background: linear-gradient(180deg, var(--primary-light), var(--primary-color));
+}
+
+[data-theme="dark"] .filter-btn,
+[data-theme="dark"] .year-badge {
+  background: var(--bg-tertiary);
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .resource-item:hover {
+  background: var(--bg-tertiary);
+}
+
+/* ========================================
+   Loading and Lazy Loading
+   ======================================== */
+
+img[data-src] {
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+img.loaded {
+  opacity: 1;
+}
+
+.loading-skeleton {
+  background: linear-gradient(90deg, var(--bg-secondary) 25%, var(--bg-tertiary) 50%, var(--bg-secondary) 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* ========================================
+   Accessibility Improvements
+   ======================================== */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Focus indicators */
+.collapse-toggle:focus,
+.filter-btn:focus,
+.year-badge:focus,
+.back-to-top:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .animate-on-scroll,
+  .timeline-item,
+  .project-card,
+  .publication-item,
+  .talk-item,
+  .resource-item,
+  .back-to-top,
+  .toggle-icon {
+    transition: none;
+    animation: none;
+  }
+  
+  .fade-in,
+  .slide-in-up,
+  .scale-in,
+  .stagger-animation > * {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}

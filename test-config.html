@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuration Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+        .success { background-color: #d4edda; border-color: #c3e6cb; }
+        .error { background-color: #f8d7da; border-color: #f5c6cb; }
+        .info { background-color: #d1ecf1; border-color: #bee5eb; }
+        pre { background: #f8f9fa; padding: 10px; border-radius: 3px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>Configuration System Test</h1>
+    
+    <div id="config-status" class="test-section">
+        <h3>Configuration Loading Status</h3>
+        <div id="status-content">Testing...</div>
+    </div>
+    
+    <div id="personal-info" class="test-section">
+        <h3>Personal Information</h3>
+        <div id="personal-content">Loading...</div>
+    </div>
+    
+    <div id="news-info" class="test-section">
+        <h3>News Section</h3>
+        <div id="news-content">Loading...</div>
+    </div>
+    
+    <div id="publications-info" class="test-section">
+        <h3>Publications</h3>
+        <div id="publications-content">Loading...</div>
+    </div>
+
+    <!-- Configuration System -->
+    <script src="config/site-config.js"></script>
+    <script src="js/config-loader.js"></script>
+    
+    <script>
+        function runConfigTest() {
+            try {
+                // Test 1: Configuration file loaded
+                const statusDiv = document.getElementById('status-content');
+                if (typeof SITE_CONFIG !== 'undefined') {
+                    statusDiv.innerHTML = '<span style="color: green;">✓ Configuration file loaded successfully</span>';
+                    document.getElementById('config-status').className = 'test-section success';
+                } else {
+                    throw new Error('Configuration file not loaded');
+                }
+                
+                // Test 2: Personal information
+                const personalDiv = document.getElementById('personal-content');
+                if (SITE_CONFIG.personal && SITE_CONFIG.personal.name) {
+                    personalDiv.innerHTML = `
+                        <strong>Name:</strong> ${SITE_CONFIG.personal.name.english} (${SITE_CONFIG.personal.name.chinese})<br>
+                        <strong>Position:</strong> ${SITE_CONFIG.personal.position.title}<br>
+                        <strong>Institution:</strong> ${SITE_CONFIG.personal.position.institution}<br>
+                        <strong>Emails:</strong> ${SITE_CONFIG.personal.contact.emails.join(', ')}<br>
+                        <strong>Social Links:</strong> ${SITE_CONFIG.personal.social.length} configured
+                    `;
+                    document.getElementById('personal-info').className = 'test-section success';
+                } else {
+                    throw new Error('Personal information not configured properly');
+                }
+                
+                // Test 3: News section
+                const newsDiv = document.getElementById('news-content');
+                if (SITE_CONFIG.news && SITE_CONFIG.news.items) {
+                    newsDiv.innerHTML = `
+                        <strong>Title:</strong> ${SITE_CONFIG.news.title}<br>
+                        <strong>News Items:</strong> ${SITE_CONFIG.news.items.length} configured<br>
+                        <strong>Latest:</strong> ${SITE_CONFIG.news.items[0]?.title || 'None'}
+                    `;
+                    document.getElementById('news-info').className = 'test-section success';
+                } else {
+                    throw new Error('News section not configured properly');
+                }
+                
+                // Test 4: Publications
+                const pubsDiv = document.getElementById('publications-content');
+                if (SITE_CONFIG.projects && SITE_CONFIG.projects.publications) {
+                    const totalPubs = SITE_CONFIG.projects.publications.reduce((sum, year) => sum + year.items.length, 0);
+                    pubsDiv.innerHTML = `
+                        <strong>Years covered:</strong> ${SITE_CONFIG.projects.publications.length}<br>
+                        <strong>Total publications:</strong> ${totalPubs}<br>
+                        <strong>Recent year:</strong> ${SITE_CONFIG.projects.publications[0]?.year || 'None'}
+                    `;
+                    document.getElementById('publications-info').className = 'test-section success';
+                } else {
+                    throw new Error('Publications not configured properly');
+                }
+                
+            } catch (error) {
+                console.error('Configuration test failed:', error);
+                document.getElementById('status-content').innerHTML = 
+                    `<span style="color: red;">✗ Error: ${error.message}</span>`;
+                document.getElementById('config-status').className = 'test-section error';
+            }
+        }
+        
+        // Run test after a short delay to ensure config is loaded
+        setTimeout(runConfigTest, 500);
+        
+        // Also test the config loader
+        setTimeout(() => {
+            if (window.configLoader) {
+                const loaderDiv = document.createElement('div');
+                loaderDiv.className = 'test-section info';
+                loaderDiv.innerHTML = `
+                    <h3>Config Loader Status</h3>
+                    <div>Config Loader initialized: ${window.configLoader ? '✓ Yes' : '✗ No'}</div>
+                    <div>Current page detected: ${window.configLoader.currentPage}</div>
+                `;
+                document.body.appendChild(loaderDiv);
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
