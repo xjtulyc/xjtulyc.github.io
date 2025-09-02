@@ -203,6 +203,16 @@ const SITE_CONFIG = {
         type: "publication"
       },
       {
+        date: "Dec 2024",
+        title: "National Digital Health Innovation Competition First Prize",
+        content: "Our team won the first prize in the 2nd National Digital Health Innovation Application Competition organized by the National Health Commission. Our project \"Differentiation of Breast Ductal Carcinoma In Situ and Fibroadenoma Based on Conventional Ultrasound Images\" stood out among 265 finalist teams.",
+        link: {
+          url: "https://mp.weixin.qq.com/s/fJIdh25YOHuIbezn_XZSDQ",
+          text: "Read News →"
+        },
+        type: "award"
+      },
+      {
         date: "Oct 2024",
         title: "National Scholarship Award",
         content: "I am honored to receive the National Scholarship for my research contributions.",
@@ -482,6 +492,11 @@ const SITE_CONFIG = {
     subtitle: "Recognition and achievements",
 
     items: [
+      {
+        name: "National Digital Health Innovation Competition First Prize",
+        year: "2024",
+        type: "competition"
+      },
       {
         name: "National Scholarship",
         year: "2024",

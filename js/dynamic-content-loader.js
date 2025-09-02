@@ -36,6 +36,7 @@ class DynamicContentLoader {
     this.loadPublications();
     this.loadProjects();
     this.loadNews();
+    this.loadAwards();
     this.loadTeaching();
     this.loadTalks();
     this.loadResources();
@@ -389,6 +390,41 @@ class DynamicContentLoader {
       
       newsContainer.appendChild(newsItem);
     });
+  }
+
+  /**
+   * 动态加载Awards部分
+   */
+  loadAwards() {
+    const awards = this.config.awards;
+    const awardsList = document.querySelector('#awards .awards-list');
+    
+    console.log('Loading awards:', awards?.items?.length, 'items');
+    console.log('Awards container found:', !!awardsList);
+    
+    if (!awardsList || !awards.items) {
+      console.error('Awards container or data not found');
+      return;
+    }
+    
+    // 清空现有内容
+    awardsList.innerHTML = '';
+    console.log('Cleared awards container');
+    
+    // 添加每个奖项
+    awards.items.forEach(award => {
+      const listItem = document.createElement('li');
+      listItem.className = 'award-item';
+      
+      listItem.innerHTML = `
+        <span class="award-name">${award.name}</span>
+        <span class="award-year">${award.year}</span>
+      `;
+      
+      awardsList.appendChild(listItem);
+    });
+    
+    console.log('Awards loaded successfully');
   }
 
   /**
