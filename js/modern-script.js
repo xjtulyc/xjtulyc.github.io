@@ -316,7 +316,7 @@ class ScrollAnimations {
 class PublicationsFilter {
   constructor() {
     this.filterButtons = document.querySelectorAll('.filter-btn');
-    this.publications = document.querySelectorAll('.publication-item');
+    this.projects = document.querySelectorAll('.project-card');
     this.init();
   }
 
@@ -333,13 +333,13 @@ class PublicationsFilter {
   }
 
   filterPublications(filter) {
-    this.publications.forEach(pub => {
-      if (filter === 'all' || pub.dataset.category === filter) {
-        pub.style.display = 'block';
-        setTimeout(() => pub.classList.add('show'), 10);
+    this.projects.forEach(project => {
+      if (filter === 'all' || project.dataset.category.includes(filter)) {
+        project.style.display = 'block';
+        setTimeout(() => project.classList.add('show'), 10);
       } else {
-        pub.classList.remove('show');
-        setTimeout(() => pub.style.display = 'none', 300);
+        project.classList.remove('show');
+        setTimeout(() => project.style.display = 'none', 300);
       }
     });
   }

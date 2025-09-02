@@ -108,9 +108,31 @@ class SinglePageApp {
       behavior: 'smooth'
     });
     
+    // Add highlight effect to target section
+    this.highlightSection(element);
+    
     // Reset scrolling flag after animation
     setTimeout(() => {
       this.isScrolling = false;
+    }, this.animations.scrollDuration || 800);
+  }
+
+  /**
+   * 添加section高亮效果
+   * Add highlight effect to section
+   */
+  highlightSection(element) {
+    // Remove existing highlight
+    element.classList.remove('section-highlight');
+    
+    // Add highlight class after scroll animation
+    setTimeout(() => {
+      element.classList.add('section-highlight');
+      
+      // Remove highlight class after animation completes
+      setTimeout(() => {
+        element.classList.remove('section-highlight');
+      }, 1500);
     }, this.animations.scrollDuration || 800);
   }
 
@@ -238,14 +260,22 @@ class SinglePageApp {
       }
     });
 
-    // Create expand button
-    const expandButton = document.createElement('button');
-    expandButton.className = 'btn btn-outline expand-news-btn';
-    expandButton.innerHTML = `<i class="fas fa-chevron-down"></i> ${newsSettings.expandText || 'Show More News'}`;
-    
-    const newsContainer = newsSection.querySelector('.timeline');
-    newsContainer.appendChild(expandButton);
+    // Check if expand button already exists
+    let expandButton = newsSection.querySelector('.expand-news-btn');
+    if (!expandButton) {
+      // Create expand button
+      expandButton = document.createElement('button');
+      expandButton.className = 'btn btn-outline expand-news-btn';
+      expandButton.innerHTML = `<i class="fas fa-chevron-down"></i> ${newsSettings.expandText || 'Show More News'}`;
+      
+      const newsContainer = newsSection.querySelector('.timeline');
+      newsContainer.appendChild(expandButton);
+    }
 
+    // 移除旧的事件监听器，避免重复绑定
+    expandButton.replaceWith(expandButton.cloneNode(true));
+    expandButton = newsSection.querySelector('.expand-news-btn');
+    
     expandButton.addEventListener('click', () => {
       const hiddenItems = newsSection.querySelectorAll('.hidden-news');
       const isExpanding = hiddenItems.length > 0 && hiddenItems[0].style.display === 'none';
@@ -319,12 +349,16 @@ class SinglePageApp {
       const description = card.querySelector('.project-description');
       
       if (description && description.textContent.length > 150) {
+        // 检查是否已经有展开按钮
+        let expandButton = content.querySelector('.expand-project-btn');
+        if (expandButton) return; // 如果已经处理过，跳过
+        
         const fullText = description.textContent;
         const truncatedText = fullText.substring(0, 150) + '...';
         
         description.textContent = truncatedText;
         
-        const expandButton = document.createElement('button');
+        expandButton = document.createElement('button');
         expandButton.className = 'btn btn-sm btn-link expand-project-btn';
         expandButton.textContent = 'Read More';
         
@@ -361,7 +395,10 @@ class SinglePageApp {
       const header = yearGroup.querySelector('.year-header');
       if (header) {
         header.style.cursor = 'pointer';
-        header.innerHTML += ' <i class="fas fa-chevron-down toggle-icon"></i>';
+        // 检查是否已经有toggle-icon，避免重复添加
+        if (!header.querySelector('.toggle-icon')) {
+          header.innerHTML += ' <i class="fas fa-chevron-down toggle-icon"></i>';
+        }
         
         header.addEventListener('click', () => {
           const items = yearGroup.querySelectorAll('.publication-item');
@@ -453,13 +490,21 @@ class SinglePageApp {
       }
     });
 
-    // Create expand button
-    const expandButton = document.createElement('button');
-    expandButton.className = 'btn btn-outline expand-talks-btn';
-    expandButton.innerHTML = `<i class="fas fa-chevron-down"></i> ${talksSettings.expandText || 'Show All Talks'}`;
-    
-    talksSection.appendChild(expandButton);
+    // Check if expand button already exists
+    let expandButton = talksSection.querySelector('.expand-talks-btn');
+    if (!expandButton) {
+      // Create expand button
+      expandButton = document.createElement('button');
+      expandButton.className = 'btn btn-outline expand-talks-btn';
+      expandButton.innerHTML = `<i class="fas fa-chevron-down"></i> ${talksSettings.expandText || 'Show All Talks'}`;
+      
+      talksSection.appendChild(expandButton);
+    }
 
+    // 移除旧的事件监听器，避免重复绑定
+    expandButton.replaceWith(expandButton.cloneNode(true));
+    expandButton = talksSection.querySelector('.expand-talks-btn');
+    
     expandButton.addEventListener('click', () => {
       const hiddenItems = talksSection.querySelectorAll('.hidden-talk');
       const isExpanding = hiddenItems.length > 0 && hiddenItems[0].style.display === 'none';

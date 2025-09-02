@@ -183,6 +183,26 @@ const SITE_CONFIG = {
 
     items: [
       {
+        date: "Jan 2025",
+        title: "BUSGen: Foundational Model Published",
+        content: "Our groundbreaking work \"A Foundational Generative Model for Breast Ultrasound Image Analysis\" has been published, featuring the first foundational model for breast ultrasound analysis.",
+        link: {
+          url: "https://arxiv.org/abs/2501.06869",
+          text: "Read Paper →"
+        },
+        type: "publication"
+      },
+      {
+        date: "Apr 2025",
+        title: "Scientific Reports Publication",
+        content: "Our collaborative work on AI-assisted classification of breast ultrasound glandular tissue components has been published in Scientific Reports (Nature).",
+        link: {
+          url: "https://www.nature.com/articles/s41598-025-95871-5",
+          text: "Read Paper →"
+        },
+        type: "publication"
+      },
+      {
         date: "Oct 2024",
         title: "National Scholarship Award",
         content: "I am honored to receive the National Scholarship for my research contributions.",
@@ -190,11 +210,11 @@ const SITE_CONFIG = {
       },
       {
         date: "Jul 2024",
-        title: "New Paper on arXiv",
-        content: "Our work \"Knowledge-driven AI-generated data for accurate and interpretable breast ultrasound diagnoses\" is now available on arXiv.",
+        title: "TAILOR Pipeline Published",
+        content: "Our work \"Knowledge-driven AI-generated data for accurate and interpretable breast ultrasound diagnoses\" is now available on arXiv, introducing the TAILOR pipeline for medical data generation.",
         link: {
           url: "https://arxiv.org/abs/2407.16634",
-          text: "View Article →"
+          text: "Read Paper →"
         },
         type: "publication"
       },
@@ -262,55 +282,162 @@ const SITE_CONFIG = {
     // 特色项目
     featured: [
       {
-        title: "UltraDet: Ultrasound Lesion Detection",
-        description: "Real-time ultrasound lesion detection using deep learning with temporal context mining.",
-        image: "pub/UltraDet.png",
-        tags: ["Medical AI", "Computer Vision", "Ultrasound"],
+        title: "BUSGen: Foundational Generative Model for Breast Ultrasound",
+        description: "The first foundational generative model specifically designed for breast ultrasound image analysis. Pretrained on over 3.5 million breast ultrasound images, BUSGen has acquired extensive knowledge of breast structures, pathological features, and clinical variations. Outperformed all board-certified radiologists with 16.5% sensitivity improvement.",
+        image: "pub/BUSGen.png",
+        tags: ["Medical AI", "Generative AI"],
         links: [
           {
             type: "paper",
-            url: "https://arxiv.org/abs/2305.18060",
+            url: "https://arxiv.org/abs/2501.06869",
             text: "Paper"
+          },
+          {
+            type: "demo",
+            url: "https://aibus.bio",
+            text: "Demo"
+          }
+        ],
+        highlight: true
+      },
+      {
+        title: "UltraDet: Real-time Ultrasound Lesion Detection",
+        description: "Mining negative temporal contexts for false positive suppression in real-time ultrasound lesion detection. This model leverages temporal information from video sequences to significantly reduce false positives while maintaining real-time inference speed.",
+        image: "pub/UltraDet.png",
+        tags: ["Medical AI", "Computer Vision"],
+        links: [
+          {
+            type: "paper",
+            url: "https://link.springer.com/chapter/10.1007/978-3-031-43987-2_1",
+            text: "MICCAI 2023"
+          },
+          {
+            type: "arxiv",
+            url: "https://arxiv.org/abs/2305.18060",
+            text: "arXiv"
           },
           {
             type: "bibtex",
             url: "pub/UltraDet.bib",
             text: "BibTeX"
           }
-        ]
+        ],
+        citations: 4
+      },
+      {
+        title: "TAILOR: Knowledge-driven AI-generated Data Pipeline",
+        description: "A pipeline that builds knowledge-driven generative models to produce tailored synthetic data for rare medical cases. Using 3,749 lesions as source data, can generate millions of breast-US images, especially for error-prone rare cases like DCIS.",
+        image: "pub/TAILOR.png",
+        tags: ["Medical AI", "Generative AI"],
+        links: [
+          {
+            type: "paper",
+            url: "https://arxiv.org/abs/2407.16634",
+            text: "Paper"
+          }
+        ],
+        citations: 4
+      },
+      {
+        title: "ST-CellSeg: Spatial Transcriptomics Cell Segmentation",
+        description: "An image-based machine learning method for spatial transcriptomics that uses manifold for cell segmentation. Novel in its consideration of multi-scale information, significantly outperforms baseline models in ARI, NMI, and Silhouette coefficient metrics.",
+        image: "pub/STCellSeg.png",
+        tags: ["Computer Vision", "Machine Learning"],
+        links: [
+          {
+            type: "paper",
+            url: "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1012254",
+            text: "PLOS Comp Bio"
+          }
+        ],
+        citations: 3
       }
     ],
 
     // 出版物列表
     publications: [
       {
+        year: "2025",
+        items: [
+          {
+            title: "A Foundational Generative Model for Breast Ultrasound Image Analysis",
+            authors: ["Haojun Yu", "Youcheng Li", "Nan Zhang", "Zihan Niu", "Xuantong Gong", "Yanwen Luo", "et al."],
+            venue: "arXiv preprint arXiv:2501.06869",
+            date: "January 2025",
+            links: [
+              {
+                type: "arxiv",
+                url: "https://arxiv.org/abs/2501.06869"
+              },
+              {
+                type: "pdf",
+                url: "https://arxiv.org/pdf/2501.06869"
+              },
+              {
+                type: "demo",
+                url: "https://aibus.bio",
+                text: "Online Demo"
+              }
+            ],
+            tags: ["Medical AI", "Generative AI"],
+            highlight: true
+          },
+          {
+            title: "Using artificial intelligence system for assisting the classification of breast ultrasound glandular tissue components in dense breast tissue",
+            authors: ["Hongju Yan", "Chaochao Dai", "Xiaojing Xu", "et al.", "Youcheng Li", "Lingyun Bao"],
+            venue: "Scientific Reports",
+            volume: "15",
+            issue: "1",
+            pages: "11754",
+            date: "April 2025",
+            links: [
+              {
+                type: "journal",
+                url: "https://www.nature.com/articles/s41598-025-95871-5"
+              }
+            ],
+            tags: ["Medical AI"],
+            citations: 1
+          }
+        ]
+      },
+      {
         year: "2024",
         items: [
           {
             title: "Knowledge-driven AI-generated data for accurate and interpretable breast ultrasound diagnoses",
-            authors: ["Youcheng Li", "Shang Zhao", "Kwang-Ting Cheng", "Liwei Wang"],
-            venue: "arXiv preprint",
+            authors: ["Haojun Yu", "Youcheng Li", "Nan Zhang", "Zihan Niu", "Xuantong Gong", "Yanwen Luo", "et al."],
+            venue: "arXiv preprint arXiv:2407.16634",
             date: "July 2024",
             links: [
               {
                 type: "arxiv",
                 url: "https://arxiv.org/abs/2407.16634"
+              },
+              {
+                type: "pdf",
+                url: "https://arxiv.org/pdf/2407.16634"
               }
             ],
-            tags: ["Medical AI", "Ultrasound", "Generative AI"]
+            tags: ["Medical AI", "Generative AI"],
+            citations: 4
           },
           {
             title: "ST-CellSeg: Cell segmentation for imaging-based spatial transcriptomics using multi-scale manifold learning",
-            authors: ["Youcheng Li", "et al."],
+            authors: ["Youcheng Li", "Leann Lac", "Qian Liu", "Pingzhao Hu"],
             venue: "PLOS Computational Biology",
-            date: "July 2024",
+            volume: "20",
+            issue: "6",
+            pages: "e1012254",
+            date: "June 2024",
             links: [
               {
                 type: "journal",
                 url: "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1012254"
               }
             ],
-            tags: ["Cell Segmentation", "Spatial Transcriptomics", "Manifold Learning"]
+            tags: ["Computer Vision", "Machine Learning"],
+            citations: 3
           }
         ]
       },
@@ -319,16 +446,28 @@ const SITE_CONFIG = {
         items: [
           {
             title: "Mining Negative Temporal Contexts For False Positive Suppression In Real-Time Ultrasound Lesion Detection",
-            authors: ["Youcheng Li", "et al."],
-            venue: "MICCAI 2023",
-            date: "May 2023",
+            authors: ["Haojun Yu", "Youcheng Li", "QuanLin Wu", "Ziwei Zhao", "Dengbo Chen", "Dong Wang", "Liwei Wang"],
+            venue: "International Conference on Medical Image Computing and Computer-Assisted Intervention (MICCAI 2023)",
+            publisher: "Springer Nature Switzerland",
+            pages: "3-13",
+            date: "October 2023",
             links: [
+              {
+                type: "conference",
+                url: "https://link.springer.com/chapter/10.1007/978-3-031-43987-2_1"
+              },
               {
                 type: "arxiv",
                 url: "https://arxiv.org/abs/2305.18060"
+              },
+              {
+                type: "pdf",
+                url: "https://arxiv.org/pdf/2305.18060"
               }
             ],
-            tags: ["Medical AI", "Ultrasound", "Lesion Detection"]
+            tags: ["Medical AI", "Computer Vision"],
+            citations: 4,
+            highlight: true
           }
         ]
       }

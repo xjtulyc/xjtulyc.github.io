@@ -470,87 +470,12 @@
           
           <!-- Filter Buttons -->
           <div class="filter-buttons mb-4">
-            <button class="btn btn-outline filter-btn active" data-filter="all">All</button>
-            <button class="btn btn-outline filter-btn" data-filter="medical">Medical AI</button>
-            <button class="btn btn-outline filter-btn" data-filter="vision">Computer Vision</button>
-            <button class="btn btn-outline filter-btn" data-filter="ml">Machine Learning</button>
+            <!-- Buttons will be dynamically loaded from config/site-config.js -->
           </div>
           
           <!-- Projects Grid -->
           <div class="projects-grid">
-            <div class="project-card card publication-item" data-category="medical">
-              <div class="project-image">
-                <img data-src="pub/UltraDet.png" alt="UltraDet Project" class="lazy">
-              </div>
-              <div class="project-content">
-                <h4 class="project-title">Real-Time Ultrasound Lesion Detection</h4>
-                <p class="project-description">Mining negative temporal contexts for false positive suppression in medical ultrasound analysis using deep learning. This project addresses the critical challenge of reducing false positives in real-time ultrasound lesion detection systems, which is essential for improving diagnostic accuracy in clinical settings.</p>
-                <div class="project-tags">
-                  <span class="badge badge-secondary">Medical Imaging</span>
-                  <span class="badge badge-secondary">Deep Learning</span>
-                  <span class="badge badge-secondary">Ultrasound</span>
-                </div>
-                <div class="project-links mt-3">
-                  <a href="https://arxiv.org/abs/2305.18060" class="btn btn-sm btn-primary" target="_blank">
-                    <i class="fas fa-file-pdf"></i> Paper
-                  </a>
-                  <a href="pub/UltraDet.bib" class="btn btn-sm btn-outline" target="_blank">
-                    <i class="fas fa-quote-left"></i> BibTeX
-                  </a>
-                </div>
-              </div>
-            </div>
-            
-            <div class="project-card card publication-item" data-category="medical">
-              <div class="project-content">
-                <h4 class="project-title">AI-Generated Medical Data</h4>
-                <p class="project-description">Knowledge-driven AI-generated data for accurate and interpretable breast ultrasound diagnoses. This innovative approach combines domain knowledge with generative AI to create synthetic medical data that enhances diagnostic models while maintaining clinical relevance and interpretability.</p>
-                <div class="project-tags">
-                  <span class="badge badge-secondary">Medical AI</span>
-                  <span class="badge badge-secondary">Data Generation</span>
-                  <span class="badge badge-secondary">Breast Ultrasound</span>
-                </div>
-                <div class="project-links mt-3">
-                  <a href="https://arxiv.org/abs/2407.16634" class="btn btn-sm btn-primary" target="_blank">
-                    <i class="fas fa-file-pdf"></i> Paper
-                  </a>
-                </div>
-              </div>
-            </div>
-            
-            <div class="project-card card publication-item" data-category="vision">
-              <div class="project-content">
-                <h4 class="project-title">ST-CellSeg: Spatial Transcriptomics Cell Segmentation</h4>
-                <p class="project-description">Cell segmentation for imaging-based spatial transcriptomics using multi-scale manifold learning. This project develops advanced computer vision techniques to accurately segment cells in spatial transcriptomics data, enabling better understanding of tissue organization and gene expression patterns.</p>
-                <div class="project-tags">
-                  <span class="badge badge-secondary">Cell Segmentation</span>
-                  <span class="badge badge-secondary">Spatial Analysis</span>
-                  <span class="badge badge-secondary">Manifold Learning</span>
-                </div>
-                <div class="project-links mt-3">
-                  <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1012254" class="btn btn-sm btn-primary" target="_blank">
-                    <i class="fas fa-file-pdf"></i> Paper
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="project-card card publication-item" data-category="ml">
-              <div class="project-content">
-                <h4 class="project-title">Multi-Modal Medical AI</h4>
-                <p class="project-description">Developing multi-modal machine learning systems that integrate various medical imaging modalities and clinical data for comprehensive patient assessment. This project explores the synergistic potential of combining different data types to improve diagnostic accuracy and clinical decision-making.</p>
-                <div class="project-tags">
-                  <span class="badge badge-secondary">Multi-Modal Learning</span>
-                  <span class="badge badge-secondary">Medical Imaging</span>
-                  <span class="badge badge-secondary">Clinical Data</span>
-                </div>
-                <div class="project-links mt-3">
-                  <a href="#" class="btn btn-sm btn-outline" onclick="return false;">
-                    <i class="fas fa-clock"></i> In Progress
-                  </a>
-                </div>
-              </div>
-            </div>
+            <!-- Content will be dynamically loaded from config/site-config.js -->
           </div>
         </section>
 
@@ -562,93 +487,9 @@
             <p class="section-subtitle">Peer-reviewed papers and preprints</p>
           </div>
           
-          <!-- Year Filter -->
-          <div class="year-filter mb-4">
-            <span class="year-badge active" data-year="all">All</span>
-            <span class="year-badge" data-year="2024">2024</span>
-            <span class="year-badge" data-year="2023">2023</span>
-          </div>
-          
           <!-- Publications List -->
           <div class="publications-list">
-            <!-- 2024 Publications -->
-            <div class="publication-year" data-year="2024">
-              <h3 class="year-header">2024 <i class="fas fa-chevron-down toggle-icon"></i></h3>
-              
-              <div class="publication-item card">
-                <div class="publication-content">
-                  <h4 class="publication-title">
-                    Knowledge-driven AI-generated data for accurate and interpretable breast ultrasound diagnoses
-                  </h4>
-                  <div class="publication-authors">
-                    <strong>Youcheng Li</strong>, Shang Zhao, Kwang-Ting Cheng, Liwei Wang
-                  </div>
-                  <div class="publication-venue">
-                    <i class="fas fa-book"></i> arXiv preprint arXiv:2407.16634
-                  </div>
-                  <div class="publication-links mt-3">
-                    <a href="https://arxiv.org/abs/2407.16634" class="btn btn-sm btn-outline" target="_blank">
-                      <i class="fas fa-external-link-alt"></i> arXiv
-                    </a>
-                    <button class="btn btn-sm btn-outline copy-bibtex" data-bibtex="@article{li2024knowledge, title={Knowledge-driven AI-generated data for accurate and interpretable breast ultrasound diagnoses}, author={Li, Youcheng and Zhao, Shang and Cheng, Kwang-Ting and Wang, Liwei}, journal={arXiv preprint arXiv:2407.16634}, year={2024}}">
-                      <i class="fas fa-quote-left"></i> BibTeX
-                    </button>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="publication-item card">
-                <div class="publication-content">
-                  <h4 class="publication-title">
-                    ST-CellSeg: Cell segmentation for imaging-based spatial transcriptomics using multi-scale manifold learning
-                  </h4>
-                  <div class="publication-authors">
-                    Ziyang Zhang, Zhengfeng Lai, Youcheng Li, et al.
-                  </div>
-                  <div class="publication-venue">
-                    <i class="fas fa-book"></i> PLOS Computational Biology 20(7): e1012254
-                  </div>
-                  <div class="publication-links mt-3">
-                    <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1012254" class="btn btn-sm btn-primary" target="_blank">
-                      <i class="fas fa-file-pdf"></i> Full Text
-                    </a>
-                    <button class="btn btn-sm btn-outline copy-bibtex" data-bibtex="@article{zhang2024stcellseg, title={ST-CellSeg: Cell segmentation for imaging-based spatial transcriptomics using multi-scale manifold learning}, author={Zhang, Ziyang and Lai, Zhengfeng and Li, Youcheng and others}, journal={PLOS Computational Biology}, volume={20}, number={7}, pages={e1012254}, year={2024}, publisher={Public Library of Science}}">
-                      <i class="fas fa-quote-left"></i> BibTeX
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <!-- 2023 Publications -->
-            <div class="publication-year" data-year="2023">
-              <h3 class="year-header">2023 <i class="fas fa-chevron-down toggle-icon"></i></h3>
-              
-              <div class="publication-item card">
-                <div class="publication-content">
-                  <h4 class="publication-title">
-                    Mining Negative Temporal Contexts For False Positive Suppression In Real-Time Ultrasound Lesion Detection
-                  </h4>
-                  <div class="publication-authors">
-                    Haojun Yu, <strong>Youcheng Li</strong>, QuanLin Wu, Ziwei Zhao, Dengbo Chen, Dong Wang, Liwei Wang
-                  </div>
-                  <div class="publication-venue">
-                    <i class="fas fa-book"></i> MICCAI 2023 (Early Acceptance)
-                  </div>
-                  <div class="publication-links mt-3">
-                    <a href="https://arxiv.org/pdf/2305.18060.pdf" class="btn btn-sm btn-primary" target="_blank">
-                      <i class="fas fa-file-pdf"></i> PDF
-                    </a>
-                    <a href="https://arxiv.org/abs/2305.18060" class="btn btn-sm btn-outline" target="_blank">
-                      <i class="fas fa-external-link-alt"></i> arXiv
-                    </a>
-                    <button class="btn btn-sm btn-outline copy-bibtex" data-bibtex="@inproceedings{yu2023mining, title={Mining Negative Temporal Contexts For False Positive Suppression In Real-Time Ultrasound Lesion Detection}, author={Yu, Haojun and Li, Youcheng and Wu, QuanLin and Zhao, Ziwei and Chen, Dengbo and Wang, Dong and Wang, Liwei}, booktitle={International Conference on Medical Image Computing and Computer-Assisted Intervention}, year={2023}, organization={Springer}}">
-                      <i class="fas fa-quote-left"></i> BibTeX
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <!-- Content will be dynamically loaded from config/site-config.js -->
           </div>
         </section>
 
@@ -1027,15 +868,16 @@
 
   <!-- Configuration System -->
   <script src="config/site-config.js"></script>
-  <script src="js/config-loader.js"></script>
+  <script src="js/dynamic-content-loader.js"></script>
 
   <!-- Custom JavaScript -->
   <script src="js/modern-script.js"></script>
   <script src="js/single-page-app.js"></script>
 
-  <!-- Copy to clipboard functionality -->
+  <!-- Configuration and App Initialization -->
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', async function() {
+      
       // Copy BibTeX to clipboard
       document.querySelectorAll('.copy-bibtex').forEach(button => {
         button.addEventListener('click', function() {
