@@ -1,673 +1,509 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type"
-        content="text/html; charset=utf-8" />
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0" />
-  <link rel="stylesheet"
-        type="text/css"
-        href="utils/bootstrap.min.css" />
-  <script language="javascript"
-          src="utils/jquery.min.js"></script>
-  <script language="javascript"
-          src="utils/bootstrap.min.js"></script>
-  <!-- -->
-  <link rel="stylesheet"
-        type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" />
-  <link rel="stylesheet"
-        type="text/css"
-        href="utils/cssReset.css" />
-  <link rel="stylesheet"
-        type="text/css"
-        href="utils/css_layout.css" />
-  <title>Youcheng Li / 利友诚</title>
-  <!-- 搜索引擎优化stuff -->
-  <meta name="description"
-        content="Academic website for Youcheng Li. Youcheng Li is an PhD candidate at School of Intelligence and Science Thechnology of Peking University, supervised by Prof.Liwei Wang. He is interested in the application of machine learning, especially computer vision in the field of biomedical engineering. His mission: develop artificial intelligence medical diagnosis system for social good.">
-  <meta name="keywords"
-        content="Youcheng Li,Xian Jiaotong University,Pecking University,PhD student,computer vision,利友诚,XJTU,PKU">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <!-- SEO Meta Tags -->
+  <title>Projects & Publications - Youcheng Li</title>
+  <meta name="description" content="Research projects and publications by Youcheng Li in machine learning and medical AI">
+  <meta name="keywords" content="Research Projects, Publications, Machine Learning, Medical AI, Computer Vision">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style/modern-style.css">
+  <link rel="stylesheet" href="style/sidebar-enhanced.css">
 </head>
-
 <body>
-  <div id="sidebar">
-    <img class='me'
-         src="resources/avatar.jpg"></img>
-    <br />
-    <div class="info">
-      <h2 class="name">Youcheng Li</h2>
-      <h2 class="name_chinese">利友诚</h2>
-      <h2 class="email">1246321319@qq.com</h2>
-      <h2 class="email">youchengli@stu.pku.edu.cn</h2>
-      <h2 class="email">Peking University</h2>
-      <h2 class="link">
-        <a style="font-size: 14px; color: yellow; font-weight: bold;"
-           href="https://scholar.google.com/citations?hl=zh-CN&user=cRWgAzcAAAAJ">Google
-          Scholar</a>
-      </h2>
-      <h2 class="link">
-        <a href="https://www.semanticscholar.org">[Semantic
-          Scholar]</a>
-        <a
-           href="https://www.researchgate.net/profile/Youcheng-Li-2">[Research
-          Gate]</a>
-      </h2>
-      <h2 class="link">
-        <a href="https://github.com/xjtulyc">[Github]</a>
-        <a
-           href="https://paperswithcode.com/">[PaperWithCode]</a>
-      </h2>
-      <h2 class="link">
-        <a
-           href="https://www.zhihu.com/people/yan-cheng-86-84">[知乎]</a>
-        <a href="https://www.youtube.com">[Youtube]</a>
-        <a href="https://space.bilibili.com">[B站]</a>
-      </h2>
-      <h2 class="link">
-        <a href="https://www.linkedin.com">[LinkedIn]</a>
-        <a href="https://twitter.com">[Twitter]</a>
-        <a href="https://www.xiaohongshu.com">[小红书]</a>
-      </h2>
-      <h2 class="link">
-        <a href="pdf\youcheng_li_cv.pdf">[简历/CV]</a>
-      </h2>
-
-      <!--
-      <a class="quickLink" href="https://medium.com/@junweil">
-        <img class='medium' style="" src="resources/medium.png"></img>
-      </a>
-      <a class="quickLink" href="https://dblp.org/pers/hd/l/Liang_0001:Junwei">
-        <img class='dblp' style="height:20px" src="resources/dblp.png"></img>
-      </a>
-      <a class="quickLink" href="http://aminer.cn/profile/junwei-liang/562cb48c45cedb3398c9e13b">
-        <img class='aminer' style="height:20px;width: 50px;margin-top:4px" src="resources/aminer.png"></img>
-      </a>
-      <a class="quickLink" href="https://g.co/kgs/gTWf5W">
-        <img class='aminer' name="Google knowledge graph" style="height:30px;width: 30px;margin-top:0px" src="resources/gkg.png"></img>
-      </a>-->
-
-    </div>
-    <div id="navigation">
-      <a class="nav_item"
-         href="./index.html">
-        <i class="icon icon-home icon-white"></i> &nbsp;
-        About
-      </a>
-      <a class="nav_item"
-         href="./projects.html#projects">
-        <i class="icon icon-th-large icon-white"></i> &nbsp;
-        Projects
-      </a>
-      <a class="nav_item"
-         href="./projects.html#publications">
-        <i class="icon icon-file icon-white"></i> &nbsp;
-        Publications
-      </a>
-      <a class="nav_item"
-         href="./teaching.html#teaching">
-        <i class="icon icon-user icon-white"></i> &nbsp;
-        Teaching / Talks
-      </a>
-      <a class="nav_item"
-         href="./index.html#awards">
-        <i class="icon icon-bookmark icon-white"></i> &nbsp;
-        Honors / Awards
-      </a>
-      <a class="nav_item"
-         href="./index.html#media">
-        <i class="icon icon-volume-up icon-white"></i>
-        &nbsp; Selected Media
-      </a>
-      <a class="nav_item"
-         href="./awesome.html">
-        <i class="icon icon-list icon-white"></i> &nbsp;
-        Awesome Lists
-      </a>
-      <a class="nav_item"
-         href="./letter_en.html">
-        <i class="icon icon-pencil icon-white"></i> &nbsp;
-        Letter
-      </a>
-
-    </div>
+  <!-- Mobile Menu Toggle -->
+  <div class="mobile-menu-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
   </div>
-
-  <style type="text/css">
-    #main {
-      background: #f7f7f7;
-    }
-
-    #main>div.publications>ol>li {
-      background: white;
-      box-shadow: 2px 5px 5px #c9c9c9;
-      margin-bottom: 10px;
-      padding: 20px;
-    }
-
-    #main div.img {
-      padding: 20px;
-      text-align: center;
-      padding-right: 150px;
-    }
-
-    #main div.img>div.img_caption {
-      font-weight: 450;
-      font-size: 1.1em;
-      line-height: 40px;
-    }
-  </style>
-
-  <div id="main">
-
-    <div class="title">
-      <a class="title_link"
-         id="projects"
-         href="#projects">Projects</a>
-    </div>
-
-    <div class="content">
-      <div class="media stream-item">
-        <div class="media-body">
-          <h3 class="article-title mb-0 mt-0"> <a
-               href="https://arxiv.org/abs/2305.18060">Mining
-              Negative Temporal Contexts For False Positive
-              Suppression In Real-Time Ultrasound Lesion
-              Detection</a> </h3> ArXiv preprint, 2023. <div
-               class="stream-meta article-metadata">
-            <div> <span>Haojun Yu</span>, <span
-                    class="font-weight-bold"><a
-                   href="https://youchengli.com">Youcheng
-                  Li</a></span>, <span>QuanLin Wu</span>,
-              <span>Ziwei Zhao</span>, <span>Dengbo
-                Chen</span>,
-              <span>Dong Wang</span>, <span>Liwei
-                Wang</span>
-            </div>
-            <div class="btn-links"> <a
-                 class="btn btn-outline-primary my-1 mr-1 btn-sm"
-                 href="https://arxiv.org/pdf/2305.18060.pdf"
-                 target="_blank"
-                 rel="noopener"> PDF </a>
-              <button type="button"
-                      class="btn btn-outline-primary my-1 mr-1 btn-sm js-cite-modal"
-                      data-filename="pub/UltraDet.bib"
-                      onclick="showBibContent()">Cite</button>
-
-              <script>
-                function showBibContent() {
-                  var filename = document.querySelector('.js-cite-modal').getAttribute('data-filename');
-                  fetch(filename)
-                    .then(response => response.text())
-                    .then(data => {
-                      alert(data); // 可以根据需要自定义显示方式，这里使用alert弹出bib文件内容
-                    })
-                    .catch(error => {
-                      console.error('Error:', error);
-                    });
-                }
-              </script>
-            </div>
+  
+  <!-- Mobile Overlay -->
+  <div class="mobile-overlay"></div>
+  
+  <!-- Theme Toggle -->
+  <button class="theme-toggle" aria-label="Toggle theme">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+    </svg>
+  </button>
+  
+  <!-- Back to Top Button -->
+  <button class="back-to-top" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+  
+  <!-- Layout Container -->
+  <div class="layout-container">
+    <!-- Sidebar -->
+    <aside id="sidebar">
+      <div class="sidebar-content">
+        <!-- Profile Section -->
+        <div class="profile">
+          <img src="resources/avatar.jpg" alt="Youcheng Li" class="profile-image">
+          <h1 class="profile-name">Youcheng Li</h1>
+          <div class="profile-name">利友诚</div>
+          <div class="profile-title">PhD Candidate</div>
+          <div class="profile-title">Peking University</div>
+        </div>
+        
+        <!-- Contact Information - Highlighted -->
+        <div class="contact-info">
+          <div class="contact-info-item">
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:youchengli@stu.pku.edu.cn">youchengli@stu.pku.edu.cn</a>
+          </div>
+          <div class="contact-info-item">
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:1246321319@qq.com">1246321319@qq.com</a>
           </div>
         </div>
-        <div class="mr-3"> <a
-             href="https://arxiv.org/abs/2305.18060"> <img
-                 src="pub/UltraDet.png"
-                 alt=""
-                 style="max-width: 200px; height: auto;">
+        
+        <!-- CV Download Button - Prominent -->
+        <a href="pdf/youcheng_li_cv.pdf" class="cv-download" target="_blank">
+          <i class="fas fa-file-pdf"></i> Download CV
+        </a>
+        
+        <div class="sidebar-divider"></div>
+        
+        <!-- Social Links Grid -->
+        <div class="social-links-grid">
+          <a href="https://scholar.google.com/citations?hl=zh-CN&user=cRWgAzcAAAAJ" class="social-link" data-tooltip="Google Scholar" target="_blank">
+            <i class="fas fa-graduation-cap"></i>
+          </a>
+          <a href="https://github.com/xjtulyc" class="social-link" data-tooltip="GitHub" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://www.researchgate.net/profile/Youcheng-Li-2" class="social-link" data-tooltip="ResearchGate" target="_blank">
+            <i class="fab fa-researchgate"></i>
+          </a>
+          <a href="https://www.semanticscholar.org" class="social-link" data-tooltip="Semantic Scholar" target="_blank">
+            <i class="fas fa-book-open"></i>
+          </a>
+          <a href="https://www.linkedin.com" class="social-link" data-tooltip="LinkedIn" target="_blank">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://www.zhihu.com/people/yan-cheng-86-84" class="social-link" data-tooltip="知乎" target="_blank">
+            <i class="fab fa-zhihu"></i>
           </a>
         </div>
+        
+        <div class="sidebar-divider"></div>
+        
+        <!-- Navigation -->
+        <nav class="navigation">
+          <a href="index.html" class="nav-item">
+            <i class="fas fa-home nav-icon"></i>
+            Home
+          </a>
+          <a href="#projects" class="nav-item active">
+            <i class="fas fa-project-diagram nav-icon"></i>
+            Projects
+          </a>
+          <a href="#publications" class="nav-item">
+            <i class="fas fa-book nav-icon"></i>
+            Publications
+          </a>
+          <a href="teaching.html" class="nav-item">
+            <i class="fas fa-chalkboard-teacher nav-icon"></i>
+            Teaching
+          </a>
+          <a href="awesome.html" class="nav-item">
+            <i class="fas fa-star nav-icon"></i>
+            Resources
+          </a>
+        </nav>
       </div>
-    </div>
-
-
-
-
+    </aside>
+    
+    <!-- Main Content -->
+    <main id="main">
+      <div class="main-container">
+        <!-- Projects Section -->
+        <section id="projects" class="animate-on-scroll">
+          <div class="section-header">
+            <h2 class="section-title">Research Projects</h2>
+            <p class="section-subtitle">Current and past research initiatives</p>
+          </div>
+          
+          <!-- Filter Buttons -->
+          <div class="filter-buttons mb-4">
+            <button class="btn btn-outline filter-btn active" data-filter="all">All</button>
+            <button class="btn btn-outline filter-btn" data-filter="medical">Medical AI</button>
+            <button class="btn btn-outline filter-btn" data-filter="vision">Computer Vision</button>
+            <button class="btn btn-outline filter-btn" data-filter="ml">Machine Learning</button>
+          </div>
+          
+          <!-- Projects Grid -->
+          <div class="projects-grid">
+            <div class="project-card card publication-item" data-category="medical">
+              <div class="project-image">
+                <img data-src="pub/UltraDet.png" alt="UltraDet Project" class="lazy">
+              </div>
+              <div class="project-content">
+                <h4 class="project-title">Real-Time Ultrasound Lesion Detection</h4>
+                <p class="project-description">Mining negative temporal contexts for false positive suppression in medical ultrasound analysis using deep learning.</p>
+                <div class="project-tags">
+                  <span class="badge badge-secondary">Medical Imaging</span>
+                  <span class="badge badge-secondary">Deep Learning</span>
+                </div>
+                <div class="project-links mt-3">
+                  <a href="https://arxiv.org/abs/2305.18060" class="btn btn-sm btn-primary" target="_blank">
+                    <i class="fas fa-file-pdf"></i> Paper
+                  </a>
+                  <a href="#" class="btn btn-sm btn-outline">
+                    <i class="fas fa-code"></i> Code
+                  </a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="project-card card publication-item" data-category="medical">
+              <div class="project-content">
+                <h4 class="project-title">AI-Generated Medical Data</h4>
+                <p class="project-description">Knowledge-driven AI-generated data for accurate and interpretable breast ultrasound diagnoses.</p>
+                <div class="project-tags">
+                  <span class="badge badge-secondary">Medical AI</span>
+                  <span class="badge badge-secondary">Data Generation</span>
+                </div>
+                <div class="project-links mt-3">
+                  <a href="https://arxiv.org/abs/2407.16634" class="btn btn-sm btn-primary" target="_blank">
+                    <i class="fas fa-file-pdf"></i> Paper
+                  </a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="project-card card publication-item" data-category="vision">
+              <div class="project-content">
+                <h4 class="project-title">ST-CellSeg</h4>
+                <p class="project-description">Cell segmentation for imaging-based spatial transcriptomics using multi-scale manifold learning.</p>
+                <div class="project-tags">
+                  <span class="badge badge-secondary">Cell Segmentation</span>
+                  <span class="badge badge-secondary">Spatial Analysis</span>
+                </div>
+                <div class="project-links mt-3">
+                  <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1012254" class="btn btn-sm btn-primary" target="_blank">
+                    <i class="fas fa-file-pdf"></i> Paper
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- Publications Section -->
+        <section id="publications" class="animate-on-scroll">
+          <div class="section-header">
+            <h2 class="section-title">Publications</h2>
+            <p class="section-subtitle">Peer-reviewed papers and preprints</p>
+          </div>
+          
+          <!-- Year Filter -->
+          <div class="year-filter mb-4">
+            <span class="year-badge active" data-year="all">All</span>
+            <span class="year-badge" data-year="2024">2024</span>
+            <span class="year-badge" data-year="2023">2023</span>
+          </div>
+          
+          <!-- Publications List -->
+          <div class="publications-list">
+            <!-- 2024 Publications -->
+            <div class="publication-year" data-year="2024">
+              <h3 class="year-header">2024</h3>
+              
+              <div class="publication-item card">
+                <div class="publication-content">
+                  <h4 class="publication-title">
+                    Knowledge-driven AI-generated data for accurate and interpretable breast ultrasound diagnoses
+                  </h4>
+                  <div class="publication-authors">
+                    <strong>Youcheng Li</strong>, et al.
+                  </div>
+                  <div class="publication-venue">
+                    <i class="fas fa-book"></i> arXiv preprint
+                  </div>
+                  <div class="publication-links mt-3">
+                    <a href="https://arxiv.org/abs/2407.16634" class="btn btn-sm btn-outline" target="_blank">
+                      <i class="fas fa-external-link-alt"></i> arXiv
+                    </a>
+                    <button class="btn btn-sm btn-outline copy-bibtex" data-bibtex="@article{li2024knowledge...}">
+                      <i class="fas fa-quote-left"></i> BibTeX
+                    </button>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="publication-item card">
+                <div class="publication-content">
+                  <h4 class="publication-title">
+                    ST-CellSeg: Cell segmentation for imaging-based spatial transcriptomics using multi-scale manifold learning
+                  </h4>
+                  <div class="publication-authors">
+                    Author 1, <strong>Youcheng Li</strong>, et al.
+                  </div>
+                  <div class="publication-venue">
+                    <i class="fas fa-book"></i> PLOS Computational Biology
+                  </div>
+                  <div class="publication-links mt-3">
+                    <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1012254" class="btn btn-sm btn-primary" target="_blank">
+                      <i class="fas fa-file-pdf"></i> Full Text
+                    </a>
+                    <button class="btn btn-sm btn-outline copy-bibtex" data-bibtex="@article{cellseg2024...}">
+                      <i class="fas fa-quote-left"></i> BibTeX
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- 2023 Publications -->
+            <div class="publication-year" data-year="2023">
+              <h3 class="year-header">2023</h3>
+              
+              <div class="publication-item card">
+                <div class="publication-content">
+                  <h4 class="publication-title">
+                    Mining Negative Temporal Contexts For False Positive Suppression In Real-Time Ultrasound Lesion Detection
+                  </h4>
+                  <div class="publication-authors">
+                    Haojun Yu, <strong>Youcheng Li</strong>, QuanLin Wu, Ziwei Zhao, Dengbo Chen, Dong Wang, Liwei Wang
+                  </div>
+                  <div class="publication-venue">
+                    <i class="fas fa-book"></i> MICCAI 2023 (Early Acceptance)
+                  </div>
+                  <div class="publication-links mt-3">
+                    <a href="https://arxiv.org/pdf/2305.18060.pdf" class="btn btn-sm btn-primary" target="_blank">
+                      <i class="fas fa-file-pdf"></i> PDF
+                    </a>
+                    <a href="https://arxiv.org/abs/2305.18060" class="btn btn-sm btn-outline" target="_blank">
+                      <i class="fas fa-external-link-alt"></i> arXiv
+                    </a>
+                    <button class="btn btn-sm btn-outline copy-bibtex" data-bibtex="@inproceedings{yu2023mining...}">
+                      <i class="fas fa-quote-left"></i> BibTeX
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
   </div>
-  <!--
-<div id="main">
-
-  <div class="title">
-    <a class="title_link" id="projects" href="#projects">Projects</a>
-  </div>
-
-  <div class="content">
-    <ul>
-      <li>Machine Perception of Human Activities
-        <ul>
-          <li>Efficient long-term action detection in extended videos <a href="http://openaccess.thecvf.com/content_WACVW_2020/papers/w5/Liu_Argus_Efficient_Activity_Detection_System_for_Extended_Video_Analysis_WACVW_2020_paper.pdf">[CMU-DIVA]</a></li>
-          <li>End-to-end action detection <a href="https://github.com/JunweiLiang/aicity_action">[Stargazer]</a></li>
-          <li>Multi-modal multi-dataset model co-training [<a href="https://arxiv.org/abs/2209.12362">NeurIPS'22 Spotlight</a>, <a href="https://arxiv.org/abs/2209.13307">NeurIPS'22</a>]</li>
-          <li>Zero-shot / Few-shot action recognition</li>
-          <li>First-person / ego-centric view action recognition & 3D action recognition & Viewpoint invariant representation [<a href="https://arxiv.org/pdf/2012.02426.pdf">Example</a>]</li>
-          <li>Learning from 3D simulation <a href="https://openaccess.thecvf.com/content_CVPR_2020/papers/Liang_The_Garden_of_Forking_Paths_Towards_Multi-Future_Trajectory_Prediction_CVPR_2020_paper.pdf">[ForkingPaths]</a>, <a href="https://arxiv.org/pdf/2004.02022.pdf">[SimAug]</a>, <a href="https://github.com/JunweiLiang/Multiverse/tree/master/forking_paths_dataset">[CARLA Sim]</a></li>
-        </ul>
-      </li>
-      <li>Future Prediction
-        <ul>
-          <li>
-            Action Anticipation & Human Intention Prediction <a href="https://github.com/JunweiLiang/next-prediction">[Next-prediction]</a>
-            <ul>
-              <li>Sub-direction: Predictive Self-supervised Learning</li>
-              <li>Sub-direction: Video Generation, Generative Model - Diffusion Model</li>
-            </ul>
-          </li>
-          <li>Trajectory Prediction <a href="https://github.com/JunweiLiang/Multiverse">[Multiverse]</a></li>
-          <li>Time-series Forecasting (weather, energy, economics, etc.)</li>
-        </ul>
-      </li>
-      <li>AI + X
-        <ul>
-          <li>Aerial Video analysis <a href="https://www.cmu.edu/news/stories/archives/2020/august/drones-hurricane-damage.html">[natural disaster assessment using drone videos - WACV’21]</a></li>
-          <li>Robotic Helper (Robotic Third Hand) <a href="https://nsf.gov/awardsearch/showAward?AWD_ID=1650994">[NSF grant]</a></li>
-          <li>Medical Image Analysis <a href="https://openaccess.thecvf.com/content/ICCV2021/papers/Zhu_Weakly_Supervised_3D_Semantic_Segmentation_Using_Cross-Image_Consensus_and_Inter-Voxel_ICCV_2021_paper.pdf">[3D semantic segmentation with cryo-ET images (for protein molecule)]</a></li>
-        </ul>
-      </li>
-      <li>Edge Computing
-        <ul>
-          <li>Efficient PPL/Model Design <a href="https://github.com/JunweiLiang/Object_Detection_Tracking">[ODT]</a></li>
-          <li>Knowledge Distillation</li>
-        </ul>
-      </li>
-    </ul>
-
-    <div class="img">
-      <img src="resources/project_overview_092022.jpg"></img>
-      <div class="img_caption">Figure 1. Project overview of the Precognition group (09/2022)</div>
-    </div>
-  </div>
-
-
-  <div class="title">
-    <a class="title_link" id="publications" href="#publications">Publications</a>
-  </div>
-
-  <div class="content publications">
-    <ol>
-      <li>
-        <div class="imgblock"><img src="camera_ready/multiverse.gif"></img></div>
-        <span class="title">The Garden of Forking Paths: Towards Multi-Future Trajectory Prediction
-        </span>
-        <div class="info text-success italic"><span style="font-weight:bold">Junwei Liang</span>, Lu Jiang, Kevin Murphy, Ting Yu, Alexander Hauptmann</div>
-        <div class="info"><span class="label label-info">CVPR 2020</span> &nbsp;
-          <iframe src="https://ghbtns.com/github-btn.html?user=JunweiLiang&repo=Multiverse&type=star&count=true" frameborder="0" scrolling="0" width="150" height="20" title="GitHub"></iframe>
-        </div>
-        <div class="stuff">
-          <a class="" href="https://arxiv.org/abs/1912.06445" target="_blank">[Paper]</a>
-          <a class="" href="https://next.cs.cmu.edu/multiverse/resources/cvpr2020.bib" target="_blank">[BibTex]</a>
-          <a class="" href="https://youtu.be/RW45YQHxIhk" target="_blank">[Demo Video]</a>
-          <a class="" href="https://next.cs.cmu.edu/multiverse" target="_blank">[Project Page/Code/Model]</a>
-          <a href="https://medium.com/@junweil/cvpr20-the-garden-of-forking-paths-towards-multi-future-trajectory-prediction-df23221dc9f8">[blog]</a>
-          <a href="https://zhuanlan.zhihu.com/p/148343447">[知乎]</a>
-          <a href="https://research.google/pubs/pub49224/">[Google Research]</a>
-          <a href="https://mp.weixin.qq.com/s/s6bk5psLwpGpO1VwtQqo_g">[读芯术学术报告]</a>
-          <a href="https://sites.google.com/di.uniroma1.it/patcast/program?authuser=0">[Invited presentation at ICPR'20 pattern forecasting workshop]</a>
-        </div>
-        <div style="clear:both"></div>
-      </li>
-      <li>
-        <div class="imgblock" style="height:280px"><img src="camera_ready/next.gif"></img></div>
-        <span class="title">Peeking into the Future: Predicting Future Person Activities and Locations in Videos
-        </span>
-        <div class="info text-success italic"><span style="font-weight:bold">Junwei Liang</span>, Lu Jiang, Juan Carlos Niebles, Alexander Hauptmann, Li Fei-Fei</div>
-        <div class="info"><span class="label label-info">CVPR 2019</span> <span class="text-error">(Translated and reported by multiple Chinese media (<a href="https://weixin.sogou.com/weixin?type=1&s_from=input&query=%E9%87%8F%E5%AD%90%E4%BD%8D" target="_blank">量子位</a> & <a href="https://weixin.sogou.com/weixin?type=1&s_from=input&query=%E6%9C%BA%E5%99%A8%E4%B9%8B%E5%BF%83" target="_blank">机器之心</a>, 02/13/2019), with 30k+ views in a week.)</span> </div>
-        <div class="info"><span class="text-error">#1 Tensorflow-based code on <a href="https://paperswithcode.com/task/trajectory-prediction">PaperWithCode</a> in Trajectory Prediction task. </span> <iframe src="https://ghbtns.com/github-btn.html?user=google&repo=next-prediction&type=star&count=true" frameborder="0" scrolling="0" width="150" height="20" title="GitHub"></iframe>
-        </div>
-        <div class="stuff">
-          <a class="" href="https://arxiv.org/abs/1902.03748" target="_blank">[Paper]</a>
-          <a class="" href="camera_ready/future19.bib" target="_blank">[BibTex]</a>
-          <a class="" href="https://www.youtube.com/watch?v=NyrGxGoS01U" target="_blank">[Demo Video]</a>
-          <a class="" href="https://next.cs.cmu.edu" target="_blank">[Project Page/Code/Model]</a>
-          <a href="https://research.google/pubs/pub47873/">[Google Research]</a>
-        </div>
-        <div style="clear:both"></div>
-      </li>
-      <li>
-        <div class="imgblock"><img src="camera_ready/cross_action.jpg"></img></div>
-        <span class="title">Multi-dataset Training of Transformers for Robust Action Recognition
-        </span>
-        <div class="info text-success italic"><span style="font-weight:bold">Junwei Liang</span>, Enwei Zhang, Jun Zhang, Chunhua Shen</div>
-        <div class="info"><span class="label label-info">NeurIPS 2022</span>
-          <span class="text-error">(<a href="https://nips.cc/virtual/2022/spotlight/65262">Spotlight paper</a>, 3.7% acceptance rate, 384/10411)</span>
-        </div>
-        <div class="stuff">
-          [<a href="https://arxiv.org/abs/2209.12362">Paper</a>]
-          [<a href="https://github.com/JunweiLiang/MultiTrain">Project Page/Code/Model</a>]
-          <iframe src="https://ghbtns.com/github-btn.html?user=JunweiLiang&repo=MultiTrain&type=star&count=true" frameborder="0" scrolling="0" width="100" height="20" title="GitHub"></iframe>
-        </div>
-        <div style="clear:both"></div>
-      </li><li>
-        <div class="imgblock"><img src="camera_ready/video_text.jpg"></img></div>
-        <span class="title">Text-Adaptive Multiple Visual Prototype Matching for Video-Text Retrieval
-        </span>
-        <div class="info text-success italic">Chengzhi Lin, Ancong Wu, <span style="font-weight:bold">Junwei Liang</span>,  Jun Zhang, Wenhang Ge, Wei-Shi Zheng, Chunhua Shen</div>
-        <div class="info"><span class="label label-info">NeurIPS 2022</span> &nbsp;
-        </div>
-        <div class="stuff">
-          [<a href="https://arxiv.org/abs/2209.13307">Paper</a>]
-        </div>
-        <div style="clear:both"></div>
-      </li>
-      <li>
-        <div class="imgblock"><img src="camera_ready/aicity.jpg"></img></div>
-        <span class="title">Stargazer: A transformer-based driver action detection system for intelligent transportation
-        </span>
-        <div class="info text-success italic"><span style="font-weight:bold">Junwei Liang</span>, He Zhu, Enwei Zhang, Jun Zhang</div>
-        <div class="info"><span class="label label-info">CVPRW 2022</span> &nbsp;
-          <iframe src="https://ghbtns.com/github-btn.html?user=JunweiLiang&repo=aicity_action&type=star&count=true" frameborder="0" scrolling="0" width="150" height="20" title="GitHub"></iframe>
-        </div>
-        <div class="info"><span class="text-error">#2 (out of 150 teams) on the public leaderboard of the Naturalist Driver Action Recognition Task - AI City Challenge @ CVPR 2022. </span></div>
-        <div class="stuff">
-          <a class="" href="https://openaccess.thecvf.com/content/CVPR2022W/AICity/papers/Liang_Stargazer_A_Transformer-Based_Driver_Action_Detection_System_for_Intelligent_Transportation_CVPRW_2022_paper.pdf" target="_blank">[Paper]</a>
-          <a class="" href="https://www.youtube.com/watch?v=u4CrNKt4P54" target="_blank">[Presentation]</a>
-          <a class="" href="https://github.com/JunweiLiang/aicity_action" target="_blank">[Project Page/Code/Model]</a>
-        </div>
-        <div style="clear:both"></div>
-      </li>
-      <li>
-        <div class="imgblock"><img src="camera_ready/msnet.jpg"></img></div>
-        <span class="title">MSNet: A Multilevel Instance Segmentation Network for Natural Disaster Damage Assessment in Aerial Videos
-        </span>
-        <div class="info text-success italic">Xiaoyu Zhu, <span style="font-weight:bold">Junwei Liang</span>, Alexander Hauptmann</div>
-        <div class="info"><span class="label label-info">WACV 2021</span> &nbsp;
-          <iframe src="https://ghbtns.com/github-btn.html?user=zgzxy001&repo=MSNET&type=star&count=true" frameborder="0" scrolling="0" width="150" height="20" title="GitHub"></iframe>
-        </div>
-        <div class="info"><span class="text-error">Reported by CMU news </span></div>
-        <div class="stuff">
-          <a class="" href="http://openaccess.thecvf.com/content/WACV2021/papers/Zhu_MSNet_A_Multilevel_Instance_Segmentation_Network_for_Natural_Disaster_Damage_WACV_2021_paper.pdf" target="_blank">[Paper]</a>
-          <a class="" href="https://www.cmu.edu/news/stories/archives/2020/august/drones-hurricane-damage.html" target="_blank">[CMU News]</a>
-          <a class="" href="https://github.com/zgzxy001/MSNET" target="_blank">[Project Page/Code/Model]</a>
-        </div>
-        <div style="clear:both"></div>
-      </li>
-      <li>
-        <div class="imgblock"><img src="camera_ready/simaug.gif"></img></div>
-        <span class="title">SimAug: Learning Robust Representations from Simulation for Trajectory Prediction
-        </span>
-        <div class="info text-success italic"><span style="font-weight:bold">Junwei Liang</span>, Lu Jiang, Alexander Hauptmann</div>
-        <div class="info"><span class="label label-info">ECCV 2020</span> &nbsp;
-          <iframe src="https://ghbtns.com/github-btn.html?user=JunweiLiang&repo=Multiverse&type=star&count=true" frameborder="0" scrolling="0" width="150" height="20" title="GitHub"></iframe>
-        </div>
-        <div class="stuff">
-          <a class="" href="https://arxiv.org/abs/2004.02022" target="_blank">[Paper]</a>
-          <a class="" href="https://next.cs.cmu.edu/simaug/resources/eccv2020.bib" target="_blank">[BibTex]</a>
-          <a class="" href="https://next.cs.cmu.edu/simaug" target="_blank">[Project Page/Code/Model]</a>
-          <a href="https://research.google/pubs/pub49354/">[Google Research]</a>
-        </div>
-        <div style="clear:both"></div>
-      </li>
-
-      <li>
-        <div class="imgblock"  style="height:170px;" ><img src="camera_ready/mm19.gif"></img></div>
-        <span class="title">Shooter Localization Using Social Media Videos
-        </span>
-        <div class="info text-success italic"><span style="font-weight:bold">Junwei Liang</span>, Jay Aronson, Alexander Hauptmann</div>
-        <div class="info"><span class="label label-info">ACM Multimedia (MM) 2019</span> <span class="text-error"><br/>(Press coverage:
-          <a href="https://pittsburgh.cbslocal.com/2019/11/20/cmu-develops-video-system-locate-mass-shooters/">
-            <img class="press" src="resources/cbs.png"></img>
-          </a>,
-          <a href="https://www.cmu.edu/news/stories/archives/2019/november/system-locates-shooters-using-smartphone-video.html">
-            <img class="press" src="resources/cmu.png"></img>
-          </a>,
-
-          <a href="https://www.wpxi.com/news/top-stories/shooters-can-be-located-with-smartphone-video-using-new-cmu-developed-tool/1010922936">
-            <img class="press" src="resources/wpxi.png"></img>
-          </a>,
-          <a href="https://www.post-gazette.com/business/tech-news/2019/11/20/Carnegie-Mellon-CMU-develops-cellphone-smartphone-video-system-location-shooter-triangulate/stories/201911200101">
-            <img class="press" src="resources/post.png"></img>
-          </a>,
-          <a href="https://www.dailymail.co.uk/sciencetech/article-7707501/Carnegie-Mellon-aims-end-pro-longed-massacres-locates-active-shooters.html">
-            <img class="press" src="resources/dailymail.png"></img>
-          </a>,
-          <a href="https://gizmodo.com/smartphone-videos-can-now-be-analyzed-and-used-to-pinpo-1839979803">
-            <img class="press" src="resources/gizmodo.png"></img>
-          </a>,
-          <a href="https://www.msn.com/en-us/news/us/researchers-at-carnegie-mellon-university-develop-video-system-to-locate-mass-shooters/ar-BBX3wRA">
-            <img class="press" src="resources/msn.png"></img>
-          </a>,
-          <a href="https://www.techspot.com/news/82881-researchers-develop-system-can-pinpoint-shooter-location-using.html">
-            <img class="press" src="resources/techspot.png"></img>
-          </a>,
-          <a href="https://www.sciencedaily.com/releases/2019/11/191120070712.htm">
-            <img class="press" src="resources/science_daily.png"></img>
-          </a>,
-          <a href="https://gcn.com/articles/2019/11/22/smartphone-shooter-location.aspx">
-            <img class="press" src="resources/gcn.png"></img>
-          </a>
-        )</span> </div>
-        <div class="stuff">
-          <a class="" href="https://www.cmu.edu/chrs/publications/pdf/shooter-localization-using-social-media-videos.pdf" target="_blank">[Paper]</a>
-          <a class="" href="camera_ready/mm19.bib" target="_blank">[BibTex]</a>
-          <a class="" href="https://www.youtube.com/watch?v=6q7LqqzrY2I" target="_blank">[Demo Video]</a>
-          <a class="" href="https://vera.cs.cmu.edu" target="_blank">[Project Page]</a>
-        </div>
-        <div style="clear:both"></div>
-      </li>
-      <li>
-        <div class="imgblock"><img src="camera_ready/memexqa.png"></img></div>
-        <span class="title">Focal Visual-Text Attention for Memex Question Answering
-        </span>
-        <div class="info text-success italic"><span style="font-weight:bold">Junwei Liang</span>, Lu Jiang, Liangliang Cao, Yannis Kalantidis, Li-Jia Li, and Alexander Hauptmann</div>
-        <div class="info"><span class="label label-info">TPAMI 2019</span></div>
-        <div class="stuff">
-          <a class="" href="https://ieeexplore.ieee.org/document/8603827" target="_blank">[Paper]</a>
-          <a class="" href="camera_ready/tpami19.bib" target="_blank">[BibTex]</a>
-          <a class="" href="https://www.youtube.com/watch?v=hH-SXKA7hE8" target="_blank">[Demo Video]</a>
-          <a class="" href="https://memexqa.cs.cmu.edu" target="_blank">[Code/Model/Dataset]</a>
-          <a href="https://research.google/pubs/pub47871/">[Google Research]</a>
-        </div>
-        <div style="clear:both"></div>
-      </li>
-      <li>
-        <div class="imgblock"><img src="camera_ready/fvta.png"></img></div>
-        <span class="title">Focal Visual-Text Attention for Visual Question Answering
-        </span>
-        <div class="info text-success italic"><span style="font-weight:bold">Junwei Liang</span>, Lu Jiang, Liangliang Cao, Li-Jia Li, and Alexander Hauptmann</div>
-        <div class="info"><span class="label label-info">CVPR 2018</span> <span class="text-error">(Spotlight Paper, <span style="font-weight:bold">6.8%</span> acceptance rate)</span></div>
-        <div class="stuff">
-          <a class="" href="camera_ready/cvpr18.pdf" target="_blank">[Paper]</a>
-          <a class="" href="camera_ready/cvpr18.bib" target="_blank">[BibTex]</a>
-          <a class="" href="https://memexqa.cs.cmu.edu/fvta.html" target="_blank">[Code/Model]</a>
-          <a  class="" href="https://youtu.be/TBOnKekODCI?t=1h11m29s" target="_blank">[Presentation]</a>
-          <a href="https://research.google/pubs/pub47012/">[Google Research]</a>
-        </div>
-        <div style="clear:both"></div>
-      </li>
-
-      <li>
-        <div class="imgblock"><img src="camera_ready/3d_recon.png"></img></div>
-        <span class="title">An Event Reconstruction Tool for Conflict Monitoring Using Social Media
-        </span>
-        <div class="info text-success italic"><span style="font-weight:bold">Junwei Liang</span>, Desai Fan, Han Lu, Poyao Huang, Jia Chen, Lu Jiang, and Alexander Hauptmann</div>
-        <div class="info"><span class="label label-info">AAAI 2017 Demo</span></div>
-        <div class="stuff">
-          <a class="" href="https://aaai.org/ocs/index.php/AAAI/AAAI17/paper/download/14659/14033" target="_blank">[Paper]</a>
-          <a class="" href="camera_ready/aaai17_2.bib" target="_blank">[BibTex]</a>
-          <a class="" href="https://www.youtube.com/watch?v=DAhL5QL9Ko4" target="_blank">[Demo Video]</a>
-          <a class="" href="https://vera.cs.cmu.edu/VERA_3D_Reconstruction/" target="_blank">[Project Page]</a>
-        </div>
-        <div style="clear:both"></div>
-      </li>
-
-      <li>
-        <div class="imgblock"><img src="camera_ready/aaai17_1.png"></img></div>
-        <span class="title">Webly-Supervised Learning of Multimodal Video Detectors
-        </span>
-        <div class="info text-success italic"><span style="font-weight:bold">Junwei Liang</span>, Lu Jiang, and Alexander Hauptmann</div>
-        <div class="info"><span class="label label-info">AAAI 2017 Demo</span></div>
-        <div class="stuff">
-          <a class="" href="camera_ready/aaai17_1.pdf" target="_blank">[Paper]</a>
-          <a class="" href="camera_ready/aaai17_1.bib" target="_blank">[BibTex]</a>
-          <a class="" href="https://www.youtube.com/watch?v=3he6VDwYMCQ" target="_blank">[Demo Video]</a>
-          <a class="" href="posters/well_poster.pptx" target="_blank">[Poster]</a>
-        </div>
-        <div style="clear:both"></div>
-      </li>
-
-      <li>
-        <div class="imgblock"><img src="camera_ready/ijcai16.png"></img></div>
-        <span class="title">Learning to Detect Concepts from Webly-Labeled Video Data
-        </span>
-        <div class="info text-success italic"><span style="font-weight:bold">Junwei Liang</span>, Lu Jiang, Deyu Meng, and Alexander Hauptmann</div>
-        <div class="info"><span class="label label-info">IJCAI 2016</span></div>
-        <div class="stuff">
-          <a class="" href="camera_ready/ijcai16.pdf" target="_blank">[Paper]</a>
-          <a class="" href="camera_ready/ijcai16.bib" target="_blank">[BibTex]</a>
-          <a class="" href="https://www.youtube.com/watch?v=3he6VDwYMCQ" target="_blank">[Demo Video]</a>
-        </div>
-        <div style="clear:both"></div>
-      </li>
-      <li>
-        <div class="imgblock"><img src="camera_ready/icmr16.png"></img></div>
-        <span class="title">Video Description Generation using Audio and Visual Cues
-        </span>
-        <div class="info text-success italic">Qin Jin, and <span style="font-weight:bold">Junwei Liang</span></div>
-        <div class="info"><span class="label label-info">ICMR 2016</span></div>
-        <div class="stuff">
-          <a class="" href="camera_ready/icmr16.pdf" target="_blank">[Paper]</a>
-          <a class="" href="camera_ready/icmr16.bib" target="_blank">[BibTex]</a>
-        </div>
-        <div style="clear:both"></div>
-      </li>
-
-      <li>
-        <div class="imgblock"><img src="camera_ready/icassp17_1.png"></img></div>
-        <span class="title">Temporal Localization of Audio Events for Conflict Monitoring in Social Media
-        </span>
-        <div class="info text-success italic"><span style="font-weight:bold">Junwei Liang</span>, Lu Jiang and Alexander Hauptmann</div>
-        <div class="info"><span class="label label-info">ICASSP 2017</span></div>
-        <div class="stuff">
-          <a class="" href="camera_ready/icassp17_1.pdf" target="_blank">[Paper]</a>
-          <a class="" href="camera_ready/icassp17_1.bib" target="_blank">[BibTex]</a>
-          <a class="" href="https://www.youtube.com/watch?v=em-0CsJoqeU" target="_blank">[Demo Video]</a>
-        </div>
-        <div style="clear:both"></div>
-      </li>
-
-
-    </ol>
-  </div>
-
-  <div class="title">
-    <a class="title_link" id="past-projects" href="#past-projects">Past Projects</a>
-  </div>
-
-  <div class="content">
-    <ul>
-      <li>
-        <span class="title">Efficient Action Detection <div class="float-right time">2021 - 2022</div>
-        <div class="info">
-          <a href="https://github.com/JunweiLiang/aicity_action">Naturalist Driver Action Recognition</a>
-          <iframe src="https://ghbtns.com/github-btn.html?user=JunweiLiang&repo=aicity_action&type=star&count=true" frameborder="0" scrolling="0" width="150" height="20" title="GitHub"></iframe>
-        </div>
-      </li>
-
-      <li>
-        <span class="title">Trajectory/Activity Forecasting [sponsored by <a href="https://www.iarpa.gov/research-programs/diva">IARPA</a>]</span> <div class="float-right time">2018 - 2021</div>
-        <div class="info">
-          <a href="https://next.cs.cmu.edu/simaug">SimAug - Multi-view Adversarial Learning</a>
-          <iframe src="https://ghbtns.com/github-btn.html?user=JunweiLiang&repo=Multiverse&type=star&count=true" frameborder="0" scrolling="0" width="150" height="20" title="GitHub"></iframe>
-        </div>
-        <div class="info">
-          <a href="https://next.cs.cmu.edu/multiverse">Multiverse - 3D Simulation</a>
-          <iframe src="https://ghbtns.com/github-btn.html?user=JunweiLiang&repo=Multiverse&type=star&count=true" frameborder="0" scrolling="0" width="150" height="20" title="GitHub"></iframe>
-        </div>
-        <div class="info">
-          <a href="https://next.cs.cmu.edu/index.html">Next-Prediction</a>
-          <iframe src="https://ghbtns.com/github-btn.html?user=google&repo=next-prediction&type=star&count=true" frameborder="0" scrolling="0" width="150" height="20" title="GitHub"></iframe>
-        </div>
-        <div class="info">
-          <a href="https://github.com/JunweiLiang/social-distancing-prediction">COVID-19 Project - Social Distancing Early Forecasting [Awarded $6200 GCP research credits]</a>
-          <iframe src="https://ghbtns.com/github-btn.html?user=JunweiLiang&repo=social-distancing-prediction&type=star&count=true" frameborder="0" scrolling="0" width="150" height="20" title="GitHub"></iframe>
-        </div>
-        <div class="info">
-          <a href="https://github.com/JunweiLiang/Object_Detection_Tracking">Object Detection and Tracking in Videos</a>
-          <iframe src="https://ghbtns.com/github-btn.html?user=JunweiLiang&repo=Object_Detection_Tracking&type=star&count=true" frameborder="0" scrolling="0" width="150" height="20" title="GitHub"></iframe>
-        </div>
-      </li>
-
-      <li>
-        <span class="title">Public Safety / AI for Social Good [sponsored by <a href="https://www.nist.gov/ctl/pscr/real-time-video-analytics-situation-awareness">NIST</a>] [<a href="https://www.herox.com/ASAPS1/update/3483">ASAPS challenge</a> winner]</span> <div class="float-right time">2017 - 2021</div>
-        <div class="info">
-          <a href="https://vera.cs.cmu.edu/">Gunshot Detection & Shooter Localization</a>
-          <iframe src="https://ghbtns.com/github-btn.html?user=JunweiLiang&repo=VERA_Shooter_Localization&type=star&count=true" frameborder="0" scrolling="0" width="150" height="20" title="GitHub"></iframe>
-        </div>
-        <div class="info">
-          <a href="https://vera.cs.cmu.edu/VERA_3D_Reconstruction/">3D Event Reconstruction</a>
-          <iframe src="https://ghbtns.com/github-btn.html?user=JunweiLiang&repo=VERA_3D_Reconstruction&type=star&count=true" frameborder="0" scrolling="0" width="150" height="20" title="GitHub"></iframe>
-        </div>
-        <div class="info">
-          <a href="https://aladdin1.inf.cs.cmu.edu/human-rights">Video Analytic Toolkit</a>
-        </div>
-      </li>
-
-      <li>
-        <span class="title">Multimodal Question Answering</span> <div class="float-right time">2016 - 2019</div>
-        <div class="info">
-          <a href="https://memexqa.cs.cmu.edu/">MemexQA - the First Personal Multimedia Collection QA dataset</a>
-          <iframe src="https://ghbtns.com/github-btn.html?user=JunweiLiang&repo=FVTA_MemexQA&type=star&count=true" frameborder="0" scrolling="0" width="150" height="20" title="GitHub"></iframe>
-        </div>
-        <div class="info">
-          <a href="#">Dual Attention Network</a>
-          <iframe src="https://ghbtns.com/github-btn.html?user=JunweiLiang&repo=DualAttentionNetwork&type=star&count=true" frameborder="0" scrolling="0" width="150" height="20" title="GitHub"></iframe>
-        </div>
-      </li>
-
-      <li>
-        <span class="title">Weakly Supervised Learning</span> <div class="float-right time">2015 - 2017</div>
-        <div class="info">
-          <a href="https://www.cs.cmu.edu/~junweil/camera_ready/ijcai16.pdf">Webly-labeled Learning</a>
-        </div>
-        <div class="info">
-          <a href="#">Video Semantic Features</a>
-          <iframe src="https://ghbtns.com/github-btn.html?user=JunweiLiang&repo=Semantic_Features&type=star&count=true" frameborder="0" scrolling="0" width="150" height="20" title="GitHub"></iframe>
-        </div>
-      </li>
-    </ul>
-  </div>
-
-  <div class="title">
-    <a class="title_link" id="review" href="#review">Academic Service</a>
-  </div>
-
-  <div class="content">
-    <ul>
-      <li>
-        <span class="title">Journal Reviewer</span>
-        <div class="info">IEEE Transactions on Pattern Analysis and Machine Intelligence <span style="font-weight: bold;">(TPAMI)</span></div>
-        <div class="info">IEEE Transactions on Image Processing (TIP)</div>
-        <div class="info">Pattern Recognition</div>
-        <div class="info">Artificial Intelligence Review (AIRE)</div>
-        <div class="info">IEEE Transactions on Intelligent Transportation Systems (ITS)</div>
-        <div class="info">IEEE Transactions on Multimedia</div>
-        <div class="info">IEEE Access</div>
-        <div class="info">IEEE Transactions on Circuits and Systems for Video Technology (TCSVT)</div>
-        <div class="info">ACM TOMM</div>
-        <div class="info">Neurocomputing</div>
-        <div class="info">Nature Scientific Reports</div>
-        <div class="info">Information Sciences</div>
-        <div class="info">Defense Technology</div>
-      </li>
-      <li>
-        <span class="title">Conference Reviewer</span>
-        <div class="info">CVPR/ICCV/AAAI/WACV/ECCV, 2021/2022</div>
-        <div class="info">ACM Multimedia 2017/2019/2020/2021</div>
-        <div class="info">ACM Multimedia Asia 2021</div>
-        <div class="info">NAACL-HLT SRW 2021</div>
-        <div class="info">ACL 2020 Student Research Workshop</div>
-        <div class="info">CVPR 2020 AI for Content Creation Workshop</div>
-      </li>
-    </ul>
-  </div>
-
-</div>
--->
-
-  <!--
-	a Junwei Liang's production
-	contact: junweiliang1114@gmail.com
--->
+  
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Custom JavaScript -->
+  <script src="js/modern-script.js"></script>
+  
+  <style>
+    /* Project Specific Styles */
+    .filter-buttons {
+      display: flex;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+    }
+    
+    .filter-btn {
+      padding: var(--space-2) var(--space-4);
+      font-size: var(--text-sm);
+    }
+    
+    .filter-btn.active {
+      background: var(--primary-color);
+      color: white;
+      border-color: var(--primary-color);
+    }
+    
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: var(--space-6);
+      margin-bottom: var(--space-10);
+    }
+    
+    .project-card {
+      height: 100%;
+      overflow: hidden;
+      transition: all var(--transition-base);
+    }
+    
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-xl);
+    }
+    
+    .project-image {
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      background: var(--bg-tertiary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-slow);
+    }
+    
+    .project-card:hover .project-image img {
+      transform: scale(1.05);
+    }
+    
+    .project-content {
+      padding: var(--space-4);
+    }
+    
+    .project-title {
+      font-size: var(--text-lg);
+      font-weight: 600;
+      margin-bottom: var(--space-2);
+      color: var(--text-primary);
+    }
+    
+    .project-description {
+      color: var(--text-secondary);
+      font-size: var(--text-sm);
+      line-height: 1.6;
+      margin-bottom: var(--space-3);
+    }
+    
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+    
+    .project-links {
+      display: flex;
+      gap: var(--space-2);
+    }
+    
+    .year-filter {
+      display: flex;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+    
+    .year-badge {
+      padding: var(--space-2) var(--space-3);
+      background: var(--bg-tertiary);
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      font-weight: 500;
+    }
+    
+    .year-badge:hover {
+      background: var(--primary-light);
+      color: white;
+    }
+    
+    .year-badge.active {
+      background: var(--primary-color);
+      color: white;
+    }
+    
+    .year-header {
+      font-size: var(--text-2xl);
+      font-weight: 700;
+      margin-bottom: var(--space-4);
+      color: var(--primary-color);
+      padding-bottom: var(--space-2);
+      border-bottom: 2px solid var(--border-color);
+    }
+    
+    .publication-item {
+      margin-bottom: var(--space-4);
+      transition: all var(--transition-base);
+    }
+    
+    .publication-item:hover {
+      transform: translateX(4px);
+    }
+    
+    .publication-content {
+      padding: var(--space-4);
+    }
+    
+    .publication-title {
+      font-size: var(--text-lg);
+      font-weight: 600;
+      margin-bottom: var(--space-2);
+      color: var(--text-primary);
+      line-height: 1.4;
+    }
+    
+    .publication-authors {
+      color: var(--text-secondary);
+      margin-bottom: var(--space-2);
+      font-size: var(--text-sm);
+    }
+    
+    .publication-venue {
+      color: var(--primary-color);
+      font-size: var(--text-sm);
+      margin-bottom: var(--space-3);
+    }
+    
+    .publication-links {
+      display: flex;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+    }
+    
+    /* Image lazy loading */
+    img.lazy {
+      opacity: 0;
+      transition: opacity var(--transition-base);
+    }
+    
+    img.lazy.loaded {
+      opacity: 1;
+    }
+    
+    /* Hide/Show animations */
+    .publication-item.hide {
+      display: none;
+    }
+    
+    .publication-item.show {
+      animation: fadeIn 0.5s ease;
+    }
+    
+    @media (max-width: 768px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .filter-buttons {
+        justify-content: center;
+      }
+    }
+  </style>
 </body>
-
 </html>

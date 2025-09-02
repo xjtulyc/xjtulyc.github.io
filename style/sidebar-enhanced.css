@@ -1,0 +1,120 @@
+/* Enhanced Sidebar Styles - Ensuring consistency across all pages */
+
+/* Email and CV Highlight Section */
+#sidebar .contact-info {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  margin: var(--space-4) 0;
+  backdrop-filter: blur(10px);
+}
+
+#sidebar .contact-info-item {
+  display: flex;
+  align-items: center;
+  padding: var(--space-2) 0;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: var(--text-sm);
+  transition: transform var(--transition-fast);
+}
+
+#sidebar .contact-info-item:hover {
+  transform: translateX(4px);
+}
+
+#sidebar .contact-info-item i {
+  margin-right: var(--space-2);
+  width: 20px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+#sidebar .contact-info-item a {
+  color: white;
+  text-decoration: none;
+  word-break: break-word;
+}
+
+#sidebar .contact-info-item a:hover {
+  text-decoration: underline;
+}
+
+/* CV Download Button - More Prominent */
+#sidebar .cv-download {
+  display: block;
+  margin: var(--space-4) var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-md);
+  color: white;
+  text-align: center;
+  font-weight: 600;
+  transition: all var(--transition-base);
+  text-decoration: none;
+}
+
+#sidebar .cv-download:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+#sidebar .cv-download i {
+  margin-right: var(--space-2);
+}
+
+/* Social Links Grid - More Organized */
+#sidebar .social-links-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-2);
+  margin: var(--space-4) 0;
+}
+
+#sidebar .social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  color: white;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  position: relative;
+}
+
+#sidebar .social-link:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+#sidebar .social-link::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-xs);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-fast);
+}
+
+#sidebar .social-link:hover::after {
+  opacity: 1;
+}
+
+/* Divider */
+#sidebar .sidebar-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: var(--space-4) var(--space-4);
+}
