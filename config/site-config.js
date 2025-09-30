@@ -193,6 +193,16 @@ const SITE_CONFIG = {
         type: "publication"
       },
       {
+        date: "Sept 2025",
+        title: "Breast Ultrasound Chain-of-Thought Dataset Released",
+        content: "We are excited to announce the release of the Breast Ultrasound Chain-of-Thought Dataset, a valuable resource for advancing research in breast ultrasound analysis.",
+        link: {
+          url: "https://www.arxiv.org/abs/2509.17046",
+          text: "Read Paper →"
+        },
+        type: "publication"
+      },
+      {
         date: "Jan 2025",
         title: "BUSGen: Foundational Model Published",
         content: "Our groundbreaking work \"A Foundational Generative Model for Breast Ultrasound Image Analysis\" has been published, featuring the first foundational model for breast ultrasound analysis.",
@@ -280,11 +290,6 @@ const SITE_CONFIG = {
 
     highlights: [
       {
-        title: "Medical Image Analysis",
-        description: "Developing advanced deep learning models for medical image interpretation, focusing on ultrasound and CT imaging modalities.",
-        link: "projects.html"
-      },
-      {
         title: "AI Diagnosis Systems",
         description: "Building intelligent systems for automated disease detection and diagnosis, with emphasis on accuracy and interpretability.",
         link: "projects.html"
@@ -308,14 +313,33 @@ const SITE_CONFIG = {
         tags: ["Medical AI", "Generative AI"],
         links: [
           {
-            type: "paper",
+            type: "arxiv",
             url: "https://arxiv.org/abs/2501.06869",
-            text: "Paper"
+            text: "arXiv"
           },
           {
             type: "demo",
             url: "https://aibus.bio",
             text: "Demo"
+          }
+        ],
+        highlight: true
+      },
+      {
+        title: "A Chain-of-thought Reasoning Breast Ultrasound Dataset Covering All Histopathology Categories",
+        description: "Breast ultrasound (BUS) is an essential tool for diagnosing breast lesions, with millions of examinations per year. However, publicly available high-quality BUS benchmarks for AI development are limited in data scale and annotation richness. In this work, we present BUS-CoT, a BUS dataset for chain-of-thought (CoT) reasoning analysis, which contains 11,439 images of 10,019 lesions from 4,838 patients and covers all 99 histopathology types. To facilitate research on incentivizing CoT reasoning, we construct the reasoning processes based on observation, feature, diagnosis and pathology labels, annotated and verified by experienced experts. Moreover, by covering lesions of all histopathology types, we aim to facilitate robust AI systems in rare cases, which can be error-prone in clinical practice.",
+        image: "pub/BUSCoT.png",
+        tags: ["Medical AI", "Dataset"],
+        links: [
+          {
+            type: "arxiv",
+            url: "https://www.arxiv.org/abs/2509.17046",
+            text: "arXiv"
+          },
+          {
+            type: "dataset",
+            url: "https://figshare.com/articles/dataset/A_Chain-of-thought_Reasoning_Breast_Ultrasound_Dataset_Covering_All_Histopathology_Categories/29036876/1?file=54466433",
+            text: "Dataset"
           }
         ],
         highlight: true
@@ -335,11 +359,6 @@ const SITE_CONFIG = {
             type: "arxiv",
             url: "https://arxiv.org/abs/2305.18060",
             text: "arXiv"
-          },
-          {
-            type: "bibtex",
-            url: "pub/UltraDet.bib",
-            text: "BibTeX"
           }
         ],
         citations: 4
@@ -351,12 +370,12 @@ const SITE_CONFIG = {
         tags: ["Medical AI", "Generative AI"],
         links: [
           {
-            type: "paper",
+            type: "arxiv",
             url: "https://arxiv.org/abs/2407.16634",
-            text: "Paper"
+            text: "arXiv"
           }
         ],
-        citations: 4
+        citations: 5
       },
       {
         title: "ST-CellSeg: Spatial Transcriptomics Cell Segmentation",
@@ -379,6 +398,29 @@ const SITE_CONFIG = {
       {
         year: "2025",
         items: [
+          {
+            title: "A Chain-of-thought Reasoning Breast Ultrasound Dataset Covering All Histopathology Categories",
+            authors: ["Haojun Yu", "Youcheng Li", "et al."],
+            venue: "arXiv preprint arXiv:2509.17046",
+            date: "January 2025",
+            links: [
+              {
+                type: "arxiv",
+                url: "https://arxiv.org/abs/2509.17046"
+              },
+              {
+                type: "pdf",
+                url: "https://arxiv.org/pdf/2509.17046"
+              },
+              {
+                type: "dataset",
+                url: "https://figshare.com/articles/dataset/A_Chain-of-thought_Reasoning_Breast_Ultrasound_Dataset_Covering_All_Histopathology_Categories/29036876/1?file=54466433",
+                text: "Dataset"
+              }
+            ],
+            tags: ["Medical AI", "Dataset"],
+            highlight: true
+          },
           {
             title: "A Foundational Generative Model for Breast Ultrasound Image Analysis",
             authors: ["Haojun Yu", "Youcheng Li", "Nan Zhang", "Zihan Niu", "Xuantong Gong", "Yanwen Luo", "et al."],
@@ -404,7 +446,7 @@ const SITE_CONFIG = {
           },
           {
             title: "Using artificial intelligence system for assisting the classification of breast ultrasound glandular tissue components in dense breast tissue",
-            authors: ["Hongju Yan", "Chaochao Dai", "Xiaojing Xu", "et al.", "Youcheng Li", "Lingyun Bao"],
+            authors: ["Hongju Yan", "Chaochao Dai", "Xiaojing Xu", "et al."],
             venue: "Scientific Reports",
             volume: "15",
             issue: "1",
@@ -440,7 +482,7 @@ const SITE_CONFIG = {
               }
             ],
             tags: ["Medical AI", "Generative AI"],
-            citations: 4
+            citations: 5
           },
           {
             title: "ST-CellSeg: Cell segmentation for imaging-based spatial transcriptomics using multi-scale manifold learning",
@@ -502,6 +544,11 @@ const SITE_CONFIG = {
     subtitle: "Recognition and achievements",
 
     items: [
+      {
+        name: "Huawei Scholarship",
+        year: "2025",
+        type: "scholarship"
+      },
       {
         name: "National Digital Health Innovation Competition First Prize",
         year: "2024",
@@ -579,37 +626,20 @@ const SITE_CONFIG = {
             ]
           }
         ]
-      },
-      {
-        title: "Major Project Guidance",
-        period: "Ongoing",
-        role: "Mentor",
-        institution: "Peking University",
-        description: "Mentoring undergraduate students on their major research projects in AI and computer vision.",
-        link: "teaching/major_project.html",
-        expanded: false
       }
     ],
 
     talks: [
       {
         title: "AI in Medical Diagnosis: Current Trends and Future Directions",
-        venue: "PKU Medical AI Workshop",
+        venue: "PKU AI Workshop",
         date: "Sep 2024",
         type: "invited",
         description: "Overview of current AI applications in medical diagnosis and emerging opportunities."
       },
       {
-        title: "Mining Temporal Context for Medical Image Analysis",
-        venue: "MICCAI 2023",
-        date: "Oct 2023",
-        type: "conference",
-        description: "Presentation of our work on temporal context mining for ultrasound lesion detection.",
-        link: "https://arxiv.org/abs/2305.18060"
-      },
-      {
         title: "Deep Learning for Medical Imaging: Challenges and Solutions",
-        venue: "Beijing AI Symposium",
+        venue: "PKU AI Workshop",
         date: "May 2023",
         type: "invited",
         description: "Discussion on current challenges in applying deep learning to medical imaging tasks."
