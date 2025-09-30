@@ -183,6 +183,16 @@ const SITE_CONFIG = {
 
     items: [
       {
+        date: "Sept 2025",
+        title: "🔥BUSGen has been accepted by Nature Biomedical Engineering🔥",
+        content: "Our groundbreaking work \"A Foundational Generative Model for Breast Ultrasound Image Analysis\" has been accepted by Nature Biomedical Engineering.",
+        link: {
+          url: "https://arxiv.org/abs/2501.06869",
+          text: "Read Paper →"
+        },
+        type: "publication"
+      },
+      {
         date: "Jan 2025",
         title: "BUSGen: Foundational Model Published",
         content: "Our groundbreaking work \"A Foundational Generative Model for Breast Ultrasound Image Analysis\" has been published, featuring the first foundational model for breast ultrasound analysis.",
