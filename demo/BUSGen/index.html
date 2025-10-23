@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <title>BUSGen: A Foundational Generative Model for
+        Breast Ultrasound Image Analysis</title>
+    <link rel="stylesheet"
+          href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <style>
+        /* --- 页面基础和通用样式 --- */
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        }
+
+        .index {
+            color: #20232a;
+            font-size: 18px;
+        }
+
+        /* --- 导航栏样式 --- */
+        .index .fixed-nav {
+            height: 63px;
+            width: 100%;
+            position: fixed;
+            top: -65px;
+            /* 默认隐藏在屏幕上方 */
+            backdrop-filter: blur(9px);
+            -webkit-backdrop-filter: blur(9px);
+            background-color: rgba(225, 225, 240, 70%);
+            transition: 0.3s linear top;
+            /* 平滑过渡效果 */
+            z-index: 100;
+        }
+
+        .index .fixed-nav.active {
+            top: 0;
+            /*滚动时显示 */
+        }
+
+        .index .fixed-nav .nav-content {
+            max-width: 1050px;
+            margin: 0 auto;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            /* 改为左对齐 */
+            gap: 40px;
+            padding-left: 50px;
+            /* 添加左侧内边距 */
+        }
+
+        .index .fixed-nav .nav-content a {
+            color: #8b5cf6;
+            /* 改为紫色 */
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: 0.2s linear all;
+        }
+
+        .index .fixed-nav .nav-content a:hover {
+            color: #a78bfa;
+            /* 悬停时的浅紫色 */
+        }
+
+        /* --- 顶部视频/图片区域样式 --- */
+        .index .video {
+            position: relative;
+            height: auto;
+            display: block;
+        }
+
+        .index .video .main-bg-image {
+            width: 100%;
+            aspect-ratio: 1.95;
+            /* 保持图片宽高比 */
+            display: block;
+            object-fit: cover;
+        }
+
+        .index .video .mask {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #000;
+            opacity: 0.62;
+            /* 半透明遮罩 */
+            z-index: 1;
+        }
+
+        .index .video .inner_text {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            display: flex;
+            /* 使用flex布局实现垂直居中 */
+            align-items: center;
+            /* 垂直居中 */
+            justify-content: center;
+            /* 水平居中 */
+        }
+
+        .index .video .inner_text .inner_text_wrapper {
+            margin: 0 auto;
+            width: fit-content;
+            color: #fff;
+            text-align: center;
+        }
+
+        /* --- 标题和作者信息样式 --- */
+        .index .title {
+            font-size: 25px;
+            letter-spacing: 1px;
+        }
+
+        .index .title p {
+            margin: 20px 0;
+            line-height: 1.5em;
+            font-weight: normal;
+        }
+
+        .index .author {
+            text-align: center;
+            font-size: 25px;
+        }
+
+        .index .author p {
+            margin: 7px 0;
+        }
+
+        .index .author a {
+            color: #fff;
+            text-decoration: none;
+            transition: 0.1s linear all;
+        }
+
+        .index .author a:hover {
+            color: hsl(196, 40%, 75%);
+        }
+
+        /* --- "Try Demo" 按钮样式 --- */
+        .index .godemo_link {
+            color: white;
+            text-decoration: none;
+        }
+
+        .index .godemo_link:hover {
+            color: #B1EAF9;
+        }
+
+        .index .godemo {
+            margin: 30px auto;
+            padding: 10px 20px;
+            width: fit-content;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            border: solid 1px #fff;
+            border-radius: 25px;
+            background-color: hsla(0, 0%, 100%, 0%);
+            cursor: pointer;
+            backdrop-filter: blur(9px);
+            -webkit-backdrop-filter: blur(9px);
+            transition: 0.1s all linear;
+        }
+
+        .index .godemo:hover {
+            background-color: hsla(0, 0%, 100%, 10%);
+        }
+
+        .index .godemo_link:hover .godemo {
+            border-color: #B1EAF9;
+        }
+
+        .index .godemo i {
+            margin-left: 5px;
+            font-size: 21px;
+        }
+
+        /* --- 内容区块和图片样式 --- */
+        .index .block {
+            padding: 50px 0;
+        }
+
+        .index .block .wrapper {
+            width: 80%;
+            max-width: 1050px;
+            min-width: 750px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .index .block.white {
+            background-color: white;
+        }
+
+        .index .block.gray {
+            background-color: #f7f7f7;
+            /* 稍微区分一下灰色背景 */
+        }
+
+        .index .subtitle {
+            text-align: center;
+        }
+
+        .index .subtitle h2 {
+            margin: 20px 0 30px 0;
+            font-weight: normal;
+        }
+
+        .index .fullimg {
+            width: 100%;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .index .fullimg img {
+            margin: 35px auto 0;
+            display: block;
+            max-width: 100%;
+        }
+
+        /* --- 流动图片画廊样式 (已修复) --- */
+        .index .flowimg {
+            position: relative;
+            overflow-x: hidden;
+            /* 移除了固定的 height 属性，让内部的占位符 div 来控制高度 */
+        }
+
+        .index .flowimg .flowimg_inner {
+            margin: 0;
+            width: 3000px;
+            /* 内部容器宽度，足够容纳所有图片 */
+            height: fit-content;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .index .flowimg .flowimg_wrapper {
+            float: left;
+            width: 300px;
+            /* 每个图片块的宽度 */
+        }
+
+        .index .flowimg .flowimg_wrapper .inner_img {
+            width: 146px;
+            height: 146px;
+            position: relative;
+            float: left;
+            border: solid 2px rgba(18, 18, 18, 0%);
+        }
+
+        .index .flowimg .flowimg_wrapper .inner_img img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* 特殊处理第一个大图 */
+        .index .flowimg .flowimg_wrapper .inner_img:first-child {
+            width: 296px;
+            height: 296px;
+        }
+
+        .index .flowimg .flowimg_wrapper .inner_img .mask {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.05);
+            color: #fff;
+            cursor: pointer;
+            opacity: 0;
+            /* 默认隐藏 */
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            transition: 0.1s linear all;
+            z-index: 1;
+        }
+
+        .index .flowimg .flowimg_wrapper .inner_img:hover .mask {
+            opacity: 1;
+            /* 鼠标悬浮时显示 */
+        }
+
+        .index .flowimg .flowimg_wrapper .inner_img .mask div {
+            width: calc(100% - 20px);
+            padding: 10px;
+            line-height: 21px;
+            font-size: 16px;
+            background: rgba(0, 0, 0, 0.4);
+            /* 给文字加个深色背景，使其更清晰 */
+            border-radius: 5px;
+        }
+
+        .index .flowimg .flowimg_wrapper .inner_img:first-child .mask div {
+            font-size: 18px;
+        }
+
+
+        /* --- 文本样式 --- */
+        .index .text {
+            margin-top: 30px;
+            margin-left: 11%;
+            margin-right: 11%;
+            width: 78%;
+        }
+
+        .index p {
+            line-height: 1.6em;
+        }
+
+        .index .graytext {
+            color: #20232a;
+        }
+
+        /* --- 底部备案信息样式 --- */
+        .beian-button {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border: 2px solid #aaa;
+            background-color: transparent;
+            color: #aaa;
+            border-radius: 50%;
+            cursor: pointer;
+            outline: none;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+
+        .beian-button:hover {
+            border-color: #777;
+            color: #777;
+        }
+
+        .beian-info {
+            text-align: center;
+            margin-top: 10px;
+            display: none;
+            /* 默认隐藏 */
+        }
+
+        .beian-info.visible {
+            display: block;
+            /* 点击后显示 */
+        }
+
+        /* --- 响应式设计 --- */
+        @media screen and (max-width: 1500px) {
+            .index .title {
+                font-size: 23px;
+            }
+
+            .index .author {
+                font-size: 20px;
+            }
+        }
+
+        @media screen and (max-width: 1230px) {
+            .index .title {
+                font-size: 19px;
+            }
+
+            .index .author {
+                font-size: 18px;
+            }
+        }
+
+        @media screen and (max-width: 1000px) {
+            .index .title {
+                font-size: 17px;
+            }
+
+            .index .author {
+                font-size: 16px;
+            }
+
+            .index .block .wrapper {
+                width: 95%;
+                min-width: unset;
+            }
+
+            .index .text {
+                width: 90%;
+                margin-left: 5%;
+                margin-right: 5%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="index">
+        <div class="fixed-nav"
+             id="fixed-nav">
+            <div class="nav-content">
+                <a href="../../index.html">Home</a>
+                <a href="https://arxiv.org/abs/2501.06869"
+                   target="_blank">Paper</a>
+            </div>
+        </div>
+
+        <div class="video">
+            <img src="assets/nbme/all_merged.png"
+                 class="main-bg-image"
+                 alt="Background Image">
+            <div class="mask"></div>
+            <div class="inner_text">
+                <div class="inner_text_wrapper">
+                    <div>
+                        <div class="title">
+                            <h1>
+                                <p>A Foundational Generative
+                                    Model for<br>Breast
+                                    Ultrasound Image
+                                    Analysis</p>
+                            </h1>
+                        </div>
+                        <div class="author">
+                            <p>
+                                <a
+                                   href="https://github.com/HaojunYu1998">Haojun
+                                    Yu</a><sup>1,† </sup> ,
+                                <a
+                                   href="https://youchengli.com/">Youcheng
+                                    Li</a><sup>1,† </sup> ,
+                                Nan Zhang<sup>2,† </sup> ,
+                                Zihan Niu<sup>3,† </sup> ,
+                                Xuantong Gong<sup>4</sup>,
+                                Yanwen Luo<sup>3</sup>,
+                                <a
+                                   href="https://haotianye.com/">Haotian
+                                    Ye</a><sup>5</sup>,
+                                <a
+                                   href="https://stanford.edu/~siyuhe/">Siyu
+                                    He</a><sup>5</sup>,
+                                <a
+                                   href="https://scholar.google.com/citations?user=WmBj0jsAAAAJ">Quanlin
+                                    Wu</a><sup>1</sup>,
+                            </p>
+                            <p>
+                                Wangyan Qin<sup>2</sup> ,
+                                Mengyuan Zhou<sup>3</sup>,
+                                Jie Han<sup>4</sup>,
+                                Jia Tao<sup>3</sup> ,
+                                <a
+                                   href="https://scholar.google.com/citations?user=oW1KZZQAAAAJ&hl=en">Ziwei
+                                    Zhao</a><sup>8</sup>,
+                                Di Dai<sup>1</sup>,
+                                <a
+                                   href="https://dihe-pku.github.io/">Di
+                                    He</a><sup>1,*</sup>,
+                                Dong Wang<sup>8,*</sup>,
+                                Binghui Tang<sup>7,*</sup>,
+                            </p>
+                            <p>
+                                Ling Huo<sup>2,*</sup>,
+                                <a
+                                   href="https://www.james-zou.com/">James
+                                    Zou</a><sup>5,*</sup>,
+                                Qingli Zhu<sup>3,*</sup>,
+                                Yong Wang<sup>4,6,*</sup>,
+                                <a
+                                   href="http://www.liweiwang-pku.com/">Liwei
+                                    Wang</a><sup>1,*</sup>
+                            </p>
+                            <p>
+                                <sup>1</sup>Peking
+                                University.<br>
+                                <sup>2</sup>Peking
+                                University Cancer Hospital &
+                                Institute.<br>
+                                <sup>3</sup>Peking Union
+                                Medical College
+                                Hospital.<br>
+                                <sup>4</sup>Cancer Hospital,
+                                Chinese Academy of Medical
+                                Sciences.<br>
+                                <sup>5</sup>Stanford
+                                University.<br>
+                                <sup>6</sup>The First
+                                Affliated Hospital of China
+                                Medical University.<br>
+                                <sup>7</sup>Nanchang
+                                People's Hospital.<br>
+                                <sup>8</sup>Yizhun Medical
+                                AI Co., Ltd.<br>
+                            </p>
+                        </div>
+                        <!-- <a class="godemo_link"
+                           href="#">
+                            <div class="godemo">
+                                Try demo <i
+                                   class="el-icon-right"
+                                   style="font-size: 21px"></i>
+                            </div>
+                        </a> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="block gray">
+                <div class="subtitle">
+                    <h2>Generated images</h2>
+                </div>
+                <div class="flowimg"
+                     id="flowimg-container">
+                    <div style="height: 600px;"></div>
+                </div>
+            </div>
+
+            <div class="block white">
+                <div class="wrapper">
+                    <div class="fullimg">
+                        <img src="assets/nbme/_fig1_01.jpg"
+                             alt="Schematic overview of the BUSGen framework">
+                    </div>
+                    <div class="text">
+                        <p class="graytext">
+                            <strong>The schematic overview
+                                of the BUSGen pretraining
+                                and
+                                adaptation
+                                framework.</strong>
+                            <strong>a</strong>, Over
+                            3.5 million breast ultrasound
+                            images of 5,907 examinations
+                            of 4,636 patients and 3,749
+                            lesions were collected. These
+                            data were annotated by clinical
+                            experts and were used for
+                            the conditional generation task
+                            to pretrain the BUSGen
+                            model, enabling it to learn rich
+                            data distribution and
+                            generate high-quality images
+                            through an iterative refinement
+                            process repeated $T$ times. The
+                            pretraining task
+                            incorporated conditions of the
+                            labels of pathology, lesion
+                            box, and device type.
+                            <strong>b</strong>, The
+                            pretrained
+                            BUSGen can be adapted to various
+                            downstream tasks,
+                            generating unlimited,
+                            informative data resources and
+                            facilitating the development of
+                            downstream models. To
+                            preserve the rich information
+                            acquired during pretraining,
+                            we froze the pretrained
+                            parameters and fine-tuned
+                            low-rank
+                            adapters (LoRA). In comparison
+                            to baseline models, the
+                            BUSGen-based downstream models
+                            (BUS-DMs) achieved superior
+                            performance in a wide range of
+                            tasks across breast cancer
+                            screening, diagnosis and
+                            prognosis.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="block gray">
+                <div class="wrapper">
+                    <div class="fullimg">
+                        <img src="assets/nbme/_fig2_01.jpg"
+                             alt="Data reality and privacy protection">
+                    </div>
+                    <div class="text">
+                        <p class="graytext"><strong>BUSGen
+                                can generate realistic
+                                data while protecting
+                                patient privacy.</strong>
+                            <strong>a</strong>, Results of
+                            Visual Turing Test. Six
+                            radiologists were asked to
+                            distinguish "fake" images
+                            generated by BUSGen from real
+                            images. They were
+                            presented with a set of 300
+                            images, consisting of 150
+                            generated and 150 real images.
+                            The distinguishability of
+                            real and synthetic data is near
+                            0.50 (range: 0.42-0.59),
+                            indicating the synthetic data
+                            can not be reliably
+                            differentiated from real data.
+                            <strong>b</strong>,
+                            Distribution of cosine
+                            similarity and MS-SSIM scores in
+                            the feature space between
+                            generated samples and their
+                            nearest neighbor in the training
+                            data. This result
+                            indicates that BUSGen will not
+                            replicate its training
+                            data, as the highest cosine
+                            similarity is 0.939 and
+                            highest MS-SSIM is 0.669.
+                            <strong>c</strong>,
+                            Visualization of two pairs of
+                            generated and real images
+                            with the highest cosine
+                            similarity scores. As shown in
+                            the plots, these image pairs are
+                            not exact replications.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="block white">
+                <div class="wrapper">
+                    <div class="fullimg">
+                        <img src="assets/nbme/_fig3_01.jpg"
+                             alt="Breast cancer screening tasks">
+                    </div>
+                    <div class="text">
+                        <p class="graytext"><strong>BUSGen
+                                improves breast cancer
+                                screening tasks.</strong>
+                            <strong>a</strong>,
+                            Distribution of lesion sizes.
+                            The smallest 30% lesions
+                            (orange) are defined as lesions
+                            with areas smaller than
+                            0.068 (relative to images),
+                            which can be hard for
+                            radiologists to detect during
+                            ultrasound scanning.
+                            <strong>b</strong>, Comparison
+                            of BUS-DM (red) and
+                            Baseline (light blue) in small
+                            lesion detection
+                            (n=16,896). We report Average
+                            Precision (AP) at an
+                            Intersection over Union (IoU)
+                            threshold of 0.5. BUS-DM
+                            achieved an AP<sub>small</sub>
+                            of 0.702 (95% CI:
+                            0.681-0.720) and outperformed
+                            Baseline (blue;
+                            AP<sub>small</sub>: 0.657; 95%
+                            0.637-0.679;
+                            P-value=0.0017).
+                            <strong>c</strong>, Comparison
+                            of
+                            BUS-DM (red) and Baseline (light
+                            blue) in lesion
+                            detection (n=28,150). BUS-DM
+                            achieved an AP of 0.934
+                            (95% CI: 0.930-0.938) and
+                            significantly outperformed
+                            Baseline (blue; AP: 0.912; 95%
+                            0.907-0.917;
+                            P-value&lt;0.0001).
+                            <strong>d</strong>, Illustration
+                            of
+                            opportunistic screening and
+                            classification tasks. The
+                            opportunistic screening is
+                            performed on a population
+                            without suspicious symptoms of
+                            breast cancer. The
+                            suspicious breast cancer
+                            symptoms include palpable mass,
+                            nipple discharge, severe pain
+                            and skin change (upper).
+                            Using deep learning models, we
+                            predict whether
+                            opportunistic screening-detected
+                            lesions are benign or
+                            malignant (lower).
+                            <strong>e</strong>, Comparison
+                            of
+                            BUS-DM (red) with Baseline-CLIP
+                            (blue) for
+                            benign-malignant classification
+                            of opportunistic
+                            screening-detected lesions.
+                            BUS-DM achieved a higher AUC
+                            of 0.918 (95% CI: 0.878–0.948)
+                            compared to Baseline-CLIP
+                            with an AUC of 0.870 (95% CI:
+                            0.824–0.908;
+                            P-value=0.0074). **P-value&lt;
+                            0.01; ***P-value&lt;
+                            0.001; ****P-value&lt;0.0001.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="block gray">
+                <div class="wrapper">
+                    <div class="fullimg">
+                        <img src="assets/nbme/_fig4_01.jpg"
+                             alt="Breast ultrasound diagnosis">
+                    </div>
+                    <div class="text">
+                        <p class="graytext"><strong>BUSGen
+                                enhances breast
+                                ultrasound
+                                diagnosis.</strong>
+                            <strong>a</strong>,
+                            Breast cancer early diagnosis
+                            involved the
+                            identification of DCIS
+                            (early-stage cancer) from benign
+                            lesions, which was considered
+                            difficult for radiologists
+                            based on ultrasound images.
+                            <strong>b</strong>,
+                            Comparison of BUS-DM (red) with
+                            Baseline-CLIP (blue) in
+                            the early diagnosis task for
+                            benign-DCIS classification.
+                            BUS-DM achieved a higher AUC of
+                            0.900 (95% CI:
+                            0.849–0.938) compared to the
+                            Baseline-CLIP with an AUC
+                            of 0.846 (95% CI: 0.785–0.891;
+                            P-value=0.0002).
+                            <strong>c</strong>, Comparison
+                            of BUS-DM with
+                            board-certified radiologists
+                            (n=9; 11 years of
+                            experience on average) in breast
+                            cancer early diagnosis.
+                            The ROC curves of BUS-DM (red
+                            curve) and diagnostic
+                            results of radiologists (dots)
+                            show that BUS-DM
+                            outperformed radiologists by a
+                            large margin. The colors
+                            (blue, green, and orange) of the
+                            dots represent
+                            radiologists' results calculated
+                            via different
+                            thresholds. <strong>d</strong>,
+                            Accuracy improvements of
+                            radiologists with the assistance
+                            of BUS-DM. We report
+                            the accuracy of radiologists in
+                            breast cancer early
+                            diagnosis, as well as their
+                            accuracy after considering
+                            BUS-DM predictions. Accuracy is
+                            calculated using the
+                            threshold of BI-RADS 4A.
+                            <strong>e</strong>, The data
+                            scaling curves of test loss
+                            (upper part of the left
+                            plot) and AUC score (lower part
+                            of the left plot) of
+                            diagnostic models trained on
+                            different scales of real
+                            collected data (dark purple) and
+                            BUSGen generated data
+                            (light purple). The curves for
+                            real and generated data
+                            closely align at small data
+                            scales, with the generated
+                            data continuously enhancing
+                            downstream performance as
+                            the number of generated samples
+                            increases. By scaling up
+                            the generated data to 1 million
+                            samples, we developed
+                            BUS-DM (AUC: 0.929; 95% CI:
+                            0.910-0.947) that achieved
+                            comparable performance to NYU-AI
+                            (trained on 288,767
+                            real samples; AUC: 0.927; 95%
+                            CI: 0.907-0.959), and
+                            outperformed Baseline-CLIP (AUC:
+                            0.876; 95% CI:
+                            0.869-0.914; P-value=0.0006) on
+                            the BUSI test set
+                            (n=780). <strong>f</strong>,
+                            Comparison of BUS-DM (red)
+                            with Baseline-CLIP (blue) on the
+                            internal diagnosis test
+                            set for benign-malignant
+                            classification (n=579). BUS-DM
+                            achieved a higher AUC of 0.953
+                            (95% CI: 0.932–0.968)
+                            compared to the Baseline-CLIP
+                            with an AUC of 0.925 (95%
+                            CI: 0.902–0.946;
+                            P-value=0.0006).
+                            <strong>g</strong>,
+                            Comparison of BUS-DM (red) with
+                            Baseline-CLIP (blue) on
+                            the external diagnosis test set
+                            for benign-malignant
+                            classification (n=227). BUS-DM
+                            achieved a higher AUC of
+                            0.951 (95% CI: 0.915–0.975)
+                            compared to the
+                            Baseline-CLIP with an AUC of
+                            0.913 (95% CI: 0.868–0.946;
+                            P-value=0.0007). Note that
+                            BUS-DM, trained only on
+                            generated data, enjoyed better
+                            generalization ability
+                            than baseline models trained on
+                            real data.
+                            <strong>h</strong>, Comparison
+                            of BUS-DM with
+                            board-certified radiologists
+                            (n=9) of the diagnosis task
+                            (benign-malignant
+                            classification) on the external
+                            test
+                            set. The ROC curves of BUS-DM
+                            (red curve) and diagnostic
+                            results of radiologists (dots)
+                            show that BUS-DM
+                            outperformed the average
+                            performance of radiologists.
+                            ***P-value&lt;0.001.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="block white">
+                <div class="wrapper">
+                    <div class="fullimg">
+                        <img src="assets/nbme/_fig5_01.jpg"
+                             alt="Breast cancer prognosis">
+                    </div>
+                    <div class="text">
+                        <p class="graytext"><strong>BUSGen
+                                facilitates breast cancer
+                                prognosis.</strong>
+                            <strong>a</strong>, Comparison
+                            of BUS-DM (red) with
+                            Baseline-CLIP (blue) in
+                            molecular
+                            subtype classification (TNBC vs.
+                            non-TNBC). BUS-DM
+                            achieved a higher AUC of 0.803
+                            (95% CI: 0.759–0.837)
+                            compared to the Baseline-CLIP
+                            with an AUC of 0.723 (95%
+                            CI: 0.679-0.766;
+                            P-value=0.0046).
+                            <strong>b</strong>,
+                            Comparison of BUS-DM (red) with
+                            Baseline-CLIP (blue) in
+                            ALN metastasis status
+                            classification (ALN-negative vs.
+                            ALN-positive). BUS-DM achieved a
+                            higher AUC of 0.895
+                            (95% CI: 0.824–0.944) compared
+                            to the Baseline-CLIP with
+                            an AUC of 0.807 (95% CI:
+                            0.723-0.874; P-value=0.0118).
+                            <strong>c</strong>, t-SNE plots
+                            of classification
+                            features (referred to as [CLS])
+                            of downstream models in
+                            molecular subtype prediction.
+                            Clusters of TNBC and
+                            non-TNBC of BUS-DM [CLS]
+                            features are more concentrated
+                            than [CLS] features of
+                            Baseline-CLIP.
+                            <strong>d</strong>, t-SNE plots
+                            of [CLS] features in the
+                            ALN status classification.
+                            Clusters of ALN-negative and
+                            ALN-positive BUS-DM [CLS]
+                            features are more concentrated
+                            than [CLS] features of
+                            Baseline-CLIP.
+                            <strong>e</strong>, Saliency map
+                            of molecular subtype
+                            prediction by BUS-DM. The
+                            upper-left part of the lesion
+                            margin is highlighted by BUS-DM
+                            in predicting TNBC.
+                            <strong>f</strong>, Saliency map
+                            of ALN status
+                            prediction by BUS-DM, which pays
+                            more attention to the
+                            surrounding glandular tissues of
+                            the lesion for
+                            predicting ALN metastasis.
+                            <strong>P-value &lt;
+                                0.01.</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="block gray">
+                <div class="wrapper"
+                     style="width: 810px">
+                    <div class="subtitle">
+                        <h2>Author contributions</h2>
+                    </div>
+                    <div style="text-align: center">
+                        <p class="graytext">
+                            H.Yu. and L.W. conceived and
+                            designed the study.
+                            Z.N., B.T., Y.Lu. and X.G.
+                            carried out data acquisition.
+                            Y.Li., H.Yu., Y.Lu., Z.N. and
+                            Q.W. carried out data
+                            processing and annotation.
+                            H.Yu. developed the AI models.
+                            Y.Li. carried out generated data
+                            cleaning.
+                            Y.Li. developed the platform for
+                            reader study.
+                            N.Z., Z.N., W.Q., J.T., M.Z.,
+                            X.G., J.H., L.H. and Y.W.
+                            participated in the reader
+                            study.
+                            H.Yu., H.Ye., S.H., D.H., Y.Li.,
+                            N.Z., Z.N., D.W., Z.Z.,
+                            Q.W., D.D., Q.Z., J.Z. and L.W.
+                            wrote and revised the paper.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="block white">
+                <div class="wrapper">
+                    <div style="text-align: center;">
+                        <button id="beian-button"
+                                class="beian-button"></button>
+                        <div id="beian-info"
+                             class="beian-info">
+                            <p class="graytext"
+                               style="font-size: x-small;">
+                                <a href="https://beian.miit.gov.cn/"
+                                   target="_blank"
+                                   style="font-size: inherit; text-decoration: none; color: inherit;">
+                                    京ICP备2024081142号
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script
+            src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // 当整个页面加载完成后，执行初始化脚本
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // --- 全局变量和状态 ---
+            const state = {
+                fixed_nav: false, // 导航栏是否固定
+                gallery_list: [], // 图片画廊的数据列表
+                gallery_folder: [ // 图片画廊的文件夹和标签配置
+                    { path: 'ca_b', label: 'Benign' },
+                    { path: 'ca_m', label: 'Malignant' },
+                    { path: 'dcis_b', label: 'Benign' },
+                    { path: 'dcis_m', label: 'Malignant' },
+                    { path: 'ms_b', label: 'Benign' },
+                    { path: 'ms_m', label: 'Malignant' }
+                ],
+                left_position: [0, 0], // 两个图片滚动条的左侧位置
+                active: [true, true], // 两个滚动条是否处于活动状态
+                is_mouse_over: [false, false], // 鼠标是否悬停在滚动条上
+                repeat_interval: undefined // 动画的定时器ID
+            };
+
+            /**
+             * 初始化函数，页面加载时调用
+             */
+            function init() {
+                init_gallery_list();
+                init_repeat_animation();
+                setupEventListeners();
+            }
+
+            /**
+             * 初始化并随机排列图片画廊的数据
+             */
+            function init_gallery_list() {
+                let paths = [];
+
+                // 随机打乱数组的函数
+                function shuffleArray(array) {
+                    for (let i = array.length - 1; i > 0; i--) {
+                        const j = Math.floor(Math.random() * (i + 1));
+                        [array[i], array[j]] = [array[j], array[i]];
+                    }
+                }
+
+                // 根据配置生成图片路径列表
+                for (let i = 0; i < state.gallery_folder.length; i++) {
+                    for (let j = 0; j < 10; j++) {
+                        paths.push({
+                            // 注意：这里的路径是根据原始代码逻辑转换的相对路径
+                            path: `assets/index_img/gallery/${state.gallery_folder[i].path}/${j}.jpg`,
+                            label: state.gallery_folder[i].label
+                        });
+                    }
+                }
+
+                shuffleArray(paths); // 打乱图片顺序
+
+                // 将图片分组，每5个一组
+                let tmp = [];
+                for (let i = 0; i < 50; i++) { // 只取前50张图片
+                    const groupIndex = Math.floor(i / 5);
+                    if (!tmp[groupIndex]) {
+                        tmp[groupIndex] = [];
+                    }
+                    tmp[groupIndex].push({
+                        src: paths[i].path,
+                        label: paths[i].label
+                    });
+                }
+                state.gallery_list = tmp;
+
+                // 渲染画廊到页面
+                render_gallery();
+            }
+
+            /**
+             * 将生成的图片数据渲染成HTML，并插入到页面中
+             */
+            function render_gallery() {
+                const container = document.getElementById('flowimg-container');
+                if (!container) return;
+
+                // 创建两个滚动条实例，用于无缝滚动
+                for (let i = 0; i < 2; i++) {
+                    const innerDiv = document.createElement('div');
+                    innerDiv.className = 'flowimg_inner';
+                    innerDiv.id = `flowimg_inner_${i}`;
+
+                    // 监听鼠标悬停事件，用于暂停动画
+                    innerDiv.addEventListener('mouseover', () => state.is_mouse_over[i] = true);
+                    innerDiv.addEventListener('mouseout', () => state.is_mouse_over[i] = false);
+
+                    let html = '';
+                    state.gallery_list.forEach(item => {
+                        html += '<div class="flowimg_wrapper">';
+                        item.forEach((iitem, iindex) => {
+                            html += `
+                                <div class="inner_img">
+                                    <img src="${iitem.src}" alt="${iitem.label}">
+                                    <div class="mask">
+                                        <div>${iitem.label}</div>
+                                    </div>
+                                </div>
+                            `;
+                        });
+                        html += '</div>';
+                    });
+
+                    innerDiv.innerHTML = html;
+                    // 将生成的滚动元素插入到占位符 div 之前
+                    container.insertBefore(innerDiv, container.firstChild);
+                }
+            }
+
+            /**
+             * 初始化并启动图片画廊的无限滚动动画
+             */
+            function init_repeat_animation() {
+                const appWidth = $('#flowimg-container').width();
+                state.left_position = [0, appWidth]; // 第二个滚动条初始在屏幕右侧外
+                state.active = [true, false]; // 初始时只有第一个滚动条活动
+                state.is_mouse_over = [false, false];
+
+                // 设置第二个滚动条的初始位置
+                const innerElements = $('.flowimg_inner');
+                if (innerElements[1]) {
+                    innerElements[1].style.left = `${appWidth}px`;
+                }
+
+                // 动画主函数
+                const animationFunc = function () {
+                    // 如果鼠标悬停，则暂停动画
+                    if (state.is_mouse_over[0] || state.is_mouse_over[1]) {
+                        return;
+                    }
+
+                    const innerElements = $('.flowimg_inner');
+                    const appWidth = $('#flowimg-container').width();
+
+                    // 移动活动的滚动条
+                    for (let i = 0; i < 2; i++) {
+                        if (state.active[i]) {
+                            state.left_position[i] -= 1.5; // 移动速度
+                            innerElements[i].style.left = `${state.left_position[i]}px`;
+                        }
+                    }
+
+                    // --- 无缝滚动逻辑 ---
+                    // 当第一个滚动条快要移出屏幕时，启动第二个
+                    if (state.active[0] && !state.active[1] && innerElements[0].clientWidth + state.left_position[0] <= appWidth) {
+                        state.left_position[1] = appWidth;
+                        innerElements[1].style.left = `${state.left_position[1]}px`;
+                        state.active[1] = true;
+                    }
+
+                    // 当第二个滚动条快要移出屏幕时，启动第一个
+                    if (state.active[1] && !state.active[0] && innerElements[1].clientWidth + state.left_position[1] <= appWidth) {
+                        state.left_position[0] = appWidth;
+                        innerElements[0].style.left = `${state.left_position[0]}px`;
+                        state.active[0] = true;
+                    }
+
+                    // 当滚动条完全移出屏幕左侧后，停止活动并等待下一次循环
+                    if (state.active[0] && innerElements[0].clientWidth + state.left_position[0] < 0) {
+                        state.active[0] = false;
+                    }
+                    if (state.active[1] && innerElements[1].clientWidth + state.left_position[1] < 0) {
+                        state.active[1] = false;
+                    }
+                };
+
+                // 设置定时器，每秒60帧刷新动画
+                state.repeat_interval = setInterval(animationFunc, 1000 / 60);
+            }
+
+            /**
+             * 设置页面上的所有事件监听器
+             */
+            function setupEventListeners() {
+                const fixedNav = document.getElementById('fixed-nav');
+
+                // 监听窗口滚动事件，控制固定导航栏的显示/隐藏
+                window.addEventListener('scroll', function () {
+                    if (window.scrollY > 750) {
+                        fixedNav.classList.add('active');
+                    } else {
+                        fixedNav.classList.remove('active');
+                    }
+                });
+
+                // 监听备案信息按钮的点击事件
+                const beianButton = document.getElementById('beian-button');
+                const beianInfo = document.getElementById('beian-info');
+                beianButton.addEventListener('click', function () {
+                    beianInfo.classList.toggle('visible');
+                });
+            }
+
+            // 启动所有初始化任务
+            init();
+
+            // 在页面卸载时清理定时器，防止内存泄漏
+            window.addEventListener('beforeunload', function () {
+                if (state.repeat_interval) {
+                    clearInterval(state.repeat_interval);
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

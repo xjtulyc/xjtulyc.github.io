@@ -319,7 +319,7 @@ const SITE_CONFIG = {
           },
           {
             type: "demo",
-            url: "https://aibus.bio",
+            url: "./demo/BUSGen/index.html",
             text: "Demo"
           }
         ],
@@ -437,7 +437,7 @@ const SITE_CONFIG = {
               },
               {
                 type: "demo",
-                url: "https://aibus.bio",
+                url: "./demo/BUSGen/index.html",
                 text: "Online Demo"
               }
             ],
