@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Medge AI — AI Scientist for Medicine</title>
+<title>Medge AI — Agent OS for Medicine</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Noto+Sans+SC:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
@@ -195,13 +195,14 @@ nav.scrolled { border-bottom-color: var(--line); background: rgba(250, 250, 246,
 .hero-h1 {
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: clamp(52px, 7vw, 104px);
-  line-height: .98;
+  font-size: clamp(46px, 6vw, 88px);
+  line-height: 1.02;
   letter-spacing: -.02em;
   color: var(--ink);
   margin-bottom: 1.5rem;
   opacity: 0;
   animation: fadeUp 1s .3s forwards;
+  white-space: nowrap;
 }
 .hero-h1 em {
   font-style: italic;
@@ -212,13 +213,13 @@ nav.scrolled { border-bottom-color: var(--line); background: rgba(250, 250, 246,
 }
 .hero-h1-cn {
   font-family: var(--font-cn);
-  font-size: clamp(22px, 2.4vw, 32px);
-  font-weight: 500;
-  letter-spacing: .02em;
+  font-size: clamp(32px, 4vw, 54px);
+  font-weight: 600;
+  letter-spacing: -.005em;
   color: var(--ink);
-  margin-top: 1.25rem;
-  margin-bottom: 1.75rem;
-  line-height: 1.3;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  line-height: 1.25;
   opacity: 0;
   animation: fadeUp 1s .45s forwards;
 }
@@ -296,20 +297,22 @@ nav.scrolled { border-bottom-color: var(--line); background: rgba(250, 250, 246,
   color: #2e49b9;
 }
 .hero-badge:nth-child(3) .hero-badge-icon {
-  background: linear-gradient(135deg, #dff4ea 0%, #b8e5d1 100%);
-  color: #0c6e61;
+  background: linear-gradient(135deg, #dff4ea 0%, #a8d8c5 100%);
+  color: #0a6b5f;
 }
 .hero-badge-num {
-  font-family: var(--font-display);
-  font-size: 22px; font-weight: 400;
+  font-family: var(--font-cn);
+  font-size: 15px;
+  font-weight: 600;
   color: var(--ink);
-  line-height: 1;
-  letter-spacing: -.01em;
+  line-height: 1.3;
+  letter-spacing: .005em;
 }
 .hero-badge-label {
   font-size: 12px;
   color: var(--ink-3);
-  margin-top: 2px;
+  margin-top: 3px;
+  line-height: 1.4;
 }
 
 /* Decorative side marker */
@@ -363,11 +366,13 @@ section { padding: 7rem max(2rem, 4vw); position: relative; }
   font-family: var(--font-display);
   font-style: italic;
   font-weight: 400;
+  font-size: .85em;
   background: linear-gradient(120deg, #3b5bdb 0%, #d85a3a 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   padding: 0 .1em;
+  vertical-align: baseline;
 }
 .section-sub {
   font-size: 16px;
@@ -474,7 +479,7 @@ section { padding: 7rem max(2rem, 4vw); position: relative; }
 }
 .layer {
   display: grid;
-  grid-template-columns: 140px 1fr auto;
+  grid-template-columns: 180px 1fr auto;
   align-items: center;
   gap: 2rem;
   padding: 2rem 2.25rem;
@@ -491,10 +496,11 @@ section { padding: 7rem max(2rem, 4vw); position: relative; }
 .layer-tag {
   font-family: var(--font-mono);
   font-size: 11px;
-  letter-spacing: .14em;
+  letter-spacing: .06em;
   text-transform: uppercase;
   padding: 6px 12px;
   border-radius: 999px;
+  white-space: nowrap;
   display: inline-block;
   width: fit-content;
 }
@@ -604,7 +610,9 @@ section { padding: 7rem max(2rem, 4vw); position: relative; }
   font-family: var(--font-display);
   font-style: italic;
   font-weight: 400;
+  font-size: .85em;
   padding: 0 .1em;
+  vertical-align: baseline;
 }
 .panel-c .panel-title em { color: var(--c-accent); }
 .panel-b .panel-title em { color: var(--b-accent); }
@@ -658,16 +666,18 @@ section { padding: 7rem max(2rem, 4vw); position: relative; }
   font-weight: 600;
   color: var(--ink);
   margin-bottom: .4rem;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  line-height: 1.35;
 }
 .product-card-name .en {
   font-family: var(--font-display);
   font-style: italic;
   font-weight: 400;
-  font-size: 15px;
-  color: var(--ink-3);
+  font-size: 12.5px;
+  color: var(--ink-4);
+  display: block;
+  margin-top: 3px;
+  letter-spacing: .01em;
+  opacity: .85;
 }
 .product-card-pos {
   font-size: 13.5px;
@@ -927,7 +937,7 @@ section { padding: 7rem max(2rem, 4vw); position: relative; }
 #trust .section-inner { position: relative; z-index: 1; }
 .trust-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 0;
   margin-top: 0;
   border-top: 1px solid var(--line-2);
@@ -959,10 +969,65 @@ section { padding: 7rem max(2rem, 4vw); position: relative; }
   color: var(--ink-3);
   margin-left: 4px;
 }
+.trust-num-text {
+  font-family: var(--font-cn);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: .02em;
+  line-height: 1.5;
+  color: var(--ink);
+  margin-bottom: .9rem;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .trust-label {
   font-size: 13px;
   color: var(--ink-3);
   line-height: 1.6;
+}
+
+/* Logo wall */
+.logo-wall {
+  margin-top: 3rem;
+  padding: 2rem 1.5rem;
+  background: rgba(255, 255, 255, .45);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+}
+.logo-wall-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .18em;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.logo-wall-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.logo-chip {
+  background: rgba(255, 255, 255, .65);
+  padding: 1.15rem .5rem;
+  font-family: var(--font-cn);
+  font-size: 13px;
+  color: var(--ink-2);
+  text-align: center;
+  letter-spacing: .01em;
+  transition: background .25s, color .25s;
+}
+.logo-chip:hover {
+  background: #fff;
+  color: var(--ink);
 }
 
 /* ────────────────── AUDIENCE ────────────────── */
@@ -1180,6 +1245,384 @@ footer {
 .footer-bottom-links { display: flex; gap: 1.5rem; }
 .footer-bottom-links a:hover { color: var(--ink-2); }
 
+/* ────────────────── L0–L5 AUTONOMY LEVELS ────────────────── */
+#levels {
+  background: var(--bg);
+  padding-bottom: 7rem;
+}
+#levels .section-title { max-width: 920px; }
+
+/* Interactive timeline axis */
+.levels-viz {
+  position: relative;
+  margin: 5rem 0 4.5rem;
+  padding: 5rem 1.5rem 3.5rem;
+  background: linear-gradient(180deg, var(--bg-card) 0%, #fbfaf4 100%);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  overflow: hidden;
+}
+.levels-viz::before {
+  content: '';
+  position: absolute; inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 30% 60% at 36% 50%, rgba(59, 91, 219, .06) 0%, transparent 70%),
+    radial-gradient(ellipse 30% 60% at 72% 50%, rgba(216, 90, 58, .06) 0%, transparent 70%);
+}
+
+.levels-rail {
+  position: absolute;
+  left: 4%; right: 4%;
+  top: 50%;
+  height: 2px;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+.levels-rail-base {
+  position: absolute;
+  inset: 0;
+  background: var(--line-2);
+  border-radius: 2px;
+}
+.levels-rail-fill {
+  position: absolute;
+  left: 0;
+  width: 50%;
+  top: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--c-accent) 0%, #7b8dff 50%, #c8a8ff 100%);
+  border-radius: 2px;
+}
+
+.levels-nodes {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0;
+}
+.level-node {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.level-dot {
+  width: 18px; height: 18px;
+  background: #fff;
+  border: 2px solid var(--line-2);
+  border-radius: 50%;
+  position: relative;
+  z-index: 2;
+  transition: transform .25s, border-color .25s;
+}
+.level-dot-inner {
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: transparent;
+  transition: background .25s;
+}
+.level-node[data-state="past"] .level-dot {
+  border-color: var(--c-accent);
+}
+.level-node[data-state="past"] .level-dot-inner {
+  background: var(--c-accent);
+  opacity: .35;
+}
+
+.level-node[data-state="current"] .level-dot.current-dot {
+  width: 28px; height: 28px;
+  border: 3px solid var(--c-accent);
+  background: #fff;
+  box-shadow: 0 0 0 6px rgba(59, 91, 219, .12);
+}
+.current-dot .level-dot-inner {
+  inset: 4px;
+  background: var(--c-accent);
+}
+.current-dot .level-dot-pulse {
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 2px solid var(--c-accent);
+  animation: pulse 2.4s ease-out infinite;
+  opacity: 0;
+}
+@keyframes pulse {
+  0%   { transform: scale(1);   opacity: .6; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+.level-node[data-state="target"] .level-dot.target-dot {
+  width: 22px; height: 22px;
+  border: 2px dashed var(--m-accent);
+  background: #fff;
+  animation: targetBreath 3s ease-in-out infinite;
+}
+.target-dot .level-dot-inner {
+  background: var(--m-accent);
+  opacity: .25;
+}
+@keyframes targetBreath {
+  0%,100% { transform: scale(1); }
+  50%     { transform: scale(1.08); }
+}
+
+.level-stub {
+  text-align: center;
+  margin-top: 1.1rem;
+}
+.level-code {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--ink-3);
+  line-height: 1;
+  margin-bottom: 4px;
+  letter-spacing: -.01em;
+}
+.level-code.current-code {
+  font-size: 28px;
+  color: var(--c-accent);
+  font-weight: 400;
+}
+.level-code.target-code {
+  font-size: 26px;
+  color: var(--m-accent);
+}
+.level-name {
+  font-family: var(--font-cn);
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--ink-2);
+  letter-spacing: .02em;
+}
+.level-node[data-state="current"] .level-name,
+.level-node[data-state="target"] .level-name {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.level-flag {
+  position: absolute;
+  bottom: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: .08em;
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-weight: 500;
+}
+.level-flag::after {
+  content: '';
+  position: absolute;
+  top: 100%; left: 50%;
+  transform: translateX(-50%);
+  width: 1px; height: 16px;
+  background: currentColor;
+  opacity: .4;
+}
+.current-flag {
+  background: var(--c-accent);
+  color: #fff;
+}
+.target-flag {
+  background: #fff;
+  color: var(--m-accent);
+  border: 1px dashed var(--m-accent);
+}
+
+.levels-axis-caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2.75rem;
+  padding: 0 4%;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-3);
+  letter-spacing: .08em;
+}
+.levels-axis-grow {
+  flex: 1;
+  text-align: center;
+  padding: 0 2rem;
+  position: relative;
+  color: var(--ink-3);
+}
+.levels-axis-grow::before,
+.levels-axis-grow::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  height: 1px;
+  background: var(--line-2);
+  width: 18%;
+}
+.levels-axis-grow::before { left: 4%; }
+.levels-axis-grow::after  { right: 4%; }
+
+/* Level detail cards */
+.levels-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: .75rem;
+}
+.level-card {
+  padding: 1.5rem 1.15rem 1.15rem;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  transition: transform .3s, border-color .3s, box-shadow .3s;
+  min-height: 180px;
+}
+.level-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--line-2);
+  box-shadow: 0 14px 28px -20px rgba(20, 30, 60, .18);
+}
+.level-card-head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+}
+.level-card-code {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--ink-3);
+  line-height: 1;
+  letter-spacing: -.01em;
+}
+.level-card-name {
+  font-family: var(--font-cn);
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.level-card-flag {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: .1em;
+  padding: 3px 8px;
+  background: var(--c-accent);
+  color: #fff;
+  border-radius: 999px;
+  font-weight: 500;
+  margin-left: auto;
+}
+.level-card-flag.target {
+  background: transparent;
+  color: var(--m-accent);
+  border: 1px dashed var(--m-accent);
+}
+.level-card-desc {
+  font-size: 12.5px;
+  color: var(--ink-2);
+  line-height: 1.6;
+  flex: 1;
+}
+.level-card-eg {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ink-3);
+  padding-top: .55rem;
+  border-top: 1px dashed var(--line);
+  letter-spacing: .02em;
+  line-height: 1.5;
+}
+
+.level-card.current {
+  background: linear-gradient(180deg, #fff 0%, var(--c-tint) 200%);
+  border-color: var(--c-accent);
+  box-shadow: 0 10px 28px -18px rgba(59, 91, 219, .35);
+}
+.level-card.current .level-card-code,
+.level-card.current .level-card-name {
+  color: var(--c-accent);
+}
+.level-card.target {
+  border-color: var(--m-accent);
+  border-style: dashed;
+  background: linear-gradient(180deg, #fff 0%, var(--m-tint) 200%);
+}
+.level-card.target .level-card-code,
+.level-card.target .level-card-name {
+  color: var(--m-accent);
+}
+
+/* ────────────────── VISION QUOTE ────────────────── */
+#vision {
+  background: var(--bg);
+  padding: 4rem max(2rem, 4vw) 3rem;
+}
+.vision-box {
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 3rem 2rem;
+}
+.vision-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .18em;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+.vision-quote {
+  font-family: var(--font-cn);
+  font-weight: 500;
+  font-size: clamp(28px, 3.6vw, 46px);
+  line-height: 1.35;
+  color: var(--ink);
+  letter-spacing: -.005em;
+  margin-bottom: 1.5rem;
+}
+.vision-quote em {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: .85em;
+  background: linear-gradient(120deg, #3b5bdb 0%, #d85a3a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 0 .05em;
+  vertical-align: baseline;
+}
+.vision-body {
+  font-size: 15.5px;
+  color: var(--ink-2);
+  line-height: 1.75;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+/* "by Medge AI" descender */
+.product-card-name .en {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 12.5px;
+  color: var(--ink-4);
+  display: block;
+  margin-top: 2px;
+  letter-spacing: .01em;
+  opacity: .85;
+}
+
 /* ────────────────── ANIMATIONS ────────────────── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(24px); }
@@ -1201,9 +1644,10 @@ footer {
   .hero-badges { flex-direction: row; flex-wrap: wrap; }
   .hero-badge { min-width: 200px; flex: 1; }
   .problems-grid, .why-grid, .audience-grid { grid-template-columns: 1fr; }
-  .trust-grid { grid-template-columns: repeat(2, 1fr); }
-  .trust-item { border-bottom: 1px solid var(--line); }
-  .trust-item:nth-child(2) { border-right: none; }
+  .trust-grid { grid-template-columns: 1fr; }
+  .trust-item { border-right: none; border-bottom: 1px solid var(--line); }
+  .trust-item:last-child { border-bottom: none; }
+  .logo-wall-grid { grid-template-columns: repeat(2, 1fr); }
   .panel-intro { grid-template-columns: 1fr; gap: 1rem; }
   .panel-m .product-grid { grid-template-columns: repeat(2, 1fr); }
   .layer { grid-template-columns: 1fr; gap: 1rem; }
@@ -1218,7 +1662,7 @@ footer {
   .nav-links { display: none; }
   section { padding: 5rem 1.25rem; }
   #hero { padding: 100px 1.25rem 60px; }
-  .hero-h1 { font-size: 52px; }
+  .hero-h1 { font-size: 40px; white-space: normal; }
   .hero-meta { display: none; }
   .tabs { width: 100%; overflow-x: auto; }
   .cta-box { padding: 3rem 1.5rem; }
@@ -1238,11 +1682,11 @@ footer {
     Medge<span style="font-family:var(--font-display);font-style:italic;font-weight:400;margin-left:2px;"> AI</span>
   </a>
   <div class="nav-links">
-    <a href="#products">产品</a>
-    <a href="#landscape">平台</a>
+    <a href="#products">产品矩阵</a>
+    <a href="#landscape">Agent OS</a>
+    <a href="#levels">自主性分级</a>
     <a href="#audience">解决方案</a>
     <a href="#why">关于我们</a>
-    <a href="#">研究</a>
   </div>
   <a href="#cta" class="nav-cta">开始使用</a>
 </nav>
@@ -1257,11 +1701,11 @@ footer {
 
   <div class="hero-inner">
     <div class="hero-main">
-      <div class="eyebrow">Medge&nbsp;·&nbsp;AI Scientist for Medicine</div>
-      <h1 class="hero-h1">AI Scientist<br>for&nbsp;<em>Medicine</em>.</h1>
-      <p class="hero-h1-cn">从虚拟细胞到虚拟患者，用 AI 重新定义药物发现的速度与边界</p>
+      <div class="eyebrow">Medge&nbsp;·&nbsp;Agent OS for Medicine</div>
+      <h1 class="hero-h1">Agent&nbsp;OS&nbsp;for&nbsp;<em>Medicine</em>.</h1>
+      <p class="hero-h1-cn">智能时代的科研基础设施</p>
       <p class="hero-sub">
-        Medge 将医学研究的完整链路搬入数字世界——让每位研究者都有一位 AI 科学家，让每一次临床试验都先在数字世界中提前完成。
+        当数据以指数扩张，研究者的带宽仍是线性的。Medge AI 正在构建面向生物医药研究的智能体操作系统——让每一位科学家都拥有自己的 Agent，让整个科研网络可规模化地协作。
       </p>
       <div class="hero-actions">
         <a href="#" class="btn btn-primary">
@@ -1274,24 +1718,24 @@ footer {
 
     <div class="hero-badges">
       <div class="hero-badge">
-        <div class="hero-badge-icon">5k</div>
+        <div class="hero-badge-icon">10<span style="font-size:.5em;vertical-align:top;">+</span></div>
         <div>
-          <div class="hero-badge-num">5,000<sup style="font-size:.6em;color:var(--ink-3);">+</sup></div>
-          <div class="hero-badge-label">医疗科研用户</div>
+          <div class="hero-badge-num">顶级医院与院所</div>
+          <div class="hero-badge-label">合作落地，真实场景使用</div>
         </div>
       </div>
       <div class="hero-badge">
-        <div class="hero-badge-icon">D</div>
+        <div class="hero-badge-icon">4×</div>
         <div>
-          <div class="hero-badge-num">4,000 万<sup style="font-size:.6em;color:var(--ink-3);">+</sup></div>
-          <div class="hero-badge-label">独家文献数据库</div>
+          <div class="hero-badge-num">四尺度人体模拟</div>
+          <div class="hero-badge-label">细胞 · 器官 · 患者 · 队列</div>
         </div>
       </div>
       <div class="hero-badge">
-        <div class="hero-badge-icon">10+</div>
+        <div class="hero-badge-icon">L4</div>
         <div>
-          <div class="hero-badge-num">三甲医院合作</div>
-          <div class="hero-badge-label">同行评审验证</div>
+          <div class="hero-badge-num">主动智能机制</div>
+          <div class="hero-badge-label">生物医学 AI 科学家自主性</div>
         </div>
       </div>
     </div>
@@ -1306,28 +1750,28 @@ footer {
 <!-- ━━━━━━━━━━━━━━━ PROBLEMS ━━━━━━━━━━━━━━━ -->
 <section id="problems">
   <div class="section-inner">
-    <div class="section-label reveal">THE PROBLEM · 传统医学研究的困境</div>
-    <h2 class="section-title reveal reveal-d1">三堵墙，挡住了<em>每一位</em>研究者。</h2>
-    <p class="section-sub reveal reveal-d2">药物研发太慢、动物实验太贵、科研知识太散——这三个结构性问题，让医学研究的速度远远跟不上人类对治疗的需求。</p>
+    <div class="section-label reveal">科研正在遭遇的结构性困境</div>
+    <h2 class="section-title reveal reveal-d1">旧范式上的补丁，<em>解不了新范式的问题</em>。</h2>
+    <p class="section-sub reveal reveal-d2">过去二十年，生物医药的知识生产进入指数扩张期；而当下绝大多数 AI 产品仍是点状工具。真正的瓶颈不在速度，而在范式本身。</p>
 
     <div class="problems-grid">
       <div class="problem-card reveal reveal-d1">
         <div class="problem-num">01</div>
-        <div class="problem-title">药物研发周期太长</div>
-        <p class="problem-body">一款新药平均历时 12 年、耗资 26 亿美元。多数候选分子在临床阶段才被淘汰——代价在最后一刻才被发现。</p>
-        <div class="problem-stat">12 YR · $2.6B · AVG. DEV. COST</div>
+        <div class="problem-title">规模之困 · 结构性</div>
+        <p class="problem-body">生物医药文献每日新增数千篇，多组学数据以 PB 级扩张；而研究者一年能深读的文献不过数百篇。数据以指数扩张，认知带宽以线性增长，缺口每天都在扩大。</p>
+        <div class="problem-stat">数据指数增长 · 带宽线性增长</div>
       </div>
       <div class="problem-card reveal reveal-d2">
         <div class="problem-num">02</div>
-        <div class="problem-title">动物实验代价极高</div>
-        <p class="problem-body">传统临床前研究高度依赖动物模型，成本高、周期长、结果外推性存疑，无法真实反映人体生理响应。</p>
-        <div class="problem-stat">LOW HUMAN EXTRAPOLATION</div>
+        <div class="problem-title">转化鸿沟 · 机制性</div>
+        <p class="problem-body">临床试验失败率仍超 90%。根源不是努力不够，而是动物模型与人体在基因表达、代谢通路、免疫微环境上的系统性错位——动物-人体转化鸿沟（Translational Gap）让许多临床前有效的靶点在人体失效。</p>
+        <div class="problem-stat">临床试验失败率 &gt; 90%</div>
       </div>
       <div class="problem-card reveal reveal-d3">
         <div class="problem-num">03</div>
-        <div class="problem-title">科研知识严重碎片化</div>
-        <p class="problem-body">文献爆炸式增长，实验数据分散割裂，研究者的认知带宽已成系统性瓶颈，真正的洞察淹没在噪声中。</p>
-        <div class="problem-stat">COGNITIVE BOTTLENECK</div>
+        <div class="problem-title">点状工具的局限 · 范式性</div>
+        <p class="problem-body">当前市场上的 AI 产品多是点状工具——检索更快、写作更顺、某些环节自动化。这些是真实的进步，但本质是在旧范式上打补丁，触碰不到问题的结构。</p>
+        <div class="problem-stat">补丁 ≠ 基础设施</div>
       </div>
     </div>
   </div>
@@ -1337,35 +1781,35 @@ footer {
 <section id="landscape">
   <div class="section-inner">
     <div class="landscape-head">
-      <div class="section-label reveal" style="justify-content:center;">THE PLATFORM · 产品全景</div>
-      <h2 class="section-title reveal reveal-d1" style="margin-left:auto;margin-right:auto;text-align:center;">一个平台，覆盖<em>完整链路</em>。</h2>
-      <p class="section-sub reveal reveal-d2" style="margin-left:auto;margin-right:auto;text-align:center;">三层产品彼此打通——从个人助手到机构操作系统，再到临床级虚拟模型。数据与能力在同一平台内流通，而非孤立的工具堆叠。</p>
+      <div class="section-label reveal" style="justify-content:center;">产品矩阵</div>
+      <h2 class="section-title reveal reveal-d1" style="margin-left:auto;margin-right:auto;text-align:center;">一个 <em>Agent OS</em>，三层产品。</h2>
+      <p class="section-sub reveal reveal-d2" style="margin-left:auto;margin-right:auto;text-align:center;">知识、工具、数据在同一空间内连续流转——C 端的一次假设、B 端的一项任务、MaaS 的一次虚拟试验，彼此增强，而非孤立。</p>
     </div>
 
     <div class="landscape">
       <div class="layer layer-c reveal reveal-d1">
-        <span class="layer-tag">C 端 · 个人层</span>
+        <span class="layer-tag">C 端 · 个体研究者</span>
         <div>
-          <div class="layer-title">Medge AI <span class="en">+ SciLand</span></div>
-          <div class="layer-desc">让每个研究者都有一位 AI 科学家。文献、实验、写作、数据分析全程有 Agent 协同。</div>
+          <div class="layer-title">Agent 研究助理 <span class="en">+ Sciland 科研岛</span></div>
+          <div class="layer-desc">专属 AI 科学家——端到端打通文献、假设、方案、实验、数据、论文。</div>
         </div>
         <div class="layer-arrow">→</div>
       </div>
       <div class="layer-connector"></div>
       <div class="layer layer-b reveal reveal-d2">
-        <span class="layer-tag">B 端 · 机构层</span>
+        <span class="layer-tag">B 端 · 机构与药企</span>
         <div>
-          <div class="layer-title">Medge OS <span class="en">+ Smart Lab</span></div>
-          <div class="layer-desc">让每个实验室都能运行 AI 原生研究。统一管理数据、流程、协作与模型调用。</div>
+          <div class="layer-title">研究操作系统 <span class="en">+ 智能化实验室</span></div>
+          <div class="layer-desc">机构级研究中台——让研究能力从"各自为战"转向"平台可调度"。</div>
         </div>
         <div class="layer-arrow">→</div>
       </div>
       <div class="layer-connector"></div>
       <div class="layer layer-m reveal reveal-d3">
-        <span class="layer-tag">MaaS · 模型层</span>
+        <span class="layer-tag">MaaS · 临床药物研发</span>
         <div>
-          <div class="layer-title">Cell / Organ / Patient <span class="en">/ E-Cohort</span></div>
-          <div class="layer-desc">让临床试验在数字世界提前发生。四款自研模型覆盖从细胞到患者队列的完整尺度。</div>
+          <div class="layer-title">虚拟细胞 / 器官 / 患者 <span class="en">/ 队列</span></div>
+          <div class="layer-desc">直击转化鸿沟——四尺度人体模拟，把失败率从"运气"推向"工程确定性"。</div>
         </div>
         <div class="layer-arrow">→</div>
       </div>
@@ -1376,35 +1820,35 @@ footer {
 <!-- ━━━━━━━━━━━━━━━ PRODUCTS ━━━━━━━━━━━━━━━ -->
 <section id="products">
   <div class="section-inner">
-    <div class="section-label reveal">PRODUCTS · 核心产品</div>
-    <h2 class="section-title reveal reveal-d1">三条产品线，<em>同一套</em>底层能力。</h2>
-    <p class="section-sub reveal reveal-d2">按你的角色切换查看——每一层都针对一个真实的使用场景。</p>
+    <div class="section-label reveal">核心产品</div>
+    <h2 class="section-title reveal reveal-d1">三类角色，<em>三种系统级解法</em>。</h2>
+    <p class="section-sub reveal reveal-d2">个体研究者、科研机构、临床研发——各有归属，共享同一套 Agent OS 底座。</p>
 
     <div class="tabs reveal reveal-d3">
-      <button class="tab active" data-panel="c">C 端 · 科研者</button>
-      <button class="tab" data-panel="b">B 端 · 机构</button>
-      <button class="tab" data-panel="m">MaaS · 药企</button>
+      <button class="tab active" data-panel="c">C 端 · 研究者</button>
+      <button class="tab" data-panel="b">B 端 · 机构与药企</button>
+      <button class="tab" data-panel="m">MaaS · 临床研发</button>
     </div>
 
     <!-- ──── PANEL C ──── -->
     <div class="panel panel-c active" id="panel-c">
       <div class="panel-intro">
-        <h3 class="panel-title">你的私人 <em>AI 科学家</em>，全程在线。</h3>
-        <p class="panel-sub">无论你是临床医生、医学生还是科研人员，Medge AI 让文献检索、实验设计、报告撰写全程有 AI 协助。SciLand 进一步让多个 Agent 协同工作，实现科研工作流的自动化。</p>
+        <h3 class="panel-title">每一位研究者，<em>都有自己的 Agent</em>。</h3>
+        <p class="panel-sub">Agent 研究助理端到端打通科研工作流；Sciland 科研岛让多个 Agent 跨课题、跨机构协作，让知识在系统内流动。</p>
       </div>
 
       <div class="product-grid">
         <div class="product-card">
-          <div class="product-card-mark">M</div>
-          <div class="product-card-name">Medge AI <span class="en">· Assistant</span></div>
-          <div class="product-card-pos">文献检索、实验设计、报告撰写全流程辅助，降低科研认知负荷。</div>
+          <div class="product-card-mark">A</div>
+          <div class="product-card-name">Agent 研究助理 <span class="en">by Medge AI</span></div>
+          <div class="product-card-pos">专属 AI 科学家，端到端打通"文献–假设–方案–实验–数据–论文"。</div>
           <div class="product-card-users">→ 临床医生 · 医学生 · 科研人员</div>
         </div>
         <div class="product-card">
           <div class="product-card-mark">S</div>
-          <div class="product-card-name">SciLand <span class="en">· A2A Network</span></div>
-          <div class="product-card-pos">多 Agent 协同，A2A 任务自动化，串联科研工作流的每个环节。</div>
-          <div class="product-card-users">→ 需要自动化工作流的科研团队</div>
+          <div class="product-card-name">Sciland 科研岛 <span class="en">by Medge AI</span></div>
+          <div class="product-card-pos">Agent 驱动的科研平台，多智能体跨课题、跨机构协作。</div>
+          <div class="product-card-users">→ 有自动化科研工作流需求的团队</div>
         </div>
       </div>
 
@@ -1447,29 +1891,29 @@ footer {
       </div>
 
       <div class="panel-actions" style="margin-top:2.5rem;">
-        <a href="#" class="btn-panel">免费体验 Medge AI →</a>
-        <a href="#" class="btn-ghost">了解 SciLand</a>
+        <a href="#" class="btn-panel">免费体验 Agent 研究助理 →</a>
+        <a href="#" class="btn-ghost">了解 Sciland 科研岛</a>
       </div>
     </div>
 
     <!-- ──── PANEL B ──── -->
     <div class="panel panel-b" id="panel-b">
       <div class="panel-intro">
-        <h3 class="panel-title">AI <em>原生</em>研究基础设施，部署到你的机构。</h3>
-        <p class="panel-sub">Medge OS 统一管理实验数据、流程、协作与模型调用，配合智能实验室软硬件，让机构级 AI 研究真正落地——而非仅仅购买一个工具。</p>
+        <h3 class="panel-title">从"各自为战"，<em>转向</em>"平台可调度"。</h3>
+        <p class="panel-sub">研究操作系统统一调度知识、工具、算力与实验资源；智能化实验室让 Agent 直接驱动真实设备，形成"设计–执行–分析"的自动化闭环。</p>
       </div>
 
       <div class="product-grid">
         <div class="product-card">
           <div class="product-card-mark">O</div>
-          <div class="product-card-name">Medge OS <span class="en">· Research Platform</span></div>
-          <div class="product-card-pos">为科研机构打造的 AI 原生操作系统，统一管理数据、流程、协作与模型调用。</div>
-          <div class="product-card-users">→ 高校 · 医院科研部 · 独立实验室</div>
+          <div class="product-card-name">研究操作系统 <span class="en">by Medge AI</span></div>
+          <div class="product-card-pos">机构级研究中台，统一调度知识、工具、算力与实验资源。</div>
+          <div class="product-card-users">→ 高校 · 医院科研部 · 药企研发 · 独立实验室</div>
         </div>
         <div class="product-card">
           <div class="product-card-mark">L</div>
-          <div class="product-card-name">智能实验室 <span class="en">· Smart Lab</span></div>
-          <div class="product-card-pos">硬件 + AI 融合，实验自动化与智能分析，减少人工误差与重复劳动。</div>
+          <div class="product-card-name">智能化实验室 <span class="en">by Medge AI</span></div>
+          <div class="product-card-pos">Agent 直接驱动实验设备与数据流，实现实验自动化闭环。</div>
           <div class="product-card-users">→ 有仪器采购 / 升级需求的实验室</div>
         </div>
       </div>
@@ -1523,41 +1967,41 @@ footer {
       </div>
 
       <div class="panel-actions" style="margin-top:2.5rem;">
-        <a href="#" class="btn-panel">预约 Medge OS 演示 →</a>
-        <a href="#" class="btn-ghost">了解智能实验室方案</a>
+        <a href="#" class="btn-panel">预约研究操作系统演示 →</a>
+        <a href="#" class="btn-ghost">了解智能化实验室</a>
       </div>
     </div>
 
     <!-- ──── PANEL M ──── -->
     <div class="panel panel-m" id="panel-m">
       <div class="panel-intro">
-        <h3 class="panel-title">在数字世界里，先做 <em>一百万次</em> 实验。</h3>
-        <p class="panel-sub">四款自研模型覆盖从细胞到患者队列的完整生物医学尺度，均经同行评审验证，输出可溯源、可解释，满足临床研究的可信度要求。</p>
+        <h3 class="panel-title">对<em>转化鸿沟</em>的系统性解法。</h3>
+        <p class="panel-sub">在分子、细胞、器官、队列四个尺度上提供人体相关模拟——在真实临床试验之前完成大规模假设筛选，把研发失败率从"概率的运气"推向"机制的工程确定性"。</p>
       </div>
 
       <div class="product-grid">
         <div class="product-card">
           <div class="product-card-mark">C</div>
-          <div class="product-card-name">Medge Cell</div>
-          <div class="product-card-pos">细胞层面的药物响应预测，不再依赖培养皿实验。</div>
+          <div class="product-card-name">虚拟细胞 <span class="en">Virtual Cell</span></div>
+          <div class="product-card-pos">分子与细胞尺度的药物响应预测，取代培养皿环节。</div>
           <div class="product-card-users">→ 药企研发 · 临床前研究</div>
         </div>
         <div class="product-card">
           <div class="product-card-mark">O</div>
-          <div class="product-card-name">虚拟器官 <span class="en">· Organ</span></div>
-          <div class="product-card-pos">器官级生理模型，精准模拟毒性与疗效。</div>
+          <div class="product-card-name">虚拟器官 <span class="en">Virtual Organ</span></div>
+          <div class="product-card-pos">组织与器官尺度的功能模拟，精准预测毒性与疗效。</div>
           <div class="product-card-users">→ 安全评估 · 毒理研究</div>
         </div>
         <div class="product-card">
           <div class="product-card-mark">P</div>
-          <div class="product-card-name">虚拟患者 <span class="en">· Patient</span></div>
-          <div class="product-card-pos">患者数字孪生，预判个体化用药结果。</div>
+          <div class="product-card-name">虚拟患者 <span class="en">Virtual Patient</span></div>
+          <div class="product-card-pos">个体生理系统的综合响应建模，预判个体化用药结果。</div>
           <div class="product-card-users">→ 精准医疗 · II / III 期临床</div>
         </div>
         <div class="product-card">
           <div class="product-card-mark">E</div>
-          <div class="product-card-name">E-Cohort</div>
-          <div class="product-card-pos">AI 模拟临床队列，加速 I–III 期试验设计。</div>
+          <div class="product-card-name">虚拟队列 <span class="en">Virtual Cohort</span></div>
+          <div class="product-card-pos">人群尺度的试验设计与风险预测，加速 I–III 期临床。</div>
           <div class="product-card-users">→ 药企临床团队 · CRO 机构</div>
         </div>
       </div>
@@ -1617,25 +2061,25 @@ footer {
 <!-- ━━━━━━━━━━━━━━━ WHY MEDGE ━━━━━━━━━━━━━━━ -->
 <section id="why">
   <div class="section-inner">
-    <div class="section-label reveal">WHY MEDGE · 差异化</div>
-    <h2 class="section-title reveal reveal-d1">不是工具，<em>是科学家</em>。</h2>
-    <p class="section-sub reveal reveal-d2">我们用三条原则，把 Medge 与市场上"AI 套壳工具"彻底区分开。</p>
+    <div class="section-label reveal">差异化</div>
+    <h2 class="section-title reveal reveal-d1">不是工具，<em>是基础设施</em>。</h2>
+    <p class="section-sub reveal reveal-d2">三条原则，把 Medge 与市场上的"点状 AI 工具"区分开。</p>
 
     <div class="why-grid">
       <div class="why-card reveal reveal-d1" data-num="01">
-        <div class="why-index">01 / Foundation Models</div>
-        <div class="why-title">自研基础模型，不是 API 包装</div>
-        <p class="why-body">虚拟细胞、器官、患者、队列均基于自有训练数据与模型架构，具备领域专属推理能力，而非对通用大模型的简单封装。</p>
+        <div class="why-index">01 · 基础设施</div>
+        <div class="why-title">不是工具，是基础设施</div>
+        <p class="why-body">点状 AI 工具是在旧范式上打补丁——检索更快、写作更顺。Medge 建造的是基础设施级的系统：把数据、工具、实验室、研究者连接为闭环，让假设以最低摩擦抵达验证。</p>
       </div>
       <div class="why-card reveal reveal-d2" data-num="02">
-        <div class="why-index">02 / Full Stack</div>
-        <div class="why-title">三层能力互通，数据在同一平台内流动</div>
-        <p class="why-body">同一家公司打通个人助理、机构操作系统、临床级模型三个层级。数据与能力可以流通，而非拼凑集成的工具堆叠。</p>
+        <div class="why-index">02 · 统一底座</div>
+        <div class="why-title">统一 Agent OS，不是产品堆叠</div>
+        <p class="why-body">C 端的假设、B 端的任务、MaaS 的虚拟试验，跑在同一个知识、工具与数据空间内连续流转、彼此增强。这是与拼凑式集成工具的本质区别。</p>
       </div>
       <div class="why-card reveal reveal-d3" data-num="03">
-        <div class="why-index">03 / Scientific Rigor</div>
-        <div class="why-title">每个输出可溯源、可解释、经同行评审</div>
-        <p class="why-body">科学严谨性是第一优先级。所有模型均经同行评审验证，输出结果满足临床研究的可信度与可重复性要求。</p>
+        <div class="why-index">03 · 直击失败机制</div>
+        <div class="why-title">直击动物-人体转化鸿沟</div>
+        <p class="why-body">临床失败率的改善，不靠更多动物实验，而靠人体相关的多尺度模拟。Medge 的 MaaS 层在细胞、器官、患者、队列四个尺度上回应这一失败机制——把研发效率从"运气"推向"工程确定性"。</p>
       </div>
     </div>
   </div>
@@ -1646,20 +2090,173 @@ footer {
   <div class="section-inner">
     <div class="trust-grid">
       <div class="trust-item reveal">
-        <div class="trust-num">5,000<sup>+</sup></div>
-        <div class="trust-label">医疗科研用户<br>使用 Medge 产品</div>
+        <div class="trust-num">10<sup>+</sup></div>
+        <div class="trust-label">顶级医院与院所合作落地</div>
       </div>
       <div class="trust-item reveal reveal-d1">
-        <div class="trust-num">4,000<sup>万</sup></div>
-        <div class="trust-label">独家文献数据库<br>覆盖生物医学核心期刊</div>
+        <div class="trust-num">4<sup>尺度</sup></div>
+        <div class="trust-label">细胞 · 器官 · 患者 · 队列</div>
       </div>
       <div class="trust-item reveal reveal-d2">
-        <div class="trust-num">99<sup>%</sup></div>
-        <div class="trust-label">医学专业知识准确率<br>经同行评审验证</div>
+        <div class="trust-num">SCI<sup>✦</sup></div>
+        <div class="trust-label">多篇顶刊论文 · 专利背书</div>
       </div>
-      <div class="trust-item reveal reveal-d3">
-        <div class="trust-num">10<sup>亿+</sup></div>
-        <div class="trust-label">年服务模型调用量<br>覆盖细胞到队列尺度</div>
+    </div>
+
+    <!-- Partner logo wall -->
+    <div class="logo-wall reveal reveal-d2">
+      <div class="logo-wall-label">合作机构</div>
+      <div class="logo-wall-grid">
+        <div class="logo-chip">北京协和医学院</div>
+        <div class="logo-chip">北京大学</div>
+        <div class="logo-chip">清华大学医学院</div>
+        <div class="logo-chip">复旦大学附属医院</div>
+        <div class="logo-chip">上海交大医学院</div>
+        <div class="logo-chip">中山大学</div>
+        <div class="logo-chip">University of Oxford</div>
+        <div class="logo-chip">+ 更多</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━ L0-L5 AUTONOMY LEVELS ━━━━━━━━━━━━━━━ -->
+<section id="levels">
+  <div class="section-inner">
+    <div class="section-label reveal">自主性分级框架</div>
+    <h2 class="section-title reveal reveal-d1">生物医学 AI 科学家的 <em>L0–L5</em>。</h2>
+    <p class="section-sub reveal reveal-d2">参照自动驾驶的分级框架，我们为生物医学 AI 科学家定义了同样的自主性坐标系——自主决策能力与知识闭环完整性沿 L0 到 L5 逐级递增。Medge AI 当前位于 L2.5，目标是 L4 及更远。</p>
+
+    <!-- ───── Interactive level axis ───── -->
+    <div class="levels-viz reveal reveal-d3">
+      <div class="levels-rail">
+        <div class="levels-rail-base"></div>
+        <div class="levels-rail-fill"></div>
+      </div>
+
+      <div class="levels-nodes">
+        <div class="level-node" data-state="past" data-level="L0">
+          <div class="level-dot"><span class="level-dot-inner"></span></div>
+          <div class="level-stub">
+            <div class="level-code">L0</div>
+            <div class="level-name">无自动化</div>
+          </div>
+        </div>
+        <div class="level-node" data-state="past" data-level="L1">
+          <div class="level-dot"><span class="level-dot-inner"></span></div>
+          <div class="level-stub">
+            <div class="level-code">L1</div>
+            <div class="level-name">单点辅助</div>
+          </div>
+        </div>
+        <div class="level-node" data-state="past" data-level="L2">
+          <div class="level-dot"><span class="level-dot-inner"></span></div>
+          <div class="level-stub">
+            <div class="level-code">L2</div>
+            <div class="level-name">多点协同</div>
+          </div>
+        </div>
+        <div class="level-node" data-state="current" data-level="L2.5">
+          <div class="level-flag current-flag">当前 · Medge AI</div>
+          <div class="level-dot current-dot">
+            <span class="level-dot-pulse"></span>
+            <span class="level-dot-inner"></span>
+          </div>
+          <div class="level-stub">
+            <div class="level-code current-code">L2.5</div>
+            <div class="level-name">增强协同</div>
+          </div>
+        </div>
+        <div class="level-node" data-state="future" data-level="L3">
+          <div class="level-dot"><span class="level-dot-inner"></span></div>
+          <div class="level-stub">
+            <div class="level-code">L3</div>
+            <div class="level-name">条件自主</div>
+          </div>
+        </div>
+        <div class="level-node" data-state="target" data-level="L4">
+          <div class="level-flag target-flag">目标 · Medge</div>
+          <div class="level-dot target-dot"><span class="level-dot-inner"></span></div>
+          <div class="level-stub">
+            <div class="level-code target-code">L4</div>
+            <div class="level-name">高度自主</div>
+          </div>
+        </div>
+        <div class="level-node" data-state="future" data-level="L5">
+          <div class="level-dot"><span class="level-dot-inner"></span></div>
+          <div class="level-stub">
+            <div class="level-code">L5</div>
+            <div class="level-name">通用智能</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="levels-axis-caption">
+        <span>人类全程监管</span>
+        <span class="levels-axis-grow">自主决策能力与知识闭环完整性递增</span>
+        <span>智能体全程自主</span>
+      </div>
+    </div>
+
+    <!-- ───── Level detail cards ───── -->
+    <div class="levels-detail-grid">
+      <div class="level-card reveal reveal-d1" data-state="past">
+        <div class="level-card-head">
+          <span class="level-card-code">L0</span>
+          <span class="level-card-name">无自动化</span>
+        </div>
+        <p class="level-card-desc">人类主导所有决策，AI 为被动工具。</p>
+        <div class="level-card-eg">典型：办公软件、统计工具、OA 系统</div>
+      </div>
+      <div class="level-card reveal reveal-d1" data-state="past">
+        <div class="level-card-head">
+          <span class="level-card-code">L1</span>
+          <span class="level-card-name">单点辅助</span>
+        </div>
+        <p class="level-card-desc">单一特定任务自动化，研究者全程决策。</p>
+        <div class="level-card-eg">典型：AlphaFold 结构预测、分类模型</div>
+      </div>
+      <div class="level-card reveal reveal-d2" data-state="past">
+        <div class="level-card-head">
+          <span class="level-card-code">L2</span>
+          <span class="level-card-name">多点协同</span>
+        </div>
+        <p class="level-card-desc">多任务串联执行，人类需全程监督、验证每个环节。</p>
+        <div class="level-card-eg">典型：智能体系统、半自动数据分析</div>
+      </div>
+      <div class="level-card current reveal reveal-d2" data-state="current">
+        <div class="level-card-head">
+          <span class="level-card-code">L2.5</span>
+          <span class="level-card-name">增强协同</span>
+          <span class="level-card-flag">当前</span>
+        </div>
+        <p class="level-card-desc">端到端工作流闭环，AI 主动检测不确定性，干湿实验联通、实时协同。</p>
+        <div class="level-card-eg">典型：Medge AI 当前产品形态</div>
+      </div>
+      <div class="level-card reveal reveal-d3" data-state="future">
+        <div class="level-card-head">
+          <span class="level-card-code">L3</span>
+          <span class="level-card-name">条件自主</span>
+        </div>
+        <p class="level-card-desc">特定场景下独立完成完整研究循环，数据反馈自动决策。</p>
+        <div class="level-card-eg">典型：场景化全自动科研、专家数字分身</div>
+      </div>
+      <div class="level-card target reveal reveal-d3" data-state="target">
+        <div class="level-card-head">
+          <span class="level-card-code">L4</span>
+          <span class="level-card-name">高度自主</span>
+          <span class="level-card-flag target">目标</span>
+        </div>
+        <p class="level-card-desc">跨学科、跨机构的自主研究，可从失败中自我调整。</p>
+        <div class="level-card-eg">典型：动态资源调度、跨机构协同研究</div>
+      </div>
+      <div class="level-card reveal reveal-d4" data-state="future">
+        <div class="level-card-head">
+          <span class="level-card-code">L5</span>
+          <span class="level-card-name">通用智能</span>
+        </div>
+        <p class="level-card-desc">全领域自主定义问题与解决，通用级科研智能。</p>
+        <div class="level-card-eg">典型：AGI 级科研智能</div>
       </div>
     </div>
   </div>
@@ -1668,26 +2265,26 @@ footer {
 <!-- ━━━━━━━━━━━━━━━ AUDIENCE ━━━━━━━━━━━━━━━ -->
 <section id="audience">
   <div class="section-inner">
-    <div class="section-label reveal">SOLUTIONS · 解决方案</div>
+    <div class="section-label reveal">解决方案</div>
     <h2 class="section-title reveal reveal-d1">你是<em>哪种角色？</em></h2>
-    <p class="section-sub reveal reveal-d2">Medge 为三类用户提供不同深度的入口——找到适合你的那一条路径。</p>
+    <p class="section-sub reveal reveal-d2">三条入口，对应三类用户的真实使用场景。</p>
 
     <div class="audience-grid">
       <div class="audience-card c reveal reveal-d1">
         <div class="audience-icon">R</div>
-        <div class="audience-role">FOR RESEARCHERS</div>
-        <div class="audience-title">科研人员 & 临床医生</div>
-        <p class="audience-body">文献、实验、写作、数据分析，全程有 AI 科学家协助。从今天开始，让 Medge AI 成为你的研究伙伴。</p>
+        <div class="audience-role">科研者</div>
+        <div class="audience-title">扩展你的科研带宽</div>
+        <p class="audience-body">拥有自己的 Agent 研究助理——端到端打通文献、假设、方案、实验、数据、论文。</p>
         <a href="#" class="audience-cta">
-          免费体验 Medge AI
+          免费体验 Agent 研究助理
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 8h12M9 3l5 5-5 5"/></svg>
         </a>
       </div>
       <div class="audience-card b reveal reveal-d2">
         <div class="audience-icon">I</div>
-        <div class="audience-role">FOR INSTITUTIONS</div>
-        <div class="audience-title">医院 · 高校 · 实验室</div>
-        <p class="audience-body">Medge OS + 智能实验室提供完整的 AI 研究基础设施，从数据管理到仪器智能化，全面部署 AI 原生科研能力。</p>
+        <div class="audience-role">机构 & 药企</div>
+        <div class="audience-title">让研究能力可调度</div>
+        <p class="audience-body">研究操作系统 + 智能化实验室，统一调度知识、工具、算力与实验资源。</p>
         <a href="#" class="audience-cta">
           预约机构演示
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 8h12M9 3l5 5-5 5"/></svg>
@@ -1695,9 +2292,9 @@ footer {
       </div>
       <div class="audience-card m reveal reveal-d3">
         <div class="audience-icon">P</div>
-        <div class="audience-role">FOR PHARMA</div>
-        <div class="audience-title">药企 & 临床研究团队</div>
-        <p class="audience-body">虚拟细胞、器官、患者、队列一站式 MaaS。在数字世界提前完成你的试验，加速 I–III 期临床设计。</p>
+        <div class="audience-role">临床研发</div>
+        <div class="audience-title">在虚拟人体上先做试验</div>
+        <p class="audience-body">虚拟细胞、器官、患者、队列一站式模拟——直击转化鸿沟（Translational Gap）。</p>
         <a href="#" class="audience-cta">
           联系 MaaS 商务
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 8h12M9 3l5 5-5 5"/></svg>
@@ -1707,12 +2304,25 @@ footer {
   </div>
 </section>
 
+<!-- ━━━━━━━━━━━━━━━ VISION QUOTE ━━━━━━━━━━━━━━━ -->
+<section id="vision">
+  <div class="section-inner">
+    <div class="vision-box reveal">
+      <div class="vision-eyebrow">愿景</div>
+      <blockquote class="vision-quote">
+        科研史上最大的浪费，<br>是知识的<em>孤立</em>。
+      </blockquote>
+      <p class="vision-body">Medge AI 的终极形态，是一个链接全球百万科学家与自动化实验室的研究网络——让科研资源从"个体依赖"，转向"平台可调度"。</p>
+    </div>
+  </div>
+</section>
+
 <!-- ━━━━━━━━━━━━━━━ CLOSING CTA ━━━━━━━━━━━━━━━ -->
 <section id="cta">
   <div class="cta-box reveal">
     <div class="cta-eyebrow">GET STARTED</div>
-    <h2 class="cta-title">Let AI <br>do&nbsp;the&nbsp;science.</h2>
-    <p class="cta-sub">从一次文献检索、一个实验设计、一次队列模拟开始——看看 Medge 能让你的研究快多少。</p>
+    <h2 class="cta-title">Build the new<br>research&nbsp;<em>infrastructure.</em></h2>
+    <p class="cta-sub">从一次文献检索、一个实验设计、一次虚拟试验开始——和我们一起构建智能时代的科研基础设施。</p>
     <div class="cta-actions">
       <a href="#" class="btn btn-primary">
         开始使用
@@ -1731,25 +2341,25 @@ footer {
         <span class="nav-logo-mark"></span>
         Medge<span style="font-family:var(--font-display);font-style:italic;font-weight:400;margin-left:2px;"> AI</span>
       </div>
-      <div class="footer-tagline">AI Scientist for Medicine.</div>
-      <div class="footer-blurb">把医学研究的完整链路搬入数字世界，让 AI 成为每一位研究者与每一次临床试验的协作者。</div>
+      <div class="footer-tagline">Agent OS for Medicine.</div>
+      <div class="footer-blurb">为智能时代的科研构建基础设施——让每一位科学家都拥有自己的 Agent，让整个科研网络可规模化地协作。</div>
     </div>
     <div class="footer-col">
       <div class="footer-col-title">产品</div>
       <ul>
-        <li><a href="#">Medge AI</a></li>
-        <li><a href="#">SciLand</a></li>
-        <li><a href="#">Medge OS</a></li>
-        <li><a href="#">智能实验室</a></li>
-        <li><a href="#">MaaS 模型</a></li>
+        <li><a href="#">Agent 研究助理</a></li>
+        <li><a href="#">Sciland 科研岛</a></li>
+        <li><a href="#">研究操作系统</a></li>
+        <li><a href="#">智能化实验室</a></li>
+        <li><a href="#">MaaS 虚拟模型</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <div class="footer-col-title">解决方案</div>
       <ul>
-        <li><a href="#">面向科研人员</a></li>
-        <li><a href="#">面向医院 & 高校</a></li>
-        <li><a href="#">面向药企</a></li>
+        <li><a href="#">面向研究者</a></li>
+        <li><a href="#">面向机构 & 药企</a></li>
+        <li><a href="#">面向临床研发</a></li>
         <li><a href="#">研究案例</a></li>
       </ul>
     </div>
