@@ -41,6 +41,7 @@ class DynamicContentLoader {
     this.loadTalks();
     this.loadResources();
     this.loadProjectFilters();
+    this.loadSemanticScholarCitations();
     
     // 重新初始化所有交互功能
     this.reinitializeInteractions();
@@ -84,6 +85,16 @@ class DynamicContentLoader {
       emailElements[0].textContent = personal.contact.emails[0];
       emailElements[1].href = `mailto:${personal.contact.emails[1]}`;
       emailElements[1].textContent = personal.contact.emails[1];
+    }
+
+    // 更新简历下载链接
+    const cvEnglishLink = document.querySelector('.cv-download-en');
+    const cvChineseLink = document.querySelector('.cv-download-ch');
+    if (cvEnglishLink && personal.contact.cvEnglish) {
+      cvEnglishLink.href = personal.contact.cvEnglish;
+    }
+    if (cvChineseLink && personal.contact.cvChinese) {
+      cvChineseLink.href = personal.contact.cvChinese;
     }
 
     // 更新社交链接
@@ -149,10 +160,14 @@ class DynamicContentLoader {
         const pubItem = document.createElement('div');
         pubItem.className = 'publication-item card';
         
-        // 处理作者列表，高亮自己的名字
-        const authorsString = item.authors.map(author => 
-          author.includes('Youcheng Li') ? `<strong>${author}</strong>` : author
-        ).join(', ');
+        // 处理作者列表，高亮自己的名字，并标注共同第一作者
+        const authorsString = item.authors.map(author => {
+          const coFirstMark = item.coFirst?.includes(author) ? '<sup>†</sup>' : '';
+          const authorText = `${author}${coFirstMark}`;
+          return author.includes('Youcheng Li') ? `<strong>${authorText}</strong>` : authorText;
+        }).join(', ');
+        const coFirstNote = item.coFirst?.length ?
+          '<span class="publication-note">† co-first author</span>' : '';
         
         // 处理期刊信息
         const venueInfo = item.volume && item.issue ? 
@@ -172,14 +187,13 @@ class DynamicContentLoader {
           }).join('');
         }
         
-        // 引用数
-        const citationsHTML = item.citations ? 
-          `<div class="citation-count mt-2"><i class="fas fa-quote-right"></i> ${item.citations} citations</div>` : '';
+        // 引用数，从 Semantic Scholar API 动态更新
+        const citationsHTML = this.renderCitationCount(item, 'mt-2');
         
         pubItem.innerHTML = `
           <div class="publication-content">
             <h4 class="publication-title">${item.title}</h4>
-            <div class="publication-authors">${authorsString}</div>
+            <div class="publication-authors">${authorsString} ${coFirstNote}</div>
             <div class="publication-venue">
               <i class="fas fa-book"></i> ${venueInfo}
             </div>
@@ -260,6 +274,177 @@ class DynamicContentLoader {
   }
 
   /**
+   * 生成引用数占位，随后由 Semantic Scholar API 更新
+   */
+  renderCitationCount(item, extraClass = '') {
+    const semanticScholarId = this.getSemanticScholarId(item);
+    const fallback = Number.isFinite(item.citations) ? item.citations : null;
+
+    if (!semanticScholarId && fallback === null) {
+      return '';
+    }
+
+    const classes = ['citation-count'];
+    if (extraClass) classes.push(extraClass);
+    if (semanticScholarId) classes.push('is-loading');
+
+    const dataId = semanticScholarId ? ` data-semantic-scholar-id="${semanticScholarId}"` : '';
+    const dataFallback = fallback !== null ? ` data-citation-fallback="${fallback}"` : '';
+    const label = semanticScholarId ? 'Citations loading' : this.formatCitationLabel(fallback);
+
+    return `<div class="${classes.join(' ')}"${dataId}${dataFallback}>
+      <i class="fas fa-quote-right"></i>
+      <span class="citation-label">${label}</span>
+    </div>`;
+  }
+
+  /**
+   * 从显式配置或论文链接推断 Semantic Scholar 支持的 paper id
+   */
+  getSemanticScholarId(item) {
+    if (item.semanticScholarId) {
+      return item.semanticScholarId;
+    }
+
+    const links = item.links || [];
+    for (const link of links) {
+      const url = link.url || '';
+
+      const arxivMatch = url.match(/arxiv\.org\/(?:abs|pdf)\/([0-9.]+)(?:v\d+)?/i);
+      if (arxivMatch) {
+        return `ARXIV:${arxivMatch[1]}`;
+      }
+
+      const plosMatch = url.match(/[?&]id=(10\.\d+\/journal\.[^&#]+)/i);
+      if (plosMatch) {
+        return `DOI:${decodeURIComponent(plosMatch[1])}`;
+      }
+
+      const springerMatch = url.match(/\/chapter\/(10\.1007\/[^?#]+)/i);
+      if (springerMatch) {
+        return `DOI:${decodeURIComponent(springerMatch[1])}`;
+      }
+
+      const natureMatch = url.match(/nature\.com\/articles\/([^/?#]+)/i);
+      if (natureMatch) {
+        return `DOI:10.1038/${decodeURIComponent(natureMatch[1])}`;
+      }
+    }
+
+    return '';
+  }
+
+  /**
+   * 使用 Semantic Scholar Graph API 批量更新引用数
+   */
+  async loadSemanticScholarCitations() {
+    const citationElements = Array.from(document.querySelectorAll('[data-semantic-scholar-id]'));
+    if (citationElements.length === 0) return;
+
+    const citationIds = Array.from(new Set(
+      citationElements.map(element => element.dataset.semanticScholarId).filter(Boolean)
+    ));
+
+    const missingIds = [];
+    citationIds.forEach(id => {
+      const cachedPaper = this.getCachedSemanticScholarPaper(id);
+      if (cachedPaper !== undefined) {
+        this.updateCitationElements(id, cachedPaper);
+      } else {
+        missingIds.push(id);
+      }
+    });
+
+    if (missingIds.length === 0) return;
+
+    try {
+      const response = await fetch('https://api.semanticscholar.org/graph/v1/paper/batch?fields=title,citationCount,url', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ ids: missingIds })
+      });
+
+      if (!response.ok) {
+        throw new Error(`Semantic Scholar API returned ${response.status}`);
+      }
+
+      const papers = await response.json();
+      missingIds.forEach((id, index) => {
+        const paper = papers[index] || null;
+        this.cacheSemanticScholarPaper(id, paper);
+        this.updateCitationElements(id, paper);
+      });
+    } catch (error) {
+      console.warn('Failed to load citation counts from Semantic Scholar:', error);
+      missingIds.forEach(id => this.updateCitationElements(id, null));
+    }
+  }
+
+  getCachedSemanticScholarPaper(id) {
+    try {
+      const cacheKey = `semantic-scholar-citations:${id}`;
+      const cachedValue = localStorage.getItem(cacheKey);
+      if (!cachedValue) return undefined;
+
+      const cached = JSON.parse(cachedValue);
+      const maxAge = 24 * 60 * 60 * 1000;
+      if (!cached.fetchedAt || Date.now() - cached.fetchedAt > maxAge) {
+        localStorage.removeItem(cacheKey);
+        return undefined;
+      }
+
+      return cached.paper;
+    } catch (error) {
+      return undefined;
+    }
+  }
+
+  cacheSemanticScholarPaper(id, paper) {
+    try {
+      const cacheKey = `semantic-scholar-citations:${id}`;
+      localStorage.setItem(cacheKey, JSON.stringify({
+        fetchedAt: Date.now(),
+        paper
+      }));
+    } catch (error) {
+      // localStorage can be unavailable in privacy-restricted contexts.
+    }
+  }
+
+  updateCitationElements(id, paper) {
+    const elements = Array.from(document.querySelectorAll('[data-semantic-scholar-id]'))
+      .filter(element => element.dataset.semanticScholarId === id);
+
+    elements.forEach(element => {
+      const labelElement = element.querySelector('.citation-label');
+      if (!labelElement) return;
+
+      if (paper && Number.isFinite(paper.citationCount)) {
+        labelElement.textContent = this.formatCitationLabel(paper.citationCount);
+        element.classList.remove('is-loading', 'is-unavailable');
+        element.title = 'Citation count from Semantic Scholar';
+        return;
+      }
+
+      const fallback = Number.parseInt(element.dataset.citationFallback, 10);
+      if (Number.isFinite(fallback)) {
+        labelElement.textContent = this.formatCitationLabel(fallback);
+        element.classList.remove('is-loading');
+        element.classList.add('is-unavailable');
+        element.title = 'Fallback citation count; Semantic Scholar data is unavailable';
+      } else {
+        element.remove();
+      }
+    });
+  }
+
+  formatCitationLabel(count) {
+    return `${count} ${count === 1 ? 'citation' : 'citations'}`;
+  }
+
+  /**
    * 动态加载Projects部分
    */
   loadProjects() {
@@ -300,9 +485,8 @@ class DynamicContentLoader {
         </a>`;
       }).join('');
       
-      // 引用数
-      const citationsHTML = project.citations ? 
-        `<div class="citation-count"><i class="fas fa-quote-right"></i> ${project.citations} citations</div>` : '';
+      // 引用数，从 Semantic Scholar API 动态更新
+      const citationsHTML = this.renderCitationCount(project);
       
       projectCard.innerHTML = `
         <div class="project-image">
@@ -505,6 +689,7 @@ class DynamicContentLoader {
       'pdf': 'PDF',
       'demo': 'Demo',
       'code': 'Code',
+      'dataset': 'Dataset',
       'bibtex': 'BibTeX'
     };
     return typeMap[type] || 'Link';
@@ -521,6 +706,7 @@ class DynamicContentLoader {
       'pdf': 'fas fa-file-pdf',
       'demo': 'fas fa-play-circle',
       'code': 'fas fa-code',
+      'dataset': 'fas fa-database',
       'bibtex': 'fas fa-quote-left'
     };
     return iconMap[type] || 'fas fa-link';
@@ -610,7 +796,7 @@ class DynamicContentLoader {
   journal={${item.venue}},
   year={${year}}
 }`;
-    } else if (item.venue.includes('MICCAI')) {
+    } else if (item.venue.includes('MICCAI') || item.venue.includes('KDD') || item.venue.includes('Conference')) {
       return `@inproceedings{${firstAuthor}${year}${title},
   title={${item.title}},
   author={${item.authors.join(' and ')}},

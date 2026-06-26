@@ -1,0 +1,385 @@
+\documentclass[10pt, letterpaper]{article}
+
+% Packages:
+\usepackage[
+    ignoreheadfoot,
+    top=2 cm,
+    bottom=1.5 cm,
+    left=2 cm,
+    right=2 cm,
+    footskip=1.0 cm,
+]{geometry}
+\usepackage{titlesec}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{primaryColor}{RGB}{0, 79, 144}
+\usepackage{enumitem}
+\usepackage{etoolbox}
+\usepackage{xparse}
+\IfFileExists{fontawesome5.sty}{
+    \usepackage{fontawesome5}
+}{
+    \NewDocumentCommand{\faMapMarker}{s}{\textbullet}
+    \NewDocumentCommand{\faPhone}{s}{\textbullet}
+    \NewDocumentCommand{\faExternalLink}{s}{}
+    \NewDocumentCommand{\faEnvelope}{O{}}{\textbullet}
+    \NewDocumentCommand{\faLink}{}{\textbullet}
+}
+\usepackage{amsmath}
+\usepackage[
+    pdftitle={Youcheng Li's CV},
+    pdfauthor={Youcheng Li},
+    pdfcreator={LaTeX with RenderCV},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref}
+\usepackage[pscoord]{eso-pic}
+\usepackage{calc}
+\usepackage{bookmark}
+\usepackage{lastpage}
+\usepackage{changepage}
+\usepackage{paracol}
+\usepackage{ifthen}
+\usepackage{needspace}
+\usepackage{iftex}
+
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
+
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt}
+\pagestyle{empty}
+\setcounter{secnumdepth}{0}
+\setlength{\parindent}{0pt}
+\setlength{\topskip}{0pt}
+\setlength{\columnsep}{0cm}
+\makeatletter
+\let\ps@customFooterStyle\ps@plain
+\patchcmd{\ps@customFooterStyle}{\thepage}{
+    \color{gray}\textit{\small Youcheng Li - Page \thepage{} of \pageref*{LastPage}}
+}{}{}
+\makeatother
+\pagestyle{customFooterStyle}
+
+\titleformat{\section}{\needspace{4\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+
+\titlespacing{\section}{
+    -1pt
+}{
+    0.3 cm
+}{
+    0.2 cm
+}
+
+\renewcommand\labelitemi{$\circ$}
+\newenvironment{highlights}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=0.4 cm + 10pt
+    ]
+}{
+    \end{itemize}
+}
+
+\newenvironment{highlightsforbulletentries}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=10pt
+    ]
+}{
+    \end{itemize}
+}
+
+\newenvironment{onecolentry}{
+    \begin{adjustwidth}{
+        0.2 cm + 0.00001 cm
+    }{
+        0.2 cm + 0.00001 cm
+    }
+}{
+    \end{adjustwidth}
+}
+
+\newenvironment{twocolentry}[2][]{
+    \onecolentry
+    \def\secondColumn{#2}
+    \setcolumnwidth{\fill, 4.5 cm}
+    \begin{paracol}{2}
+}{
+    \switchcolumn \raggedleft \secondColumn
+    \end{paracol}
+    \endonecolentry
+}
+
+\newenvironment{header}{
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}
+}{
+    \par\kern\topsep
+}
+
+\newcommand{\placelastupdatedtext}{%
+  \AddToShipoutPictureFG*{%
+    \put(
+        \LenToUnit{\paperwidth-2 cm-0.2 cm+0.05cm},
+        \LenToUnit{\paperheight-1.0 cm}
+    ){\vtop{{\null}\makebox[0pt][c]{
+        \small\color{gray}\textit{Last updated in June 2026}\hspace{\widthof{Last updated in June 2026}}
+    }}}%
+  }%
+}%
+
+\let\hrefWithoutArrow\href
+\renewcommand{\href}[2]{\hrefWithoutArrow{#1}{\ifthenelse{\equal{#2}{}}{ }{#2 }\raisebox{.15ex}{\footnotesize \faExternalLink*}}}
+
+
+\begin{document}
+    \newcommand{\AND}{\unskip
+        \cleaders\copy\ANDbox\hskip\wd\ANDbox
+        \ignorespaces
+    }
+    \newsavebox\ANDbox
+    \sbox\ANDbox{}
+
+    \placelastupdatedtext
+    \begin{header}
+        \textbf{\fontsize{24 pt}{24 pt}\selectfont Youcheng Li}
+
+        \vspace{0.3 cm}
+
+        \normalsize
+        \mbox{{\color{black}\footnotesize\faMapMarker*}\hspace*{0.13cm}Peking University}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{mailto:youchengli@stu.pku.edu.cn}{\color{black}{\footnotesize\faEnvelope[regular]}\hspace*{0.13cm}youchengli@stu.pku.edu.cn}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{tel:+86 13686820202}{\color{black}{\footnotesize\faPhone*}\hspace*{0.13cm}+86 13686820202}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{https://youchengli.com/}{\color{black}{\footnotesize\faLink}\hspace*{0.13cm}youchengli.com}}%
+    \end{header}
+
+    \vspace{0.2 cm}
+
+    \begin{onecolentry}
+        \centering
+        \small\color{gray}
+        Born in June 2001\quad$|$\quad CPC Member\quad$|$\quad Han Chinese
+    \end{onecolentry}
+
+    \vspace{0.3 cm - 0.3 cm}
+
+
+    \section{Profile}
+
+        \begin{onecolentry}
+I am a Ph.D. student in Artificial Intelligence at the \href{https://www.cis.pku.edu.cn/}{School of Intelligence Science and Technology}, Peking University, advised by \href{http://www.liweiwang-pku.com/}{Prof. Liwei Wang}. My research focuses on medical AI, especially applications of computer vision, generative models, and reasoning systems in biomedical imaging and drug discovery. I have published multiple papers in leading journals and conferences, including \textbf{Nature Biomedical Engineering}, \textbf{KDD}, and \textbf{MICCAI}, with several co-first-author contributions. On the industry side, I co-founded \textbf{Beijing Yisuo Technology Co., Ltd.} and serve as CTO, leading the development of the \textbf{AI Scientist} agent system, which has been deployed at leading Grade-A tertiary hospitals, top universities, and publicly listed pharmaceutical companies in China and abroad. I also helped the company complete tens of millions of RMB in early-stage financing. Mission: build medical AI systems that truly reach practice and serve human health and life science research.
+        \end{onecolentry}
+
+
+    \section{Education}
+
+        \begin{twocolentry}{
+            \textit{Sep 2019 -- Jul 2023}}
+            \textbf{Xi'an Jiaotong University}
+
+            \textit{B.Eng. in Artificial Intelligence}
+        \end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item GPA: 4.0/4.3
+                \item \textbf{Scholarships:} National Scholarship (top 1\%), Mitacs Globalink Research Award (top 1\%), China Scholarship Council Scholarship (top 1\%), MEGVII Scholarship (top 3\%), Zheng Guobin Scholarship (top 3\%)
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            \textit{Sep 2023 -- Present}
+
+            \textit{Expected Jul 2028}}
+            \textbf{Peking University}
+
+            \textit{Ph.D. in Engineering, Artificial Intelligence}
+        \end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Advised by Prof. Liwei Wang; research focus on medical AI, generative models, and AI agent systems for biomedical applications
+                \item \textbf{Scholarship:} National Scholarship (top 1\%)
+            \end{highlights}
+        \end{onecolentry}
+
+
+    \section{Experience}
+
+\begin{twocolentry}{
+    \textit{Beijing}
+
+    \textit{Jun 2025 -- Present}
+}
+    \textbf{Co-founder \& CTO}
+
+    \textit{Beijing Yisuo Technology Co., Ltd.}
+\end{twocolentry}
+
+\vspace{0.10 cm}
+\begin{onecolentry}
+    \begin{highlights}
+        \item As co-founder and CTO, lead the company's overall technical strategy and product roadmap. The core product is the \textbf{AI Scientist} software-hardware agent system for biomedical R\&D and scientific research.
+        \item Built and led cross-functional engineering teams across front-end, back-end, and AI agent development, driving timely delivery of the MVP and subsequent versions.
+        \item Led end-to-end R\&D of the agent system, including architecture design, prompt engineering and optimization, and toolchain integration, significantly improving system performance and stability.
+        \item Led the Physical AI technology roadmap, system design, and proof-of-concept demo development.
+        \item Designed the technical roadmap for scientific world models, including model training and evaluation.
+        \item Drove commercial deployment of the AI Scientist platform at leading Grade-A tertiary hospitals, top universities, and publicly listed pharmaceutical companies in China and abroad.
+        \item Deeply involved in business development and financing, helping the company complete tens of millions of RMB in seed financing and supporting subsequent fundraising efforts.
+    \end{highlights}
+\end{onecolentry}
+
+\vspace{0.2 cm}
+
+\begin{twocolentry}{
+    \textit{Beijing}
+
+    \textit{Jan 2023 -- Jun 2025}
+}
+    \textbf{Algorithm Research Intern}
+
+    \textit{Yizhun Intelligent Technology (Beijing) Co., Ltd.}
+\end{twocolentry}
+
+\vspace{0.10 cm}
+\begin{onecolentry}
+    \begin{highlights}
+        \item Led deep learning algorithm R\&D for breast cancer screening and diagnosis; related work was published at \textbf{MICCAI 2023} and in \textbf{Nature Biomedical Engineering} as co-first-author contributions.
+        \item Developed a real-time dynamic lesion detection algorithm for breast ultrasound, achieving \textbf{sensitivity $>$95\%} and reducing inference latency by \textbf{15\%} through model compression and hardware acceleration.
+        \item Designed a deep-learning-based intelligent diagnosis algorithm for ductal carcinoma in situ (DCIS), winning the \textbf{National First Prize} in the 2nd National Digital Health Innovation Application Competition hosted by the National Health Commission.
+        \item Built a foundational generative model for breast ultrasound, enabling high-fidelity synthetic data generation and supporting large-scale training for multiple downstream diagnostic tasks.
+    \end{highlights}
+\end{onecolentry}
+
+\vspace{0.2 cm}
+
+\begin{twocolentry}{
+    \textit{Canada (Remote)}
+
+    \textit{Sep 2022 -- Jul 2023}
+}
+    \textbf{Research Assistant}
+
+    \textit{Western University}
+\end{twocolentry}
+
+\vspace{0.10 cm}
+\begin{onecolentry}
+    \begin{highlights}
+        \item Supported by Mitacs and the China Scholarship Council, conducted research on cell segmentation for spatial transcriptomics under the supervision of Prof. Pingzhao Hu; proposed a multi-scale manifold learning method and published the work in \textbf{PLOS Computational Biology} as first author.
+        \item Implemented the method in Python/PyTorch and conducted systematic benchmarking against mainstream methods including Cellpose and StarDist.
+    \end{highlights}
+\end{onecolentry}
+
+\vspace{0.2 cm}
+
+\begin{twocolentry}{
+    \textit{Shenzhen}
+
+    \textit{Jul 2020 -- Sep 2020}
+}
+    \textbf{Embedded Engineering Assistant Intern}
+
+    \textit{Shenzhen Anke High-tech Co., Ltd.}
+\end{twocolentry}
+
+\vspace{0.10 cm}
+\begin{onecolentry}
+    \begin{highlights}
+        \item Participated in medical device hardware development, responsible for circuit debugging, firmware optimization, and embedded system integration testing on ARM platforms.
+    \end{highlights}
+\end{onecolentry}
+
+
+    \section{Publications}
+
+\textit{Note: $^\dagger$ indicates co-first authorship.}
+
+\vspace{0.15 cm}
+
+Dai D$^\dagger$, Liu B$^\dagger$, \textbf{Li Y}$^\dagger$, Yu H$^\dagger$, et al. MammoExpert: Benchmarking Chain-of-Thought Reasoning in Mammography Diagnosis[C]//\textbf{KDD 2026 AI4Sciences Track}. 2026. \textit{(Accepted, co-first author)}
+
+\vspace{0.2 cm}
+
+Yu H$^\dagger$, \textbf{Li Y}$^\dagger$, Zhang N, et al. A Foundational Generative Model for Breast Ultrasound Image Analysis[J]. \textbf{Nature Biomedical Engineering}, 2025. \textit{(Co-first author)}
+
+\vspace{0.2 cm}
+
+Yu H$^\dagger$, \textbf{Li Y}$^\dagger$, et al. A Chain-of-thought Reasoning Breast Ultrasound Dataset Covering All Histopathology Categories[J]. \textbf{Scientific Data}, 2025. \textit{(Co-first author)}
+
+\vspace{0.2 cm}
+
+\textbf{Li Y}, Lac L, Liu Q, et al. ST-CellSeg: Cell segmentation for imaging-based spatial transcriptomics using multi-scale manifold learning[J]. \textbf{PLOS Computational Biology}, 2024, 20(6): e1012254. \textit{(First author)}
+
+\vspace{0.2 cm}
+
+Yu H, \textbf{Li Y}, Wu Q L, et al. Mining negative temporal contexts for false positive suppression in real-time ultrasound lesion detection[C]//\textbf{MICCAI 2023}. Cham: Springer Nature Switzerland, 2023: 3--13.
+
+\vspace{0.2 cm}
+
+Yu H, \textbf{Li Y}, Zhang N, et al. Knowledge-driven AI-generated data for accurate and interpretable breast ultrasound diagnoses[J]. arXiv preprint arXiv:2407.16634, 2024.
+
+\vspace{0.2 cm}
+
+Yan H, Dai C, Xu X, et al. Using artificial intelligence system for assisting the classification of breast ultrasound glandular tissue components in dense breast tissue[J]. \textbf{Scientific Reports}, 2025, 15(1): 11754.
+
+
+    \section{Honors and Awards}
+
+    \begin{onecolentry}
+        \begin{highlights}
+            \item \textbf{National First Prize}, 2nd National Digital Health Innovation Application Competition, hosted by the National Health Commission, 2024
+            \item \textbf{National Scholarship} (top 1\%), Peking University, 2024
+            \item \textbf{National Scholarship} (top 1\%), Xi'an Jiaotong University, 2022
+            \item \textbf{Mitacs Globalink Research Award} (top 1\%), Canada, 2022
+            \item \textbf{China Scholarship Council Scholarship} (top 1\%), 2022
+        \end{highlights}
+    \end{onecolentry}
+
+
+    \section{Skills}
+
+        \begin{onecolentry}
+            \textbf{Programming Languages:} Python, C++, JavaScript, SQL
+        \end{onecolentry}
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \textbf{Deep Learning and Models:} PyTorch, model compression and quantization, TensorRT, ONNX, generative models (diffusion models/GANs)
+        \end{onecolentry}
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \textbf{AI Agents and Large Language Models:} LangChain/LangGraph, prompt engineering, multi-agent system design, RAG
+        \end{onecolentry}
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \textbf{Engineering:} Docker, Git, Linux, TensorRT, ONNX, embedded systems (ARM/RTOS)
+        \end{onecolentry}
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \textbf{Research Areas:} medical image analysis, foundational generative models, biomedical AI, spatial transcriptomics
+        \end{onecolentry}
+
+\end{document}

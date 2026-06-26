@@ -1,0 +1,400 @@
+\documentclass[10pt, letterpaper]{article}
+
+% Packages:
+\usepackage[
+    ignoreheadfoot,
+    top=2 cm,
+    bottom=2 cm,
+    left=2 cm,
+    right=2 cm,
+    footskip=1.0 cm,
+]{geometry}
+\usepackage{titlesec}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{primaryColor}{RGB}{0, 79, 144}
+\usepackage{enumitem}
+\usepackage{etoolbox}
+\usepackage{xparse}
+\IfFileExists{fontawesome5.sty}{
+    \usepackage{fontawesome5}
+}{
+    \NewDocumentCommand{\faMapMarker}{s}{\textbullet}
+    \NewDocumentCommand{\faPhone}{s}{\textbullet}
+    \NewDocumentCommand{\faExternalLink}{s}{}
+    \NewDocumentCommand{\faEnvelope}{O{}}{\textbullet}
+    \NewDocumentCommand{\faLink}{}{\textbullet}
+}
+\usepackage{amsmath}
+\usepackage[
+    pdftitle={利友诚的个人简历},
+    pdfauthor={利友诚},
+    pdfcreator={LaTeX with RenderCV},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref}
+\usepackage[pscoord]{eso-pic}
+\usepackage{calc}
+\usepackage{bookmark}
+\usepackage{lastpage}
+\usepackage{changepage}
+\usepackage{paracol}
+\usepackage{ifthen}
+\usepackage{needspace}
+\usepackage{iftex}
+\usepackage{xeCJK}
+\setCJKmainfont{Noto Sans SC}
+\setCJKsansfont{Noto Sans SC}
+\setCJKmonofont{Noto Sans SC}
+
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
+
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt}
+\pagestyle{empty}
+\setcounter{secnumdepth}{0}
+\setlength{\parindent}{0pt}
+\setlength{\topskip}{0pt}
+\setlength{\columnsep}{0cm}
+\makeatletter
+\let\ps@customFooterStyle\ps@plain
+\patchcmd{\ps@customFooterStyle}{\thepage}{
+    \color{gray}\textit{\small 利友诚 - 第 \thepage{} 页，共 \pageref*{LastPage} 页}
+}{}{}
+\makeatother
+\pagestyle{customFooterStyle}
+
+\titleformat{\section}{\needspace{4\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+
+\titlespacing{\section}{
+    -1pt
+}{
+    0.3 cm
+}{
+    0.2 cm
+}
+
+\renewcommand\labelitemi{$\circ$}
+\newenvironment{highlights}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=0.4 cm + 10pt
+    ]
+}{
+    \end{itemize}
+}
+
+\newenvironment{highlightsforbulletentries}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=10pt
+    ]
+}{
+    \end{itemize}
+}
+
+\newenvironment{onecolentry}{
+    \begin{adjustwidth}{
+        0.2 cm + 0.00001 cm
+    }{
+        0.2 cm + 0.00001 cm
+    }
+}{
+    \end{adjustwidth}
+}
+
+\newenvironment{twocolentry}[2][]{
+    \onecolentry
+    \def\secondColumn{#2}
+    \setcolumnwidth{\fill, 4.5 cm}
+    \begin{paracol}{2}
+}{
+    \switchcolumn \raggedleft \secondColumn
+    \end{paracol}
+    \endonecolentry
+}
+
+\newenvironment{header}{
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}
+}{
+    \par\kern\topsep
+}
+
+\newcommand{\placelastupdatedtext}{%
+  \AddToShipoutPictureFG*{%
+    \put(
+        \LenToUnit{\paperwidth-2 cm-0.2 cm+0.05cm},
+        \LenToUnit{\paperheight-1.0 cm}
+    ){\vtop{{\null}\makebox[0pt][c]{
+        \small\color{gray}\textit{更新于 2026 年 6 月}\hspace{\widthof{更新于 2026 年 6 月}}
+    }}}%
+  }%
+}%
+
+\let\hrefWithoutArrow\href
+\renewcommand{\href}[2]{\hrefWithoutArrow{#1}{\ifthenelse{\equal{#2}{}}{ }{#2 }\raisebox{.15ex}{\footnotesize \faExternalLink*}}}
+
+
+\begin{document}
+    \newcommand{\AND}{\unskip
+        \cleaders\copy\ANDbox\hskip\wd\ANDbox
+        \ignorespaces
+    }
+    \newsavebox\ANDbox
+    \sbox\ANDbox{}
+
+    \placelastupdatedtext
+    \begin{header}
+        \textbf{\fontsize{24 pt}{24 pt}\selectfont 利友诚}
+
+        \vspace{0.3 cm}
+
+        \normalsize
+        \mbox{{\color{black}\footnotesize\faMapMarker*}\hspace*{0.13cm}北京大学}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{mailto:youchengli@stu.pku.edu.cn}{\color{black}{\footnotesize\faEnvelope[regular]}\hspace*{0.13cm}youchengli@stu.pku.edu.cn}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{tel:+86 13686820202}{\color{black}{\footnotesize\faPhone*}\hspace*{0.13cm}+86 13686820202}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{https://youchengli.com/}{\color{black}{\footnotesize\faLink}\hspace*{0.13cm}youchengli.com}}%
+    \end{header}
+
+    \vspace{0.2 cm}
+
+    % 基本信息行
+    \begin{onecolentry}
+        \centering
+        \small\color{gray}
+        2001年6月生\quad$|$\quad 中共党员\quad$|$\quad 汉族
+    \end{onecolentry}
+
+    \vspace{0.3 cm - 0.3 cm}
+
+
+    \section{个人简介}
+
+        \begin{onecolentry}
+本人现为\href{https://www.cis.pku.edu.cn/}{北京大学智能学院}人工智能方向博士研究生，师从\href{http://www.liweiwang-pku.com/}{王立威教授}。研究方向聚焦于医疗人工智能，尤其是计算机视觉、生成模型与推理系统在生物医学成像及新药研发中的应用。已在 \textbf{Nature Biomedical Engineering}、\textbf{KDD}、\textbf{MICCAI} 等顶级期刊和会议发表多篇论文，其中包含多篇共同第一作者成果。在产业侧，本人联合创立\textbf{北京医索科技有限公司}并担任 CTO，主导研发的 \textbf{AI Scientist} 智能体系统已在国内外顶级三甲医院、知名高校及上市药企落地，并助力公司完成\textbf{千万级天使轮融资}。使命：构建真正落地的医疗 AI，服务人类健康与生命科学研究。
+        \end{onecolentry}
+
+
+    \section{教育背景}
+
+        \begin{twocolentry}{
+            \textit{2019年9月 -- 2023年7月}}
+            \textbf{西安交通大学}
+
+            \textit{人工智能 \quad 工学学士}
+        \end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item GPA：4.0/4.3
+                \item \textbf{奖学金：}国家奖学金（前1\%）、Mitacs Globalink科研奖学金（前1\%）、国家留学基金委奖学金（前1\%）、旷视奖学金（前3\%）、郑国彬奖学金（前3\%）
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            \textit{2023年9月 -- 至今（预计2028年7月）}}
+            \textbf{北京大学}
+
+            \textit{人工智能 \quad 工学博士（在读）}
+        \end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item 师从王立威教授，研究方向为医疗AI、生成模型及面向生物医学应用的智能体系统
+                \item \textbf{奖学金：}国家奖学金（前1\%）
+            \end{highlights}
+        \end{onecolentry}
+
+
+    \section{工作经历}
+
+%================================================
+% 北京亿索科技（联合创始人 & CTO）
+%================================================
+\begin{twocolentry}{
+    \textit{北京}
+
+    \textit{2025年6月 -- 至今}
+}
+    \textbf{联合创始人 \& CTO}
+
+    \textit{北京医索科技有限公司}
+\end{twocolentry}
+
+\vspace{0.10 cm}
+\begin{onecolentry}
+    \begin{highlights}
+        \item 作为联合创始人兼CTO，主导公司整体技术战略与产品路线图，核心产品为面向生物医药研发与科学研究的 \textbf{AI Scientist} 智能体软硬件系统。
+        \item 组建并领导前端、后端、智能体方向的跨职能工程团队，推动产品 MVP 及后续版本按期交付。
+        \item 负责智能体系统端到端研发，涵盖架构设计、提示词工程与优化、工具链集成，显著提升智能体性能与稳定性。
+        \item 负责Physical AI体系建设，技术路线确定，搭建验证demo。
+        \item 负责科学世界模型技术路线设计，训练模型和评测。
+        \item 推动 AI Scientist 平台在国内外\textbf{顶级三甲医院、知名高校及上市药企}完成商业落地部署。
+        \item 深度参与商业拓展与投融资工作，协助公司完成\textbf{数千万人民币种子轮融资}以及后续投融资工作。
+    \end{highlights}
+\end{onecolentry}
+
+\vspace{0.2 cm}
+
+%================================================
+% 医准智能
+%================================================
+\begin{twocolentry}{
+    \textit{北京}
+
+    \textit{2023年1月 -- 2025年6月}
+}
+    \textbf{算法研究实习生}
+
+    \textit{医准智能科技（北京）有限公司}
+\end{twocolentry}
+
+\vspace{0.10 cm}
+\begin{onecolentry}
+    \begin{highlights}
+        \item 主导乳腺癌筛查与诊断深度学习算法研发，相关成果发表于 \textbf{MICCAI 2023} 及 \textbf{Nature Biomedical Engineering}（共同第一作者）。
+        \item 研发实时乳腺超声病灶动态检测算法，实现\textbf{灵敏度$>$95\%}，通过模型压缩与硬件加速将推理延迟降低 \textbf{15\%}。
+        \item 设计基于深度学习的导管原位癌（DCIS）智能诊断算法，荣获\textbf{第二届全国数字健康创新应用大赛全国一等奖}（主办方：国家卫生健康委员会）。
+        \item 构建乳腺超声基础生成模型，实现高保真合成数据生成，支撑下游多类诊断任务的大规模训练。
+    \end{highlights}
+\end{onecolentry}
+
+\vspace{0.2 cm}
+
+%================================================
+% 西安大略大学
+%================================================
+\begin{twocolentry}{
+    \textit{加拿大（远程）}
+
+    \textit{2022年9月 -- 2023年7月}
+}
+    \textbf{科研助理}
+
+    \textit{西安大略大学（Western University）}
+\end{twocolentry}
+
+\vspace{0.10 cm}
+\begin{onecolentry}
+    \begin{highlights}
+        \item 获 Mitacs 与国家留学基金委联合资助，在Pingzhao Hu教授指导下开展空间转录组学细胞分割研究，提出多尺度流形学习方法，成果以\textbf{第一作者}发表于 \textbf{PLOS Computational Biology}。
+        \item 基于 Python/PyTorch 实现并与 Cellpose、StarDist 等主流方法进行系统性基准测试。
+    \end{highlights}
+\end{onecolentry}
+
+\vspace{0.2 cm}
+
+%================================================
+% 深圳安科
+%================================================
+\begin{twocolentry}{
+    \textit{深圳}
+
+    \textit{2020年7月 -- 2020年9月}
+}
+    \textbf{嵌入式工程师助理（实习）}
+
+    \textit{深圳安科高新技术股份有限公司}
+\end{twocolentry}
+
+\vspace{0.10 cm}
+\begin{onecolentry}
+    \begin{highlights}
+        \item 参与医疗设备硬件开发，负责电路调试、固件优化及基于 ARM 平台的嵌入式系统集成测试。
+    \end{highlights}
+\end{onecolentry}
+
+
+    \section{发表论文}
+
+\textit{注：$^\dagger$ 表示共同第一作者}
+
+\vspace{0.15 cm}
+
+Dai D$^\dagger$, Liu B$^\dagger$, \textbf{Li Y}$^\dagger$, Yu H$^\dagger$, et al. MammoExpert: Benchmarking Chain-of-Thought Reasoning in Mammography Diagnosis[C]//\textbf{KDD 2026 AI4Sciences Track}. 2026. \textit{(Accepted, co-first author)}
+
+\vspace{0.2 cm}
+
+Yu H$^\dagger$, \textbf{Li Y}$^\dagger$, Zhang N, et al. A Foundational Generative Model for Breast Ultrasound Image Analysis[J]. \textbf{Nature Biomedical Engineering}, 2025. \textit{(Co-first author)}
+
+\vspace{0.2 cm}
+
+Yu H$^\dagger$, \textbf{Li Y}$^\dagger$, et al. A Chain-of-thought Reasoning Breast Ultrasound Dataset Covering All Histopathology Categories[J]. \textbf{Scientific Data}, 2025. \textit{(Co-first author)}
+
+\vspace{0.2 cm}
+
+\textbf{Li Y}, Lac L, Liu Q, et al. ST-CellSeg: Cell segmentation for imaging-based spatial transcriptomics using multi-scale manifold learning[J]. \textbf{PLOS Computational Biology}, 2024, 20(6): e1012254. \textit{(First author)}
+
+\vspace{0.2 cm}
+
+Yu H, \textbf{Li Y}, Wu Q L, et al. Mining negative temporal contexts for false positive suppression in real-time ultrasound lesion detection[C]//\textbf{MICCAI 2023}. Cham: Springer Nature Switzerland, 2023: 3--13.
+
+\vspace{0.2 cm}
+
+Yu H, \textbf{Li Y}, Zhang N, et al. Knowledge-driven AI-generated data for accurate and interpretable breast ultrasound diagnoses[J]. arXiv preprint arXiv:2407.16634, 2024.
+
+\vspace{0.2 cm}
+
+Yan H, Dai C, Xu X, et al. Using artificial intelligence system for assisting the classification of breast ultrasound glandular tissue components in dense breast tissue[J]. \textbf{Scientific Reports}, 2025, 15(1): 11754.
+
+
+    \section{荣誉奖项}
+
+    \begin{onecolentry}
+        \begin{highlights}
+            \item \textbf{全国一等奖}，第二届全国数字健康创新应用大赛，国家卫生健康委员会主办，2024年
+            \item \textbf{国家奖学金}（前1\%），北京大学，2024年
+            \item \textbf{国家奖学金}（前1\%），西安交通大学，2022年
+            \item \textbf{Mitacs Globalink 科研奖学金}（前1\%），加拿大，2022年
+            \item \textbf{国家留学基金委奖学金}（前1\%），2022年
+        \end{highlights}
+    \end{onecolentry}
+
+
+    \section{技术技能}
+
+        \begin{onecolentry}
+            \textbf{编程语言：} Python、C++、JavaScript、SQL
+        \end{onecolentry}
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \textbf{深度学习与模型：} PyTorch、模型压缩与量化、TensorRT、ONNX、生成模型（扩散模型/GAN）
+        \end{onecolentry}
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \textbf{智能体与大模型：} LangChain/LangGraph、提示词工程、多智能体系统设计、RAG
+        \end{onecolentry}
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \textbf{工程与部署：} Docker、Git、Linux、硬件加速推理、嵌入式系统（ARM/RTOS）
+        \end{onecolentry}
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \textbf{研究方向：} 医学图像分析、基础生成模型、生物医药AI、空间转录组学
+        \end{onecolentry}
+
+\end{document}

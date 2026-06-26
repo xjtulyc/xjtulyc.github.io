@@ -42,7 +42,9 @@ const SITE_CONFIG = {
         "youchengli@stu.pku.edu.cn",
         "1246321319@qq.com"
       ],
-      cv: "pdf/youcheng_li_cv.pdf"
+      cv: "pdf/youcheng_li_cv.pdf",
+      cvEnglish: "pdf/youcheng_li_cv.pdf",
+      cvChinese: "pdf/youcheng_li_cv_ch.pdf"
     },
 
     // 社交链接
@@ -153,7 +155,7 @@ const SITE_CONFIG = {
       },
       {
         type: "paragraph",
-        text: "My research focuses on the application of machine learning and computer vision in biomedical engineering. I am particularly interested in developing AI-powered medical diagnosis systems that can make healthcare more accessible and accurate."
+        text: "My research focuses on the application of machine learning, computer vision, generative models, and reasoning systems in biomedical engineering. I am particularly interested in developing AI-powered medical diagnosis systems and benchmarks that can make healthcare more accessible, accurate, and interpretable."
       }
     ],
 
@@ -166,7 +168,8 @@ const SITE_CONFIG = {
         "Medical AI",
         "Deep Learning",
         "Biomedical Engineering",
-        "Medical Image Analysis"
+        "Medical Image Analysis",
+        "Chain-of-Thought Reasoning"
       ]
     },
 
@@ -183,11 +186,21 @@ const SITE_CONFIG = {
 
     items: [
       {
-        date: "Sept 2025",
-        title: "🔥BUSGen has been accepted by Nature Biomedical Engineering🔥",
-        content: "Our groundbreaking work \"A Foundational Generative Model for Breast Ultrasound Image Analysis\" has been accepted by Nature Biomedical Engineering.",
+        date: "Jun 2026",
+        title: "MammoExpert accepted to KDD 2026 AI4Sciences Track",
+        content: "Our work \"MammoExpert: Benchmarking Chain-of-Thought Reasoning in Mammography Diagnosis\" has been accepted to the KDD 2026 AI4Sciences Track.",
         link: {
-          url: "https://arxiv.org/abs/2501.06869",
+          url: "https://arxiv.org/abs/2606.21119",
+          text: "Read Paper →"
+        },
+        type: "publication"
+      },
+      {
+        date: "Apr 2026",
+        title: "🔥BUSGen published in Nature Biomedical Engineering🔥",
+        content: "Our work \"A foundation generative model for breast ultrasound image analysis\" has been published in Nature Biomedical Engineering.",
+        link: {
+          url: "https://www.nature.com/articles/s41551-026-01639-1",
           text: "Read Paper →"
         },
         type: "publication"
@@ -204,8 +217,8 @@ const SITE_CONFIG = {
       },
       {
         date: "Jan 2025",
-        title: "BUSGen: Foundational Model Published",
-        content: "Our groundbreaking work \"A Foundational Generative Model for Breast Ultrasound Image Analysis\" has been published, featuring the first foundational model for breast ultrasound analysis.",
+        title: "BUSGen preprint released",
+        content: "Our work \"A Foundational Generative Model for Breast Ultrasound Image Analysis\" has been released as a preprint, featuring the first foundational model for breast ultrasound analysis.",
         link: {
           url: "https://arxiv.org/abs/2501.06869",
           text: "Read Paper →"
@@ -308,14 +321,15 @@ const SITE_CONFIG = {
     featured: [
       {
         title: "BUSGen: Foundational Generative Model for Breast Ultrasound",
+        semanticScholarId: "DOI:10.1038/s41551-026-01639-1",
         description: "The first foundational generative model specifically designed for breast ultrasound image analysis. Pretrained on over 3.5 million breast ultrasound images, BUSGen has acquired extensive knowledge of breast structures, pathological features, and clinical variations. Outperformed all board-certified radiologists with 16.5% sensitivity improvement.",
         image: "pub/BUSGen.png",
         tags: ["Medical AI", "Generative AI"],
         links: [
           {
-            type: "arxiv",
-            url: "https://arxiv.org/abs/2501.06869",
-            text: "arXiv"
+            type: "journal",
+            url: "https://www.nature.com/articles/s41551-026-01639-1",
+            text: "Nature BME"
           },
           {
             type: "demo",
@@ -327,6 +341,7 @@ const SITE_CONFIG = {
       },
       {
         title: "A Chain-of-thought Reasoning Breast Ultrasound Dataset Covering All Histopathology Categories",
+        semanticScholarId: "ARXIV:2509.17046",
         description: "Breast ultrasound (BUS) is an essential tool for diagnosing breast lesions, with millions of examinations per year. However, publicly available high-quality BUS benchmarks for AI development are limited in data scale and annotation richness. In this work, we present BUS-CoT, a BUS dataset for chain-of-thought (CoT) reasoning analysis, which contains 11,439 images of 10,019 lesions from 4,838 patients and covers all 99 histopathology types. To facilitate research on incentivizing CoT reasoning, we construct the reasoning processes based on observation, feature, diagnosis and pathology labels, annotated and verified by experienced experts. Moreover, by covering lesions of all histopathology types, we aim to facilitate robust AI systems in rare cases, which can be error-prone in clinical practice.",
         image: "pub/BUSCoT.png",
         tags: ["Medical AI", "Dataset"],
@@ -346,6 +361,7 @@ const SITE_CONFIG = {
       },
       {
         title: "UltraDet: Real-time Ultrasound Lesion Detection",
+        semanticScholarId: "DOI:10.1007/978-3-031-43987-2_1",
         description: "Mining negative temporal contexts for false positive suppression in real-time ultrasound lesion detection. This model leverages temporal information from video sequences to significantly reduce false positives while maintaining real-time inference speed.",
         image: "pub/UltraDet.png",
         tags: ["Medical AI", "Computer Vision"],
@@ -365,6 +381,7 @@ const SITE_CONFIG = {
       },
       {
         title: "TAILOR: Knowledge-driven AI-generated Data Pipeline",
+        semanticScholarId: "ARXIV:2407.16634",
         description: "A pipeline that builds knowledge-driven generative models to produce tailored synthetic data for rare medical cases. Using 3,749 lesions as source data, can generate millions of breast-US images, especially for error-prone rare cases like DCIS.",
         image: "pub/TAILOR.png",
         tags: ["Medical AI", "Generative AI"],
@@ -379,6 +396,7 @@ const SITE_CONFIG = {
       },
       {
         title: "ST-CellSeg: Spatial Transcriptomics Cell Segmentation",
+        semanticScholarId: "DOI:10.1371/journal.pcbi.1012254",
         description: "An image-based machine learning method for spatial transcriptomics that uses manifold for cell segmentation. Novel in its consideration of multi-scale information, significantly outperforms baseline models in ARI, NMI, and Silhouette coefficient metrics.",
         image: "pub/STCellSeg.png",
         tags: ["Computer Vision", "Machine Learning"],
@@ -396,10 +414,42 @@ const SITE_CONFIG = {
     // 出版物列表
     publications: [
       {
+        year: "2026",
+        items: [
+          {
+            title: "MammoExpert: Benchmarking Chain-of-Thought Reasoning in Mammography Diagnosis",
+            semanticScholarId: "ARXIV:2606.21119",
+            authors: ["Di Dai", "Bo Liu", "Youcheng Li", "Haojun Yu", "Zhuohang Bian", "Quanlin Wu", "Dong Wang", "Sichen Meng", "Hongye Xuan", "Zijie Lan", "Shenda Hong", "Liwei Wang"],
+            coFirst: ["Di Dai", "Bo Liu", "Youcheng Li", "Haojun Yu"],
+            venue: "Proceedings of the 32nd ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD 2026), AI4Sciences Track",
+            publisher: "ACM",
+            date: "June 2026",
+            links: [
+              {
+                type: "arxiv",
+                url: "https://arxiv.org/abs/2606.21119"
+              },
+              {
+                type: "pdf",
+                url: "https://arxiv.org/pdf/2606.21119"
+              },
+              {
+                type: "code",
+                url: "https://github.com/Ericdd90/MammoExpert",
+                text: "Code & Dataset"
+              }
+            ],
+            tags: ["Medical AI", "Mammography", "Chain-of-Thought", "Dataset"],
+            highlight: true
+          }
+        ]
+      },
+      {
         year: "2025",
         items: [
           {
             title: "A Chain-of-thought Reasoning Breast Ultrasound Dataset Covering All Histopathology Categories",
+            semanticScholarId: "ARXIV:2509.17046",
             authors: ["Haojun Yu", "Youcheng Li", "et al."],
             venue: "arXiv preprint arXiv:2509.17046",
             date: "January 2025",
@@ -422,14 +472,16 @@ const SITE_CONFIG = {
             highlight: true
           },
           {
-            title: "A Foundational Generative Model for Breast Ultrasound Image Analysis",
+            title: "A foundation generative model for breast ultrasound image analysis",
+            semanticScholarId: "DOI:10.1038/s41551-026-01639-1",
             authors: ["Haojun Yu", "Youcheng Li", "Nan Zhang", "Zihan Niu", "Xuantong Gong", "Yanwen Luo", "et al."],
-            venue: "arXiv preprint arXiv:2501.06869",
-            date: "January 2025",
+            venue: "Nature Biomedical Engineering",
+            date: "April 2026",
             links: [
               {
-                type: "arxiv",
-                url: "https://arxiv.org/abs/2501.06869"
+                type: "journal",
+                url: "https://www.nature.com/articles/s41551-026-01639-1",
+                text: "Nature BME"
               },
               {
                 type: "pdf",
@@ -446,6 +498,7 @@ const SITE_CONFIG = {
           },
           {
             title: "Using artificial intelligence system for assisting the classification of breast ultrasound glandular tissue components in dense breast tissue",
+            semanticScholarId: "DOI:10.1038/s41598-025-95871-5",
             authors: ["Hongju Yan", "Chaochao Dai", "Xiaojing Xu", "et al."],
             venue: "Scientific Reports",
             volume: "15",
@@ -468,6 +521,7 @@ const SITE_CONFIG = {
         items: [
           {
             title: "Knowledge-driven AI-generated data for accurate and interpretable breast ultrasound diagnoses",
+            semanticScholarId: "ARXIV:2407.16634",
             authors: ["Haojun Yu", "Youcheng Li", "Nan Zhang", "Zihan Niu", "Xuantong Gong", "Yanwen Luo", "et al."],
             venue: "arXiv preprint arXiv:2407.16634",
             date: "July 2024",
@@ -486,6 +540,7 @@ const SITE_CONFIG = {
           },
           {
             title: "ST-CellSeg: Cell segmentation for imaging-based spatial transcriptomics using multi-scale manifold learning",
+            semanticScholarId: "DOI:10.1371/journal.pcbi.1012254",
             authors: ["Youcheng Li", "Leann Lac", "Qian Liu", "Pingzhao Hu"],
             venue: "PLOS Computational Biology",
             volume: "20",
@@ -508,6 +563,7 @@ const SITE_CONFIG = {
         items: [
           {
             title: "Mining Negative Temporal Contexts For False Positive Suppression In Real-Time Ultrasound Lesion Detection",
+            semanticScholarId: "DOI:10.1007/978-3-031-43987-2_1",
             authors: ["Haojun Yu", "Youcheng Li", "QuanLin Wu", "Ziwei Zhao", "Dengbo Chen", "Dong Wang", "Liwei Wang"],
             venue: "International Conference on Medical Image Computing and Computer-Assisted Intervention (MICCAI 2023)",
             publisher: "Springer Nature Switzerland",
