@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="1180" viewBox="0 0 640 1180" role="img" aria-labelledby="title desc" xml:lang="en">
+<title id="title">AI ads: attribution vs incrementality</title><desc id="desc">The top panel traces existing needs and dialogue constraints, clearly labelled ad exposure, and observed visits or transactions. Attribution connects touchpoints but does not establish extra purchases. The lower panel illustrates random assignment from one eligible population to a treatment whose assigned users may receive ads and a control without the tested policy, retaining all randomized users including those not exposed. Other experience is held fixed by experimental design. Compare contribution after refunds and discounts and deduct incremental advertising and operating costs on a consistent basis. Treat answer trust and repeat visits as separate guardrails. This does not depict measured results at any company.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 1 1 L 8 5 L 1 9" fill="none" stroke="#355C7D" stroke-width="1.5"/></marker></defs>
+<style>text { font-family:Arial,'PingFang SC','Microsoft YaHei',sans-serif; fill:#1F2933; } .heading { font-weight:700; } .secondary { fill:#526171; } .accent { fill:#355C7D; } .muted { fill:#607080; }</style>
+<rect width="640" height="1180" fill="#F7F8FA"/>
+<text x="32" y="49" font-size="32" class="heading" text-anchor="start">AI ads: attribution vs incrementality</text>
+<text x="32" y="86" font-size="26" class="secondary" text-anchor="start">Two questions. Different evidence.</text>
+<rect x="24" y="108" width="592" height="350" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="44" y="146" font-size="30" class="heading accent" text-anchor="start">01  Attribution: what happened?</text>
+<rect x="52" y="165" width="536" height="54" rx="6" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="201" font-size="28" class="" text-anchor="middle">Existing need &amp; dialogue constraints</text>
+<path d="M 320 223 V 241" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="52" y="245" width="536" height="54" rx="6" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="281" font-size="28" class="" text-anchor="middle">Clearly labelled ad exposure</text>
+<path d="M 320 303 V 321" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="52" y="325" width="536" height="54" rx="6" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="361" font-size="28" class="" text-anchor="middle">Observed visits or transactions</text>
+<text x="320" y="416" font-size="26" class="secondary" text-anchor="middle">Connects touchpoints;</text>
+<text x="320" y="446" font-size="26" class="secondary" text-anchor="middle">does not establish extra purchases.</text>
+<rect x="24" y="476" width="592" height="512" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="44" y="514" font-size="28" class="heading accent" text-anchor="start">02  Incrementality: what did ads add?</text>
+<text x="320" y="548" font-size="26" class="secondary" text-anchor="middle">Hold other experience fixed by design</text>
+<rect x="52" y="565" width="536" height="70" rx="6" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="596" font-size="30" class="heading" text-anchor="middle">One eligible population</text>
+<text x="320" y="623" font-size="26" class="secondary" text-anchor="middle">Random assignment</text>
+<path d="M 320 638 V 652 H 184 V 663" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M 320 652 H 456 V 663" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="52" y="670" width="256" height="86" rx="6" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="180" y="705" font-size="30" class="heading" text-anchor="middle">Treatment</text>
+<text x="180" y="738" font-size="27" class="secondary" text-anchor="middle">May receive ads</text>
+<rect x="332" y="670" width="256" height="86" rx="6" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="460" y="705" font-size="30" class="heading" text-anchor="middle">Control</text>
+<text x="460" y="738" font-size="27" class="secondary" text-anchor="middle">No tested policy</text>
+<path d="M 184 760 V 780 H 320 V 805" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M 456 760 V 780 H 320" fill="none" stroke="#355C7D" stroke-width="2.5"/>
+<rect x="52" y="812" width="536" height="154" rx="6" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="847" font-size="28" class="heading" text-anchor="middle">Compare contribution after</text>
+<text x="320" y="880" font-size="28" class="" text-anchor="middle">refunds &amp; discounts; deduct</text>
+<text x="320" y="913" font-size="28" class="" text-anchor="middle">incremental ad / operating costs</text>
+<text x="320" y="946" font-size="24" class="secondary" text-anchor="middle">Use a consistent measurement basis.</text>
+<rect x="24" y="1006" width="592" height="110" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1048" font-size="30" class="heading" text-anchor="middle">Ad returns ≠ answer trust</text>
+<text x="320" y="1090" font-size="26" class="secondary" text-anchor="middle">Keep trust and repeat visits as guardrails.</text>
+<text x="320" y="1160" font-size="24" class="muted" text-anchor="middle">Original concept · Not measured results</text>
+</svg>

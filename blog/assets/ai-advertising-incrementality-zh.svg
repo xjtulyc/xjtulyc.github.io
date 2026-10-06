@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="1180" viewBox="0 0 640 1180" role="img" aria-labelledby="title desc" xml:lang="zh-CN">
+<title id="title">AI 广告：归因与增量</title><desc id="desc">上半部分展示广告归因的触点记录：已有需求和对话约束、清晰标记的广告曝光、访问或交易；这些记录不证明新增购买。下半部分展示概念性的随机实验：同一合格人群随机分配到有展示机会的策略组与不采用该策略的对照组，并按随机分配保留所有用户（包括未曝光用户），其他体验按实验设计固定，以一致口径比较退款折扣后贡献并扣除广告和运营增量成本。广告收益与回答信任、复访分别检验。此图不是任何公司的实测结果。</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 1 1 L 8 5 L 1 9" fill="none" stroke="#355C7D" stroke-width="1.5"/></marker></defs>
+<style>text { font-family:Arial,'PingFang SC','Microsoft YaHei',sans-serif; fill:#1F2933; } .heading { font-weight:700; } .secondary { fill:#526171; } .accent { fill:#355C7D; } .muted { fill:#607080; }</style>
+<rect width="640" height="1180" fill="#F7F8FA"/>
+<text x="32" y="49" font-size="34" class="heading" text-anchor="start">AI 广告：归因与增量</text>
+<text x="32" y="86" font-size="26" class="secondary" text-anchor="start">两类问题，需要不同证据</text>
+<rect x="24" y="108" width="592" height="350" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="44" y="146" font-size="30" class="heading accent" text-anchor="start">01  归因：记录发生了什么</text>
+<rect x="52" y="165" width="536" height="54" rx="6" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="201" font-size="30" class="" text-anchor="middle">已有需求与对话约束</text>
+<path d="M 320 223 V 241" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="52" y="245" width="536" height="54" rx="6" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="281" font-size="30" class="" text-anchor="middle">清晰标记的广告曝光</text>
+<path d="M 320 303 V 321" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="52" y="325" width="536" height="54" rx="6" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="361" font-size="30" class="" text-anchor="middle">可观察的访问或交易</text>
+<text x="320" y="430" font-size="27" class="secondary" text-anchor="middle">能连接触点，不证明新增购买</text>
+<rect x="24" y="476" width="592" height="512" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="44" y="514" font-size="30" class="heading accent" text-anchor="start">02  增量：检验广告带来什么</text>
+<text x="320" y="548" font-size="26" class="secondary" text-anchor="middle">其余体验按实验设计固定</text>
+<rect x="52" y="565" width="536" height="70" rx="6" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="596" font-size="30" class="heading" text-anchor="middle">同一合格人群</text>
+<text x="320" y="623" font-size="26" class="secondary" text-anchor="middle">随机分配</text>
+<path d="M 320 638 V 652 H 184 V 663" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M 320 652 H 456 V 663" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="52" y="670" width="256" height="86" rx="6" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="180" y="705" font-size="30" class="heading" text-anchor="middle">策略组</text>
+<text x="180" y="738" font-size="28" class="secondary" text-anchor="middle">有展示机会</text>
+<rect x="332" y="670" width="256" height="86" rx="6" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="460" y="705" font-size="30" class="heading" text-anchor="middle">对照组</text>
+<text x="460" y="738" font-size="28" class="secondary" text-anchor="middle">不采用该策略</text>
+<path d="M 184 760 V 780 H 320 V 805" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M 456 760 V 780 H 320" fill="none" stroke="#355C7D" stroke-width="2.5"/>
+<rect x="52" y="812" width="536" height="154" rx="6" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="852" font-size="30" class="heading" text-anchor="middle">比较退款、折扣后贡献</text>
+<text x="320" y="894" font-size="29" class="" text-anchor="middle">扣广告与运营增量成本</text>
+<text x="320" y="946" font-size="24" class="secondary" text-anchor="middle">两组采用同一统计口径</text>
+<rect x="24" y="1006" width="592" height="110" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1048" font-size="30" class="heading" text-anchor="middle">广告收益 ≠ 回答信任</text>
+<text x="320" y="1090" font-size="28" class="secondary" text-anchor="middle">将信任与复访作为独立约束</text>
+<text x="320" y="1160" font-size="24" class="muted" text-anchor="middle">原创概念示意 · 非测量数据</text>
+</svg>

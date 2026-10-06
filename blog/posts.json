@@ -38,6 +38,44 @@
     }
   },
   {
+    "title": "AI 广告的下一步：意图理解、归因与增量价值",
+    "summary": "对话可能让广告更贴近需求，但高意图用户也可能本来就会购买。从 OpenAI 的视觉广告测试出发，拆解增量利润、信任与结算控制，并比较 Google 和百度的经营约束。",
+    "tags": [
+      "AI 广告",
+      "增量测量",
+      "OpenAI",
+      "Google",
+      "百度"
+    ],
+    "date": "2026-10-06",
+    "category": "business",
+    "url": "blog/ai-advertising-incrementality.html",
+    "translations": {
+      "zh": {
+        "title": "AI 广告的下一步：意图理解、归因与增量价值",
+        "summary": "对话可能让广告更贴近需求，但高意图用户也可能本来就会购买。从 OpenAI 的视觉广告测试出发，拆解增量利润、信任与结算控制，并比较 Google 和百度的经营约束。",
+        "tags": [
+          "AI 广告",
+          "增量测量",
+          "OpenAI",
+          "Google",
+          "百度"
+        ]
+      },
+      "en": {
+        "title": "What Comes Next for AI Advertising: Intent, Attribution, and Incremental Value",
+        "summary": "Conversation may improve ad matching, but high-intent users may have purchased anyway. OpenAI’s visual-ad test motivates an analysis of incremental profit, trust, checkout control, and the different constraints facing Google and Baidu.",
+        "tags": [
+          "AI advertising",
+          "Incrementality",
+          "OpenAI",
+          "Google",
+          "Baidu"
+        ]
+      }
+    }
+  },
+  {
     "title": "智能体的商业壁垒：工作流、验证成本与价值分配",
     "summary": "从 OpenAI、Anthropic 与阿里云的公开动作出发，分析智能体如何从模型调用走向企业流程，以及为什么验收、复核和异常处理决定商业价值。",
     "tags": [
