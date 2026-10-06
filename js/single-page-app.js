@@ -8,7 +8,7 @@
 
 class SinglePageApp {
   constructor() {
-    this.config = window.SITE_CONFIG || {};
+    this.config = (typeof SITE_CONFIG !== 'undefined' ? SITE_CONFIG : {});
     this.spa = this.config.spa || {};
     this.scrollSettings = this.spa.scrollSettings || {};
     this.displaySettings = this.spa.displaySettings || {};
@@ -29,8 +29,7 @@ class SinglePageApp {
     this.initProgressIndicator();
     this.initLazyLoading();
     this.initNewsExpansion();
-    this.initProjectFilters();
-    this.initPublicationYearToggle();
+    this.initProjectCardExpansion();
     this.initTeachingExpansion();
     this.initTalksExpansion();
     this.initResourcesToggle();
@@ -68,7 +67,7 @@ class SinglePageApp {
   }
 
   updateActiveNavItem(sectionId) {
-    const navItems = document.querySelectorAll('.nav-item');
+    const navItems = document.querySelectorAll('.nav-item[href^="#"]');
     
     navItems.forEach(item => {
       item.classList.remove('active');
@@ -92,6 +91,7 @@ class SinglePageApp {
         
         if (targetElement) {
           this.scrollToElement(targetElement);
+          if (link.classList.contains('skip-link')) targetElement.focus({ preventScroll: true });
         }
       }
     });
@@ -99,13 +99,13 @@ class SinglePageApp {
 
   scrollToElement(element) {
     const offset = this.scrollSettings.offset || 80;
-    const targetPosition = element.offsetTop - offset;
+    const targetPosition = element.getBoundingClientRect().top + window.scrollY - offset;
     
     this.isScrolling = true;
     
     window.scrollTo({
       top: targetPosition,
-      behavior: 'smooth'
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
     });
     
     // Add highlight effect to target section
@@ -154,7 +154,7 @@ class SinglePageApp {
     const updateProgress = () => {
       const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
       const scrollTop = window.pageYOffset;
-      const progress = (scrollTop / scrollHeight) * 100;
+      const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
       
       progressBar.style.width = `${Math.min(100, Math.max(0, progress))}%`;
       ticking = false;
@@ -183,7 +183,7 @@ class SinglePageApp {
     backToTopButton.addEventListener('click', () => {
       window.scrollTo({
         top: 0,
-        behavior: 'smooth'
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
       });
     });
   }
@@ -276,18 +276,15 @@ class SinglePageApp {
     expandButton.replaceWith(expandButton.cloneNode(true));
     expandButton = newsSection.querySelector('.expand-news-btn');
     
+    expandButton.setAttribute('aria-expanded', 'false');
     expandButton.addEventListener('click', () => {
       const hiddenItems = newsSection.querySelectorAll('.hidden-news');
       const isExpanding = hiddenItems.length > 0 && hiddenItems[0].style.display === 'none';
 
+      expandButton.setAttribute('aria-expanded', String(isExpanding));
       if (isExpanding) {
         // Expand
-        hiddenItems.forEach((item, index) => {
-          setTimeout(() => {
-            item.style.display = 'block';
-            item.classList.add('fade-in');
-          }, index * (this.animations.staggerDelay || 100));
-        });
+        hiddenItems.forEach(item => { item.style.display = 'block'; });
         expandButton.innerHTML = `<i class="fas fa-chevron-up"></i> ${newsSettings.collapseText || 'Show Less'}`;
       } else {
         // Collapse
@@ -361,6 +358,7 @@ class SinglePageApp {
         expandButton = document.createElement('button');
         expandButton.className = 'btn btn-sm btn-link expand-project-btn';
         expandButton.textContent = 'Read More';
+        expandButton.setAttribute('aria-expanded', 'false');
         
         content.insertBefore(expandButton, description.nextSibling);
         
@@ -374,6 +372,7 @@ class SinglePageApp {
             expandButton.textContent = 'Read Less';
           }
           isExpanded = !isExpanded;
+          expandButton.setAttribute('aria-expanded', String(isExpanded));
         });
       }
     });

@@ -1,9 +1,17 @@
 // Modern JavaScript for Personal Academic Website
 
+// Preserve links shared before the homepage was split into dedicated pages.
+if (/\/(?:index\.html)?$/.test(location.pathname)) {
+  const oldSection = location.hash.slice(1);
+  const destinations = { publications: 'research.html#publications', projects: 'research.html#projects', teaching: 'teaching.html#teaching', resources: 'teaching.html#resources', talks: 'teaching.html#teaching' };
+  if (destinations[oldSection]) location.replace(destinations[oldSection]);
+}
+
 // ================== Theme Management ==================
 class ThemeManager {
   constructor() {
-    this.theme = localStorage.getItem('theme') || 'light';
+    this.theme = document.documentElement.dataset.theme || 'light';
+    try { this.theme = localStorage.getItem('theme') || this.theme; } catch (_) {}
     this.init();
   }
 
@@ -15,11 +23,12 @@ class ThemeManager {
   toggle() {
     this.theme = this.theme === 'light' ? 'dark' : 'light';
     document.documentElement.setAttribute('data-theme', this.theme);
-    localStorage.setItem('theme', this.theme);
+    try { localStorage.setItem('theme', this.theme); } catch (_) {}
     this.updateThemeIcon();
   }
 
   updateThemeIcon() {
+    document.querySelector('.theme-toggle')?.setAttribute('aria-label', this.theme === 'light' ? 'Switch to dark theme' : 'Switch to light theme');
     const icon = document.querySelector('.theme-toggle svg');
     if (icon) {
       icon.innerHTML = this.theme === 'light' 
@@ -56,12 +65,30 @@ class MobileMenu {
       });
     });
 
+    document.addEventListener('keydown', event => {
+      if (!this.isOpen) return;
+      if (event.key === 'Escape') { this.closeMenu(); this.toggle.focus(); }
+      if (event.key === 'Tab') {
+        const items = [this.toggle, ...this.sidebar.querySelectorAll('a[href], button')];
+        const first = items[0], last = items[items.length - 1];
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+        else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+      }
+    });
+    this.updateAccessibility();
     // Handle resize
     window.addEventListener('resize', () => {
+      this.updateAccessibility();
       if (window.innerWidth > 768 && this.isOpen) {
         this.closeMenu();
       }
     });
+  }
+
+  updateAccessibility() {
+    this.sidebar.inert = window.innerWidth <= 768 && !this.isOpen;
+    this.toggle?.setAttribute('aria-expanded', String(this.isOpen));
+    this.toggle?.setAttribute('aria-label', this.isOpen ? 'Close navigation' : 'Open navigation');
   }
 
   toggleMenu() {
@@ -70,6 +97,7 @@ class MobileMenu {
 
   openMenu() {
     this.isOpen = true;
+    this.updateAccessibility();
     this.sidebar.classList.add('active');
     this.toggle.classList.add('active');
     if (this.overlay) {
@@ -80,6 +108,7 @@ class MobileMenu {
 
   closeMenu() {
     this.isOpen = false;
+    this.updateAccessibility();
     this.sidebar.classList.remove('active');
     this.toggle.classList.remove('active');
     if (this.overlay) {
@@ -228,45 +257,39 @@ class CopyToClipboard {
   }
 
   init() {
-    document.querySelectorAll('.copy-email').forEach(button => {
-      button.addEventListener('click', (e) => {
-        e.preventDefault();
-        const email = button.dataset.email;
-        this.copyText(email);
+    document.addEventListener('click', async event => {
+      const button = event.target.closest('.copy-bibtex, .copy-email');
+      if (!button) return;
+      event.preventDefault();
+      const text = button.dataset.bibtex || button.dataset.email;
+      if (!text) return;
+      try {
+        await this.copyText(text);
         this.showTooltip(button, 'Copied!');
-      });
-    });
-
-    document.querySelectorAll('.copy-bibtex').forEach(button => {
-      button.addEventListener('click', (e) => {
-        e.preventDefault();
-        const bibtex = button.dataset.bibtex;
-        this.copyText(bibtex);
-        this.showTooltip(button, 'BibTeX Copied!');
-      });
+      } catch (_) {
+        this.showTooltip(button, 'Copy unavailable — please try again');
+      }
     });
   }
 
-  copyText(text) {
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(text);
-    } else {
-      // Fallback for older browsers
-      const textarea = document.createElement('textarea');
-      textarea.value = text;
-      textarea.style.position = 'fixed';
-      textarea.style.opacity = '0';
-      document.body.appendChild(textarea);
-      textarea.select();
-      document.execCommand('copy');
-      document.body.removeChild(textarea);
-    }
+  async copyText(text) {
+    if (navigator.clipboard?.writeText) return navigator.clipboard.writeText(text);
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    document.body.appendChild(textarea);
+    textarea.select();
+    const copied = document.execCommand('copy');
+    textarea.remove();
+    if (!copied) throw new Error('Clipboard unavailable');
   }
 
   showTooltip(element, message) {
     const tooltip = document.createElement('div');
     tooltip.className = 'tooltip';
     tooltip.textContent = message;
+    tooltip.setAttribute('role', 'status');
     element.appendChild(tooltip);
 
     setTimeout(() => {
@@ -276,7 +299,7 @@ class CopyToClipboard {
     setTimeout(() => {
       tooltip.classList.remove('show');
       setTimeout(() => {
-        element.removeChild(tooltip);
+        tooltip.remove();
       }, 300);
     }, 2000);
   }
@@ -433,14 +456,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Core features
   const themeManager = new ThemeManager();
   new MobileMenu();
-  new SmoothScroll();
-  new BackToTop();
-  new LazyLoader();
-  new ActiveNavigation();
   new CopyToClipboard();
-  new ScrollAnimations();
-  new PublicationsFilter();
-  new SearchFunction();
 
   // Bind theme toggle button
   const themeToggle = document.querySelector('.theme-toggle');

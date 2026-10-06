@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Teaching &amp; Resources | Youcheng Li</title>
+  <meta name="description" content="Teaching experience, machine learning lecture notes and research resources from Youcheng Li.">
+  <meta name="author" content="Youcheng Li">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://youchengli.com/teaching.html">
+  <meta property="og:title" content="Teaching &amp; Resources | Youcheng Li">
+  <meta property="og:description" content="Teaching experience, machine learning lecture notes and research resources from Youcheng Li.">
+  <meta property="og:url" content="https://youchengli.com/teaching.html">
+  <meta property="og:image" content="https://youchengli.com/resources/avatar.jpg">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Teaching &amp; Resources | Youcheng Li">
+  <meta name="twitter:description" content="Teaching experience, machine learning lecture notes and research resources from Youcheng Li.">
+  <meta name="twitter:image" content="https://youchengli.com/resources/avatar.jpg">
+  <link rel="icon" href="favicon.ico">
+  <script>try { document.documentElement.dataset.theme = localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); } catch (_) {}</script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style/modern-style.css">
+  <link rel="stylesheet" href="style/sidebar-enhanced.css">
+  <link rel="stylesheet" href="style/dark-mode-fixes.css">
+  <link rel="stylesheet" href="style/single-page.css">
+  <style>
+    /* Additional page-specific styles */
+    .course-card {
+      margin-bottom: var(--space-4);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: all var(--transition-base);
+    }
+
+    .course-card:hover {
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary-light);
+    }
+
+    .course-header {
+      padding: var(--space-4);
+      background: var(--bg-tertiary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all var(--transition-base);
+    }
+
+    .course-header:hover {
+      background: var(--primary-light);
+      color: white;
+    }
+
+    .course-meta {
+      display: flex;
+      gap: var(--space-2);
+      align-items: center;
+      margin-top: var(--space-1);
+      flex-wrap: wrap;
+    }
+
+    .course-details {
+      padding: var(--space-4);
+      border-top: 1px solid var(--border-color);
+      display: none;
+    }
+
+    .course-stats,
+    .mentoring-stats {
+      display: flex;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-1);
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+    }
+
+    .materials-grid {
+      display: grid;
+      gap: var(--space-2);
+    }
+
+    .material-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2);
+      background: var(--bg-secondary);
+      border-radius: var(--radius-md);
+      border-left: 3px solid var(--primary-color);
+    }
+
+    .material-item i {
+      color: var(--primary-color);
+    }
+
+    .talk-item {
+      padding: var(--space-4);
+      margin-bottom: var(--space-3);
+      background: var(--bg-secondary);
+      border-radius: var(--radius-lg);
+      border-left: 4px solid var(--primary-color);
+      transition: all var(--transition-base);
+    }
+
+    .talk-item:hover {
+      transform: translateX(4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .talk-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: var(--space-2);
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+
+    .talk-details {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      align-items: center;
+      margin-bottom: var(--space-2);
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+    }
+
+    .talk-description {
+      width: 100%;
+      margin: var(--space-2) 0;
+      color: var(--text-primary);
+    }
+
+    .research-card {
+      height: 100%;
+      transition: transform var(--transition-base);
+    }
+
+    .research-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .awards-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .award-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--space-3) 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .award-item:last-child {
+      border-bottom: none;
+    }
+
+    .award-year {
+      font-weight: 600;
+      color: var(--primary-color);
+    }
+
+    .badges-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+
+    .mission-statement {
+      padding: var(--space-4);
+      background: var(--bg-tertiary);
+      border-left: 4px solid var(--primary-color);
+      border-radius: var(--radius-md);
+      margin-top: var(--space-4);
+    }
+
+    .mobile-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transition: all var(--transition-base);
+    }
+
+    .mobile-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
+    }
+
+    .animate-on-scroll.animated {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Tooltip styles */
+    .tooltip {
+      position: absolute;
+      bottom: 120%;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: var(--space-2) var(--space-3);
+      background: var(--gray-900);
+      color: white;
+      font-size: var(--text-sm);
+      border-radius: var(--radius-md);
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition-fast);
+    }
+
+    .tooltip.show {
+      opacity: 1;
+    }
+
+    .tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 5px solid transparent;
+      border-top-color: var(--gray-900);
+    }
+  </style>
+  <link rel="stylesheet" href="style/refinement.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Youcheng Li","alternateName":"利友诚","url":"https://youchengli.com/","jobTitle":"PhD Candidate","affiliation":{"@type":"CollegeOrUniversity","name":"Peking University"},"image":"https://youchengli.com/resources/avatar.jpg","sameAs":["https://scholar.google.com/citations?user=cRWgAzcAAAAJ","https://github.com/xjtulyc"]}</script>
+  <noscript><style>.mobile-menu-toggle,.theme-toggle,.back-to-top{display:none}@media(max-width:768px){.layout-container{display:block}#sidebar{position:static;transform:none;width:100%;height:auto}#main{margin-left:0;width:100%}}</style></noscript>
+</head>
+<body data-page="teaching">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <button type="button" class="mobile-menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="sidebar"><span></span><span></span><span></span></button>
+  <div class="mobile-overlay" aria-hidden="true"></div>
+  <button type="button" class="theme-toggle" aria-label="Switch to dark theme"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg></button>
+  <button type="button" class="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up" aria-hidden="true"></i></button>
+  <div class="layout-container">
+    <aside id="sidebar"><div class="sidebar-content">
+      <div class="profile"><a href="index.html" aria-label="Youcheng Li home"><img src="resources/avatar.jpg" alt="Youcheng Li" class="profile-image" width="150" height="150"></a><p class="profile-name">Youcheng Li</p><p class="profile-name" lang="zh-CN">利友诚</p><p class="profile-title">PhD Candidate</p><p class="profile-title">Peking University</p></div>
+      <nav class="navigation" aria-label="Main navigation"><a class="nav-item" href="index.html"><i class="fas fa-user nav-icon" aria-hidden="true"></i><span>Home</span></a><a class="nav-item" href="research.html"><i class="fas fa-microscope nav-icon" aria-hidden="true"></i><span>Research</span></a><a class="nav-item" href="experience.html"><i class="fas fa-briefcase nav-icon" aria-hidden="true"></i><span>Experience</span></a><a class="nav-item active" href="teaching.html" aria-current="page"><i class="fas fa-chalkboard-teacher nav-icon" aria-hidden="true"></i><span>Teaching &amp; Resources</span></a><a class="nav-item" href="blog.html"><i class="fas fa-pen-nib nav-icon" aria-hidden="true"></i><span>Blog</span></a></nav>
+      <div class="sidebar-divider"></div>
+      <div class="contact-info"><div class="contact-info-item"><i class="fas fa-envelope" aria-hidden="true"></i><a href="mailto:youchengli@stu.pku.edu.cn">youchengli@stu.pku.edu.cn</a></div><div class="contact-info-item"><i class="fas fa-envelope" aria-hidden="true"></i><a href="mailto:1246321319@qq.com">1246321319@qq.com</a></div></div>
+      <div class="cv-downloads"><a href="pdf/youcheng_li_cv.pdf" class="cv-download cv-download-en" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf" aria-hidden="true"></i> CV (EN)</a><a href="pdf/youcheng_li_cv_ch.pdf" class="cv-download cv-download-ch" target="_blank" rel="noopener noreferrer" lang="zh-CN"><i class="fas fa-file-pdf" aria-hidden="true"></i> 简历 (中文)</a></div>
+      <div class="social-links-grid"><a class="social-link" href="https://scholar.google.com/citations?hl=zh-CN&user=cRWgAzcAAAAJ" aria-label="Google Scholar" data-tooltip="Google Scholar" target="_blank" rel="noopener noreferrer"><i class="fas fa-graduation-cap" aria-hidden="true"></i></a><a class="social-link" href="https://github.com/xjtulyc" aria-label="GitHub" data-tooltip="GitHub" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i></a><a class="social-link" href="https://www.researchgate.net/profile/Youcheng-Li-2" aria-label="ResearchGate" data-tooltip="ResearchGate" target="_blank" rel="noopener noreferrer"><i class="fab fa-researchgate" aria-hidden="true"></i></a><a class="social-link" href="https://www.xiaohongshu.com/user/profile/649ad7e3000000002b009eb5" aria-label="Xiaohongshu" data-tooltip="Xiaohongshu" target="_blank" rel="noopener noreferrer"><i class="fas fa-book" aria-hidden="true"></i></a><a class="social-link" href="https://www.linkedin.com/in/youcheng-li-121396289/" aria-label="LinkedIn" data-tooltip="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin" aria-hidden="true"></i></a><a class="social-link" href="https://www.zhihu.com/people/yan-cheng-86-84" aria-label="知乎" data-tooltip="知乎" target="_blank" rel="noopener noreferrer"><i class="fab fa-zhihu" aria-hidden="true"></i></a></div>
+    </div></aside>
+    <main id="main" tabindex="-1"><div class="main-container"><section id="teaching"><div class="section-header"><h1 class="section-title">Teaching</h1><p class="section-subtitle">Teaching assistant experience and shared course materials</p></div><div class="teaching-content"><div class="teaching-card card">
+        <div class="card-content">
+          <div class="course-header"><h3 class="course-title">Information Theory</h3><span class="badge badge-accent">Teaching Assistant</span></div>
+          <div class="course-info"><p>Spring 2024 · Peking University</p></div>
+          <p>Teaching assistant for Information Theory at Peking University.</p>
+          <a class="btn btn-outline" href="teaching/information_theory_24_spring.html">Course page <span aria-hidden="true">→</span></a>
+          
+        </div></div><div class="teaching-card card">
+        <div class="card-content">
+          <div class="course-header"><h3 class="course-title">Machine Learning</h3><span class="badge badge-accent">Teaching Assistant</span></div>
+          <div class="course-info"><p>Fall 2023 · Peking University</p></div>
+          <p>Teaching assistant for Machine Learning at Peking University.</p>
+          <a class="btn btn-outline" href="teaching/machine_learning_23_fall.html">Course page <span aria-hidden="true">→</span></a>
+          <details class="course-materials"><summary>Lecture notes (11 PDFs)</summary><div class="materials-grid"><a class="material-item" href="teaching/machine_learning_notes/2023_Fall_ML_Note__Week_2__Lecture_2_.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf" aria-hidden="true"></i><span>Week 2 lecture notes</span></a><a class="material-item" href="teaching/machine_learning_notes/2023_Fall_ML_Note__Week_3__Lecture_3_.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf" aria-hidden="true"></i><span>Week 3 lecture notes</span></a><a class="material-item" href="teaching/machine_learning_notes/2023_Fall_ML_Note__Week_4__Lecture_4_.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf" aria-hidden="true"></i><span>Week 4 lecture notes</span></a><a class="material-item" href="teaching/machine_learning_notes/2023_Fall_ML_Note__Week_5__Lecture_5_.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf" aria-hidden="true"></i><span>Week 5 lecture notes</span></a><a class="material-item" href="teaching/machine_learning_notes/2023_Fall_ML_Note__Week_6__Lecture_6_.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf" aria-hidden="true"></i><span>Week 6 lecture notes</span></a><a class="material-item" href="teaching/machine_learning_notes/2023_Fall_ML_Note__Week_7__Lecture_7_.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf" aria-hidden="true"></i><span>Week 7 lecture notes</span></a><a class="material-item" href="teaching/machine_learning_notes/2023_Fall_ML_Note__Week_8__Lecture_8_.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf" aria-hidden="true"></i><span>Week 8 lecture notes</span></a><a class="material-item" href="teaching/machine_learning_notes/2023_Fall_ML_Note__Week_9__Lecture_9_.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf" aria-hidden="true"></i><span>Week 9 lecture notes</span></a><a class="material-item" href="teaching/machine_learning_notes/2023_Fall_ML_Note__Week_10__Lecture_10_.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf" aria-hidden="true"></i><span>Week 10 lecture notes</span></a><a class="material-item" href="teaching/machine_learning_notes/2023_Fall_ML_Note__Week_11__Lecture_11_.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf" aria-hidden="true"></i><span>Week 11 lecture notes</span></a><a class="material-item" href="teaching/machine_learning_notes/2023_Fall_ML_Note__Week_12__Lecture_12_.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf" aria-hidden="true"></i><span>Week 12 lecture notes</span></a></div></details>
+        </div></div></div></section><section id="resources"><div class="section-header"><h2 class="section-title">Research Resources</h2><p class="section-subtitle">Useful links and resources for research</p></div><div class="resources-grid"><div class="resource-category card"><div class="card-content"><h3>Academic Platforms</h3><div class="resource-items"><a class="resource-item" href="https://scholar.google.com" target="_blank" rel="noopener noreferrer"><strong>Google Scholar <span aria-hidden="true">↗</span></strong><span>Academic paper search and citation tracking</span></a><a class="resource-item" href="https://www.researchgate.net" target="_blank" rel="noopener noreferrer"><strong>ResearchGate <span aria-hidden="true">↗</span></strong><span>Academic social network</span></a><a class="resource-item" href="https://www.semanticscholar.org" target="_blank" rel="noopener noreferrer"><strong>Semantic Scholar <span aria-hidden="true">↗</span></strong><span>AI-powered research tool</span></a></div></div><div class="resource-category card"><div class="card-content"><h3>Code and Data</h3><div class="resource-items"><a class="resource-item" href="https://github.com" target="_blank" rel="noopener noreferrer"><strong>GitHub <span aria-hidden="true">↗</span></strong><span>Code repository and collaboration</span></a><a class="resource-item" href="https://paperswithcode.com" target="_blank" rel="noopener noreferrer"><strong>Papers with Code <span aria-hidden="true">↗</span></strong><span>Machine learning papers with implementation</span></a></div></div><div class="resource-category card"><div class="card-content"><h3>News and Media</h3><div class="resource-items"><a class="resource-item" href="https://www.jiqizhixin.com" target="_blank" rel="noopener noreferrer"><strong>机器之心 <span aria-hidden="true">↗</span></strong><span>AI news and insights in Chinese</span></a><a class="resource-item" href="https://www.yanxishe.com" target="_blank" rel="noopener noreferrer"><strong>AI研习社 <span aria-hidden="true">↗</span></strong><span>AI learning community</span></a></div></div></div></div></div></div></section><footer class="site-footer"><span>© 2026 Youcheng Li · 利友诚</span><a href="mailto:youchengli@stu.pku.edu.cn">Contact</a><span>Updated October 2026</span></footer></div></main>
+  </div>
+  <script src="config/site-config.js"></script>
+  <script src="js/dynamic-content-loader.js"></script>
+  <script src="js/modern-script.js"></script>
+  <script src="js/single-page-app.js"></script>
+</body>
+</html>

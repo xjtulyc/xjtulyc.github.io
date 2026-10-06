@@ -14,17 +14,12 @@ const SITE_CONFIG = {
   // 基本个人信息 / Basic Personal Information
   // ========================================
   personal: {
-    // 姓名信息
     name: {
       english: "Youcheng Li",
       chinese: "利友诚",
-      display: "Youcheng Li" // 主要显示名称
+      display: "Youcheng Li"
     },
-
-    // 头像
     avatar: "resources/avatar.jpg",
-
-    // 职位和机构
     position: {
       title: "PhD Candidate",
       institution: "Peking University",
@@ -32,22 +27,21 @@ const SITE_CONFIG = {
       departmentUrl: "https://www.cis.pku.edu.cn/",
       supervisor: {
         name: "Prof. Liwei Wang",
-        url: "http://www.liweiwang-pku.com/"
+        url: "https://www.liweiwang-pku.com/"
+      },
+      company: {
+        name: "Isoplex Intelligence",
+        chineseName: "壹索智能",
+        role: "Co-founder & CTO",
+        url: "https://www.sciland.cn/"
       }
     },
-
-    // 联系方式
     contact: {
-      emails: [
-        "youchengli@stu.pku.edu.cn",
-        "1246321319@qq.com"
-      ],
+      emails: ["youchengli@stu.pku.edu.cn", "1246321319@qq.com"],
       cv: "pdf/youcheng_li_cv.pdf",
       cvEnglish: "pdf/youcheng_li_cv.pdf",
       cvChinese: "pdf/youcheng_li_cv_ch.pdf"
     },
-
-    // 社交链接
     social: [
       {
         name: "Google Scholar",
@@ -92,51 +86,42 @@ const SITE_CONFIG = {
   // SEO 和元数据 / SEO and Metadata
   // ========================================
   seo: {
-    title: "Youcheng Li | PhD Candidate - Peking University",
-    description: "Youcheng Li is a PhD candidate at Peking University, specializing in machine learning and computer vision applications in biomedical engineering. Research focus on AI medical diagnosis systems.",
-    keywords: "Youcheng Li, 利友诚, Peking University, PKU, Machine Learning, Computer Vision, AI Medical Diagnosis, PhD Candidate",
+    title: "Youcheng Li | PhD Candidate · Peking University",
+    description: "Youcheng Li is a PhD candidate at Peking University researching medical AI, generative foundation models and diagnostic reasoning. Publications, projects, teaching and experience.",
+    keywords: "Youcheng Li, 利友诚, Peking University, Medical AI, Generative Models, Diagnostic Reasoning, Scientific Agents, Isoplex Intelligence",
     author: "Youcheng Li",
-    siteUrl: "https://xjtulyc.github.io",
-
-    // Open Graph 数据
+    siteUrl: "https://youchengli.com",
     openGraph: {
-      title: "Youcheng Li - PhD Candidate at Peking University",
-      description: "Research in Machine Learning and Computer Vision for Medical AI",
-      image: "resources/avatar.jpg",
+      title: "Youcheng Li | PhD Candidate · Peking University",
+      description: "Youcheng Li is a PhD candidate at Peking University researching medical AI, generative foundation models and diagnostic reasoning. Publications, projects, teaching and experience.",
+      image: "https://youchengli.com/resources/avatar.jpg",
       type: "website"
     },
-
-    // Twitter Card 数据
     twitter: {
       card: "summary_large_image",
-      title: "Youcheng Li - PhD Candidate",
-      description: "Research in ML and Computer Vision for Medical AI",
-      image: "resources/avatar.jpg"
+      title: "Youcheng Li | PhD Candidate · Peking University",
+      description: "Youcheng Li is a PhD candidate at Peking University researching medical AI, generative foundation models and diagnostic reasoning. Publications, projects, teaching and experience.",
+      image: "https://youchengli.com/resources/avatar.jpg"
     },
-
-    // 结构化数据
     structuredData: {
       "@context": "https://schema.org",
       "@type": "Person",
-      "name": "Youcheng Li",
-      "alternateName": "利友诚",
-      "jobTitle": "PhD Candidate",
-      "worksFor": {
+      name: "Youcheng Li",
+      alternateName: "利友诚",
+      jobTitle: "PhD Candidate",
+      worksFor: {
         "@type": "Organization",
-        "name": "Peking University",
-        "sameAs": "https://www.pku.edu.cn"
+        name: "Peking University",
+        sameAs: "https://www.pku.edu.cn"
       },
-      "alumniOf": {
+      alumniOf: {
         "@type": "Organization",
-        "name": "Xi'an Jiaotong University"
+        name: "Xi'an Jiaotong University"
       },
-      "email": "youchengli@stu.pku.edu.cn",
-      "image": "resources/avatar.jpg",
-      "sameAs": [
-        "https://scholar.google.com/citations?hl=zh-CN&user=cRWgAzcAAAAJ",
-        "https://github.com/xjtulyc",
-        "https://www.researchgate.net/profile/Youcheng-Li-2"
-      ]
+      email: "youchengli@stu.pku.edu.cn",
+      image: "https://youchengli.com/resources/avatar.jpg",
+      sameAs: ["https://scholar.google.com/citations?hl=zh-CN&user=cRWgAzcAAAAJ", "https://github.com/xjtulyc", "https://www.researchgate.net/profile/Youcheng-Li-2"],
+      url: "https://youchengli.com/"
     }
   },
 
@@ -144,37 +129,27 @@ const SITE_CONFIG = {
   // 关于我部分 / About Section
   // ========================================
   about: {
-    title: "About Me",
-    subtitle: "Research in AI for Medical Diagnosis",
-
-    // 主要介绍内容
+    title: "Youcheng Li · 利友诚",
+    subtitle: "Medical AI, generative models and diagnostic reasoning",
     content: [
       {
         type: "paragraph",
-        text: "I am a PhD candidate at the <a href=\"https://www.cis.pku.edu.cn/\" target=\"_blank\">School of Intelligence Science and Technology</a>, Peking University, under the supervision of <a href=\"http://www.liweiwang-pku.com/\" target=\"_blank\">Prof. Liwei Wang</a>."
+        text: "I am a PhD candidate in Artificial Intelligence at the <a href=\"https://www.cis.pku.edu.cn/\" target=\"_blank\" rel=\"noopener noreferrer\">School of Intelligence Science and Technology</a>, Peking University, advised by <a href=\"https://www.liweiwang-pku.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Prof. Liwei Wang</a>."
       },
       {
         type: "paragraph",
-        text: "My research focuses on the application of machine learning, computer vision, generative models, and reasoning systems in biomedical engineering. I am particularly interested in developing AI-powered medical diagnosis systems and benchmarks that can make healthcare more accessible, accurate, and interpretable."
+        text: "My research connects medical image analysis, generative foundation models and diagnostic reasoning. I develop models and benchmarks for breast ultrasound and mammography, and have worked on cell segmentation for spatial transcriptomics. My first-author and co-first-author publications appear in Nature Biomedical Engineering, Scientific Data, KDD and PLOS Computational Biology."
+      },
+      {
+        type: "paragraph",
+        text: "Alongside my research, I co-founded Isoplex Intelligence (壹索智能) and serve as CTO, working on scientific agents and research software. <a href=\"experience.html\">More about my industry experience →</a>"
       }
     ],
-
-    // 研究兴趣
     researchInterests: {
       title: "Research Interests",
-      interests: [
-        "Machine Learning",
-        "Computer Vision",
-        "Medical AI",
-        "Deep Learning",
-        "Biomedical Engineering",
-        "Medical Image Analysis",
-        "Chain-of-Thought Reasoning"
-      ]
+      interests: ["Medical AI", "Generative Foundation Models", "Medical Image Analysis", "Diagnostic Reasoning", "Scientific Agents", "Spatial Transcriptomics"]
     },
-
-    // 使命宣言
-    mission: "Develop artificial intelligence medical diagnosis systems for social good."
+    mission: "Build medical AI and scientific tools that connect research with practice."
   },
 
   // ========================================
@@ -183,22 +158,21 @@ const SITE_CONFIG = {
   news: {
     title: "Latest News",
     subtitle: "Recent updates and achievements",
-
     items: [
       {
-        date: "Jun 2026",
-        title: "MammoExpert accepted to KDD 2026 AI4Sciences Track",
-        content: "Our work \"MammoExpert: Benchmarking Chain-of-Thought Reasoning in Mammography Diagnosis\" has been accepted to the KDD 2026 AI4Sciences Track.",
+        date: "Aug 2026",
+        title: "MammoExpert published at KDD 2026",
+        content: "Our mammography reasoning benchmark is published in the KDD 2026 AI4Sciences track.",
         link: {
-          url: "https://arxiv.org/abs/2606.21119",
+          url: "https://doi.org/10.1145/3770855.3818933",
           text: "Read Paper →"
         },
         type: "publication"
       },
       {
         date: "Apr 2026",
-        title: "🔥BUSGen published in Nature Biomedical Engineering🔥",
-        content: "Our work \"A foundation generative model for breast ultrasound image analysis\" has been published in Nature Biomedical Engineering.",
+        title: "BUSGen published in Nature Biomedical Engineering",
+        content: "Our foundation generative model for breast ultrasound image analysis is now published.",
         link: {
           url: "https://www.nature.com/articles/s41551-026-01639-1",
           text: "Read Paper →"
@@ -206,29 +180,19 @@ const SITE_CONFIG = {
         type: "publication"
       },
       {
-        date: "Sept 2025",
-        title: "Breast Ultrasound Chain-of-Thought Dataset Released",
-        content: "We are excited to announce the release of the Breast Ultrasound Chain-of-Thought Dataset, a valuable resource for advancing research in breast ultrasound analysis.",
+        date: "Feb 2026",
+        title: "BUS-CoT published in Scientific Data",
+        content: "Our breast ultrasound reasoning dataset covers 99 histopathology categories and includes expert-verified diagnostic annotations.",
         link: {
-          url: "https://www.arxiv.org/abs/2509.17046",
-          text: "Read Paper →"
-        },
-        type: "publication"
-      },
-      {
-        date: "Jan 2025",
-        title: "BUSGen preprint released",
-        content: "Our work \"A Foundational Generative Model for Breast Ultrasound Image Analysis\" has been released as a preprint, featuring the first foundational model for breast ultrasound analysis.",
-        link: {
-          url: "https://arxiv.org/abs/2501.06869",
+          url: "https://www.nature.com/articles/s41597-026-06702-9",
           text: "Read Paper →"
         },
         type: "publication"
       },
       {
         date: "Apr 2025",
-        title: "Scientific Reports Publication",
-        content: "Our collaborative work on AI-assisted classification of breast ultrasound glandular tissue components has been published in Scientific Reports (Nature).",
+        title: "Breast tissue classification study published",
+        content: "Our collaborative study of AI-assisted breast ultrasound tissue classification is published in Scientific Reports.",
         link: {
           url: "https://www.nature.com/articles/s41598-025-95871-5",
           text: "Read Paper →"
@@ -236,9 +200,19 @@ const SITE_CONFIG = {
         type: "publication"
       },
       {
+        date: "Jan 2025",
+        title: "BUSGen preprint released",
+        content: "The BUSGen preprint introduces a generative model for breast ultrasound image analysis.",
+        link: {
+          url: "https://arxiv.org/abs/2501.06869",
+          text: "Read Paper →"
+        },
+        type: "publication"
+      },
+      {
         date: "Dec 2024",
         title: "National Digital Health Innovation Competition First Prize",
-        content: "Our team won the first prize in the 2nd National Digital Health Innovation Application Competition organized by the National Health Commission. Our project \"Differentiation of Breast Ductal Carcinoma In Situ and Fibroadenoma Based on Conventional Ultrasound Images\" stood out among 265 finalist teams.",
+        content: "Our team received a national first prize in the 2nd National Digital Health Innovation Application Competition for work on ultrasound-based differentiation of ductal carcinoma in situ and fibroadenoma.",
         link: {
           url: "https://mp.weixin.qq.com/s/fJIdh25YOHuIbezn_XZSDQ",
           text: "Read News →"
@@ -248,13 +222,13 @@ const SITE_CONFIG = {
       {
         date: "Oct 2024",
         title: "National Scholarship Award",
-        content: "I am honored to receive the National Scholarship for my research contributions.",
+        content: "I received the National Scholarship at Peking University for the 2023–2024 academic year.",
         type: "award"
       },
       {
         date: "Jul 2024",
-        title: "TAILOR Pipeline Published",
-        content: "Our work \"Knowledge-driven AI-generated data for accurate and interpretable breast ultrasound diagnoses\" is now available on arXiv, introducing the TAILOR pipeline for medical data generation.",
+        title: "TAILOR preprint released",
+        content: "Our preprint explores knowledge-driven synthetic data for breast ultrasound diagnosis, including rare cases.",
         link: {
           url: "https://arxiv.org/abs/2407.16634",
           text: "Read Paper →"
@@ -262,9 +236,9 @@ const SITE_CONFIG = {
         type: "publication"
       },
       {
-        date: "Jul 2024",
-        title: "Paper Accepted at PLOS Computational Biology",
-        content: "Our work \"ST-CellSeg: Cell segmentation for imaging-based spatial transcriptomics using multi-scale manifold learning\" has been accepted.",
+        date: "Jun 2024",
+        title: "ST-CellSeg published in PLOS Computational Biology",
+        content: "Our work on multi-scale manifold learning for cell segmentation in imaging-based spatial transcriptomics is published.",
         link: {
           url: "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1012254",
           text: "View Article →"
@@ -299,13 +273,22 @@ const SITE_CONFIG = {
   // ========================================
   research: {
     title: "Research Highlights",
-    subtitle: "Featured research projects and contributions",
-
+    subtitle: "Three connected directions in medical and scientific AI",
     highlights: [
       {
-        title: "AI Diagnosis Systems",
-        description: "Building intelligent systems for automated disease detection and diagnosis, with emphasis on accuracy and interpretability.",
-        link: "projects.html"
+        title: "Medical Foundation Models",
+        description: "Generative models and synthetic data for breast imaging, with applications in screening, diagnosis and prognosis.",
+        link: "research.html#projects"
+      },
+      {
+        title: "Diagnostic Reasoning",
+        description: "Structured reasoning datasets and benchmarks that connect imaging observations, clinical features and pathology.",
+        link: "research.html#publications"
+      },
+      {
+        title: "Scientific Agents",
+        description: "Research workspaces and agent systems that connect literature, data analysis, model development and experimental feedback.",
+        link: "experience.html"
       }
     ]
   },
@@ -316,13 +299,11 @@ const SITE_CONFIG = {
   projects: {
     title: "Projects & Publications",
     subtitle: "Research projects and academic publications",
-
-    // 特色项目
     featured: [
       {
-        title: "BUSGen: Foundational Generative Model for Breast Ultrasound",
+        title: "BUSGen: A Foundation Generative Model for Breast Ultrasound",
         semanticScholarId: "DOI:10.1038/s41551-026-01639-1",
-        description: "The first foundational generative model specifically designed for breast ultrasound image analysis. Pretrained on over 3.5 million breast ultrasound images, BUSGen has acquired extensive knowledge of breast structures, pathological features, and clinical variations. Outperformed all board-certified radiologists with 16.5% sensitivity improvement.",
+        description: "A generative model pretrained on more than 3.5 million breast ultrasound images. Few-shot adaptation produces task-specific synthetic data for downstream screening, diagnosis and prognosis research.",
         image: "pub/BUSGen.png",
         tags: ["Medical AI", "Generative AI"],
         links: [
@@ -340,12 +321,17 @@ const SITE_CONFIG = {
         highlight: true
       },
       {
-        title: "A Chain-of-thought Reasoning Breast Ultrasound Dataset Covering All Histopathology Categories",
-        semanticScholarId: "ARXIV:2509.17046",
-        description: "Breast ultrasound (BUS) is an essential tool for diagnosing breast lesions, with millions of examinations per year. However, publicly available high-quality BUS benchmarks for AI development are limited in data scale and annotation richness. In this work, we present BUS-CoT, a BUS dataset for chain-of-thought (CoT) reasoning analysis, which contains 11,439 images of 10,019 lesions from 4,838 patients and covers all 99 histopathology types. To facilitate research on incentivizing CoT reasoning, we construct the reasoning processes based on observation, feature, diagnosis and pathology labels, annotated and verified by experienced experts. Moreover, by covering lesions of all histopathology types, we aim to facilitate robust AI systems in rare cases, which can be error-prone in clinical practice.",
+        title: "BUS-CoT: Breast Ultrasound Diagnostic Reasoning",
+        semanticScholarId: "DOI:10.1038/s41597-026-06702-9",
+        description: "A breast ultrasound dataset with 11,439 images, 11,850 lesions and 4,838 patients, covering 99 histopathology categories. Expert annotations connect observations, imaging features, diagnoses and pathology.",
         image: "pub/BUSCoT.png",
         tags: ["Medical AI", "Dataset"],
         links: [
+          {
+            type: "journal",
+            url: "https://www.nature.com/articles/s41597-026-06702-9",
+            text: "Scientific Data"
+          },
           {
             type: "arxiv",
             url: "https://www.arxiv.org/abs/2509.17046",
@@ -353,16 +339,49 @@ const SITE_CONFIG = {
           },
           {
             type: "dataset",
-            url: "https://figshare.com/articles/dataset/A_Chain-of-thought_Reasoning_Breast_Ultrasound_Dataset_Covering_All_Histopathology_Categories/29036876/1?file=54466433",
+            url: "https://doi.org/10.6084/m9.figshare.30838715",
             text: "Dataset"
           }
         ],
         highlight: true
       },
       {
+        title: "MammoExpert: Reasoning in Mammography",
+        semanticScholarId: "DOI:10.1145/3770855.3818933",
+        description: "A mammography benchmark with 2,379 images and 67 histopathology subtypes. Structured annotations cover observation, assessment and diagnostic synthesis.",
+        tags: ["Medical AI", "Diagnostic Reasoning", "Dataset"],
+        links: [
+          {
+            type: "conference",
+            url: "https://doi.org/10.1145/3770855.3818933",
+            text: "KDD 2026"
+          },
+          {
+            type: "code",
+            url: "https://github.com/Ericdd90/MammoExpert",
+            text: "Code & Dataset"
+          }
+        ],
+        highlight: true
+      },
+      {
+        title: "ST-CellSeg: Spatial Transcriptomics Cell Segmentation",
+        semanticScholarId: "DOI:10.1371/journal.pcbi.1012254",
+        description: "A cell segmentation method for imaging-based spatial transcriptomics that combines image information with multi-scale manifold learning.",
+        image: "pub/STCellSeg.png",
+        tags: ["Computer Vision", "Machine Learning"],
+        links: [
+          {
+            type: "paper",
+            url: "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1012254",
+            text: "PLOS Comp Bio"
+          }
+        ]
+      },
+      {
         title: "UltraDet: Real-time Ultrasound Lesion Detection",
         semanticScholarId: "DOI:10.1007/978-3-031-43987-2_1",
-        description: "Mining negative temporal contexts for false positive suppression in real-time ultrasound lesion detection. This model leverages temporal information from video sequences to significantly reduce false positives while maintaining real-time inference speed.",
+        description: "A video-based lesion detection method that uses negative temporal context to suppress false positives in real-time breast ultrasound.",
         image: "pub/UltraDet.png",
         tags: ["Medical AI", "Computer Vision"],
         links: [
@@ -376,13 +395,12 @@ const SITE_CONFIG = {
             url: "https://arxiv.org/abs/2305.18060",
             text: "arXiv"
           }
-        ],
-        citations: 4
+        ]
       },
       {
         title: "TAILOR: Knowledge-driven AI-generated Data Pipeline",
         semanticScholarId: "ARXIV:2407.16634",
-        description: "A pipeline that builds knowledge-driven generative models to produce tailored synthetic data for rare medical cases. Using 3,749 lesions as source data, can generate millions of breast-US images, especially for error-prone rare cases like DCIS.",
+        description: "A knowledge-driven pipeline for generating synthetic breast ultrasound data to study diagnosis under long-tailed and rare-case data distributions.",
         image: "pub/TAILOR.png",
         tags: ["Medical AI", "Generative AI"],
         links: [
@@ -391,40 +409,27 @@ const SITE_CONFIG = {
             url: "https://arxiv.org/abs/2407.16634",
             text: "arXiv"
           }
-        ],
-        citations: 5
-      },
-      {
-        title: "ST-CellSeg: Spatial Transcriptomics Cell Segmentation",
-        semanticScholarId: "DOI:10.1371/journal.pcbi.1012254",
-        description: "An image-based machine learning method for spatial transcriptomics that uses manifold for cell segmentation. Novel in its consideration of multi-scale information, significantly outperforms baseline models in ARI, NMI, and Silhouette coefficient metrics.",
-        image: "pub/STCellSeg.png",
-        tags: ["Computer Vision", "Machine Learning"],
-        links: [
-          {
-            type: "paper",
-            url: "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1012254",
-            text: "PLOS Comp Bio"
-          }
-        ],
-        citations: 3
+        ]
       }
     ],
-
-    // 出版物列表
     publications: [
       {
         year: "2026",
         items: [
           {
             title: "MammoExpert: Benchmarking Chain-of-Thought Reasoning in Mammography Diagnosis",
-            semanticScholarId: "ARXIV:2606.21119",
+            semanticScholarId: "DOI:10.1145/3770855.3818933",
             authors: ["Di Dai", "Bo Liu", "Youcheng Li", "Haojun Yu", "Zhuohang Bian", "Quanlin Wu", "Dong Wang", "Sichen Meng", "Hongye Xuan", "Zijie Lan", "Shenda Hong", "Liwei Wang"],
             coFirst: ["Di Dai", "Bo Liu", "Youcheng Li", "Haojun Yu"],
-            venue: "Proceedings of the 32nd ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD 2026), AI4Sciences Track",
+            venue: "Proceedings of the 32nd ACM SIGKDD Conference on Knowledge Discovery and Data Mining V.2",
             publisher: "ACM",
-            date: "June 2026",
+            date: "August 2026",
             links: [
+              {
+                type: "conference",
+                url: "https://doi.org/10.1145/3770855.3818933",
+                text: "KDD 2026"
+              },
               {
                 type: "arxiv",
                 url: "https://arxiv.org/abs/2606.21119"
@@ -440,41 +445,17 @@ const SITE_CONFIG = {
               }
             ],
             tags: ["Medical AI", "Mammography", "Chain-of-Thought", "Dataset"],
-            highlight: true
-          }
-        ]
-      },
-      {
-        year: "2025",
-        items: [
-          {
-            title: "A Chain-of-thought Reasoning Breast Ultrasound Dataset Covering All Histopathology Categories",
-            semanticScholarId: "ARXIV:2509.17046",
-            authors: ["Haojun Yu", "Youcheng Li", "et al."],
-            venue: "arXiv preprint arXiv:2509.17046",
-            date: "January 2025",
-            links: [
-              {
-                type: "arxiv",
-                url: "https://arxiv.org/abs/2509.17046"
-              },
-              {
-                type: "pdf",
-                url: "https://arxiv.org/pdf/2509.17046"
-              },
-              {
-                type: "dataset",
-                url: "https://figshare.com/articles/dataset/A_Chain-of-thought_Reasoning_Breast_Ultrasound_Dataset_Covering_All_Histopathology_Categories/29036876/1?file=54466433",
-                text: "Dataset"
-              }
-            ],
-            tags: ["Medical AI", "Dataset"],
-            highlight: true
+            highlight: true,
+            doi: "10.1145/3770855.3818933",
+            year: "2026",
+            publicationType: "inproceedings",
+            track: "AI4Sciences",
+            pages: "10785-10794"
           },
           {
             title: "A foundation generative model for breast ultrasound image analysis",
             semanticScholarId: "DOI:10.1038/s41551-026-01639-1",
-            authors: ["Haojun Yu", "Youcheng Li", "Nan Zhang", "Zihan Niu", "Xuantong Gong", "Yanwen Luo", "et al."],
+            authors: ["Haojun Yu", "Youcheng Li", "Nan Zhang", "Zihan Niu", "Xuantong Gong", "Yanwen Luo", "Haotian Ye", "Siyu He", "Quanlin Wu", "Wangyan Qin", "Mengyuan Zhou", "Jie Han", "Jia Tao", "Ziwei Zhao", "Di Dai", "Di He", "Dong Wang", "Binghui Tang", "Ling Huo", "James Zou", "Qingli Zhu", "Yong Wang", "Liwei Wang"],
             venue: "Nature Biomedical Engineering",
             date: "April 2026",
             links: [
@@ -485,7 +466,8 @@ const SITE_CONFIG = {
               },
               {
                 type: "pdf",
-                url: "https://arxiv.org/pdf/2501.06869"
+                url: "https://arxiv.org/pdf/2501.06869",
+                text: "Preprint PDF"
               },
               {
                 type: "demo",
@@ -494,12 +476,60 @@ const SITE_CONFIG = {
               }
             ],
             tags: ["Medical AI", "Generative AI"],
-            highlight: true
+            highlight: true,
+            doi: "10.1038/s41551-026-01639-1",
+            year: "2026",
+            publicationType: "article",
+            coFirst: ["Haojun Yu", "Youcheng Li", "Nan Zhang", "Zihan Niu"],
+            note: "Published online on 7 April 2026; volume and final page range not yet assigned in the publisher and Crossref records (checked 6 October 2026)."
           },
+          {
+            title: "A Chain-of-thought Reasoning Breast Ultrasound Dataset Covering All Histopathology Categories",
+            semanticScholarId: "DOI:10.1038/s41597-026-06702-9",
+            authors: ["Haojun Yu", "Youcheng Li", "Zihan Niu", "Nan Zhang", "Xuantong Gong", "Huan Li", "Zhiying Zou", "Haifeng Qi", "Zhenxiao Cao", "Zijie Lan", "Xingjian Yuan", "Jiating He", "Haokai Zhang", "Shengtao Zhang", "Zicheng Wang", "Dong Wang", "Ziwei Zhao", "Congying Chen", "Yong Wang", "Wangyan Qin", "Qingli Zhu", "Liwei Wang"],
+            venue: "Scientific Data",
+            date: "February 2026",
+            links: [
+              {
+                type: "journal",
+                url: "https://www.nature.com/articles/s41597-026-06702-9",
+                text: "Scientific Data"
+              },
+              {
+                type: "arxiv",
+                url: "https://arxiv.org/abs/2509.17046"
+              },
+              {
+                type: "pdf",
+                url: "https://arxiv.org/pdf/2509.17046",
+                text: "Preprint PDF"
+              },
+              {
+                type: "dataset",
+                url: "https://doi.org/10.6084/m9.figshare.30838715",
+                text: "Dataset"
+              }
+            ],
+            tags: ["Medical AI", "Dataset"],
+            highlight: true,
+            doi: "10.1038/s41597-026-06702-9",
+            year: "2026",
+            publicationType: "article",
+            volume: "13",
+            issue: "1",
+            pages: "370",
+            articleNumber: "370",
+            coFirst: ["Haojun Yu", "Youcheng Li", "Zihan Niu", "Nan Zhang", "Xuantong Gong", "Huan Li", "Zhiying Zou", "Haifeng Qi", "Zhenxiao Cao"]
+          }
+        ]
+      },
+      {
+        year: "2025",
+        items: [
           {
             title: "Using artificial intelligence system for assisting the classification of breast ultrasound glandular tissue components in dense breast tissue",
             semanticScholarId: "DOI:10.1038/s41598-025-95871-5",
-            authors: ["Hongju Yan", "Chaochao Dai", "Xiaojing Xu", "et al."],
+            authors: ["Hongju Yan", "Chaochao Dai", "Xiaojing Xu", "Yuxuan Qiu", "Lifang Yu", "Lewen Huang", "Bei Lin", "Jianan Huang", "Chenxiang Jiang", "Yingzhao Shen", "Jing Ji", "Youcheng Li", "Lingyun Bao"],
             venue: "Scientific Reports",
             volume: "15",
             issue: "1",
@@ -512,7 +542,10 @@ const SITE_CONFIG = {
               }
             ],
             tags: ["Medical AI"],
-            citations: 1
+            doi: "10.1038/s41598-025-95871-5",
+            year: "2025",
+            publicationType: "article",
+            articleNumber: "11754"
           }
         ]
       },
@@ -522,7 +555,7 @@ const SITE_CONFIG = {
           {
             title: "Knowledge-driven AI-generated data for accurate and interpretable breast ultrasound diagnoses",
             semanticScholarId: "ARXIV:2407.16634",
-            authors: ["Haojun Yu", "Youcheng Li", "Nan Zhang", "Zihan Niu", "Xuantong Gong", "Yanwen Luo", "et al."],
+            authors: ["Haojun Yu", "Youcheng Li", "Nan Zhang", "Zihan Niu", "Xuantong Gong", "Yanwen Luo", "Quanlin Wu", "Wangyan Qin", "Mengyuan Zhou", "Jie Han", "Jia Tao", "Ziwei Zhao", "Di Dai", "Di He", "Dong Wang", "Binghui Tang", "Ling Huo", "Qingli Zhu", "Yong Wang", "Liwei Wang"],
             venue: "arXiv preprint arXiv:2407.16634",
             date: "July 2024",
             links: [
@@ -536,7 +569,12 @@ const SITE_CONFIG = {
               }
             ],
             tags: ["Medical AI", "Generative AI"],
-            citations: 5
+            year: "2024",
+            publicationType: "misc",
+            doi: "10.48550/arXiv.2407.16634",
+            eprint: "2407.16634",
+            archivePrefix: "arXiv",
+            primaryClass: "eess.IV"
           },
           {
             title: "ST-CellSeg: Cell segmentation for imaging-based spatial transcriptomics using multi-scale manifold learning",
@@ -554,7 +592,9 @@ const SITE_CONFIG = {
               }
             ],
             tags: ["Computer Vision", "Machine Learning"],
-            citations: 3
+            doi: "10.1371/journal.pcbi.1012254",
+            year: "2024",
+            publicationType: "article"
           }
         ]
       },
@@ -562,10 +602,10 @@ const SITE_CONFIG = {
         year: "2023",
         items: [
           {
-            title: "Mining Negative Temporal Contexts For False Positive Suppression In Real-Time Ultrasound Lesion Detection",
+            title: "Mining Negative Temporal Contexts for False Positive Suppression in Real-Time Ultrasound Lesion Detection",
             semanticScholarId: "DOI:10.1007/978-3-031-43987-2_1",
             authors: ["Haojun Yu", "Youcheng Li", "QuanLin Wu", "Ziwei Zhao", "Dengbo Chen", "Dong Wang", "Liwei Wang"],
-            venue: "International Conference on Medical Image Computing and Computer-Assisted Intervention (MICCAI 2023)",
+            venue: "Medical Image Computing and Computer Assisted Intervention – MICCAI 2023",
             publisher: "Springer Nature Switzerland",
             pages: "3-13",
             date: "October 2023",
@@ -584,10 +624,49 @@ const SITE_CONFIG = {
               }
             ],
             tags: ["Medical AI", "Computer Vision"],
-            citations: 4,
-            highlight: true
+            highlight: true,
+            doi: "10.1007/978-3-031-43987-2_1",
+            year: "2023",
+            publicationType: "inproceedings"
           }
         ]
+      }
+    ]
+  },
+
+  // Professional experience / 创业与产业经历
+  experience: {
+    title: "Experience",
+    subtitle: "From medical AI research to scientific software and product development",
+    items: [
+      {
+        organization: "Isoplex Intelligence · 壹索智能",
+        role: "Co-founder & CTO",
+        period: "June 2025 – Present",
+        description: "I lead technical strategy, product development and engineering teams at Isoplex Intelligence.",
+        highlights: ["Lead development of Iso-Sciland, a research workspace that brings together scientific agents, tool use, data analysis and research collaboration.", "Develop the technical roadmap, model training and evaluation for Iso-SWM, a scientific world model research program.", "Design systems and prototypes for Iso-LabOS, connecting model-based reasoning with experimental execution and feedback.", "Support product delivery and partnerships with hospitals, universities and pharmaceutical companies."],
+        url: "https://www.sciland.cn/"
+      },
+      {
+        organization: "医准智能科技（北京）有限公司",
+        role: "Algorithm Research Intern",
+        period: "January 2023 – June 2025",
+        description: "Worked on breast ultrasound screening, diagnosis, video lesion detection and generative models.",
+        highlights: ["Research contributions led to publications at MICCAI 2023 and in Nature Biomedical Engineering (2026).", "Developed ultrasound detection and diagnostic algorithms, and worked on model compression and hardware acceleration.", "Contributed to the DCIS diagnosis project awarded a national first prize in the 2nd National Digital Health Innovation Application Competition."]
+      },
+      {
+        organization: "Western University",
+        role: "Research Assistant · Advisor: Prof. Pingzhao Hu",
+        period: "September 2022 – July 2023",
+        description: "Remote research supported by Mitacs and the China Scholarship Council.",
+        highlights: ["Developed ST-CellSeg for cell segmentation in imaging-based spatial transcriptomics.", "Implemented and benchmarked the method; published as first author in PLOS Computational Biology."]
+      },
+      {
+        organization: "深圳安科高新技术股份有限公司",
+        role: "Embedded Engineering Assistant Intern",
+        period: "July 2020 – September 2020",
+        description: "Early engineering experience in medical devices.",
+        highlights: ["Worked on circuit debugging, firmware optimization and ARM-based embedded system integration."]
       }
     ]
   },
@@ -597,42 +676,46 @@ const SITE_CONFIG = {
   // ========================================
   awards: {
     title: "Honors & Awards",
-    subtitle: "Recognition and achievements",
-
+    subtitle: "Selected scholarships and honors",
     items: [
       {
-        name: "Huawei Scholarship",
-        year: "2025",
+        name: "BYD Scholarship; Merit Student · Peking University",
+        year: "2025–2026",
         type: "scholarship"
       },
       {
-        name: "National Digital Health Innovation Competition First Prize",
+        name: "Huawei Scholarship · Peking University",
+        year: "2024–2025",
+        type: "scholarship"
+      },
+      {
+        name: "National First Prize · 2nd National Digital Health Innovation Application Competition",
         year: "2024",
         type: "competition"
       },
       {
-        name: "National Scholarship",
-        year: "2024",
+        name: "National Scholarship; Merit Student · Peking University",
+        year: "2023–2024",
         type: "scholarship"
       },
       {
-        name: "Mitacs Globalink Research Internship Award",
-        year: "2023",
+        name: "Outstanding Graduate · Xi’an Jiaotong University",
+        year: "2022–2023",
+        type: "honor"
+      },
+      {
+        name: "China Scholarship Council & Mitacs scholarships",
+        year: "2021–2022",
         type: "fellowship"
       },
       {
-        name: "Zheng Guobin Scholarship",
-        year: "2022",
+        name: "MEGVII Scholarship · Xi’an Jiaotong University",
+        year: "2020–2021",
         type: "scholarship"
       },
       {
-        name: "MEGVII Scholarship",
-        year: "2021",
-        type: "scholarship"
-      },
-      {
-        name: "National Scholarship",
-        year: "2020",
+        name: "National Scholarship; Merit Student · Xi’an Jiaotong University",
+        year: "2019–2020",
         type: "scholarship"
       }
     ]
@@ -642,72 +725,88 @@ const SITE_CONFIG = {
   // 教学经历 / Teaching Experience
   // ========================================
   teaching: {
-    title: "Teaching & Talks",
-    subtitle: "Academic teaching and presentations",
-
+    title: "Teaching",
+    subtitle: "Teaching assistant experience and shared course materials",
     courses: [
       {
         title: "Information Theory",
+        link: "teaching/information_theory_24_spring.html",
         period: "Spring 2024",
         role: "Teaching Assistant",
         institution: "Peking University",
-        description: "Assisted in course instruction and student mentoring for graduate-level information theory course.",
-        link: "teaching/information_theory_24_spring.html",
+        description: "Teaching assistant for Information Theory at Peking University.",
         expanded: false
       },
       {
         title: "Machine Learning",
+        link: "teaching/machine_learning_23_fall.html",
         period: "Fall 2023",
         role: "Teaching Assistant",
         institution: "Peking University",
-        description: "Led tutorial sessions and graded assignments for undergraduate machine learning course.",
-        link: "teaching/machine_learning_23_fall.html",
+        description: "Teaching assistant for Machine Learning at Peking University.",
         expanded: false,
         materials: [
           {
             title: "Course Notes",
-            description: "Comprehensive lecture notes covering key ML concepts",
+            description: "Lecture notes from the Fall 2023 course.",
             items: [
-              { name: "Week 2 - Linear Regression", file: "teaching/machine_learning_notes/2023_Fall_ML_Note__Week_2__Lecture_2_.pdf" },
-              { name: "Week 3 - Logistic Regression", file: "teaching/machine_learning_notes/2023_Fall_ML_Note__Week_3__Lecture_3_.pdf" },
-              { name: "Week 4 - Decision Trees", file: "teaching/machine_learning_notes/2023_Fall_ML_Note__Week_4__Lecture_4_.pdf" },
-              { name: "Week 5 - Neural Networks", file: "teaching/machine_learning_notes/2023_Fall_ML_Note__Week_5__Lecture_5_.pdf" },
-              { name: "Week 6 - Support Vector Machines", file: "teaching/machine_learning_notes/2023_Fall_ML_Note__Week_6__Lecture_6_.pdf" },
-              { name: "Week 7 - Ensemble Methods", file: "teaching/machine_learning_notes/2023_Fall_ML_Note__Week_7__Lecture_7_.pdf" },
-              { name: "Week 8 - Clustering", file: "teaching/machine_learning_notes/2023_Fall_ML_Note__Week_8__Lecture_8_.pdf" },
-              { name: "Week 9 - Dimensionality Reduction", file: "teaching/machine_learning_notes/2023_Fall_ML_Note__Week_9__Lecture_9_.pdf" },
-              { name: "Week 10 - Deep Learning Basics", file: "teaching/machine_learning_notes/2023_Fall_ML_Note__Week_10__Lecture_10_.pdf" },
-              { name: "Week 11 - Convolutional Networks", file: "teaching/machine_learning_notes/2023_Fall_ML_Note__Week_11__Lecture_11_.pdf" },
-              { name: "Week 12 - Recurrent Networks", file: "teaching/machine_learning_notes/2023_Fall_ML_Note__Week_12__Lecture_12_.pdf" }
+              {
+                name: "Week 2 lecture notes",
+                file: "teaching/machine_learning_notes/2023_Fall_ML_Note__Week_2__Lecture_2_.pdf"
+              },
+              {
+                name: "Week 3 lecture notes",
+                file: "teaching/machine_learning_notes/2023_Fall_ML_Note__Week_3__Lecture_3_.pdf"
+              },
+              {
+                name: "Week 4 lecture notes",
+                file: "teaching/machine_learning_notes/2023_Fall_ML_Note__Week_4__Lecture_4_.pdf"
+              },
+              {
+                name: "Week 5 lecture notes",
+                file: "teaching/machine_learning_notes/2023_Fall_ML_Note__Week_5__Lecture_5_.pdf"
+              },
+              {
+                name: "Week 6 lecture notes",
+                file: "teaching/machine_learning_notes/2023_Fall_ML_Note__Week_6__Lecture_6_.pdf"
+              },
+              {
+                name: "Week 7 lecture notes",
+                file: "teaching/machine_learning_notes/2023_Fall_ML_Note__Week_7__Lecture_7_.pdf"
+              },
+              {
+                name: "Week 8 lecture notes",
+                file: "teaching/machine_learning_notes/2023_Fall_ML_Note__Week_8__Lecture_8_.pdf"
+              },
+              {
+                name: "Week 9 lecture notes",
+                file: "teaching/machine_learning_notes/2023_Fall_ML_Note__Week_9__Lecture_9_.pdf"
+              },
+              {
+                name: "Week 10 lecture notes",
+                file: "teaching/machine_learning_notes/2023_Fall_ML_Note__Week_10__Lecture_10_.pdf"
+              },
+              {
+                name: "Week 11 lecture notes",
+                file: "teaching/machine_learning_notes/2023_Fall_ML_Note__Week_11__Lecture_11_.pdf"
+              },
+              {
+                name: "Week 12 lecture notes",
+                file: "teaching/machine_learning_notes/2023_Fall_ML_Note__Week_12__Lecture_12_.pdf"
+              }
             ]
           }
         ]
       }
     ],
-
-    talks: [
-      {
-        title: "AI in Medical Diagnosis: Current Trends and Future Directions",
-        venue: "PKU AI Workshop",
-        date: "Sep 2024",
-        type: "invited",
-        description: "Overview of current AI applications in medical diagnosis and emerging opportunities."
-      },
-      {
-        title: "Deep Learning for Medical Imaging: Challenges and Solutions",
-        venue: "PKU AI Workshop",
-        date: "May 2023",
-        type: "invited",
-        description: "Discussion on current challenges in applying deep learning to medical imaging tasks."
-      }
-    ]
+    talks: []
   },
 
   // ========================================
   // 资源链接 / Resources and Links
   // ========================================
   resources: {
-    title: "Awesome Resources",
+    title: "Research Resources",
     subtitle: "Useful links and resources for research",
 
     categories: [
@@ -775,62 +874,12 @@ const SITE_CONFIG = {
   // 导航配置 / Navigation Configuration
   // ========================================
   navigation: {
-    // 侧边栏导航
     sidebar: [
-      {
-        id: "about",
-        label: "About",
-        icon: "fas fa-user",
-        href: "#about"
-      },
-      {
-        id: "news",
-        label: "News",
-        icon: "fas fa-newspaper",
-        href: "#news"
-      },
-      {
-        id: "research",
-        label: "Research",
-        icon: "fas fa-microscope",
-        href: "#research"
-      },
-      {
-        id: "projects",
-        label: "Projects",
-        icon: "fas fa-project-diagram",
-        href: "#projects"
-      },
-      {
-        id: "publications",
-        label: "Publications",
-        icon: "fas fa-book",
-        href: "#publications"
-      },
-      {
-        id: "awards",
-        label: "Awards",
-        icon: "fas fa-trophy",
-        href: "#awards"
-      },
-      {
-        id: "teaching",
-        label: "Teaching",
-        icon: "fas fa-chalkboard-teacher",
-        href: "#teaching"
-      },
-      {
-        id: "talks",
-        label: "Talks",
-        icon: "fas fa-microphone",
-        href: "#talks"
-      },
-      {
-        id: "resources",
-        label: "Resources",
-        icon: "fas fa-star",
-        href: "#resources"
-      }
+      { id: "home", label: "Home", icon: "fas fa-user", href: "index.html" },
+      { id: "research", label: "Research", icon: "fas fa-microscope", href: "research.html" },
+      { id: "experience", label: "Experience", icon: "fas fa-briefcase", href: "experience.html" },
+      { id: "teaching", label: "Teaching & Resources", icon: "fas fa-chalkboard-teacher", href: "teaching.html" },
+      { id: "blog", label: "Blog", icon: "fas fa-pen-nib", href: "blog.html" }
     ]
   },
 
@@ -899,33 +948,24 @@ const SITE_CONFIG = {
   // 页面特定配置 / Page-specific Configuration
   // ========================================
   pages: {
-    // 项目页面配置
-    projects: {
-      seo: {
-        title: "Projects & Publications - Youcheng Li",
-        description: "Research projects and publications by Youcheng Li in machine learning and medical AI",
-        keywords: "Research Projects, Publications, Machine Learning, Medical AI, Computer Vision"
-      }
-    },
-
-    // 教学页面配置 
-    teaching: {
-      seo: {
-        title: "Teaching & Talks - Youcheng Li",
-        description: "Teaching experience and academic talks by Youcheng Li at Peking University",
-        keywords: "Teaching, Academic Talks, Machine Learning, Computer Vision, Peking University"
-      }
-    },
-
-    // 资源页面配置
-    resources: {
-      seo: {
-        title: "Awesome Resources - Youcheng Li",
-        description: "Curated list of useful resources for machine learning and AI research",
-        keywords: "Resources, Machine Learning, AI Research, Academic Tools"
-      }
-    }
+    research: { seo: {
+      title: "Research & Publications | Youcheng Li",
+      description: "Research projects and publications by Youcheng Li in medical AI, generative models and diagnostic reasoning."
+    } },
+    experience: { seo: {
+      title: "Experience | Youcheng Li",
+      description: "Entrepreneurship and research experience of Youcheng Li, co-founder and CTO of Isoplex Intelligence and PhD candidate at Peking University."
+    } },
+    teaching: { seo: {
+      title: "Teaching & Resources | Youcheng Li",
+      description: "Teaching experience, machine learning lecture notes and research resources from Youcheng Li."
+    } },
+    blog: { seo: {
+      title: "博客 | 利友诚 Youcheng Li",
+      description: "利友诚的技术博客与商业判断：记录技术研究、产品实践与商业思考。"
+    } }
   }
+
 };
 
 // 导出配置以供其他脚本使用

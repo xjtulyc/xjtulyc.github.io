@@ -33,6 +33,8 @@ class DynamicContentLoader {
   loadAllContent() {
     console.log('Starting to load all content...');
     this.loadSidebarContent();
+    this.loadProfileContent();
+    this.loadExperience();
     this.loadPublications();
     this.loadProjects();
     this.loadNews();
@@ -41,7 +43,7 @@ class DynamicContentLoader {
     this.loadTalks();
     this.loadResources();
     this.loadProjectFilters();
-    this.loadSemanticScholarCitations();
+    if (this.config.features?.liveCitationCounts) this.loadSemanticScholarCitations();
     
     // 重新初始化所有交互功能
     this.reinitializeInteractions();
@@ -104,10 +106,50 @@ class DynamicContentLoader {
         if (socialLinks[index]) {
           socialLinks[index].href = social.url;
           socialLinks[index].setAttribute('data-tooltip', social.tooltip);
+          socialLinks[index].setAttribute('aria-label', social.name);
+          socialLinks[index].setAttribute('rel', 'noopener noreferrer');
           socialLinks[index].innerHTML = `<i class="${social.icon}"></i>`;
         }
       });
     }
+  }
+
+  loadProfileContent() {
+    const { personal, about, research, seo } = this.config;
+    const avatar = document.querySelector('.profile-image');
+    if (avatar) { avatar.src = personal.avatar; avatar.alt = personal.name.english; }
+    document.querySelectorAll('.profile-title').forEach((element, index) => {
+      element.textContent = index === 0 ? personal.position.title : personal.position.institution;
+    });
+    const aboutContent = document.querySelector('#about .about-copy');
+    if (aboutContent) aboutContent.innerHTML = about.content.map(item => `<p>${item.text}</p>`).join('');
+    const interests = document.querySelector('#about .badges-container');
+    if (interests) interests.innerHTML = about.researchInterests.interests.map(item => `<span class="badge badge-primary">${item}</span>`).join('');
+    const mission = document.querySelector('#about .mission-statement');
+    if (mission) mission.textContent = about.mission;
+    const highlights = document.querySelector('#research .research-grid');
+    if (highlights) highlights.innerHTML = research.highlights.map(item => `<article class="card research-card"><div class="card-content"><h3 class="card-title">${item.title}</h3><p>${item.description}</p><a class="btn btn-outline" href="${item.link}">Explore research <span aria-hidden="true">→</span></a></div></article>`).join('');
+    ['about', 'news', 'research', 'awards', 'teaching', 'resources', 'experience'].forEach(id => {
+      const config = this.config[id];
+      if (!config) return;
+      const title = document.querySelector(`#${id} .section-title`);
+      const subtitle = document.querySelector(`#${id} .section-subtitle`);
+      if (title) title.textContent = config.title;
+      if (subtitle) subtitle.textContent = config.subtitle;
+    });
+    const page = document.body.dataset.page;
+    const metadata = this.config.pages?.[page]?.seo || seo;
+    document.title = metadata.title;
+    const description = document.querySelector('meta[name="description"]');
+    if (description) description.content = metadata.description;
+    const nav = document.querySelector('.navigation');
+    if (nav) nav.innerHTML = this.config.navigation.sidebar.map(item => `<a class="nav-item${item.id === page ? ' active' : ''}" href="${item.href}"${item.id === page ? ' aria-current="page"' : ''}><i class="${item.icon} nav-icon" aria-hidden="true"></i><span>${item.label}</span></a>`).join('');
+  }
+
+  loadExperience() {
+    const container = document.querySelector('.experience-list');
+    if (!container || !this.config.experience) return;
+    container.innerHTML = this.config.experience.items.map(item => `<article class="experience-card card"><div class="card-content"><div class="experience-meta"><span>${item.period}</span><span>${item.role}</span></div><h3>${item.organization}</h3><p>${item.description}</p>${item.highlights?.length ? `<ul class="experience-points">${item.highlights.map(point => `<li>${point}</li>`).join('')}</ul>` : ''}${item.url ? `<a class="btn btn-outline" href="${item.url}" target="_blank" rel="noopener noreferrer">${item.linkText || 'Learn more'} <span aria-hidden="true">↗</span></a>` : ''}</div></article>`).join('');
   }
 
   /**
@@ -121,7 +163,6 @@ class DynamicContentLoader {
     console.log('Publications container found:', !!pubContainer);
     
     if (!pubContainer || !publications) {
-      console.error('Publications container or data not found');
       return;
     }
     
@@ -132,11 +173,14 @@ class DynamicContentLoader {
     // 创建年份过滤器
     const yearFilter = document.createElement('div');
     yearFilter.className = 'year-filter mb-4';
-    yearFilter.innerHTML = '<span class="year-badge active" data-year="all">All</span>';
+    yearFilter.setAttribute('aria-label', 'Filter publications by year');
+    yearFilter.innerHTML = '<button type="button" class="year-badge active" data-year="all" aria-pressed="true">All</button>';
     
     // 添加年份标签
     publications.forEach(yearGroup => {
-      const yearBadge = document.createElement('span');
+      const yearBadge = document.createElement('button');
+      yearBadge.type = 'button';
+      yearBadge.setAttribute('aria-pressed', 'false');
       yearBadge.className = 'year-badge';
       yearBadge.setAttribute('data-year', yearGroup.year);
       yearBadge.textContent = yearGroup.year;
@@ -153,7 +197,7 @@ class DynamicContentLoader {
       
       const yearHeader = document.createElement('h3');
       yearHeader.className = 'year-header';
-      yearHeader.innerHTML = `${yearGroup.year} <i class="fas fa-chevron-down toggle-icon"></i>`;
+      yearHeader.innerHTML = `<button type="button" class="year-toggle" aria-expanded="true">${yearGroup.year} <i class="fas fa-chevron-down toggle-icon" aria-hidden="true"></i></button>`;
       yearSection.appendChild(yearHeader);
       
       yearGroup.items.forEach(item => {
@@ -170,9 +214,7 @@ class DynamicContentLoader {
           '<span class="publication-note">† co-first author</span>' : '';
         
         // 处理期刊信息
-        const venueInfo = item.volume && item.issue ? 
-          `${item.venue} ${item.volume}(${item.issue}): ${item.pages}` : 
-          item.venue;
+        const venueInfo = `${item.venue}${item.volume ? ` ${item.volume}${item.issue ? `(${item.issue})` : ''}` : ''}${item.pages ? `: ${item.pages}` : ''}`;
         
         // 生成链接
         let linksHTML = '';
@@ -200,13 +242,14 @@ class DynamicContentLoader {
             ${citationsHTML}
             <div class="publication-links mt-3">
               ${linksHTML}
-              <button class="btn btn-sm btn-outline copy-bibtex" data-bibtex="${this.generateBibTeX(item)}">
+              <button type="button" class="btn btn-sm btn-outline copy-bibtex">
                 <i class="fas fa-quote-left"></i> BibTeX
               </button>
             </div>
           </div>
         `;
         
+        pubItem.querySelector('.copy-bibtex').dataset.bibtex = this.generateBibTeX(item);
         yearSection.appendChild(pubItem);
       });
       
@@ -224,16 +267,17 @@ class DynamicContentLoader {
    * 初始化Publications年份折叠功能
    */
   initPublicationYearToggle() {
-    const yearHeaders = document.querySelectorAll('#publications .year-header');
+    const yearHeaders = document.querySelectorAll('#publications .year-toggle');
     
     yearHeaders.forEach(header => {
       header.style.cursor = 'pointer';
       
       header.addEventListener('click', () => {
-        const yearSection = header.parentElement;
+        const yearSection = header.closest('.publication-year');
         const items = yearSection.querySelectorAll('.publication-item');
         const icon = header.querySelector('.toggle-icon');
         const isCollapsed = items.length > 0 && items[0].style.display === 'none';
+        header.setAttribute('aria-expanded', String(isCollapsed));
         
         items.forEach(item => {
           item.style.display = isCollapsed ? 'block' : 'none';
@@ -258,8 +302,9 @@ class DynamicContentLoader {
         const selectedYear = badge.dataset.year;
         
         // 更新活动状态
-        yearBadges.forEach(b => b.classList.remove('active'));
+        yearBadges.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
         badge.classList.add('active');
+        badge.setAttribute('aria-pressed', 'true');
         
         // 显示/隐藏对应年份的内容
         yearSections.forEach(section => {
@@ -277,6 +322,7 @@ class DynamicContentLoader {
    * 生成引用数占位，随后由 Semantic Scholar API 更新
    */
   renderCitationCount(item, extraClass = '') {
+    if (!this.config.features?.liveCitationCounts) return '';
     const semanticScholarId = this.getSemanticScholarId(item);
     const fallback = Number.isFinite(item.citations) ? item.citations : null;
 
@@ -455,7 +501,6 @@ class DynamicContentLoader {
     console.log('Projects container found:', !!projectsContainer);
     
     if (!projectsContainer || !projects) {
-      console.error('Projects container or data not found');
       return;
     }
     
@@ -489,9 +534,9 @@ class DynamicContentLoader {
       const citationsHTML = this.renderCitationCount(project);
       
       projectCard.innerHTML = `
-        <div class="project-image">
+        ${project.image ? `<div class="project-image">
           <img data-src="${project.image}" alt="${project.title}" class="lazy">
-        </div>
+        </div>` : ''}
         <div class="project-content">
           <h4 class="project-title">${project.title}</h4>
           <p class="project-description">${project.description}</p>
@@ -587,7 +632,6 @@ class DynamicContentLoader {
     console.log('Awards container found:', !!awardsList);
     
     if (!awardsList || !awards.items) {
-      console.error('Awards container or data not found');
       return;
     }
     
@@ -627,21 +671,15 @@ class DynamicContentLoader {
       const courseCard = document.createElement('div');
       courseCard.className = 'teaching-card card';
       
+      const materials = (course.materials || []).flatMap(group => group.items || []);
       courseCard.innerHTML = `
         <div class="card-content">
-          <div class="course-header">
-            <h4 class="course-title">${course.title}</h4>
-            <span class="badge badge-accent">${course.role}</span>
-          </div>
-          <div class="course-info">
-            <p><i class="fas fa-calendar"></i> ${course.period}</p>
-            <p><i class="fas fa-university"></i> ${course.institution}</p>
-          </div>
-          <div class="course-description">
-            <p>${course.description}</p>
-          </div>
-        </div>
-      `;
+          <div class="course-header"><h3 class="course-title">${course.title}</h3><span class="badge badge-accent">${course.role}</span></div>
+          <div class="course-info"><p>${course.period} · ${course.institution}</p></div>
+          <p>${course.description}</p>
+          ${course.link ? `<a class="btn btn-outline" href="${course.link}">Course page <span aria-hidden="true">→</span></a>` : ''}
+          ${materials.length ? `<details class="course-materials"><summary>Lecture notes (${materials.length} PDFs)</summary><div class="materials-grid">${materials.map(item => `<a class="material-item" href="${item.file}" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf" aria-hidden="true"></i><span>${item.name}</span></a>`).join('')}</div></details>` : ''}
+        </div>`;
       
       teachingContainer.appendChild(courseCard);
     });
@@ -659,8 +697,9 @@ class DynamicContentLoader {
    * 动态加载Resources部分
    */
   loadResources() {
-    // 这里可以添加resources的动态加载逻辑
-    console.log('Resources section loading...');
+    const container = document.querySelector('#resources .resources-grid');
+    if (!container) return;
+    container.innerHTML = this.config.resources.categories.map(category => `<div class="resource-category card"><div class="card-content"><h3>${category.name}</h3><div class="resource-items">${category.items.map(item => `<a class="resource-item" href="${item.url}" target="_blank" rel="noopener noreferrer"><strong>${item.name} <span aria-hidden="true">↗</span></strong><span>${item.description}</span></a>`).join('')}</div></div>`).join('');
   }
 
   /**
@@ -737,6 +776,7 @@ class DynamicContentLoader {
     allButton.className = 'btn btn-outline filter-btn active';
     allButton.setAttribute('data-filter', 'all');
     allButton.textContent = 'All';
+    allButton.setAttribute('aria-pressed', 'true');
     filterContainer.appendChild(allButton);
     
     // 为每个标签创建过滤按钮
@@ -745,6 +785,7 @@ class DynamicContentLoader {
       button.className = 'btn btn-outline filter-btn';
       button.setAttribute('data-filter', tag.toLowerCase().replace(/\s+/g, ''));
       button.textContent = tag;
+      button.setAttribute('aria-pressed', 'false');
       filterContainer.appendChild(button);
     });
     
@@ -764,17 +805,18 @@ class DynamicContentLoader {
         const filter = button.dataset.filter;
         
         // 更新活动按钮
-        filterButtons.forEach(btn => btn.classList.remove('active'));
+        filterButtons.forEach(btn => { btn.classList.remove('active'); btn.setAttribute('aria-pressed', 'false'); });
         button.classList.add('active');
+        button.setAttribute('aria-pressed', 'true');
         
         // 过滤项目
         projects.forEach(project => {
-          if (filter === 'all' || project.dataset.category.includes(filter)) {
+          if (filter === 'all' || project.dataset.category.split(' ').includes(filter)) {
             project.style.display = 'block';
             project.classList.add('show');
           } else {
             project.classList.remove('show');
-            setTimeout(() => project.style.display = 'none', 300);
+            project.style.display = 'none';
           }
         });
       });
@@ -785,63 +827,31 @@ class DynamicContentLoader {
    * 生成BibTeX引用
    */
   generateBibTeX(item) {
+    if (item.bibtex) return item.bibtex;
     const firstAuthor = item.authors[0].split(' ').pop().toLowerCase();
-    const year = item.date.match(/\d{4}/)?.[0] || '2024';
-    const title = item.title.split(' ').slice(0, 3).join('').toLowerCase();
-    
-    if (item.venue.includes('arXiv')) {
-      return `@article{${firstAuthor}${year}${title},
-  title={${item.title}},
-  author={${item.authors.join(' and ')}},
-  journal={${item.venue}},
-  year={${year}}
-}`;
-    } else if (item.venue.includes('MICCAI') || item.venue.includes('KDD') || item.venue.includes('Conference')) {
-      return `@inproceedings{${firstAuthor}${year}${title},
-  title={${item.title}},
-  author={${item.authors.join(' and ')}},
-  booktitle={${item.venue}},
-  pages={${item.pages || ''}},
-  year={${year}},
-  publisher={${item.publisher || 'Springer'}}
-}`;
-    } else {
-      return `@article{${firstAuthor}${year}${title},
-  title={${item.title}},
-  author={${item.authors.join(' and ')}},
-  journal={${item.venue}},
-  volume={${item.volume || ''}},
-  number={${item.issue || ''}},
-  pages={${item.pages || ''}},
-  year={${year}}
-}`;
-    }
+    const year = item.year || item.date?.match(/\d{4}/)?.[0];
+    const key = `${firstAuthor}${year}${item.title.split(' ').slice(0, 3).join('')}`.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+    const conference = item.publicationType === 'inproceedings' || /MICCAI|KDD|Conference/.test(item.venue);
+    const type = item.publicationType || (conference ? 'inproceedings' : 'article');
+    const fields = {
+      title: `{${item.title}}`,
+      author: item.authors.map(author => author === 'et al.' ? 'others' : author).join(' and '),
+      [conference ? 'booktitle' : 'journal']: type === 'misc' ? undefined : item.venue,
+      year, volume: item.volume, number: item.issue, pages: item.pages,
+      publisher: item.publisher, doi: item.doi, note: item.note,
+      eprint: item.eprint, archivePrefix: item.archivePrefix, primaryClass: item.primaryClass
+    };
+    if (item.doi) fields.url = `https://doi.org/${item.doi}`;
+    const escape = value => String(value).replace(/&/g, '\\&').replace(/%/g, '\\%').replace(/_/g, '\\_');
+    const content = Object.entries(fields).filter(([, value]) => value !== undefined && value !== '').map(([name, value]) => `  ${name}={${escape(value)}}`).join(',\n');
+    return `@${type}{${key},\n${content}\n}`;
   }
+
 }
 
-// 初始化动态内容加载器
+// Render before page interactions initialize; every page uses the same content source.
 document.addEventListener('DOMContentLoaded', () => {
-  // 延迟一点确保配置文件和其他脚本已加载
-  setTimeout(() => {
-    const loader = new DynamicContentLoader();
-    loader.init();
-    
-    // 验证功能
-    setTimeout(() => {
-      console.log('=== Dynamic Content Verification ===');
-      console.log('Projects loaded:', document.querySelectorAll('.project-card').length);
-      console.log('Publications loaded:', document.querySelectorAll('.publication-item').length);
-      console.log('Year badges:', document.querySelectorAll('#publications .year-badge').length);
-      console.log('Filter buttons:', document.querySelectorAll('#projects .filter-btn').length);
-      
-      // 手动触发必要的重新初始化
-      if (window.spaApp) {
-        console.log('Re-initializing SPA features...');
-        window.spaApp.initNewsExpansion();
-        window.spaApp.initTalksExpansion();
-        window.spaApp.initProjectCardExpansion();
-        window.spaApp.initLazyLoading();
-      }
-    }, 500);
-  }, 300); // 增加延迟确保single-page-app.js已初始化
+  const loader = new DynamicContentLoader();
+  loader.init();
+  document.querySelectorAll('a[target="_blank"]').forEach(link => link.rel = 'noopener noreferrer');
 });
