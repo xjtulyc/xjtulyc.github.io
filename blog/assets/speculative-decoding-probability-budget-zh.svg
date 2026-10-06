@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="1570" viewBox="0 0 640 1570" role="img" aria-labelledby="title desc" xml:lang="zh-CN">
+<title id="title">投机解码：一次循环</title><desc id="desc">投机解码的一轮机制示意。从已提交前缀开始，小模型顺序草拟多枚候选，大模型通过一次因果前向计算各候选及后继词的条件分布。按概率接受，只保留连续通过的候选。两个互斥分支：首次拒绝时从归一化正残差采样；全部通过时从最后一个目标分布采样 bonus token。在没有触发 EOS 或长度截断时，两分支每轮都输出已接受前缀和一个新 token。目标模型保留有效 KV 并撤销未接受草稿，新采样 token 在下一轮前向时写入 KV。采样校正保证目标分布，速度还取决于草拟、验证与缓存成本。本图不是基准测试数据。</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#355C7D" stroke-width="1.5"/></marker></defs>
+<style>text{font-family:Arial,'PingFang SC','Microsoft YaHei',sans-serif;fill:#1F2933}.heading{font-weight:700}.accent{fill:#355C7D}.secondary{fill:#526171}.muted{fill:#607080}</style>
+<rect width="640" height="1570" fill="#F7F8FA"/>
+<text x="32" y="49" font-size="34" class="heading" text-anchor="start">投机解码：一次循环</text>
+<text x="32" y="86" font-size="26" class="secondary" text-anchor="start">采样校正与计算成本分开看</text>
+<rect x="40" y="112" width="560" height="66" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="155" font-size="32" class="heading" text-anchor="middle">已提交前缀</text>
+<path d="M320 183 V207" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="40" y="214" width="560" height="106" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="254" font-size="30" class="heading" text-anchor="middle">小模型顺序草拟</text>
+<text x="320" y="295" font-size="29" class="" text-anchor="middle">多枚候选 token</text>
+<path d="M320 325 V341" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="40" y="348" width="560" height="110" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="383" font-size="30" class="heading" text-anchor="middle">大模型一次因果验证</text>
+<text x="320" y="430" font-size="29" class="" text-anchor="middle">各候选及后继词的条件分布</text>
+<path d="M320 463 V479" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="40" y="486" width="560" height="132" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="525" font-size="30" class="heading accent" text-anchor="middle">按概率接受</text>
+<text x="320" y="577" font-size="28" class="" text-anchor="middle">保留连续通过的候选</text>
+<path d="M320 623 V638 H34 V872" fill="none" stroke="#355C7D" stroke-width="2.5"/>
+<path d="M34 718 H67" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M34 872 H67" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="74" y="656" width="490" height="124" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="319" y="694" font-size="30" class="heading" text-anchor="middle">首次拒绝</text>
+<text x="319" y="745" font-size="28" class="" text-anchor="middle">从归一化正残差采样</text>
+<rect x="74" y="810" width="490" height="124" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="319" y="848" font-size="30" class="heading" text-anchor="middle">全部通过</text>
+<text x="319" y="885" font-size="28" class="" text-anchor="middle">从最后一个目标分布采样</text>
+<text x="319" y="919" font-size="28" class="" text-anchor="middle">获得 bonus token</text>
+<path d="M569 718 H606 V956 H320 V974" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M569 872 H606" fill="none" stroke="#355C7D" stroke-width="2.5"/>
+<rect x="40" y="982" width="560" height="132" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1033" font-size="29" class="heading" text-anchor="middle">输出已接受前缀和一个新 token</text>
+<text x="320" y="1082" font-size="26" class="secondary" text-anchor="middle">未触发 EOS 或长度截断</text>
+<path d="M320 1119 V1141" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="40" y="1148" width="560" height="164" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1188" font-size="32" class="heading accent" text-anchor="middle">目标模型 KV</text>
+<text x="320" y="1235" font-size="28" class="" text-anchor="middle">保留有效 KV，撤销未接受草稿</text>
+<text x="320" y="1278" font-size="28" class="" text-anchor="middle">新采样 token 在下轮前向时写入</text>
+<rect x="24" y="1336" width="592" height="156" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1379" font-size="30" class="heading" text-anchor="middle">采样校正保证目标分布</text>
+<text x="320" y="1435" font-size="28" class="secondary" text-anchor="middle">速度取决于草拟、验证与缓存成本</text>
+<text x="320" y="1540" font-size="24" class="muted" text-anchor="middle">原创机制示意 · 非基准测试数据</text>
+</svg>

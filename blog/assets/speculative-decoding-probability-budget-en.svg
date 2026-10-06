@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="1570" viewBox="0 0 640 1570" role="img" aria-labelledby="title desc" xml:lang="en">
+<title id="title">Speculative decoding: one round</title><desc id="desc">A conceptual round of speculative decoding. Starting from the committed prefix, a draft model sequentially samples a block of candidates. One causal target-model pass evaluates distributions for the candidates and next token. Accept candidates probabilistically and keep only the consecutive accepted prefix. The mutually exclusive branches are sampling a normalized positive residual at the first rejection, or, if all candidates are accepted, sampling a bonus token from the last target distribution. Before EOS or length limits, either branch emits the accepted prefix and one new token for the round. Retain valid target-model KV and discard unaccepted draft positions. Cache the new sampled token on the next forward pass. Sampling correction preserves the target distribution; speed also depends on draft, verification, and cache costs. This is not benchmark data.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#355C7D" stroke-width="1.5"/></marker></defs>
+<style>text{font-family:Arial,'PingFang SC','Microsoft YaHei',sans-serif;fill:#1F2933}.heading{font-weight:700}.accent{fill:#355C7D}.secondary{fill:#526171}.muted{fill:#607080}</style>
+<rect width="640" height="1570" fill="#F7F8FA"/>
+<text x="32" y="49" font-size="32" class="heading" text-anchor="start">Speculative decoding: one round</text>
+<text x="32" y="86" font-size="26" class="secondary" text-anchor="start">Separate sampling correctness from cost</text>
+<rect x="40" y="112" width="560" height="66" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="155" font-size="32" class="heading" text-anchor="middle">Committed prefix</text>
+<path d="M320 183 V207" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="40" y="214" width="560" height="106" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="254" font-size="30" class="heading" text-anchor="middle">Sequential draft-model sampling</text>
+<text x="320" y="295" font-size="29" class="" text-anchor="middle">A block of candidate tokens</text>
+<path d="M320 325 V341" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="40" y="348" width="560" height="110" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="383" font-size="30" class="heading" text-anchor="middle">One causal target-model pass</text>
+<text x="320" y="418" font-size="28" class="" text-anchor="middle">Distributions for candidates</text>
+<text x="320" y="448" font-size="28" class="" text-anchor="middle">and the next token</text>
+<path d="M320 463 V479" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="40" y="486" width="560" height="132" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="525" font-size="30" class="heading accent" text-anchor="middle">Accept probabilistically</text>
+<text x="320" y="565" font-size="28" class="" text-anchor="middle">Keep the consecutive</text>
+<text x="320" y="599" font-size="28" class="" text-anchor="middle">accepted prefix</text>
+<path d="M320 623 V638 H34 V872" fill="none" stroke="#355C7D" stroke-width="2.5"/>
+<path d="M34 718 H67" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M34 872 H67" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="74" y="656" width="490" height="124" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="319" y="694" font-size="30" class="heading" text-anchor="middle">First rejection</text>
+<text x="319" y="732" font-size="28" class="" text-anchor="middle">Sample the normalized</text>
+<text x="319" y="765" font-size="28" class="" text-anchor="middle">positive residual</text>
+<rect x="74" y="810" width="490" height="124" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="319" y="848" font-size="30" class="heading" text-anchor="middle">All accepted</text>
+<text x="319" y="885" font-size="28" class="" text-anchor="middle">Sample the last target distribution</text>
+<text x="319" y="919" font-size="28" class="" text-anchor="middle">for a bonus token</text>
+<path d="M569 718 H606 V956 H320 V974" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M569 872 H606" fill="none" stroke="#355C7D" stroke-width="2.5"/>
+<rect x="40" y="982" width="560" height="132" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1021" font-size="30" class="heading" text-anchor="middle">Emit accepted prefix</text>
+<text x="320" y="1058" font-size="30" class="heading" text-anchor="middle">and one new token</text>
+<text x="320" y="1094" font-size="26" class="secondary" text-anchor="middle">Before EOS or length limits</text>
+<path d="M320 1119 V1141" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="40" y="1148" width="560" height="164" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1188" font-size="32" class="heading accent" text-anchor="middle">Target-model KV</text>
+<text x="320" y="1229" font-size="28" class="" text-anchor="middle">Keep valid KV; discard unaccepted tail</text>
+<text x="320" y="1264" font-size="28" class="" text-anchor="middle">Cache the new sampled token</text>
+<text x="320" y="1297" font-size="28" class="" text-anchor="middle">on the next forward pass</text>
+<rect x="24" y="1336" width="592" height="156" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1379" font-size="28" class="heading" text-anchor="middle">Correction preserves target sampling</text>
+<text x="320" y="1426" font-size="28" class="secondary" text-anchor="middle">Speed depends on draft, verify,</text>
+<text x="320" y="1461" font-size="28" class="secondary" text-anchor="middle">and cache costs</text>
+<text x="320" y="1540" font-size="24" class="muted" text-anchor="middle">Original mechanism · Not benchmark data</text>
+</svg>

@@ -38,6 +38,38 @@
     }
   },
   {
+    "title": "投机解码为何能保持分布，却未必加速？",
+    "summary": "从接受概率、残差校正与三 token 例子出发，推导连续接受长度如何转换为每输出 token 的时间，并检查 KV 缓存、掩码、采样配置与服务评估的边界。",
+    "tags": [
+      "LLM",
+      "投机解码",
+      "推理系统"
+    ],
+    "date": "2026-10-06",
+    "category": "technical",
+    "url": "blog/speculative-decoding-probability-budget.html",
+    "translations": {
+      "zh": {
+        "title": "投机解码为何能保持分布，却未必加速？",
+        "summary": "从接受概率、残差校正与三 token 例子出发，推导连续接受长度如何转换为每输出 token 的时间，并检查 KV 缓存、掩码、采样配置与服务评估的边界。",
+        "tags": [
+          "LLM",
+          "投机解码",
+          "推理系统"
+        ]
+      },
+      "en": {
+        "title": "Why speculative decoding preserves distributions but may not be faster",
+        "summary": "From acceptance probabilities and residual correction to a three-token example, derive how consecutive acceptance converts into time per output token, then audit KV caches, masks, sampling settings, and serving metrics.",
+        "tags": [
+          "LLM",
+          "Speculative decoding",
+          "Inference systems"
+        ]
+      }
+    }
+  },
+  {
     "title": "AI 广告的下一步：意图理解、归因与增量价值",
     "summary": "对话可能让广告更贴近需求，但高意图用户也可能本来就会购买。从 OpenAI 的视觉广告测试出发，拆解增量利润、信任与结算控制，并比较 Google 和百度的经营约束。",
     "tags": [
