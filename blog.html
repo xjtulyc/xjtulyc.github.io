@@ -4,17 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>博客 · 技术与商业 | 利友诚 Youcheng Li</title>
-  <meta name="description" content="利友诚的个人博客，设有技术博客与商业判断两个栏目，关注人工智能、研究实践及技术的商业应用。">
+  <meta name="description" content="利友诚的中英文博客：深入解读 AI4S 与大语言模型的技术机制，分析国内外头部公司的技术与商业趋势。">
   <meta name="author" content="Youcheng Li">
   <link rel="canonical" href="https://youchengli.com/blog.html">
   <meta property="og:title" content="博客 · 技术与商业 | 利友诚 Youcheng Li">
-  <meta property="og:description" content="技术博客与商业判断：关于人工智能、研究实践及技术商业应用的写作空间。">
+  <meta property="og:description" content="AI4S 与大语言模型技术解读，以及国内外头部公司的技术与商业趋势分析。">
   <meta property="og:url" content="https://youchengli.com/blog.html">
   <meta property="og:image" content="https://youchengli.com/resources/avatar.jpg">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="博客 · 技术与商业 | 利友诚 Youcheng Li">
-  <meta name="twitter:description" content="技术博客与商业判断：关于人工智能、研究实践及技术商业应用的写作空间。">
+  <meta name="twitter:description" content="AI4S 与大语言模型技术解读，以及国内外头部公司的技术与商业趋势分析。">
   <meta name="twitter:image" content="https://youchengli.com/resources/avatar.jpg">
   <link rel="icon" href="favicon.ico">
   <script>try { document.documentElement.dataset.theme = localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); } catch (_) {}</script>
@@ -26,7 +26,7 @@
   <link rel="stylesheet" href="style/single-page.css">
   <link rel="stylesheet" href="style/refinement.css">
   <link rel="stylesheet" href="style/blog.css">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"利友诚的博客","url":"https://youchengli.com/blog.html","inLanguage":"zh-CN","author":{"@type":"Person","name":"Youcheng Li","alternateName":"利友诚","url":"https://youchengli.com/"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"利友诚的博客","url":"https://youchengli.com/blog.html","inLanguage":["zh-CN","en"],"author":{"@type":"Person","name":"Youcheng Li","alternateName":"利友诚","url":"https://youchengli.com/"}}</script>
   <noscript><style>.mobile-menu-toggle,.theme-toggle,.back-to-top,.language-toggle{display:none}@media(max-width:768px){.layout-container{display:block}#sidebar{position:static;transform:none;width:100%;height:auto}#main{margin-left:0;width:100%}}</style></noscript>
 </head>
 <body data-page="blog">
@@ -50,20 +50,20 @@
       <header class="blog-intro">
         <p class="blog-eyebrow" lang="en">NOTES & ESSAYS</p>
         <h1>技术博客与商业判断</h1>
-        <p class="blog-lead">从技术原理到现实问题，从研究实践到商业思考。</p>
+        <p class="blog-lead">解读 AI4S 与大语言模型，观察国内外头部公司的技术与商业趋势。</p>
       </header>
 
       <div class="blog-topics" aria-label="博客栏目">
         <a class="blog-topic" href="blog.html?category=technical#archive" data-category-link="technical">
           <span class="blog-topic-kicker" lang="en">TECHNOLOGY</span>
           <h2>技术博客 <span aria-hidden="true">↗</span></h2>
-          <p>算法原理、论文解读与实验记录。关注问题如何提出，方法如何推导，以及结果如何验证。</p>
+          <p>聚焦 AI for Science 与大语言模型，从机制与数学推导出发，结合代码实现和实验分析，理解方法为何有效、适用于何处。</p>
           <span class="blog-topic-link">进入栏目 <span aria-hidden="true">→</span></span>
         </a>
         <a class="blog-topic" href="blog.html?category=business#archive" data-category-link="business">
           <span class="blog-topic-kicker" lang="en">BUSINESS</span>
           <h2>商业判断 <span aria-hidden="true">↗</span></h2>
-          <p>AI 产品、产业观察与创业思考。围绕真实需求、价值创造与商业选择，展开有依据的讨论。</p>
+          <p>关注国内外头部公司的技术与商业趋势，梳理变化的背景、关键选择与发展方向，讨论技术进展如何影响产品和产业。</p>
           <span class="blog-topic-link">进入栏目 <span aria-hidden="true">→</span></span>
         </a>
       </div>
@@ -77,16 +77,31 @@
             <button class="blog-reset" type="reset">重置</button>
           </form>
           <p id="blog-result-status" class="blog-result-status" role="status" aria-live="polite" hidden></p>
-          <div id="blog-posts" aria-busy="true">
-            <div class="blog-empty"><span class="blog-empty-mark" aria-hidden="true">—</span><h3>尚无已发布文章</h3><p>两个栏目已建立，文章将在准备完成后陆续发布。</p></div>
+          <div id="blog-posts" aria-busy="true"><!-- blog-static-start --><div class="blog-static-archive"><ul><li><a href="blog/structure-is-not-affinity.html?lang=zh">结构正确，为何亲和力仍可能不可靠？从 AlphaFold 3 到 Boltz-2</a> / <a lang="en" href="blog/structure-is-not-affinity.html?lang=en">Why a Correct Structure Does Not Guarantee Reliable Affinity: AlphaFold 3 and Boltz-2</a></li><li><a href="blog/agents-workflow-economics.html?lang=zh">智能体的商业壁垒：工作流、验证成本与价值分配</a> / <a lang="en" href="blog/agents-workflow-economics.html?lang=en">The Economics of AI Agents: Workflows, Verification Costs, and Where Value Accumulates</a></li></ul></div><!-- blog-static-end -->
           </div>
-          <noscript><p class="blog-note">文章归档需要启用 JavaScript。当前尚无已发布文章。</p></noscript>
+          <noscript><p class="blog-note">中英文全文均可通过上方链接阅读。Both complete versions are available via the links above.</p></noscript>
         </section>
         <aside class="blog-aside" aria-label="博客索引">
           <div class="blog-aside-block"><h2>按栏目阅读</h2><nav class="blog-category-nav" aria-label="文章栏目"><a href="blog.html#archive" data-category-link="all">全部文章 <span aria-hidden="true">→</span></a><a href="blog.html?category=technical#archive" data-category-link="technical">技术博客 <span aria-hidden="true">→</span></a><a href="blog.html?category=business#archive" data-category-link="business">商业判断 <span aria-hidden="true">→</span></a></nav></div>
-          <div class="blog-aside-block blog-about"><h2>关于这个博客</h2><p>这里是独立于学术成果列表的写作空间，用于记录技术探索与商业思考。</p><a href="research.html">论文与研究项目 <span aria-hidden="true">↗</span></a></div>
+          <div class="blog-aside-block blog-about"><h2>关于这个博客</h2><p>围绕 AI4S 与大语言模型展开技术解读，也记录对国内外头部公司技术与商业趋势的思考。</p><a href="research.html">论文与研究项目 <span aria-hidden="true">↗</span></a></div>
         </aside>
       </div>
+      <section class="blog-author" aria-labelledby="blog-author-name">
+        <img class="blog-author-photo" src="resources/avatar.jpg" alt="利友诚" data-blog-i18n-alt="authorPhotoAlt" width="104" height="104" loading="lazy">
+        <div class="blog-author-content">
+          <p class="blog-author-eyebrow" data-blog-i18n="authorEyebrow">关于作者</p>
+          <h2 id="blog-author-name" data-blog-i18n="authorName">利友诚 · Youcheng Li</h2>
+          <div class="blog-author-copy">
+            <p data-blog-i18n="authorIntroduction">北京大学智能学院人工智能专业博士研究生，导师为王立威教授；Isoplex Intelligence（壹索智能）联合创始人兼 CTO。</p>
+            <p data-blog-i18n="authorResearch">研究关注医疗人工智能、生成式基础模型、诊断推理与科学智能体。以第一作者或共同第一作者身份在 Nature Biomedical Engineering、Scientific Data、KDD 和 PLOS Computational Biology 发表研究。</p>
+          </div>
+          <nav class="blog-author-links" aria-label="了解作者" data-blog-i18n-aria="authorLinksLabel">
+            <a href="research.html" data-blog-i18n="authorResearchLink">研究与论文</a>
+            <a href="experience.html" data-blog-i18n="authorExperienceLink">创业与经历</a>
+            <a href="mailto:youchengli@stu.pku.edu.cn" data-blog-i18n="authorContactLink">邮件联系</a>
+          </nav>
+        </div>
+      </section>
       <footer class="site-footer"><span>© 2026 Youcheng Li · 利友诚</span><a href="mailto:youchengli@stu.pku.edu.cn">联系我</a></footer>
     </div></main>
   </div>

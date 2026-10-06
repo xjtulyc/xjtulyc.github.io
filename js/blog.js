@@ -37,13 +37,27 @@
     postsElement.replaceChildren(state);
   }
 
+  function validContent(content) {
+    return content && typeof content === 'object' &&
+      ['title', 'summary'].every(key => typeof content[key] === 'string' && content[key].trim()) &&
+      Array.isArray(content.tags) && content.tags.every(tag => typeof tag === 'string');
+  }
+
+  function localizedContent(post, language = i18n.language) {
+    return post.translations?.[language] || (validContent(post) ? post : null) || post.translations?.zh || post.translations?.en;
+  }
+
   function validPost(post) {
     if (!post || typeof post !== 'object' || !categories.includes(post.category)) return false;
-    if (!['title', 'summary', 'url', 'date'].every(key => typeof post[key] === 'string' && post[key].trim())) return false;
+    if (!['url', 'date'].every(key => typeof post[key] === 'string' && post[key].trim())) return false;
     if (!/^\d{4}-\d{2}-\d{2}$/.test(post.date)) return false;
     const date = new Date(`${post.date}T00:00:00Z`);
     if (Number.isNaN(date.getTime()) || date.toISOString().slice(0, 10) !== post.date) return false;
-    if (!Array.isArray(post.tags) || !post.tags.every(tag => typeof tag === 'string')) return false;
+    if (post.translations !== undefined) {
+      if (!post.translations || typeof post.translations !== 'object' || Array.isArray(post.translations)) return false;
+      if (!['zh', 'en'].every(language => post.translations[language] === undefined || validContent(post.translations[language]))) return false;
+    }
+    if (!validContent(post) && !['zh', 'en'].some(language => validContent(post.translations?.[language]))) return false;
     try {
       const url = new URL(post.url, document.baseURI);
       return url.origin === window.location.origin && url.pathname.startsWith('/blog/') && url.pathname.endsWith('.html');
@@ -51,6 +65,7 @@
   }
 
   function renderPost(post) {
+    const content = localizedContent(post);
     const article = element('article', 'blog-post');
     const meta = element('div', 'blog-post-meta');
     const formattedDate = new Intl.DateTimeFormat(i18n.language === 'zh' ? 'zh-CN' : 'en', {
@@ -60,14 +75,16 @@
     date.dateTime = post.date;
     meta.append(date, element('span', 'blog-post-category', i18n.categoryName(post.category)));
     const heading = element('h4');
-    const link = element('a', '', post.title);
-    link.href = post.url;
+    const link = element('a', '', content.title);
+    const articleURL = new URL(post.url, document.baseURI);
+    articleURL.searchParams.set('lang', i18n.language);
+    link.href = articleURL.href;
     heading.append(link);
-    article.append(meta, heading, element('p', 'blog-post-summary', post.summary));
-    if (post.tags.length) {
+    article.append(meta, heading, element('p', 'blog-post-summary', content.summary));
+    if (content.tags.length) {
       const tags = element('div', 'blog-post-tags');
       tags.setAttribute('aria-label', t('tagsLabel'));
-      post.tags.forEach(tag => tags.append(element('span', 'blog-post-tag', tag)));
+      content.tags.forEach(tag => tags.append(element('span', 'blog-post-tag', tag)));
       article.append(tags);
     }
     return article;
@@ -99,7 +116,10 @@
 
     const query = queryInput.value.trim().toLocaleLowerCase();
     const matches = categoryPosts.filter(post => {
-      const searchText = `${post.title} ${post.summary} ${post.tags.join(' ')}`.toLocaleLowerCase();
+      const searchText = [post, post.translations?.zh, post.translations?.en]
+        .filter(validContent)
+        .map(content => `${content.title} ${content.summary} ${content.tags.join(' ')}`)
+        .join(' ').toLocaleLowerCase();
       return (yearInput.value === 'all' || post.date.startsWith(yearInput.value)) && (!query || searchText.includes(query));
     });
     status.textContent = t(matches.length === 1 ? 'resultsOne' : 'resultsMany', { count: matches.length });
@@ -128,7 +148,7 @@
       if (!response.ok) throw new Error('Archive request failed');
       const posts = await response.json();
       if (!Array.isArray(posts) || !posts.every(validPost)) throw new Error('Invalid archive data');
-      posts.sort((a, b) => b.date.localeCompare(a.date) || a.title.localeCompare(b.title, 'zh-CN'));
+      posts.sort((a, b) => b.date.localeCompare(a.date) || localizedContent(a, 'zh').title.localeCompare(localizedContent(b, 'zh').title, 'zh-CN'));
       allPosts = posts;
       categoryPosts = posts.filter(post => category === 'all' || post.category === category);
       archiveState = 'ready';

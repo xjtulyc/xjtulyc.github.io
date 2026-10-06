@@ -962,7 +962,7 @@ const SITE_CONFIG = {
     } },
     blog: { seo: {
       title: "Blog | Youcheng Li",
-      description: "Technical writing and business perspectives by Youcheng Li: research, product practice and industry thinking."
+      description: "Bilingual technical analysis of AI for Science and large language models, and business perspectives on technology trends at leading companies."
     } }
   }
 

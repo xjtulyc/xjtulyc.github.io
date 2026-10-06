@@ -1,0 +1,46 @@
+{
+  "name": "Academic blue and neutral",
+  "version": "2026-10-06",
+  "principle": "Use typography, spacing, numbering and line styles to organize information. One muted blue accent; no decorative multicolor categories, gradients or colored equations.",
+  "palette": {
+    "navigation": "#182D49",
+    "ink": "#1F2933",
+    "secondary_text": "#526171",
+    "muted_text": "#607080",
+    "paper": "#FFFFFF",
+    "background": "#F7F8FA",
+    "border": "#D9E1E8",
+    "accent": "#355C7D",
+    "accent_hover": "#26445E",
+    "accent_wash": "#EDF2F6"
+  },
+  "dark_palette": {
+    "background": "#121B27",
+    "paper": "#1A2635",
+    "ink": "#E4EAF0",
+    "secondary_text": "#B4C0CE",
+    "accent": "#9AB7D3"
+  },
+  "figures": {
+    "canvas": "#F7F8FA",
+    "nodes": "#FFFFFF or #EDF2F6",
+    "text": "#1F2933 or #526171",
+    "emphasis": "#355C7D",
+    "separation": "Use numbered steps, solid/dashed lines and labeled markers before adding colors.",
+    "mobile": "Prefer vertical diagrams. Key text must remain readable at 320–390px viewport widths; include an original-size link.",
+    "data": "Use real, attributed data only; identify conceptual diagrams as illustrations, not measurements.",
+    "external_figures": "Preserve original scientific meaning; provide source, permission where needed, bilingual captions and alt text. Do not recolor third-party evidence just for branding."
+  },
+  "math": {
+    "renderer": "KaTeX",
+    "version": "0.19.0",
+    "distribution": "Version-pinned external CDN assets with SRI; article pages only",
+    "inline_delimiters": ["\\(", "\\)"],
+    "display_delimiters": ["\\[", "\\]"],
+    "font": "TeX math fonts; variables italic, operators and units upright",
+    "layout": "Center display equations; align related derivation steps; use real fractions and subscripts. Number equations only when referenced. Long expressions scroll within the equation, never widen the page.",
+    "color": "Inherit body ink; no colored formula cards.",
+    "accessibility": "Include MathML output; preserve TeX source if rendering is unavailable. Keep code listings unmodified.",
+    "validation": "Check both languages, math parse errors, fonts, fractions, subscripts, dark mode and 320px width. Match equation content across translations."
+  }
+}

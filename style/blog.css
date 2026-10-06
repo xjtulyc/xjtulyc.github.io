@@ -57,6 +57,16 @@ body[data-page="blog"] { font-family: var(--font-sans), "PingFang SC", "Microsof
 #main .blog-post-tag::before { content: "#"; margin-right: 2px; }
 #main .blog-container .site-footer { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 12px; }
 
+/* The author block can also be reused after a long-form article. */
+#main .blog-author { display: grid; grid-template-columns: 104px minmax(0, 1fr); gap: 28px; margin: 44px 0 36px; padding: 30px; border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-primary); }
+#main .blog-author-photo { width: 104px; height: 104px; border-radius: 8px; object-fit: cover; border: 1px solid var(--border-color); }
+#main .blog-author-content { min-width: 0; }
+#main .blog-author-eyebrow { margin: 0 0 10px; color: var(--text-tertiary); font-size: .68rem; font-weight: 500; letter-spacing: .09em; }
+#main .blog-author h2 { margin: 0 0 17px; font-size: 1.25rem; line-height: 1.5; font-weight: 600; }
+#main .blog-author-copy p { margin: 0 0 12px; color: var(--text-secondary); font-size: .88rem; line-height: 1.9; }
+#main .blog-author-links { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 18px; }
+#main .blog-author-links a { min-height: 36px; display: inline-flex; align-items: center; color: var(--primary-color); font-size: .8rem; text-decoration: underline; text-decoration-thickness: 1px; }
+
 /* Shared mobile overlay is normally present in the main-page inline styles. */
 body[data-page="blog"] .mobile-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, .5); z-index: 999; opacity: 0; visibility: hidden; transition: opacity 150ms ease, visibility 150ms ease; }
 body[data-page="blog"] .mobile-overlay.active { opacity: 1; visibility: visible; }
@@ -108,6 +118,12 @@ body[data-page="blog"] .mobile-overlay.active { opacity: 1; visibility: visible;
   #main .blog-category-nav a { min-height: 44px; align-items: center; }
   #main .blog-article { font-size: .98rem; }
   #main .blog-article h2, #main .blog-article h3 { scroll-margin-top: 80px; }
+  #main .blog-author { grid-template-columns: minmax(0, 1fr); gap: 19px; margin: 30px 0; padding: 22px; }
+  #main .blog-author-photo { width: 80px; height: 80px; }
+  #main .blog-author h2 { margin-bottom: 14px; font-size: 1.2rem; }
+  #main .blog-author-copy p { font-size: .86rem; }
+  #main .blog-author-links { gap: 4px 20px; margin-top: 14px; }
+  #main .blog-author-links a { min-height: 44px; }
 }
 @media (max-width: 400px) {
   #main .blog-aside { grid-template-columns: minmax(0, 1fr); }

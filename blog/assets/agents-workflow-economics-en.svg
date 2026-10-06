@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="1200" viewBox="0 0 720 1200" role="img" aria-labelledby="title desc" xml:lang="en">
+<title id="title">How agents create business value</title><desc id="desc">Four vertical steps: clear a capability threshold, use context and authorized action, verify outcomes and recover, earn repeat use and payment. Failures feed back to improve execution. All model, tool, runtime, review, rework, integration and operating costs count.</desc>
+<defs><marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L6,3 Z" fill="#607080"/></marker></defs>
+<rect width="720" height="1200" rx="18" fill="#F7F8FA"/>
+<g font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif">
+<text x="42" y="49" font-size="34" fill="#182D49" font-weight="700" text-anchor="start">How agents create business value</text>
+<text x="42" y="91" font-size="28" fill="#526171" font-weight="400" text-anchor="start">Capability is the starting point.</text>
+<text x="42" y="125" font-size="28" fill="#526171" font-weight="400" text-anchor="start">Execution and acceptance connect it to value.</text>
+<rect x="48" y="153" width="624" height="138" rx="13" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<rect x="48" y="153" width="7" height="138" rx="3" fill="#355C7D"/>
+<text x="76" y="193" font-size="30" fill="#355C7D" font-weight="700" text-anchor="start">01  Clear a capability threshold</text>
+<text x="76" y="232" font-size="28" fill="#526171" font-weight="400" text-anchor="start">Understand the task</text>
+<text x="76" y="268" font-size="28" fill="#526171" font-weight="400" text-anchor="start">Reason within its constraints</text>
+<path d="M 360 298 V 322" fill="none" stroke="#607080" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="48" y="329" width="624" height="138" rx="13" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<rect x="48" y="329" width="7" height="138" rx="3" fill="#355C7D"/>
+<text x="76" y="369" font-size="30" fill="#355C7D" font-weight="700" text-anchor="start">02  Use context + authorized action</text>
+<text x="76" y="408" font-size="28" fill="#526171" font-weight="400" text-anchor="start">Obtain correct data and permissions</text>
+<text x="76" y="444" font-size="28" fill="#526171" font-weight="400" text-anchor="start">Act and preserve execution state</text>
+<path d="M 360 474 V 498" fill="none" stroke="#607080" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="48" y="505" width="624" height="138" rx="13" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<rect x="48" y="505" width="7" height="138" rx="3" fill="#355C7D"/>
+<text x="76" y="545" font-size="30" fill="#355C7D" font-weight="700" text-anchor="start">03  Verify results + recover</text>
+<text x="76" y="584" font-size="28" fill="#526171" font-weight="400" text-anchor="start">Check outcomes and evidence</text>
+<text x="76" y="620" font-size="28" fill="#526171" font-weight="400" text-anchor="start">Handle failures and exceptions</text>
+<path d="M 360 650 V 674" fill="none" stroke="#607080" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="48" y="681" width="624" height="138" rx="13" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<rect x="48" y="681" width="7" height="138" rx="3" fill="#355C7D"/>
+<text x="76" y="721" font-size="30" fill="#355C7D" font-weight="700" text-anchor="start">04  Earn repeat use + payment</text>
+<text x="76" y="760" font-size="28" fill="#526171" font-weight="400" text-anchor="start">Deliver accepted outcomes</text>
+<text x="76" y="796" font-size="28" fill="#526171" font-weight="400" text-anchor="start">Observe renewal and unit economics</text>
+<path d="M 43 574 H 18 V 398 H 43" fill="none" stroke="#607080" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#arrow)"/>
+<text x="360" y="867" font-size="28" fill="#355C7D" font-weight="400" text-anchor="middle">Failures → updated tests and rules</text>
+<text x="360" y="903" font-size="28" fill="#355C7D" font-weight="400" text-anchor="middle">→ better execution on the next task</text>
+<rect x="42" y="935" width="636" height="170" rx="12" fill="#EDF2F6"/>
+<text x="65" y="975" font-size="30" fill="#1F2933" font-weight="700" text-anchor="start">Count every cost</text>
+<text x="65" y="1015" font-size="28" fill="#1F2933" font-weight="400" text-anchor="start">Models and tools · runtime</text>
+<text x="65" y="1049" font-size="28" fill="#1F2933" font-weight="400" text-anchor="start">Human review and rework</text>
+<text x="65" y="1083" font-size="28" fill="#1F2933" font-weight="400" text-anchor="start">Integration and operations</text>
+<text x="42" y="1149" font-size="26" fill="#607080" font-weight="400" text-anchor="start">Original concept: arrows are not measured effects.</text>
+<text x="42" y="1180" font-size="26" fill="#607080" font-weight="400" text-anchor="start">Adoption, revenue and profit need separate evidence.</text>
+</g></svg>

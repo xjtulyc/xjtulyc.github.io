@@ -6,14 +6,14 @@
     zh: {
       eyebrow: '思考与记录',
       title: '技术博客与商业判断',
-      lead: '从技术原理到现实问题，从研究实践到商业思考。',
+      lead: '解读 AI4S 与大语言模型，观察国内外头部公司的技术与商业趋势。',
       topicsLabel: '博客栏目',
       technical: '技术博客',
       business: '商业判断',
       technicalKicker: '技术探索',
       businessKicker: '商业思考',
-      technicalDescription: '算法原理、论文解读与实验记录。关注问题如何提出，方法如何推导，以及结果如何验证。',
-      businessDescription: 'AI 产品、产业观察与创业思考。围绕真实需求、价值创造与商业选择，展开有依据的讨论。',
+      technicalDescription: '聚焦 AI for Science 与大语言模型，从机制与数学推导出发，结合代码实现和实验分析，理解方法为何有效、适用于何处。',
+      businessDescription: '关注国内外头部公司的技术与商业趋势，梳理变化的背景、关键选择与发展方向，讨论技术进展如何影响产品和产业。',
       browseCategory: '进入栏目',
       archive: '文章归档',
       allCategories: '全部栏目',
@@ -27,8 +27,17 @@
       categoriesLabel: '文章栏目',
       browseHeading: '按栏目阅读',
       aboutHeading: '关于这个博客',
-      aboutDescription: '这里是独立于学术成果列表的写作空间，用于记录技术探索与商业思考。',
+      aboutDescription: '围绕 AI4S 与大语言模型展开技术解读，也记录对国内外头部公司技术与商业趋势的思考。',
       researchLink: '论文与研究项目',
+      authorEyebrow: '关于作者',
+      authorName: '利友诚 · Youcheng Li',
+      authorPhotoAlt: '利友诚',
+      authorIntroduction: '北京大学智能学院人工智能专业博士研究生，导师为王立威教授；Isoplex Intelligence（壹索智能）联合创始人兼 CTO。',
+      authorResearch: '研究关注医疗人工智能、生成式基础模型、诊断推理与科学智能体。以第一作者或共同第一作者身份在 Nature Biomedical Engineering、Scientific Data、KDD 和 PLOS Computational Biology 发表研究。',
+      authorLinksLabel: '了解作者',
+      authorResearchLink: '研究与论文',
+      authorExperienceLink: '创业与经历',
+      authorContactLink: '邮件联系',
       emptyTitle: '尚无已发布文章',
       emptyCategoryTitle: '{category}栏目尚无已发布文章',
       emptyDescription: '两个栏目已建立，文章将在准备完成后陆续发布。',
@@ -46,14 +55,14 @@
     en: {
       eyebrow: 'NOTES & ESSAYS',
       title: 'Technical Notes & Business Perspectives',
-      lead: 'Exploring technical ideas, research practice, and business decisions.',
+      lead: 'Exploring AI for Science and large language models, alongside technology and business trends at leading companies in China and abroad.',
       topicsLabel: 'Blog categories',
       technical: 'Technical Notes',
       business: 'Business Perspectives',
       technicalKicker: 'TECHNOLOGY',
       businessKicker: 'BUSINESS',
-      technicalDescription: 'Algorithms, paper discussions, and experiments: how questions are framed, methods are derived, and results are validated.',
-      businessDescription: 'AI products, industry observations, and entrepreneurship: examining real needs, value creation, and business choices through evidence.',
+      technicalDescription: 'AI for Science and large language models, examined through mechanisms, mathematical derivations, implementation, and experiments to understand why methods work and where they apply.',
+      businessDescription: 'Technology and business trends at leading companies in China and abroad: the context behind changes, key decisions, and emerging directions for products and industries.',
       browseCategory: 'Browse category',
       archive: 'Article Archive',
       allCategories: 'All categories',
@@ -67,8 +76,17 @@
       categoriesLabel: 'Article categories',
       browseHeading: 'Browse by category',
       aboutHeading: 'About this blog',
-      aboutDescription: 'A space for technical exploration and business thinking, alongside the academic publications and research projects.',
+      aboutDescription: 'Technical discussions of AI for Science and large language models, and reflections on technology and business trends at leading companies in China and abroad.',
       researchLink: 'Publications & research',
+      authorEyebrow: 'ABOUT THE AUTHOR',
+      authorName: 'Youcheng Li · 利友诚',
+      authorPhotoAlt: 'Youcheng Li',
+      authorIntroduction: 'PhD candidate in Artificial Intelligence at the School of Intelligence Science and Technology, Peking University, advised by Prof. Liwei Wang. Co-founder and CTO of Isoplex Intelligence.',
+      authorResearch: 'My research focuses on medical AI, generative foundation models, diagnostic reasoning, and scientific agents. My first-author and co-first-author work has appeared in Nature Biomedical Engineering, Scientific Data, KDD, and PLOS Computational Biology.',
+      authorLinksLabel: 'More about the author',
+      authorResearchLink: 'Research & publications',
+      authorExperienceLink: 'Entrepreneurship & experience',
+      authorContactLink: 'Get in touch',
       emptyTitle: 'No articles published yet',
       emptyCategoryTitle: 'No articles in {category} yet',
       emptyDescription: 'Both categories are ready. Articles will appear here when they are ready to publish.',
@@ -124,6 +142,9 @@
       '.blog-about p': 'aboutDescription'
     };
     Object.entries(textSelectors).forEach(([selector, key]) => setText(selector, key));
+    document.querySelectorAll('[data-blog-i18n]').forEach(node => { node.textContent = t(node.dataset.blogI18n); });
+    document.querySelectorAll('[data-blog-i18n-alt]').forEach(node => { node.alt = t(node.dataset.blogI18nAlt); });
+    document.querySelectorAll('[data-blog-i18n-aria]').forEach(node => { node.setAttribute('aria-label', t(node.dataset.blogI18nAria)); });
     document.querySelector('.blog-eyebrow')?.setAttribute('lang', language === 'zh' ? 'zh-CN' : 'en');
     document.querySelector('.blog-topics')?.setAttribute('aria-label', t('topicsLabel'));
     document.querySelector('.blog-aside')?.setAttribute('aria-label', t('indexLabel'));

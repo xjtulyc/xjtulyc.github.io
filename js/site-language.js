@@ -54,10 +54,27 @@
   function t(key, values = {}) {
     return (messages[language][key] || messages.en[key] || key).replace(/\{(\w+)\}/g, (_, name) => values[name] ?? `{${name}}`);
   }
+  function pageMetadata(fallback) {
+    const articleMetadata = document.getElementById('article-metadata');
+    if (!articleMetadata) return fallback;
+    try {
+      const translations = JSON.parse(articleMetadata.textContent);
+      const selected = translations[language] || translations.zh || translations.en;
+      if (selected && typeof selected.title === 'string' && typeof selected.description === 'string') return selected;
+    } catch (error) {
+      console.error('Article metadata could not be read:', error);
+    }
+    // Keep the article's static metadata if its translation data is unavailable.
+    return { title: document.title, description: document.querySelector('meta[name="description"]')?.content || '' };
+  }
+  function navigationHref(href) {
+    const siteRoot = document.body.dataset.siteRoot || '';
+    return /^(?:[a-z][a-z0-9+.-]*:|\/|#)/i.test(href) ? href : `${siteRoot}${href}`;
+  }
   function updateShared() {
     document.documentElement.lang = language === 'zh' ? 'zh-CN' : 'en';
     const config = getConfig(), page = document.body.dataset.page;
-    const metadata = config.pages?.[page]?.seo || config.seo;
+    const metadata = pageMetadata(config.pages?.[page]?.seo || config.seo);
     document.title = metadata.title;
     for (const [selector, content] of [
       ['meta[name="description"]', metadata.description], ['meta[property="og:title"]', metadata.title],
@@ -70,7 +87,7 @@
     const nav = document.querySelector('.navigation');
     if (nav) {
       nav.setAttribute('aria-label', t('navigation'));
-      nav.innerHTML = config.navigation.sidebar.map(item => `<a class="nav-item${item.id === page ? ' active' : ''}" href="${item.href}"${item.id === page ? ' aria-current="page"' : ''}><i class="${item.icon} nav-icon" aria-hidden="true"></i><span>${item.label}</span></a>`).join('');
+      nav.innerHTML = config.navigation.sidebar.map(item => `<a class="nav-item${item.id === page ? ' active' : ''}" href="${navigationHref(item.href)}"${item.id === page ? ' aria-current="page"' : ''}><i class="${item.icon} nav-icon" aria-hidden="true"></i><span>${item.label}</span></a>`).join('');
     }
     const labels = [['.skip-link','skip'],['.site-footer a','contact']];
     labels.forEach(([selector,key])=> {const element=document.querySelector(selector);if(element)element.textContent=t(key);});

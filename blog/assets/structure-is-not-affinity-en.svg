@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="940" viewBox="0 0 600 940" role="img" aria-labelledby="title desc" xml:lang="en">
+<title id="title">What a structure leaves out</title><desc id="desc">Three quantities need distinct evidence. Original schematic · Not experimental data</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L7,4 L0,8" fill="none" stroke="#607080" stroke-width="1.5"/></marker></defs>
+<rect width="600" height="940" rx="20" fill="#F7F8FA"/>
+<g font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif">
+<text x="28" y="48" font-size="30" fill="#182D49" font-weight="700" text-anchor="start">What a structure leaves out</text>
+<text x="28" y="86" font-size="23" fill="#526171" font-weight="400" text-anchor="start">Three quantities need distinct evidence</text>
+<rect x="20" y="112" width="560" height="160" rx="14" fill="#FFFFFF" stroke="#D9E1E8"/>
+<text x="38" y="151" font-size="28" fill="#355C7D" font-weight="700" text-anchor="start">01  Structural coordinates</text>
+<text x="38" y="196" font-size="25" fill="#526171" font-weight="400" text-anchor="start">One representative bound pose</text>
+<text x="38" y="238" font-size="23" fill="#526171" font-weight="400" text-anchor="start">Plausible geometry ≠ known weights</text>
+<rect x="20" y="304" width="560" height="160" rx="14" fill="#FFFFFF" stroke="#D9E1E8"/>
+<text x="38" y="343" font-size="28" fill="#355C7D" font-weight="700" text-anchor="start">02  Bound / unbound ensembles</text>
+<text x="38" y="388" font-size="25" fill="#526171" font-weight="400" text-anchor="start">Compare the free energies of both states</text>
+<text x="38" y="430" font-size="23" fill="#526171" font-weight="400" text-anchor="start">Solvent · conformations · protonation</text>
+<rect x="20" y="496" width="560" height="160" rx="14" fill="#FFFFFF" stroke="#D9E1E8"/>
+<text x="38" y="535" font-size="28" fill="#355C7D" font-weight="700" text-anchor="start">03  Equilibrium affinity</text>
+<text x="38" y="580" font-size="25" fill="#526171" font-weight="400" text-anchor="start">Standard-state free energy → affinity</text>
+<text x="38" y="622" font-size="23" fill="#526171" font-weight="400" text-anchor="start">Assess equilibrium and off-rates separately</text>
+<path d="M300 278 V298" stroke="#607080" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<path d="M300 470 V490" stroke="#607080" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<text x="300" y="691" font-size="23" fill="#526171" font-weight="400" text-anchor="middle">Same affinity can hide different off-rates</text>
+<text x="28" y="745" font-size="27" fill="#182D49" font-weight="700" text-anchor="start">Validate each claim separately</text>
+<circle cx="35" cy="780" r="5" fill="#355C7D"/>
+<text x="52" y="788" font-size="24" fill="#1F2933" font-weight="400" text-anchor="start">Structure: reference and physical checks</text>
+<circle cx="35" cy="825" r="5" fill="#355C7D"/>
+<text x="52" y="833" font-size="24" fill="#1F2933" font-weight="400" text-anchor="start">Prediction: held-out splits and baselines</text>
+<circle cx="35" cy="870" r="5" fill="#355C7D"/>
+<text x="52" y="878" font-size="24" fill="#1F2933" font-weight="400" text-anchor="start">Experiment: matched assays, blind tests</text>
+<text x="300" y="921" font-size="19" fill="#607080" font-weight="400" text-anchor="middle">Original schematic · Not experimental data</text>
+</g></svg>

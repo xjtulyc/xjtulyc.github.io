@@ -1128,7 +1128,7 @@ const SITE_CONFIG_ZH = {
     "blog": {
       "seo": {
         "title": "博客 | 利友诚 Youcheng Li",
-        "description": "利友诚的技术博客与商业判断：记录技术研究、产品实践与商业思考。"
+        "description": "利友诚的中英文博客：深入解读 AI4S 与大语言模型的技术机制，分析国内外头部公司的技术与商业趋势。"
       }
     }
   }

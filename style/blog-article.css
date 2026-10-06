@@ -1,0 +1,75 @@
+/* Load after blog.css on bilingual long-form article pages. */
+.blog-article[hidden], [data-article-language][hidden] { display: none !important; }
+
+#main .blog-article { max-width: 76ch; font-size: 1.04rem; line-height: 1.92; overflow-wrap: anywhere; }
+#main .blog-article[lang="en"] { line-height: 1.82; }
+#main .blog-article h1 { margin: 12px 0 24px; font-size: clamp(1.8rem, 3.2vw, 2.65rem); line-height: 1.42; letter-spacing: -.025em; }
+#main .blog-article h2 { font-size: 1.42rem; line-height: 1.55; padding-top: 4px; }
+#main .blog-article h3 { font-size: 1.13rem; line-height: 1.65; }
+#main .blog-article :is(h2, h3, h4, [id]) { scroll-margin-top: 36px; }
+#main .blog-article p { color: var(--text-primary); }
+#main .blog-article .article-meta, #main .blog-article .blog-post-meta { color: var(--text-tertiary); font-size: .8rem; line-height: 1.75; }
+#main .blog-article .article-summary { color: var(--text-secondary); font-size: 1.05em; }
+#main .blog-article .blog-toc ol { padding-left: 0; list-style: none; }
+#main .blog-article .blog-toc li { padding-left: 0; }
+#main .blog-article a { overflow-wrap: anywhere; }
+#main .blog-article li { padding-left: .1em; }
+#main .blog-article hr { margin: 2.5em 0; border: 0; border-top: 1px solid var(--border-color); opacity: 1; }
+
+/* Images retain their original visual meaning in either theme. */
+#main .blog-article img { display: block; max-width: 100%; height: auto; margin: 1.2em auto; border: 1px solid var(--border-color); border-radius: 5px; background: #fff; }
+#main .blog-article figure { max-width: 100%; margin: 2em 0; }
+#main .blog-article figure img { margin: 0 auto; }
+#main .blog-article figcaption { color: var(--text-tertiary); text-align: left; line-height: 1.75; }
+#main .blog-article .figure-link { margin: 8px 0 0; font-size: .8em; line-height: 1.6; }
+#main .blog-article .figure-link a { display: inline-block; padding: 4px 0; }
+#main .blog-article svg { max-width: 100%; }
+
+#main .blog-article pre { max-width: 100%; overflow-x: auto; tab-size: 4; white-space: pre; overscroll-behavior-x: contain; }
+#main .blog-article pre code { white-space: inherit; overflow-wrap: normal; word-break: normal; }
+#main .blog-article :not(pre) > code { overflow-wrap: anywhere; }
+#main .blog-article .table-scroll { display: block; max-width: 100%; overflow-x: auto; overscroll-behavior-x: contain; padding: .35em 0; }
+
+/* Academic equations inherit the prose color and stay clear of card styling. */
+#main .blog-article .katex { font-size: 1.08em; color: inherit; overflow: visible; }
+#main .blog-article .katex svg { max-width: none; }
+#main .blog-article :is(.math-block, .katex-display, mjx-container[display="true"]) {
+  display: block;
+  max-width: 100%;
+  margin: 1.4em 0;
+  padding: .45em .15em .6em;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  text-align: center;
+  overflow-x: auto;
+  overflow-y: visible;
+  overscroll-behavior-x: contain;
+}
+#main .blog-article .katex-display > .katex { max-width: none; text-align: center; }
+#main .blog-article .math-block .katex-display { margin: 0; padding: .1em 0; overflow: visible; }
+#main .blog-article .math-block > p { margin-bottom: 0; }
+#main .blog-article .table-scroll table { display: table; width: 100%; min-width: 420px; }
+#main .blog-article > table { display: block; max-width: 100%; min-width: 0; overflow-x: auto; }
+#main .blog-article th { font-weight: 600; background: var(--bg-tertiary); }
+#main .blog-article th, #main .blog-article td { vertical-align: top; line-height: 1.65; }
+#main .blog-article details { margin: 1.5em 0; padding: 15px 18px; border: 1px solid var(--border-color); border-radius: 5px; background: var(--bg-primary); }
+#main .blog-article summary { cursor: pointer; color: var(--primary-color); font-weight: 500; }
+#main .blog-article details[open] > summary { margin-bottom: 16px; }
+#main .blog-article summary:focus-visible { outline: 3px solid var(--primary-color); outline-offset: 4px; }
+#main .blog-article .article-sources { margin-top: 3em; padding-top: 1.5em; border-top: 1px solid var(--border-color); font-size: .88rem; line-height: 1.8; }
+#main .blog-article .article-sources h2 { margin-top: 0; }
+#main [data-article-label="back"] { display: inline-block; margin-bottom: 24px; padding: 7px 0; color: var(--primary-color); font-size: .85rem; text-decoration: none; }
+#main [data-article-label="back"]::before { content: "←"; margin-right: 9px; }
+
+@media (max-width: 768px) {
+  #main .blog-article { font-size: 1rem; line-height: 1.9; }
+  #main .blog-article h1 { font-size: 1.8rem; }
+  #main .blog-article h2 { font-size: 1.3rem; }
+  #main .blog-article :is(h2, h3, h4, [id]) { scroll-margin-top: 80px; }
+  #main .blog-article pre { padding: 15px; font-size: .8rem; }
+  #main .blog-article .blog-toc { padding: 18px; }
+  #main .blog-article .article-sources { font-size: .83rem; }
+  #main [data-article-label="back"] { min-height: 44px; }
+}

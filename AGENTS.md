@@ -5,13 +5,14 @@ This repository is Youcheng Li's personal academic website hosted by GitHub Page
 ## Project Shape
 
 - This is a plain static website, not a Node, Jekyll, or Python project.
-- The academic homepage is `index.html`. Research and publications live in `research.html`, professional experience in `experience.html`, teaching and resources in `teaching.html`, and the Chinese blog in `blog.html`.
+- The academic homepage is `index.html`. Research and publications live in `research.html`, professional experience in `experience.html`, teaching and resources in `teaching.html`, and the bilingual blog in `blog.html`.
 - The custom domain is configured by `CNAME`.
 - Main site content is centralized in `config/site-config.js`.
 - Chinese content is in `config/site-config.zh.js`; keep both languages factually synchronized, including links, arrays, dates and numerical claims. Official paper titles, authors, venues and BibTeX metadata stay in their published language.
 - `js/site-language.js` owns shared UI translations, language selection, page metadata and persistence. Load English config, Chinese config, and this script before the dynamic loader. First visit follows the browser language; `?lang=en` / `?lang=zh` overrides the saved preference.
-- `js/blog-i18n.js` translates blog interface text; load it before `js/blog.js`. Original article prose is not automatically translated.
-- Blog articles are static HTML files under `blog/`; `blog/posts.json` is the published article index. Follow `blog/README.md` and never publish invented articles or unconfirmed author opinions. An empty archive is intentional until the user supplies articles.
+- `js/blog-i18n.js` translates blog interface text; load it before `js/blog.js`. Article prose has complete, editorially checked Chinese and English versions; `js/blog-article.js` switches them together with article metadata.
+- Blog articles are static HTML files under `blog/`; `blog/posts.json` is the published article index. The owner authorized autonomous research, bilingual writing and public deployment on 2026-10-06. Follow `blog/README.md`: verified public sources, substantive original analysis and figures, no fabricated experiments or unpublished personal/company information. Per-article approval is not required within this authorized scope.
+- `blog/content/*.json` contains only publication-ready source articles. `python3 scripts/publish_blog.py` validates and renders static HTML, archive fallback and sitemap; `--check` checks them without writing. This optional standard-library editorial helper adds no runtime build requirement or dependencies to the website.
 - Dynamic homepage sections are rendered by `js/dynamic-content-loader.js`.
 - Page interactions live mostly in `js/single-page-app.js` and `js/modern-script.js`.
 - Styling lives in `style/`.

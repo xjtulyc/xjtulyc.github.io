@@ -1,1 +1,72 @@
-[]
+[
+  {
+    "title": "结构正确，为何亲和力仍可能不可靠？从 AlphaFold 3 到 Boltz-2",
+    "summary": "从结合态与游离态的统计权重出发，推导姿态不足以确定亲和力的原因，检查 Boltz-2 的标签与单位，并提出防泄漏、带基线的评估方案。本文未运行实验。",
+    "tags": [
+      "AI4S",
+      "AlphaFold 3",
+      "Boltz-2",
+      "结合亲和力",
+      "评估方法"
+    ],
+    "date": "2026-10-06",
+    "category": "technical",
+    "url": "blog/structure-is-not-affinity.html",
+    "translations": {
+      "zh": {
+        "title": "结构正确，为何亲和力仍可能不可靠？从 AlphaFold 3 到 Boltz-2",
+        "summary": "从结合态与游离态的统计权重出发，推导姿态不足以确定亲和力的原因，检查 Boltz-2 的标签与单位，并提出防泄漏、带基线的评估方案。本文未运行实验。",
+        "tags": [
+          "AI4S",
+          "AlphaFold 3",
+          "Boltz-2",
+          "结合亲和力",
+          "评估方法"
+        ]
+      },
+      "en": {
+        "title": "Why a Correct Structure Does Not Guarantee Reliable Affinity: AlphaFold 3 and Boltz-2",
+        "summary": "A statistical-mechanical counterexample explains why a pose cannot determine affinity. We examine Boltz-2 labels and units, then propose an evaluation with leakage checks and baselines. No experiments were run.",
+        "tags": [
+          "AI4S",
+          "AlphaFold 3",
+          "Boltz-2",
+          "Binding affinity",
+          "Evaluation"
+        ]
+      }
+    }
+  },
+  {
+    "title": "智能体的商业壁垒：工作流、验证成本与价值分配",
+    "summary": "从 OpenAI、Anthropic 与阿里云的公开动作出发，分析智能体如何从模型调用走向企业流程，以及为什么验收、复核和异常处理决定商业价值。",
+    "tags": [
+      "智能体",
+      "企业软件",
+      "商业判断"
+    ],
+    "date": "2026-10-06",
+    "category": "business",
+    "url": "blog/agents-workflow-economics.html",
+    "translations": {
+      "zh": {
+        "title": "智能体的商业壁垒：工作流、验证成本与价值分配",
+        "summary": "从 OpenAI、Anthropic 与阿里云的公开动作出发，分析智能体如何从模型调用走向企业流程，以及为什么验收、复核和异常处理决定商业价值。",
+        "tags": [
+          "智能体",
+          "企业软件",
+          "商业判断"
+        ]
+      },
+      "en": {
+        "title": "The Economics of AI Agents: Workflows, Verification Costs, and Where Value Accumulates",
+        "summary": "Public moves by OpenAI, Anthropic, and Alibaba Cloud reveal a contest beyond model calls. Acceptance, human review, and exception handling help determine where business value can accumulate.",
+        "tags": [
+          "AI agents",
+          "Enterprise software",
+          "Business analysis"
+        ]
+      }
+    }
+  }
+]
