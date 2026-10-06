@@ -8,11 +8,7 @@
 
 class SinglePageApp {
   constructor() {
-    this.config = (typeof SITE_CONFIG !== 'undefined' ? SITE_CONFIG : {});
-    this.spa = this.config.spa || {};
-    this.scrollSettings = this.spa.scrollSettings || {};
-    this.displaySettings = this.spa.displaySettings || {};
-    this.animations = this.spa.animations || {};
+    this.setConfig(window.SiteLanguage?.getConfig() || (typeof SITE_CONFIG !== 'undefined' ? SITE_CONFIG : {}));
     
     this.currentSection = '';
     this.scrollTimeout = null;
@@ -20,6 +16,16 @@ class SinglePageApp {
     
     this.init();
   }
+
+  setConfig(config) {
+    this.config = config;
+    this.spa = config.spa || {};
+    this.scrollSettings = this.spa.scrollSettings || {};
+    this.displaySettings = this.spa.displaySettings || {};
+    this.animations = this.spa.animations || {};
+  }
+
+  t(key) { return window.SiteLanguage?.t(key) || key; }
 
   init() {
     this.initScrollSpy();
@@ -266,7 +272,7 @@ class SinglePageApp {
       // Create expand button
       expandButton = document.createElement('button');
       expandButton.className = 'btn btn-outline expand-news-btn';
-      expandButton.innerHTML = `<i class="fas fa-chevron-down"></i> ${newsSettings.expandText || 'Show More News'}`;
+      expandButton.innerHTML = `<i class="fas fa-chevron-down"></i> ${newsSettings.expandText || this.t('moreNews')}`;
       
       const newsContainer = newsSection.querySelector('.timeline');
       newsContainer.appendChild(expandButton);
@@ -285,14 +291,14 @@ class SinglePageApp {
       if (isExpanding) {
         // Expand
         hiddenItems.forEach(item => { item.style.display = 'block'; });
-        expandButton.innerHTML = `<i class="fas fa-chevron-up"></i> ${newsSettings.collapseText || 'Show Less'}`;
+        expandButton.innerHTML = `<i class="fas fa-chevron-up"></i> ${newsSettings.collapseText || this.t('lessNews')}`;
       } else {
         // Collapse
         hiddenItems.forEach(item => {
           item.style.display = 'none';
           item.classList.remove('fade-in');
         });
-        expandButton.innerHTML = `<i class="fas fa-chevron-down"></i> ${newsSettings.expandText || 'Show More News'}`;
+        expandButton.innerHTML = `<i class="fas fa-chevron-down"></i> ${newsSettings.expandText || this.t('moreNews')}`;
         
         // Scroll back to news section
         this.scrollToElement(newsSection);
@@ -357,7 +363,7 @@ class SinglePageApp {
         
         expandButton = document.createElement('button');
         expandButton.className = 'btn btn-sm btn-link expand-project-btn';
-        expandButton.textContent = 'Read More';
+        expandButton.textContent = this.t('readMore');
         expandButton.setAttribute('aria-expanded', 'false');
         
         content.insertBefore(expandButton, description.nextSibling);
@@ -366,10 +372,10 @@ class SinglePageApp {
         expandButton.addEventListener('click', () => {
           if (isExpanded) {
             description.textContent = truncatedText;
-            expandButton.textContent = 'Read More';
+            expandButton.textContent = this.t('readMore');
           } else {
             description.textContent = fullText;
-            expandButton.textContent = 'Read Less';
+            expandButton.textContent = this.t('readLess');
           }
           isExpanded = !isExpanded;
           expandButton.setAttribute('aria-expanded', String(isExpanded));
@@ -495,7 +501,7 @@ class SinglePageApp {
       // Create expand button
       expandButton = document.createElement('button');
       expandButton.className = 'btn btn-outline expand-talks-btn';
-      expandButton.innerHTML = `<i class="fas fa-chevron-down"></i> ${talksSettings.expandText || 'Show All Talks'}`;
+      expandButton.innerHTML = `<i class="fas fa-chevron-down"></i> ${talksSettings.expandText || this.t('moreTalks')}`;
       
       talksSection.appendChild(expandButton);
     }
@@ -513,13 +519,13 @@ class SinglePageApp {
           item.style.display = 'block';
           item.classList.add('fade-in');
         });
-        expandButton.innerHTML = `<i class="fas fa-chevron-up"></i> ${talksSettings.collapseText || 'Show Recent Only'}`;
+        expandButton.innerHTML = `<i class="fas fa-chevron-up"></i> ${talksSettings.collapseText || this.t('lessTalks')}`;
       } else {
         hiddenItems.forEach(item => {
           item.style.display = 'none';
           item.classList.remove('fade-in');
         });
-        expandButton.innerHTML = `<i class="fas fa-chevron-down"></i> ${talksSettings.expandText || 'Show All Talks'}`;
+        expandButton.innerHTML = `<i class="fas fa-chevron-down"></i> ${talksSettings.expandText || this.t('moreTalks')}`;
         
         this.scrollToElement(talksSection);
       }

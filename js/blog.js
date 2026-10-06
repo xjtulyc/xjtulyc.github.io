@@ -2,9 +2,11 @@
 (() => {
   'use strict';
 
-  const categoryNames = { technical: '技术博客', business: '商业判断' };
+  const i18n = window.BlogI18n;
+  if (!i18n) return;
+  const categories = ['technical', 'business'];
   const params = new URLSearchParams(window.location.search);
-  const category = Object.hasOwn(categoryNames, params.get('category')) ? params.get('category') : 'all';
+  const category = categories.includes(params.get('category')) ? params.get('category') : 'all';
   const postsElement = document.getElementById('blog-posts');
   const form = document.getElementById('blog-filters');
   const queryInput = document.getElementById('blog-query');
@@ -12,7 +14,10 @@
   const status = document.getElementById('blog-result-status');
   if (!postsElement || !form || !queryInput || !yearInput || !status) return;
 
-  document.getElementById('archive-context').textContent = categoryNames[category] || '全部栏目';
+  const t = (key, values) => i18n.t(key, values);
+  let archiveState = 'loading';
+  let allPosts = [];
+  let categoryPosts = [];
   document.querySelectorAll('[data-category-link]').forEach(link => {
     if (link.dataset.categoryLink === category) link.setAttribute('aria-current', 'true');
   });
@@ -33,7 +38,7 @@
   }
 
   function validPost(post) {
-    if (!post || typeof post !== 'object' || !Object.hasOwn(categoryNames, post.category)) return false;
+    if (!post || typeof post !== 'object' || !categories.includes(post.category)) return false;
     if (!['title', 'summary', 'url', 'date'].every(key => typeof post[key] === 'string' && post[key].trim())) return false;
     if (!/^\d{4}-\d{2}-\d{2}$/.test(post.date)) return false;
     const date = new Date(`${post.date}T00:00:00Z`);
@@ -48,9 +53,12 @@
   function renderPost(post) {
     const article = element('article', 'blog-post');
     const meta = element('div', 'blog-post-meta');
-    const date = element('time', '', post.date);
+    const formattedDate = new Intl.DateTimeFormat(i18n.language === 'zh' ? 'zh-CN' : 'en', {
+      year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC'
+    }).format(new Date(`${post.date}T00:00:00Z`));
+    const date = element('time', '', formattedDate);
     date.dateTime = post.date;
-    meta.append(date, element('span', 'blog-post-category', categoryNames[post.category]));
+    meta.append(date, element('span', 'blog-post-category', i18n.categoryName(post.category)));
     const heading = element('h4');
     const link = element('a', '', post.title);
     link.href = post.url;
@@ -58,7 +66,7 @@
     article.append(meta, heading, element('p', 'blog-post-summary', post.summary));
     if (post.tags.length) {
       const tags = element('div', 'blog-post-tags');
-      tags.setAttribute('aria-label', '文章标签');
+      tags.setAttribute('aria-label', t('tagsLabel'));
       post.tags.forEach(tag => tags.append(element('span', 'blog-post-tag', tag)));
       article.append(tags);
     }
@@ -73,6 +81,47 @@
     window.history.replaceState(null, '', url);
   }
 
+  function render() {
+    document.getElementById('archive-context').textContent = i18n.categoryName(category);
+    if (archiveState === 'loading') {
+      empty(t('loadingTitle'), t('loadingDescription'));
+      return;
+    }
+    if (archiveState === 'error') {
+      empty(t('errorTitle'), t('errorDescription'));
+      return;
+    }
+    if (!categoryPosts.length) {
+      const title = category === 'all' ? t('emptyTitle') : t('emptyCategoryTitle', { category: i18n.categoryName(category) });
+      empty(title, t(allPosts.length ? 'emptyCategoryDescription' : 'emptyDescription'));
+      return;
+    }
+
+    const query = queryInput.value.trim().toLocaleLowerCase();
+    const matches = categoryPosts.filter(post => {
+      const searchText = `${post.title} ${post.summary} ${post.tags.join(' ')}`.toLocaleLowerCase();
+      return (yearInput.value === 'all' || post.date.startsWith(yearInput.value)) && (!query || searchText.includes(query));
+    });
+    status.textContent = t(matches.length === 1 ? 'resultsOne' : 'resultsMany', { count: matches.length });
+    if (!matches.length) {
+      empty(t('noResultsTitle'), t('noResultsDescription'));
+      return;
+    }
+    const fragment = document.createDocumentFragment();
+    let year, group;
+    matches.forEach(post => {
+      const postYear = post.date.slice(0, 4);
+      if (postYear !== year) {
+        year = postYear;
+        group = element('div', 'blog-year-group');
+        group.append(element('h3', 'blog-year-heading', year));
+        fragment.append(group);
+      }
+      group.append(renderPost(post));
+    });
+    postsElement.replaceChildren(fragment);
+  }
+
   async function init() {
     try {
       const response = await fetch('blog/posts.json');
@@ -80,14 +129,11 @@
       const posts = await response.json();
       if (!Array.isArray(posts) || !posts.every(validPost)) throw new Error('Invalid archive data');
       posts.sort((a, b) => b.date.localeCompare(a.date) || a.title.localeCompare(b.title, 'zh-CN'));
-      if (!posts.length) {
-        empty(category === 'all' ? '尚无已发布文章' : `${categoryNames[category]}栏目尚无已发布文章`, '两个栏目已建立，文章将在准备完成后陆续发布。');
-        return;
-      }
-
-      const categoryPosts = posts.filter(post => category === 'all' || post.category === category);
+      allPosts = posts;
+      categoryPosts = posts.filter(post => category === 'all' || post.category === category);
+      archiveState = 'ready';
       if (!categoryPosts.length) {
-        empty(`${categoryNames[category]}栏目尚无已发布文章`, '可通过右侧栏目索引浏览其他文章。');
+        render();
         return;
       }
       const years = [...new Set(categoryPosts.map(post => post.date.slice(0, 4)))];
@@ -100,32 +146,6 @@
       yearInput.value = years.includes(params.get('year')) ? params.get('year') : 'all';
       form.hidden = false;
       status.hidden = false;
-
-      function render() {
-        const query = queryInput.value.trim().toLocaleLowerCase();
-        const matches = categoryPosts.filter(post => {
-          const searchText = `${post.title} ${post.summary} ${post.tags.join(' ')}`.toLocaleLowerCase();
-          return (yearInput.value === 'all' || post.date.startsWith(yearInput.value)) && (!query || searchText.includes(query));
-        });
-        status.textContent = `共 ${matches.length} 篇文章`;
-        if (!matches.length) {
-          empty('没有找到匹配的文章', '试试其他关键词，或重置搜索条件。');
-          return;
-        }
-        const fragment = document.createDocumentFragment();
-        let year, group;
-        matches.forEach(post => {
-          const postYear = post.date.slice(0, 4);
-          if (postYear !== year) {
-            year = postYear;
-            group = element('div', 'blog-year-group');
-            group.append(element('h3', 'blog-year-heading', year));
-            fragment.append(group);
-          }
-          group.append(renderPost(post));
-        });
-        postsElement.replaceChildren(fragment);
-      }
 
       form.addEventListener('submit', event => event.preventDefault());
       queryInput.addEventListener('input', () => { render(); updateURL(); });
@@ -140,11 +160,14 @@
       });
       render();
     } catch (error) {
-      empty('文章列表暂时无法加载', '请稍后刷新页面再试。');
+      archiveState = 'error';
+      render();
       console.error('Blog archive could not be loaded:', error);
     } finally {
       postsElement.setAttribute('aria-busy', 'false');
     }
   }
+  document.addEventListener('site:languagechange', render);
+  render();
   init();
 })();

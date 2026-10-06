@@ -27,13 +27,14 @@
   <link rel="stylesheet" href="style/refinement.css">
   <link rel="stylesheet" href="style/blog.css">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"利友诚的博客","url":"https://youchengli.com/blog.html","inLanguage":"zh-CN","author":{"@type":"Person","name":"Youcheng Li","alternateName":"利友诚","url":"https://youchengli.com/"}}</script>
-  <noscript><style>.mobile-menu-toggle,.theme-toggle,.back-to-top{display:none}@media(max-width:768px){.layout-container{display:block}#sidebar{position:static;transform:none;width:100%;height:auto}#main{margin-left:0;width:100%}}</style></noscript>
+  <noscript><style>.mobile-menu-toggle,.theme-toggle,.back-to-top,.language-toggle{display:none}@media(max-width:768px){.layout-container{display:block}#sidebar{position:static;transform:none;width:100%;height:auto}#main{margin-left:0;width:100%}}</style></noscript>
 </head>
 <body data-page="blog">
   <a class="skip-link" href="#main">跳至正文</a>
   <div class="scroll-progress" aria-hidden="true"></div>
   <button type="button" class="mobile-menu-toggle" aria-label="打开导航" aria-expanded="false" aria-controls="sidebar"><span></span><span></span><span></span></button>
   <div class="mobile-overlay" aria-hidden="true"></div>
+  <button type="button" class="language-toggle" aria-label="切换为中文" lang="zh-CN">中文</button>
   <button type="button" class="theme-toggle" aria-label="切换主题"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg></button>
   <button type="button" class="back-to-top" aria-label="返回顶部"><i class="fas fa-arrow-up" aria-hidden="true"></i></button>
   <div class="layout-container">
@@ -89,8 +90,12 @@
       <footer class="site-footer"><span>© 2026 Youcheng Li · 利友诚</span><a href="mailto:youchengli@stu.pku.edu.cn">联系我</a></footer>
     </div></main>
   </div>
+  <script src="config/site-config.js"></script>
+  <script src="config/site-config.zh.js"></script>
+  <script src="js/site-language.js"></script>
   <script src="js/modern-script.js"></script>
   <script src="js/single-page-app.js"></script>
+  <script src="js/blog-i18n.js"></script>
   <script src="js/blog.js"></script>
 </body>
 </html>

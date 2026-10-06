@@ -8,6 +8,8 @@ class DynamicContentLoader {
     this.config = null;
   }
 
+  t(key, values) { return window.SiteLanguage?.t(key, values) || key; }
+
   async init() {
     try {
       // 等待配置文件加载
@@ -17,7 +19,7 @@ class DynamicContentLoader {
         return;
       }
       
-      this.config = SITE_CONFIG;
+      this.config = window.SiteLanguage?.getConfig() || SITE_CONFIG;
       
       // 加载所有动态内容
       this.loadAllContent();
@@ -47,6 +49,8 @@ class DynamicContentLoader {
     
     // 重新初始化所有交互功能
     this.reinitializeInteractions();
+    window.SiteLanguage?.updateShared();
+    document.querySelectorAll('a[target="_blank"]').forEach(link => link.rel = 'noopener noreferrer');
     console.log('Finished loading all content');
   }
 
@@ -128,7 +132,7 @@ class DynamicContentLoader {
     const mission = document.querySelector('#about .mission-statement');
     if (mission) mission.textContent = about.mission;
     const highlights = document.querySelector('#research .research-grid');
-    if (highlights) highlights.innerHTML = research.highlights.map(item => `<article class="card research-card"><div class="card-content"><h3 class="card-title">${item.title}</h3><p>${item.description}</p><a class="btn btn-outline" href="${item.link}">Explore research <span aria-hidden="true">→</span></a></div></article>`).join('');
+    if (highlights) highlights.innerHTML = research.highlights.map(item => `<article class="card research-card"><div class="card-content"><h3 class="card-title">${item.title}</h3><p>${item.description}</p><a class="btn btn-outline" href="${item.link}">${this.t('explore')} <span aria-hidden="true">→</span></a></div></article>`).join('');
     ['about', 'news', 'research', 'awards', 'teaching', 'resources', 'experience'].forEach(id => {
       const config = this.config[id];
       if (!config) return;
@@ -149,7 +153,7 @@ class DynamicContentLoader {
   loadExperience() {
     const container = document.querySelector('.experience-list');
     if (!container || !this.config.experience) return;
-    container.innerHTML = this.config.experience.items.map(item => `<article class="experience-card card"><div class="card-content"><div class="experience-meta"><span>${item.period}</span><span>${item.role}</span></div><h3>${item.organization}</h3><p>${item.description}</p>${item.highlights?.length ? `<ul class="experience-points">${item.highlights.map(point => `<li>${point}</li>`).join('')}</ul>` : ''}${item.url ? `<a class="btn btn-outline" href="${item.url}" target="_blank" rel="noopener noreferrer">${item.linkText || 'Learn more'} <span aria-hidden="true">↗</span></a>` : ''}</div></article>`).join('');
+    container.innerHTML = this.config.experience.items.map(item => `<article class="experience-card card"><div class="card-content"><div class="experience-meta"><span>${item.period}</span><span>${item.role}</span></div><h3>${item.organization}</h3><p>${item.description}</p>${item.highlights?.length ? `<ul class="experience-points">${item.highlights.map(point => `<li>${point}</li>`).join('')}</ul>` : ''}${item.url ? `<a class="btn btn-outline" href="${item.url}" target="_blank" rel="noopener noreferrer">${item.linkText || this.t('learnMore')} <span aria-hidden="true">↗</span></a>` : ''}</div></article>`).join('');
   }
 
   /**
@@ -173,8 +177,8 @@ class DynamicContentLoader {
     // 创建年份过滤器
     const yearFilter = document.createElement('div');
     yearFilter.className = 'year-filter mb-4';
-    yearFilter.setAttribute('aria-label', 'Filter publications by year');
-    yearFilter.innerHTML = '<button type="button" class="year-badge active" data-year="all" aria-pressed="true">All</button>';
+    yearFilter.setAttribute('aria-label', this.t('filterYear'));
+    yearFilter.innerHTML = `<button type="button" class="year-badge active" data-year="all" aria-pressed="true">${this.t('all')}</button>`;
     
     // 添加年份标签
     publications.forEach(yearGroup => {
@@ -211,7 +215,7 @@ class DynamicContentLoader {
           return author.includes('Youcheng Li') ? `<strong>${authorText}</strong>` : authorText;
         }).join(', ');
         const coFirstNote = item.coFirst?.length ?
-          '<span class="publication-note">† co-first author</span>' : '';
+          `<span class="publication-note">† ${this.t('coFirst')}</span>` : '';
         
         // 处理期刊信息
         const venueInfo = `${item.venue}${item.volume ? ` ${item.volume}${item.issue ? `(${item.issue})` : ''}` : ''}${item.pages ? `: ${item.pages}` : ''}`;
@@ -336,7 +340,7 @@ class DynamicContentLoader {
 
     const dataId = semanticScholarId ? ` data-semantic-scholar-id="${semanticScholarId}"` : '';
     const dataFallback = fallback !== null ? ` data-citation-fallback="${fallback}"` : '';
-    const label = semanticScholarId ? 'Citations loading' : this.formatCitationLabel(fallback);
+    const label = semanticScholarId ? this.t('citationsLoading') : this.formatCitationLabel(fallback);
 
     return `<div class="${classes.join(' ')}"${dataId}${dataFallback}>
       <i class="fas fa-quote-right"></i>
@@ -470,7 +474,7 @@ class DynamicContentLoader {
       if (paper && Number.isFinite(paper.citationCount)) {
         labelElement.textContent = this.formatCitationLabel(paper.citationCount);
         element.classList.remove('is-loading', 'is-unavailable');
-        element.title = 'Citation count from Semantic Scholar';
+        element.title = this.t('citationSource');
         return;
       }
 
@@ -479,7 +483,7 @@ class DynamicContentLoader {
         labelElement.textContent = this.formatCitationLabel(fallback);
         element.classList.remove('is-loading');
         element.classList.add('is-unavailable');
-        element.title = 'Fallback citation count; Semantic Scholar data is unavailable';
+        element.title = this.t('citationFallback');
       } else {
         element.remove();
       }
@@ -487,7 +491,7 @@ class DynamicContentLoader {
   }
 
   formatCitationLabel(count) {
-    return `${count} ${count === 1 ? 'citation' : 'citations'}`;
+    return this.t(count === 1 ? 'citation' : 'citations', { count });
   }
 
   /**
@@ -677,8 +681,8 @@ class DynamicContentLoader {
           <div class="course-header"><h3 class="course-title">${course.title}</h3><span class="badge badge-accent">${course.role}</span></div>
           <div class="course-info"><p>${course.period} · ${course.institution}</p></div>
           <p>${course.description}</p>
-          ${course.link ? `<a class="btn btn-outline" href="${course.link}">Course page <span aria-hidden="true">→</span></a>` : ''}
-          ${materials.length ? `<details class="course-materials"><summary>Lecture notes (${materials.length} PDFs)</summary><div class="materials-grid">${materials.map(item => `<a class="material-item" href="${item.file}" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf" aria-hidden="true"></i><span>${item.name}</span></a>`).join('')}</div></details>` : ''}
+          ${course.link ? `<a class="btn btn-outline" href="${course.link}">${this.t('coursePage')} <span aria-hidden="true">→</span></a>` : ''}
+          ${materials.length ? `<details class="course-materials"><summary>${this.t('notes', { count: materials.length })}</summary><div class="materials-grid">${materials.map(item => `<a class="material-item" href="${item.file}" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf" aria-hidden="true"></i><span>${item.name}</span></a>`).join('')}</div></details>` : ''}
         </div>`;
       
       teachingContainer.appendChild(courseCard);
@@ -723,15 +727,15 @@ class DynamicContentLoader {
   getLinkTypeText(type) {
     const typeMap = {
       'arxiv': 'arXiv',
-      'journal': 'Full Text',
-      'conference': 'Conference',
+      'journal': this.t('fullText'),
+      'conference': this.t('conference'),
       'pdf': 'PDF',
-      'demo': 'Demo',
-      'code': 'Code',
-      'dataset': 'Dataset',
+      'demo': this.t('demo'),
+      'code': this.t('code'),
+      'dataset': this.t('dataset'),
       'bibtex': 'BibTeX'
     };
-    return typeMap[type] || 'Link';
+    return typeMap[type] || this.t('link');
   }
 
   /**
@@ -775,7 +779,7 @@ class DynamicContentLoader {
     const allButton = document.createElement('button');
     allButton.className = 'btn btn-outline filter-btn active';
     allButton.setAttribute('data-filter', 'all');
-    allButton.textContent = 'All';
+    allButton.textContent = this.t('all');
     allButton.setAttribute('aria-pressed', 'true');
     filterContainer.appendChild(allButton);
     
@@ -852,6 +856,7 @@ class DynamicContentLoader {
 // Render before page interactions initialize; every page uses the same content source.
 document.addEventListener('DOMContentLoaded', () => {
   const loader = new DynamicContentLoader();
+  window.dynamicContentLoader = loader;
   loader.init();
   document.querySelectorAll('a[target="_blank"]').forEach(link => link.rel = 'noopener noreferrer');
 });

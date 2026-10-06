@@ -961,8 +961,8 @@ const SITE_CONFIG = {
       description: "Teaching experience, machine learning lecture notes and research resources from Youcheng Li."
     } },
     blog: { seo: {
-      title: "博客 | 利友诚 Youcheng Li",
-      description: "利友诚的技术博客与商业判断：记录技术研究、产品实践与商业思考。"
+      title: "Blog | Youcheng Li",
+      description: "Technical writing and business perspectives by Youcheng Li: research, product practice and industry thinking."
     } }
   }
 

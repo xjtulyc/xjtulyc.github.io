@@ -28,7 +28,7 @@ class ThemeManager {
   }
 
   updateThemeIcon() {
-    document.querySelector('.theme-toggle')?.setAttribute('aria-label', this.theme === 'light' ? 'Switch to dark theme' : 'Switch to light theme');
+    document.querySelector('.theme-toggle')?.setAttribute('aria-label', window.SiteLanguage?.t(this.theme === 'light' ? 'darkTheme' : 'lightTheme') || 'Toggle theme');
     const icon = document.querySelector('.theme-toggle svg');
     if (icon) {
       icon.innerHTML = this.theme === 'light' 
@@ -56,13 +56,9 @@ class MobileMenu {
       this.overlay.addEventListener('click', () => this.closeMenu());
     }
 
-    // Close menu on navigation click
-    document.querySelectorAll('.nav-item').forEach(item => {
-      item.addEventListener('click', () => {
-        if (window.innerWidth <= 768) {
-          this.closeMenu();
-        }
-      });
+    // Delegation survives translated navigation replacing the links.
+    this.sidebar?.addEventListener('click', event => {
+      if (event.target.closest('.nav-item') && window.innerWidth <= 768) this.closeMenu();
     });
 
     document.addEventListener('keydown', event => {
@@ -88,7 +84,7 @@ class MobileMenu {
   updateAccessibility() {
     this.sidebar.inert = window.innerWidth <= 768 && !this.isOpen;
     this.toggle?.setAttribute('aria-expanded', String(this.isOpen));
-    this.toggle?.setAttribute('aria-label', this.isOpen ? 'Close navigation' : 'Open navigation');
+    this.toggle?.setAttribute('aria-label', window.SiteLanguage?.t(this.isOpen ? 'closeMenu' : 'openMenu') || 'Toggle navigation');
   }
 
   toggleMenu() {
@@ -265,9 +261,9 @@ class CopyToClipboard {
       if (!text) return;
       try {
         await this.copyText(text);
-        this.showTooltip(button, 'Copied!');
+        this.showTooltip(button, window.SiteLanguage?.t('copied') || 'Copied!');
       } catch (_) {
-        this.showTooltip(button, 'Copy unavailable — please try again');
+        this.showTooltip(button, window.SiteLanguage?.t('copyFailed') || 'Copy unavailable — please try again');
       }
     });
   }

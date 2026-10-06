@@ -8,6 +8,9 @@ This repository is Youcheng Li's personal academic website hosted by GitHub Page
 - The academic homepage is `index.html`. Research and publications live in `research.html`, professional experience in `experience.html`, teaching and resources in `teaching.html`, and the Chinese blog in `blog.html`.
 - The custom domain is configured by `CNAME`.
 - Main site content is centralized in `config/site-config.js`.
+- Chinese content is in `config/site-config.zh.js`; keep both languages factually synchronized, including links, arrays, dates and numerical claims. Official paper titles, authors, venues and BibTeX metadata stay in their published language.
+- `js/site-language.js` owns shared UI translations, language selection, page metadata and persistence. Load English config, Chinese config, and this script before the dynamic loader. First visit follows the browser language; `?lang=en` / `?lang=zh` overrides the saved preference.
+- `js/blog-i18n.js` translates blog interface text; load it before `js/blog.js`. Original article prose is not automatically translated.
 - Blog articles are static HTML files under `blog/`; `blog/posts.json` is the published article index. Follow `blog/README.md` and never publish invented articles or unconfirmed author opinions. An empty archive is intentional until the user supplies articles.
 - Dynamic homepage sections are rendered by `js/dynamic-content-loader.js`.
 - Page interactions live mostly in `js/single-page-app.js` and `js/modern-script.js`.
@@ -39,6 +42,7 @@ python3 -m http.server 8000
 - Then open `http://localhost:8000/`.
 - Check the browser console after changing JavaScript or `config/site-config.js`.
 - Check all five pages at desktop and 320–390px mobile widths, shared navigation, dark mode, mobile menu keyboard behavior, research filters, BibTeX copying and course downloads. Preserve redirects for previously shared homepage section anchors.
+- Also check switching languages on each page and following page links afterward; validate that filters and expandable content still work, publication citations do not change, and metadata and accessibility labels match the selected language.
 - Update `sitemap.xml` when adding pages or published articles. Preserve `robots.txt` and `CNAME`.
 - If testing only markup or CSS, opening `index.html` directly can work, but a local server is closer to GitHub Pages behavior.
 
