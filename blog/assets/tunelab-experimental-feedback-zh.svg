@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="1490" viewBox="0 0 640 1490" role="img" aria-labelledby="title desc" xml:lang="zh-CN">
+<title id="title">模型访问，如何变成合格反馈</title><desc id="desc">原创分析机制，并非任何公司的实际系统架构。成员围绕继续、停止或修改设计进行研发决策，模型预测记录版本与适用域，所选湿实验预设终点和对照，并保留实验结果及协议、批次和质量元数据。随后分别审查科学质量与使用许可。出口 A 是成员更新项目决策；出口 B 仅在许可允许并采用联邦训练时成立：原始数据留在成员环境，本地训练后仅模型更新发往第三方聚合，新模型版本返回成员。该可选路径以虚线反馈到模型预测。图不意味着所有实验或知识产权自动交给 Lilly，也不意味着所有模型都采用联邦训练。非效果数据。</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#355C7D" stroke-width="1.5"/></marker></defs>
+<style>text{font-family:Arial,'PingFang SC','Microsoft YaHei',sans-serif;fill:#1F2933}.heading{font-weight:700}.accent{fill:#355C7D}.secondary{fill:#526171}.muted{fill:#607080}</style>
+<rect width="640" height="1490" fill="#F7F8FA"/>
+<text x="32" y="49" font-size="34" class="heading" text-anchor="start">模型访问，如何变成合格反馈</text>
+<text x="32" y="86" font-size="26" class="secondary" text-anchor="start">实验协议、质量与使用许可分别过关</text>
+<rect x="64" y="120" width="512" height="90" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="158" font-size="30" class="heading" text-anchor="middle">01  成员研发决策</text>
+<text x="320" y="195" font-size="26" class="secondary" text-anchor="middle">继续、停止或修改设计</text>
+<rect x="64" y="244" width="512" height="100" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="282" font-size="30" class="heading" text-anchor="middle">02  模型预测</text>
+<text x="320" y="319" font-size="26" class="secondary" text-anchor="middle">记录模型版本与适用域</text>
+<rect x="64" y="378" width="512" height="100" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="416" font-size="30" class="heading" text-anchor="middle">03  选择湿实验</text>
+<text x="320" y="453" font-size="26" class="secondary" text-anchor="middle">预设终点与对照</text>
+<rect x="64" y="512" width="512" height="110" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="550" font-size="30" class="heading" text-anchor="middle">04  实验结果与元数据</text>
+<text x="320" y="587" font-size="26" class="secondary" text-anchor="middle">保留协议、批次与质量信息</text>
+<rect x="64" y="656" width="512" height="126" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="694" font-size="30" class="heading accent" text-anchor="middle">05  质量与使用许可审查</text>
+<text x="320" y="746" font-size="26" class="secondary" text-anchor="middle">科学质量与使用权限分别确认</text>
+<path d="M320 216 V237" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M320 350 V371" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M320 484 V505" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M320 628 V649" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M320 788 V814 H52 V1016" fill="none" stroke="#355C7D" stroke-width="2.5"/>
+<path d="M52 882 H73" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M52 1016 H73" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="80" y="838" width="500" height="90" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="330" y="891" font-size="30" class="heading" text-anchor="middle">A  成员更新项目决策</text>
+<rect x="80" y="970" width="500" height="428" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="330" y="1013" font-size="30" class="heading accent" text-anchor="middle">B  可选联邦训练</text>
+<text x="330" y="1049" font-size="26" class="secondary" text-anchor="middle">仅在使用许可允许时</text>
+<rect x="100" y="1072" width="460" height="80" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="330" y="1107" font-size="28" class="" text-anchor="middle">原始数据留成员环境</text>
+<text x="330" y="1140" font-size="26" class="secondary" text-anchor="middle">在成员环境训练</text>
+<path d="M330 1158 V1207" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="348" y="1190" font-size="24" class="accent" text-anchor="start">仅模型更新</text>
+<rect x="100" y="1214" width="460" height="66" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="330" y="1257" font-size="30" class="heading" text-anchor="middle">第三方聚合</text>
+<path d="M330 1286 V1315" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="100" y="1322" width="460" height="62" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="330" y="1362" font-size="28" class="" text-anchor="middle">新模型版本返回成员</text>
+<path d="M94 1353 H24 V294 H57" fill="none" stroke="#355C7D" stroke-width="2.5" stroke-dasharray="7 6" marker-end="url(#arrow)"/>
+<text x="320" y="1440" font-size="24" class="muted" text-anchor="middle">原创分析机制 · 非效果数据</text>
+<text x="320" y="1479" font-size="24" class="muted" text-anchor="middle">非公司实际系统架构</text>
+</svg>

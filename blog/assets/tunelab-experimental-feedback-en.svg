@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="1490" viewBox="0 0 640 1490" role="img" aria-labelledby="title desc" xml:lang="en">
+<title id="title">Model access to qualified feedback</title><desc id="desc">Original analytical mechanism, not an actual company system architecture. A member considers whether to continue, stop or revise a design. Model predictions retain version and applicability information; selected wet-lab experiments prespecify endpoints and controls and retain results plus protocol, batch and quality metadata. Scientific quality and use permissions are reviewed separately. Exit A informs the member’s project decisions. Exit B applies only when permitted and when federated training is adopted: raw data stay in the member environment, local training sends only model updates to third-party aggregation, and a new model version returns to the member. A dashed optional feedback path returns to model prediction. This does not imply automatic transfer of every experiment or intellectual property to Lilly, or that every model uses federated training. Not measured effects.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#355C7D" stroke-width="1.5"/></marker></defs>
+<style>text{font-family:Arial,'PingFang SC','Microsoft YaHei',sans-serif;fill:#1F2933}.heading{font-weight:700}.accent{fill:#355C7D}.secondary{fill:#526171}.muted{fill:#607080}</style>
+<rect width="640" height="1490" fill="#F7F8FA"/>
+<text x="32" y="49" font-size="32" class="heading" text-anchor="start">Model access to qualified feedback</text>
+<text x="32" y="86" font-size="26" class="secondary" text-anchor="start">Check protocol, quality and permission</text>
+<rect x="64" y="120" width="512" height="90" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="158" font-size="30" class="heading" text-anchor="middle">01  Member R&amp;D decision</text>
+<text x="320" y="195" font-size="26" class="secondary" text-anchor="middle">Continue, stop or revise the design</text>
+<rect x="64" y="244" width="512" height="100" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="282" font-size="30" class="heading" text-anchor="middle">02  Model prediction</text>
+<text x="320" y="319" font-size="26" class="secondary" text-anchor="middle">Record model version and applicability</text>
+<rect x="64" y="378" width="512" height="100" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="416" font-size="30" class="heading" text-anchor="middle">03  Select wet-lab experiments</text>
+<text x="320" y="453" font-size="26" class="secondary" text-anchor="middle">Prespecify endpoints and controls</text>
+<rect x="64" y="512" width="512" height="110" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="550" font-size="30" class="heading" text-anchor="middle">04  Results and metadata</text>
+<text x="320" y="587" font-size="26" class="secondary" text-anchor="middle">Keep protocol, batch and quality data</text>
+<rect x="64" y="656" width="512" height="126" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="694" font-size="28" class="heading accent" text-anchor="middle">05  Review quality and permission</text>
+<text x="320" y="746" font-size="26" class="secondary" text-anchor="middle">Separate scientific quality from use rights</text>
+<path d="M320 216 V237" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M320 350 V371" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M320 484 V505" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M320 628 V649" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M320 788 V814 H52 V1016" fill="none" stroke="#355C7D" stroke-width="2.5"/>
+<path d="M52 882 H73" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M52 1016 H73" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="80" y="838" width="500" height="90" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="330" y="891" font-size="27" class="heading" text-anchor="middle">A  Member updates project decisions</text>
+<rect x="80" y="970" width="500" height="428" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="330" y="1013" font-size="30" class="heading accent" text-anchor="middle">B  Optional federated training</text>
+<text x="330" y="1049" font-size="26" class="secondary" text-anchor="middle">Only when use permissions allow</text>
+<rect x="100" y="1072" width="460" height="80" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="330" y="1107" font-size="28" class="" text-anchor="middle">Raw data stay with the member</text>
+<text x="330" y="1140" font-size="26" class="secondary" text-anchor="middle">Train in the member environment</text>
+<path d="M330 1158 V1207" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="348" y="1190" font-size="24" class="accent" text-anchor="start">Model updates only</text>
+<rect x="100" y="1214" width="460" height="66" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="330" y="1257" font-size="28" class="heading" text-anchor="middle">Third-party aggregation</text>
+<path d="M330 1286 V1315" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="100" y="1322" width="460" height="62" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="330" y="1362" font-size="26" class="" text-anchor="middle">New model version back to member</text>
+<path d="M94 1353 H24 V294 H57" fill="none" stroke="#355C7D" stroke-width="2.5" stroke-dasharray="7 6" marker-end="url(#arrow)"/>
+<text x="320" y="1440" font-size="24" class="muted" text-anchor="middle">Original analysis · Not measured effects</text>
+<text x="320" y="1479" font-size="24" class="muted" text-anchor="middle">Not an actual company system architecture</text>
+</svg>

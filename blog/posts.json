@@ -1,5 +1,40 @@
 [
   {
+    "title": "模型开放之后，谁能用好实验反馈？从 Lilly TuneLab 看 AI 制药平台的边界",
+    "summary": "TuneLab 接入金斯瑞与科研数据工具后，价值能否从模型访问延伸到持续学习？关键在实验可比性、使用许可和对研发决策的增量价值，而非合作名单与调用量。",
+    "tags": [
+      "AI4S",
+      "商业判断",
+      "药物研发",
+      "数据协作"
+    ],
+    "date": "2026-10-07",
+    "category": "business",
+    "url": "blog/tunelab-experimental-feedback.html",
+    "translations": {
+      "zh": {
+        "title": "模型开放之后，谁能用好实验反馈？从 Lilly TuneLab 看 AI 制药平台的边界",
+        "summary": "TuneLab 接入金斯瑞与科研数据工具后，价值能否从模型访问延伸到持续学习？关键在实验可比性、使用许可和对研发决策的增量价值，而非合作名单与调用量。",
+        "tags": [
+          "AI4S",
+          "商业判断",
+          "药物研发",
+          "数据协作"
+        ]
+      },
+      "en": {
+        "title": "After model access, who can use experimental feedback? The platform boundary of Lilly TuneLab",
+        "summary": "As TuneLab connects laboratory services and scientific data tools, can model access become sustained learning? The conditions are comparable experiments, usage permissions, and incremental decision value—not partner lists or call counts.",
+        "tags": [
+          "AI4S",
+          "Business analysis",
+          "Drug discovery",
+          "Data collaboration"
+        ]
+      }
+    }
+  },
+  {
     "title": "虚拟细胞的评估，为什么要先校准指标？",
     "summary": "从共享偏移与采样噪声推导均值基线为何难以击败，解释技术重复、指标分辨力与测试隔离，并给出兼顾误差、特异效应和检索的验证协议。",
     "tags": [
