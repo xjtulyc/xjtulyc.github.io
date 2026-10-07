@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="1440" viewBox="0 0 640 1440" role="img" aria-labelledby="title desc" xml:lang="en">
+<title id="title">Calibrating perturbation metrics</title><desc id="desc">Original mechanism schematic. Training perturbations produce a prediction model and an equally weighted training-perturbation mean negative control. Entire test perturbation labels are held out. Experimental cells for each held-out perturbation are split into a technical-duplicate half, TD, and a ground-truth half, GT. Prediction models cannot access responses from either half. TD constructs technical-duplicate and interpolated-duplicate positive controls; interpolation weights use TD differential expression only. GT provides ground truth and evaluation scoring weights. Model and control predictions meet GT only at evaluation, where complementary metrics and the dynamic range fraction, DRF, probe metric sensitivity. There is no arrow from TD or GT to the prediction model. Positive controls are not deployable; this is not experimental data.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#355C7D" stroke-width="1.5"/></marker></defs>
+<style>text{font-family:Arial,'PingFang SC','Microsoft YaHei',sans-serif;fill:#1F2933}.heading{font-weight:700}.accent{fill:#355C7D}.secondary{fill:#526171}.muted{fill:#607080}</style>
+<rect width="640" height="1440" fill="#F7F8FA"/>
+<text x="32" y="49" font-size="32" class="heading" text-anchor="start">Calibrating perturbation metrics</text>
+<text x="32" y="86" font-size="26" class="secondary" text-anchor="start">Keep test responses separate from prediction</text>
+<rect x="48" y="115" width="544" height="66" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="158" font-size="32" class="heading" text-anchor="middle">Training perturbations</text>
+<path d="M320 186 V209" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="48" y="216" width="544" height="120" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="254" font-size="30" class="heading" text-anchor="middle">Prediction model</text>
+<text x="320" y="291" font-size="28" class="heading" text-anchor="middle">Training-mean negative control</text>
+<text x="320" y="323" font-size="26" class="secondary" text-anchor="middle">Equal weight per training perturbation</text>
+<path d="M43 276 H24 V1223 H34" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="58" y="366" width="558" height="700" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2" stroke-dasharray="7 6"/>
+<text x="337" y="407" font-size="28" class="heading accent" text-anchor="middle">Hold out entire test perturbations</text>
+<rect x="82" y="430" width="510" height="122" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="337" y="473" font-size="28" class="heading" text-anchor="middle">Split experimental cells in half</text>
+<text x="337" y="515" font-size="26" class="secondary" text-anchor="middle">TD and GT for each test perturbation</text>
+<path d="M337 558 V577 H68 V875" fill="none" stroke="#355C7D" stroke-width="2.5"/>
+<path d="M68 685 H85" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M68 875 H85" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="92" y="596" width="488" height="180" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="336" y="632" font-size="28" class="heading" text-anchor="middle">TD: technical-duplicate half</text>
+<text x="336" y="669" font-size="28" class="" text-anchor="middle">Technical / interpolated</text>
+<text x="336" y="703" font-size="28" class="" text-anchor="middle">replicate positive controls</text>
+<text x="336" y="735" font-size="26" class="secondary" text-anchor="middle">Interpolation uses TD differential</text>
+<text x="336" y="765" font-size="26" class="secondary" text-anchor="middle">expression weights only</text>
+<rect x="92" y="816" width="488" height="118" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="336" y="859" font-size="30" class="heading" text-anchor="middle">GT: ground-truth half</text>
+<text x="336" y="905" font-size="28" class="" text-anchor="middle">Ground truth and scoring weights</text>
+<text x="337" y="1003" font-size="27" class="secondary" text-anchor="middle">Models never access test-cell responses</text>
+<path d="M585 685 H606 V1108 H320 V1131" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M585 875 H606" fill="none" stroke="#355C7D" stroke-width="2.5"/>
+<rect x="40" y="1138" width="560" height="176" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1182" font-size="30" class="heading accent" text-anchor="middle">Merge only at evaluation</text>
+<text x="320" y="1220" font-size="28" class="" text-anchor="middle">Score model and control predictions</text>
+<text x="320" y="1255" font-size="27" class="" text-anchor="middle">against GT; complementary metrics</text>
+<text x="320" y="1290" font-size="27" class="" text-anchor="middle">and DRF probe sensitivity</text>
+<text x="320" y="1362" font-size="28" class="heading" text-anchor="middle">Positive controls are not deployable</text>
+<text x="320" y="1410" font-size="24" class="muted" text-anchor="middle">Original mechanism · Not experimental data</text>
+</svg>

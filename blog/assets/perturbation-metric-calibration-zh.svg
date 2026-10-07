@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="1440" viewBox="0 0 640 1440" role="img" aria-labelledby="title desc" xml:lang="zh-CN">
+<title id="title">扰动指标：先校准，再排名</title><desc id="desc">原创机制示意。训练扰动用于建立预测模型和按扰动等权的均值负对照。整个测试扰动标签留出；同一测试扰动的实验细胞分为技术重复半组 TD 与评价真值半组 GT，预测模型不能访问任一半组的细胞响应。TD 构造技术重复和插值重复阳性对照；插值权重仅来自 TD 的差异表达。GT 提供真值和评价端的评分权重。模型、阴阳对照与 GT 只在评价端汇合，用互补指标和动态范围比例 DRF 检查指标敏感性。没有从 GT 或 TD 流向预测模型的箭头。阳性对照不可部署，本图不是实验数据。</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#355C7D" stroke-width="1.5"/></marker></defs>
+<style>text{font-family:Arial,'PingFang SC','Microsoft YaHei',sans-serif;fill:#1F2933}.heading{font-weight:700}.accent{fill:#355C7D}.secondary{fill:#526171}.muted{fill:#607080}</style>
+<rect width="640" height="1440" fill="#F7F8FA"/>
+<text x="32" y="49" font-size="34" class="heading" text-anchor="start">扰动指标：先校准，再排名</text>
+<text x="32" y="86" font-size="26" class="secondary" text-anchor="start">训练、阳性对照与真值保持隔离</text>
+<rect x="48" y="115" width="544" height="66" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="158" font-size="32" class="heading" text-anchor="middle">训练扰动</text>
+<path d="M320 186 V209" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="48" y="216" width="544" height="120" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="254" font-size="30" class="heading" text-anchor="middle">预测模型</text>
+<text x="320" y="291" font-size="28" class="heading" text-anchor="middle">训练均值负对照</text>
+<text x="320" y="323" font-size="26" class="secondary" text-anchor="middle">按训练扰动等权平均</text>
+<path d="M43 276 H24 V1223 H34" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="58" y="366" width="558" height="700" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2" stroke-dasharray="7 6"/>
+<text x="337" y="407" font-size="30" class="heading accent" text-anchor="middle">测试扰动：整类留出</text>
+<rect x="82" y="430" width="510" height="122" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="337" y="473" font-size="30" class="heading" text-anchor="middle">实验细胞分成两半</text>
+<text x="337" y="515" font-size="26" class="secondary" text-anchor="middle">同一测试扰动的 TD 与 GT</text>
+<path d="M337 558 V577 H68 V875" fill="none" stroke="#355C7D" stroke-width="2.5"/>
+<path d="M68 685 H85" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M68 875 H85" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="92" y="596" width="488" height="180" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="336" y="640" font-size="30" class="heading" text-anchor="middle">TD：技术重复半组</text>
+<text x="336" y="692" font-size="28" class="" text-anchor="middle">技术重复与插值重复阳性对照</text>
+<text x="336" y="741" font-size="26" class="secondary" text-anchor="middle">插值权重仅来自 TD 差异表达</text>
+<rect x="92" y="816" width="488" height="118" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="336" y="859" font-size="30" class="heading" text-anchor="middle">GT：评价真值半组</text>
+<text x="336" y="905" font-size="28" class="" text-anchor="middle">真值与评分权重</text>
+<text x="337" y="1003" font-size="28" class="secondary" text-anchor="middle">模型不能访问任何测试细胞响应</text>
+<path d="M585 685 H606 V1108 H320 V1131" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M585 875 H606" fill="none" stroke="#355C7D" stroke-width="2.5"/>
+<rect x="40" y="1138" width="560" height="176" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1182" font-size="32" class="heading accent" text-anchor="middle">只在评价端汇合</text>
+<text x="320" y="1232" font-size="28" class="" text-anchor="middle">模型、负 / 阳对照与 GT 比较</text>
+<text x="320" y="1281" font-size="28" class="" text-anchor="middle">互补指标与 DRF 检查敏感性</text>
+<text x="320" y="1362" font-size="28" class="heading" text-anchor="middle">阳性对照不可用于部署</text>
+<text x="320" y="1410" font-size="24" class="muted" text-anchor="middle">原创机制示意 · 非实验数据</text>
+</svg>

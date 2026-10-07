@@ -1,5 +1,40 @@
 [
   {
+    "title": "虚拟细胞的评估，为什么要先校准指标？",
+    "summary": "从共享偏移与采样噪声推导均值基线为何难以击败，解释技术重复、指标分辨力与测试隔离，并给出兼顾误差、特异效应和检索的验证协议。",
+    "tags": [
+      "AI4S",
+      "单细胞",
+      "扰动预测",
+      "评估方法"
+    ],
+    "date": "2026-10-07",
+    "category": "technical",
+    "url": "blog/perturbation-metric-calibration.html",
+    "translations": {
+      "zh": {
+        "title": "虚拟细胞的评估，为什么要先校准指标？",
+        "summary": "从共享偏移与采样噪声推导均值基线为何难以击败，解释技术重复、指标分辨力与测试隔离，并给出兼顾误差、特异效应和检索的验证协议。",
+        "tags": [
+          "AI4S",
+          "单细胞",
+          "扰动预测",
+          "评估方法"
+        ]
+      },
+      "en": {
+        "title": "Why virtual-cell evaluation needs metric calibration first",
+        "summary": "Deriving why shared shifts and sampling noise make mean baselines competitive, then separating technical duplicates, metric sensitivity, and test isolation in a protocol that combines error, specific effects, and retrieval.",
+        "tags": [
+          "AI4S",
+          "Single-cell",
+          "Perturbation prediction",
+          "Evaluation"
+        ]
+      }
+    }
+  },
+  {
     "title": "结构正确，为何亲和力仍可能不可靠？从 AlphaFold 3 到 Boltz-2",
     "summary": "从结合态与游离态的统计权重出发，推导姿态不足以确定亲和力的原因，检查 Boltz-2 的标签与单位，并提出防泄漏、带基线的评估方案。本文未运行实验。",
     "tags": [
