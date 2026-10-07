@@ -35,6 +35,41 @@
     }
   },
   {
+    "title": "力误差很低，为什么分子动力学仍会漂移？从 eSEN 拆解保守力、平滑截断与时间步",
+    "summary": "用闭路做功、截断导数和 Verlet 谐振子的可验算反例，区分势能模型、计算图与积分器的责任；附实际运行的合成检查及真实模型验收协议。",
+    "tags": [
+      "AI4S",
+      "原子间势",
+      "分子动力学",
+      "数值方法"
+    ],
+    "date": "2026-10-07",
+    "category": "technical",
+    "url": "blog/smooth-potentials-energy-drift.html",
+    "translations": {
+      "zh": {
+        "title": "力误差很低，为什么分子动力学仍会漂移？从 eSEN 拆解保守力、平滑截断与时间步",
+        "summary": "用闭路做功、截断导数和 Verlet 谐振子的可验算反例，区分势能模型、计算图与积分器的责任；附实际运行的合成检查及真实模型验收协议。",
+        "tags": [
+          "AI4S",
+          "原子间势",
+          "分子动力学",
+          "数值方法"
+        ]
+      },
+      "en": {
+        "title": "Why can molecular dynamics drift despite low force error? Conservative forces, smooth cutoffs, and time steps through eSEN",
+        "summary": "Checkable loop-work, cutoff-derivative, and Verlet oscillator examples separate the potential, computation, and integrator. Includes executed synthetic checks and a proposed protocol for real models.",
+        "tags": [
+          "AI4S",
+          "Interatomic potentials",
+          "Molecular dynamics",
+          "Numerical methods"
+        ]
+      }
+    }
+  },
+  {
     "title": "虚拟细胞的评估，为什么要先校准指标？",
     "summary": "从共享偏移与采样噪声推导均值基线为何难以击败，解释技术重复、指标分辨力与测试隔离，并给出兼顾误差、特异效应和检索的验证协议。",
     "tags": [

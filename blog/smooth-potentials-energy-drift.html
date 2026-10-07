@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>力误差很低，为什么分子动力学仍会漂移？从 eSEN 拆解保守力、平滑截断与时间步 | Youcheng Li</title>
+  <meta name="description" content="用闭路做功、截断导数和 Verlet 谐振子的可验算反例，区分势能模型、计算图与积分器的责任；附实际运行的合成检查及真实模型验收协议。">
+  <meta name="author" content="Youcheng Li">
+  <link rel="canonical" href="https://youchengli.com/blog/smooth-potentials-energy-drift.html">
+  <meta property="og:title" content="力误差很低，为什么分子动力学仍会漂移？从 eSEN 拆解保守力、平滑截断与时间步 | Youcheng Li">
+  <meta property="og:description" content="用闭路做功、截断导数和 Verlet 谐振子的可验算反例，区分势能模型、计算图与积分器的责任；附实际运行的合成检查及真实模型验收协议。">
+  <meta property="og:url" content="https://youchengli.com/blog/smooth-potentials-energy-drift.html">
+  <meta property="og:image" content="https://youchengli.com/resources/avatar.jpg">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="力误差很低，为什么分子动力学仍会漂移？从 eSEN 拆解保守力、平滑截断与时间步 | Youcheng Li">
+  <meta name="twitter:description" content="用闭路做功、截断导数和 Verlet 谐振子的可验算反例，区分势能模型、计算图与积分器的责任；附实际运行的合成检查及真实模型验收协议。">
+  <meta name="twitter:image" content="https://youchengli.com/resources/avatar.jpg">
+  <link rel="icon" href="../favicon.ico">
+  <script>try { document.documentElement.dataset.theme = localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); } catch (_) {}</script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../style/modern-style.css">
+  <link rel="stylesheet" href="../style/sidebar-enhanced.css">
+  <link rel="stylesheet" href="../style/dark-mode-fixes.css">
+  <link rel="stylesheet" href="../style/single-page.css">
+  <link rel="stylesheet" href="../style/refinement.css">
+  <link rel="stylesheet" href="../style/blog.css">
+  <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "力误差很低，为什么分子动力学仍会漂移？从 eSEN 拆解保守力、平滑截断与时间步", "description": "用闭路做功、截断导数和 Verlet 谐振子的可验算反例，区分势能模型、计算图与积分器的责任；附实际运行的合成检查及真实模型验收协议。", "url": "https://youchengli.com/blog/smooth-potentials-energy-drift.html?lang=zh", "datePublished": "2026-10-07", "dateModified": "2026-10-07", "inLanguage": "zh-CN", "author": {"@type": "Person", "name": "Youcheng Li", "url": "https://youchengli.com/"}, "citation": ["https://proceedings.mlr.press/v267/fu25h.html", "https://arxiv.org/html/2502.12147v2", "https://ase.gitlab.io/ase/ase/md.html", "https://docs.ase-lib.org/_modules/ase/md/verlet.html", "https://arxiv.org/abs/2609.00065"]}, {"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Why can molecular dynamics drift despite low force error? Conservative forces, smooth cutoffs, and time steps through eSEN", "description": "Checkable loop-work, cutoff-derivative, and Verlet oscillator examples separate the potential, computation, and integrator. Includes executed synthetic checks and a proposed protocol for real models.", "url": "https://youchengli.com/blog/smooth-potentials-energy-drift.html?lang=en", "datePublished": "2026-10-07", "dateModified": "2026-10-07", "inLanguage": "en", "author": {"@type": "Person", "name": "Youcheng Li", "url": "https://youchengli.com/"}, "citation": ["https://proceedings.mlr.press/v267/fu25h.html", "https://arxiv.org/html/2502.12147v2", "https://ase.gitlab.io/ase/ase/md.html", "https://docs.ase-lib.org/_modules/ase/md/verlet.html", "https://arxiv.org/abs/2609.00065"]}]</script>
+  <noscript><style>.mobile-menu-toggle,.theme-toggle,.back-to-top,.language-toggle{display:none}@media(max-width:768px){.layout-container{display:block}#sidebar{position:static;transform:none;width:100%;height:auto}#main{margin-left:0;width:100%}}</style></noscript>
+<link rel="alternate" hreflang="zh-CN" href="https://youchengli.com/blog/smooth-potentials-energy-drift.html?lang=zh">
+<link rel="alternate" hreflang="en" href="https://youchengli.com/blog/smooth-potentials-energy-drift.html?lang=en">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/katex.min.css" integrity="sha384-3rdsX6e5mueWyoweR9NIVmtEsUkokpBT/0ALqKKIBMr9j4qhHkaIkAcGgsE6uVlp" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/katex.min.js" integrity="sha384-QFFtAGzvvj+bfgCGxXJlNZZR1nXEZgvG8tDLCCY1F19xl20WlfTYgguB4VcNdxYk" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/contrib/auto-render.min.js" integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
+<script defer src="../js/blog-math.js"></script>
+<link rel="stylesheet" href="../style/blog-article.css">
+<script type="application/json" id="article-metadata">{"zh": {"title": "力误差很低，为什么分子动力学仍会漂移？从 eSEN 拆解保守力、平滑截断与时间步 | Youcheng Li", "description": "用闭路做功、截断导数和 Verlet 谐振子的可验算反例，区分势能模型、计算图与积分器的责任；附实际运行的合成检查及真实模型验收协议。"}, "en": {"title": "Why can molecular dynamics drift despite low force error? Conservative forces, smooth cutoffs, and time steps through eSEN | Youcheng Li", "description": "Checkable loop-work, cutoff-derivative, and Verlet oscillator examples separate the potential, computation, and integrator. Includes executed synthetic checks and a proposed protocol for real models."}}</script>
+<noscript><style>[data-article-language][hidden]{display:block!important}</style></noscript>
+</head>
+<body data-page="blog" data-site-root="../">
+  <a class="skip-link" href="#main">跳至正文</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <button type="button" class="mobile-menu-toggle" aria-label="打开导航" aria-expanded="false" aria-controls="sidebar"><span></span><span></span><span></span></button>
+  <div class="mobile-overlay" aria-hidden="true"></div>
+  <button type="button" class="language-toggle" aria-label="切换为中文" lang="zh-CN">中文</button>
+  <button type="button" class="theme-toggle" aria-label="切换主题"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg></button>
+  <button type="button" class="back-to-top" aria-label="返回顶部"><i class="fas fa-arrow-up" aria-hidden="true"></i></button>
+  <div class="layout-container">
+<aside id="sidebar"><div class="sidebar-content">
+      <div class="profile"><a href="../index.html" aria-label="Youcheng Li home"><img src="../resources/avatar.jpg" alt="Youcheng Li" class="profile-image" width="150" height="150"></a><p class="profile-name">Youcheng Li</p><p class="profile-name" lang="zh-CN">利友诚</p><p class="profile-title">PhD Candidate</p><p class="profile-title">Peking University</p></div>
+      <nav class="navigation" aria-label="Main navigation"><a class="nav-item" href="../index.html"><i class="fas fa-user nav-icon" aria-hidden="true"></i><span>Home</span></a><a class="nav-item" href="../research.html"><i class="fas fa-microscope nav-icon" aria-hidden="true"></i><span>Research</span></a><a class="nav-item" href="../experience.html"><i class="fas fa-briefcase nav-icon" aria-hidden="true"></i><span>Experience</span></a><a class="nav-item" href="../teaching.html"><i class="fas fa-chalkboard-teacher nav-icon" aria-hidden="true"></i><span>Teaching & Resources</span></a><a class="nav-item active" href="../blog.html" aria-current="page"><i class="fas fa-pen-nib nav-icon" aria-hidden="true"></i><span>Blog</span></a></nav>
+      <div class="sidebar-divider"></div>
+      <div class="contact-info"><div class="contact-info-item"><i class="fas fa-envelope" aria-hidden="true"></i><a href="mailto:youchengli@stu.pku.edu.cn">youchengli@stu.pku.edu.cn</a></div><div class="contact-info-item"><i class="fas fa-envelope" aria-hidden="true"></i><a href="mailto:1246321319@qq.com">1246321319@qq.com</a></div></div>
+      <div class="cv-downloads"><a href="../pdf/youcheng_li_cv.pdf" class="cv-download cv-download-en" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf" aria-hidden="true"></i> CV (EN)</a><a href="../pdf/youcheng_li_cv_ch.pdf" class="cv-download cv-download-ch" target="_blank" rel="noopener noreferrer" lang="zh-CN"><i class="fas fa-file-pdf" aria-hidden="true"></i> 简历 (中文)</a></div>
+      <div class="social-links-grid"><a class="social-link" href="https://scholar.google.com/citations?hl=zh-CN&user=cRWgAzcAAAAJ" aria-label="Google Scholar" data-tooltip="Google Scholar" target="_blank" rel="noopener noreferrer"><i class="fas fa-graduation-cap" aria-hidden="true"></i></a><a class="social-link" href="https://github.com/xjtulyc" aria-label="GitHub" data-tooltip="GitHub" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i></a><a class="social-link" href="https://www.researchgate.net/profile/Youcheng-Li-2" aria-label="ResearchGate" data-tooltip="ResearchGate" target="_blank" rel="noopener noreferrer"><i class="fab fa-researchgate" aria-hidden="true"></i></a><a class="social-link" href="https://www.xiaohongshu.com/user/profile/649ad7e3000000002b009eb5" aria-label="Xiaohongshu" data-tooltip="Xiaohongshu" target="_blank" rel="noopener noreferrer"><i class="fas fa-book" aria-hidden="true"></i></a><a class="social-link" href="https://www.linkedin.com/in/youcheng-li-121396289/" aria-label="LinkedIn" data-tooltip="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin" aria-hidden="true"></i></a><a class="social-link" href="https://www.zhihu.com/people/yan-cheng-86-84" aria-label="知乎" data-tooltip="知乎" target="_blank" rel="noopener noreferrer"><i class="fab fa-zhihu" aria-hidden="true"></i></a></div>
+    </div></aside>
+    <main id="main" tabindex="-1"><div class="main-container blog-container">
+<p class="article-back"><a href="../blog.html" data-article-label="back">返回博客</a></p>
+<article class="blog-article" data-article-language="zh" lang="zh-CN"><header><div class="blog-post-meta"><time datetime="2026-10-07">2026-10-07</time><span>技术博客</span><span>Youcheng Li · 利友诚</span></div><h1>力误差很低，为什么分子动力学仍会漂移？从 eSEN 拆解保守力、平滑截断与时间步</h1><p class="article-summary">用闭路做功、截断导数和 Verlet 谐振子的可验算反例，区分势能模型、计算图与积分器的责任；附实际运行的合成检查及真实模型验收协议。</p></header><nav class="blog-toc" aria-label="本文目录"><h2>本文目录</h2><ol><li><a href="#zh-energy">1. 首先守恒的是什么：总能量，不是势能</a></li><li><a href="#zh-loop">2. 很小的力误差，也可以在闭合路径上留下净功</a></li><li><a href="#zh-cutoff">3. 写了负梯度，还要检查截断与邻居切换</a></li><li><a href="#zh-verlet">4. 光滑保守力，也不意味着离散时间里能量完全不动</a></li><li><a href="#zh-implementation">5. 从推导到模型实现：代价应按有效模拟时间计算</a></li><li><a href="#zh-checks">6. 本文实际运行了什么</a></li><li><a href="#zh-acceptance">7. 真实模型怎样验收，才能不被漂亮曲线误导</a></li></ol></nav><p>一个原子间势模型在测试集上预测力更准，是否就更适合跑分子动力学？<a href="https://proceedings.mlr.press/v267/fu25h.html">eSEN 的 ICML 2025 论文</a>给出一个反例：表 1 中，直接预测力的变体在 MPTrj 上的力 MAE 为 43.62，基础 eSEN 为 43.96，单位均为 \(\mathrm{meV}/\text{Å}\)；但前者在论文指定的 NVE 测试中出现明显能量漂移。这个对照没有说所有直接力模型都不可用，而是说明静态误差没有检验动力学所需的全部结构。</p>
+<p>这是一篇基础报告解读：预印本最早发表于 2025 年 2 月 17 日，不是今天的新发布。本文从它提出的问题出发，用可手算的反例拆开三个层次：<strong>力是否与同一势能一致，实际计算图是否平滑，积分器是否在合适的时间步内工作。</strong>最后给出实际运行的合成检查和面向真实模型的验收协议。合成结果不代表复测了 eSEN 或 DFT。</p>
+
+<h2 id="zh-energy">1. 首先守恒的是什么：总能量，不是势能</h2>
+<p>令 \(R\in\mathbb R^{N\times3}\) 为原子坐标，\(Z\) 为固定元素种类，\(L\) 为固定晶胞；其他电子态条件也固定。模型输出标量势能 \(E_\theta(R;Z,L)\)。这里考虑无外部驱动、无恒温器、无约束力的经典动力学，质量 \(m_i\) 不变，且轨迹所在区域的势能足够光滑。动能可以不断转为势能，NVE 要保持的是两者之和：</p>
+<div class="math-block">\[\begin{aligned}F_i&=-\nabla_{R_i}E_\theta,\qquad m_i\dot v_i=F_i,\\H_\theta(R,v)&=\sum_i\frac{m_i}{2}\lVert v_i\rVert^2+E_\theta(R).\end{aligned}\]</div>
+<p>把牛顿方程代入链式法则，就得到连续时间下的抵消：</p>
+<div class="math-block">\[\frac{\mathrm dH_\theta}{\mathrm dt}=\sum_i v_i\cdot\left(m_i\dot v_i+\nabla_{R_i}E_\theta\right)=0.\]</div>
+<p>关键是两边用同一个能量函数。若界面返回一个能量头，却用另一个互不约束的力头推进坐标，打印出来的“总能量”未必对应正在求解的方程。另一方面，即使上述等式成立，它保持的也是模型自己的 \(H_\theta\)：一个错误但光滑的势能，同样可以生成数值上很稳定的错误轨迹。守恒与接近参考物理，是两项不同的验收。</p>
+
+<h2 id="zh-loop">2. 很小的力误差，也可以在闭合路径上留下净功</h2>
+<p>下面构造一个无量纲、只有两个广义坐标的例子。它用来检查数学机制，不代表一个满足全部原子对称性的真实材料模型。基线势能为 \(E_0(x,y)=(x^2+y^2)/2\)，对应力 \(F_0=(-x,-y)\)。给力增加一个很小的旋转分量：</p>
+<div class="math-block">\[F_\varepsilon(x,y)=(-x-\varepsilon y,\,-y+\varepsilon x).\]</div>
+<p>在单位圆上，力误差的欧氏范数恰为 \(|\varepsilon|\)，可以任意小。但沿逆时针单位圆 \(r(t)=(\cos t,\sin t)\) 走一圈：</p>
+<div class="math-block">\[\oint F_\varepsilon\cdot\mathrm dr=\int_0^{2\pi}\varepsilon\,\mathrm dt=2\pi\varepsilon.\]</div>
+<p>保守的基线部分在闭路上不做净功；旋转误差却始终沿运动方向贡献功。同向重复这条规定路径，净功会逐圈累加。这里计算的是路径积分，未声称自由动力学轨迹必然沿单位圆运动。它足以说明：逐点误差小，不等于存在一个全局单值势能。</p>
+<p>局部也能检查这一点。对光滑梯度力，Jacobian 必须对称；本例却满足：</p>
+<div class="math-block">\[\frac{\partial F_y}{\partial x}-\frac{\partial F_x}{\partial y}=2\varepsilon\ne0.\]</div>
+<p>因此，中心差分的交叉导数与小闭环积分可以作为调试探针。有限数量的探针通过，并不能证明整个构型空间都保守；不连续边界和空间拓扑仍需另查。旋转等变性也不能替代这个条件：怎样随坐标旋转变换，与是否存在势能，是不同问题。</p>
+
+<h2 id="zh-cutoff">3. 写了负梯度，还要检查截断与邻居切换</h2>
+<p>自动微分只会对实际执行的计算求导。如果邻居选择突然换了一条分支，在每个分支内部得到正确梯度，也没有修复分支交界处的跳变。最近邻数量的硬上限尤其需要检查：第 \(K\) 与第 \(K+1\) 个邻居交换时，它们的元素、方向和消息可以不同，微小坐标变化便可能替换一个有限贡献。若上限从未触发，这个机制当然不会发生；不能仅凭配置里有一个数字就判定失败。</p>
+<p>距离截断是另一个问题。把一项非零相互作用在 \(r_c\) 外直接置零，会产生边界不连续。为了具体看到修补需要什么，取 \(r_{\mathrm{on}}&lt;r_c\)，定义过渡坐标 \(s=(r-r_{\mathrm{on}})/(r_c-r_{\mathrm{on}})\)，使用下面的教学用切换函数：</p>
+<div class="math-block">\[c(s)=\begin{cases}1,&amp;s\le0,\\1-10s^3+15s^4-6s^5,&amp;0&lt;s&lt;1,\\0,&amp;s\ge1.\end{cases}\]</div>
+<p>它在两端的一、二阶导数为零，连接常数分支后是 \(C^2\)。但多项式内侧的三阶导数在两端都是 \(-60\)，外侧为零，所以不是 \(C^3\)，更不是任意阶光滑。这是本文的可验证示例，不是 eSEN 官方 envelope 公式，也不能单独保证整个网络的平滑性。</p>
+<p>若某个径向能量项为 \(E(r)=c(s)\phi(r)\)，过渡区内的径向广义力为：</p>
+<div class="math-block">\[F_r=-\frac{\mathrm dE}{\mathrm dr}=-c(s)\phi'(r)-\frac{c'(s)\phi(r)}{r_c-r_{\mathrm{on}}}.\]</div>
+<p>第二项不能漏掉。先算原始力再乘一个 cutoff，与对带 cutoff 的能量完整求导，一般不是同一件事。对消息传递模型，还须检查归一化、门控、邻居缓存及各条支路是否让边的贡献按预期消失；“乘了一个平滑函数”不是整图证明。</p>
+<p><a href="https://arxiv.org/html/2502.12147v2">eSEN 的设计消融</a>正是这类检查的实际例子：它比较了直接力、邻居上限与去掉 envelope 等变体。本文借此构建诊断顺序，不把特定变体在特定测试中的漂移，升级为所有图网络都必须遵循的架构定理。</p>
+<figure><img src="assets/smooth-potentials-energy-drift-zh.svg" width="640" height="1600" alt="原创四层检查框架：从势模型的平滑能量与一致梯度力，到邻居选择和截断实现、积分时间步与数值精度，再分别验证 NVE 总能量漂移和独立 DFT 或物性准确性；低测试误差和能量守恒均不单独保证物理可靠性。" loading="lazy"><figcaption>原创分析框架，非测量数据或论文架构复刻。NVE 一致性与独立物性准确性分开验收；时间步和精度扫描是本文建议的诊断步骤。</figcaption><p class="figure-link"><a href="assets/smooth-potentials-energy-drift-zh.svg" target="_blank" rel="noopener noreferrer">查看原图 ↗</a></p></figure>
+
+<h2 id="zh-verlet">4. 光滑保守力，也不意味着离散时间里能量完全不动</h2>
+<p><a href="https://ase.gitlab.io/ase/ase/md.html">ASE 的 NVE 文档</a>强调时间步选择；其 <a href="https://docs.ase-lib.org/_modules/ase/md/verlet.html">VelocityVerlet 实现</a>采用半步动量、整步坐标、再半步动量的更新。对本文无约束设定，以 \(h\) 表示时间步，这可写成：</p>
+<div class="math-block">\[\begin{aligned}v_{n+1/2}&=v_n+\frac h2M^{-1}F(R_n),\\R_{n+1}&=R_n+h v_{n+1/2},\\v_{n+1}&=v_{n+1/2}+\frac h2M^{-1}F(R_{n+1}),\end{aligned}\]</div>
+<p>其中 \(M\) 为坐标展开后的对角质量矩阵。保存上一时刻的力后，除初始化外每步只需一次新构型的力计算。约束、变晶胞和随机热浴不在这套简式中，不能无条件套用。</p>
+<p>最简单的检验是一维谐振子，取无量纲 \(m=\omega=1\)、\(q_0=1\)、\(v_0=0\)，于是 \(F(q)=-q\)。将上式合并为线性更新：</p>
+<div class="math-block">\[\begin{pmatrix}q_{n+1}\\v_{n+1}\end{pmatrix}=\begin{pmatrix}1-h^2/2&amp;h\\-h(1-h^2/4)&amp;1-h^2/2\end{pmatrix}\begin{pmatrix}q_n\\v_n\end{pmatrix}.\]</div>
+<p>这个矩阵的行列式是 1。在 \(0&lt;h&lt;2\) 时，特征值在单位圆上；令 \(\vartheta=2\arcsin(h/2)\)，由初值可直接验证：</p>
+<div class="math-block">\[\begin{aligned}q_n&amp;=\cos(n\vartheta),\\v_n&amp;=-\sqrt{1-h^2/4}\sin(n\vartheta),\\H_n-H_0&amp;=-\frac{h^2}{8}\sin^2(n\vartheta).\end{aligned}\]</div>
+<p>可见真实定义的总能量有幅度至多 \(h^2/8\) 的有界振荡，并非每一步精确恒定。对这个特例，离散更新还精确保留一个修正二次型；这不等于一般势能都存在同样简单的精确不变量。超过 \(h=2\) 的稳定边界，即使输入的是完全正确的保守力，也可能发散。</p>
+<p>这给出两个重要区分：有界振荡与长期漂移不相同；缩小步长有效，也不自动证明原势面足够准确。真实体系的高频振动、短距离排斥、浮点舍入和非光滑操作都会改变可用步长，不能把此处的无量纲“2”转成某个普遍适用的飞秒数。</p>
+
+<h2 id="zh-implementation">5. 从推导到模型实现：代价应按有效模拟时间计算</h2>
+<p>一个可审查的最小实现，应让坐标保留梯度，先产生每个结构的标量能量，再对同一能量求力。下面是接口伪代码，不是已经运行的神经网络训练：</p>
+<pre><code>from torch.autograd import grad
+
+R.requires_grad_(True)
+E = energy_model(R, Z, cell)          # one scalar per structure
+F = -grad(E.sum(), R, create_graph=training)[0]
+# During training, force loss must backpropagate through F.
+# During MD, keep coordinate gradients enabled; detach between steps.</code></pre>
+<p>标量能量的一次反向传播可同时给出全部坐标梯度，不需要为每个坐标各运行一次反向传播。训练力损失时，参数梯度会经过能量对坐标的导数，涉及混合二阶导；只想“省显存”而提前 detach，会改变训练目标。推理不需要保留跨时间步训练图，但也不能把用于求力的那段计算整体放进禁用梯度的模式。</p>
+<p>假设短程消息传递有 \(L_{\mathrm{msg}}\) 层、平均每原子 \(z\) 条边、固定特征维度，消息计算量随 \(L_{\mathrm{msg}}Nz\) 增长；建图、求力反向传播、激活存储与设备通信还需另计。在固定密度和 cutoff 下，\(z\) 可能近似固定；高密度、扩大 cutoff 或全连接图不满足这一简化。这里不给未经实测的速度倍数。</p>
+<p>更直接的预算指标是每一单位有效模拟时间的成本。若每次力计算耗时为 \(C_F\)，目标轨迹长 \(T\)，主要开销约为 \(C_FT/h\)。在同一 \(T\) 下测试 \(h,h/2,h/4\)，力调用总数约是基准单条轨迹的 \(1+2+4=7\) 倍，而不是三倍。某模型单次力计算更快，却必须把步长缩小很多，最终未必更省。应同时报告建图在内的耗时、峰值内存、原子数、硬件、精度和通过验收的步长。</p>
+
+<h2 id="zh-checks">6. 本文实际运行了什么</h2>
+<p>可下载<a href="https://youchengli.com/blog/code/smooth_potential_checks.py">标准库 Python 检查脚本</a>，执行 <code>python3 smooth_potential_checks.py</code>。本次在 Python 3.12.14、macOS arm64 上运行，通过后又独立复核。脚本使用双精度浮点和精确分数运算，没有下载模型权重、使用 DFT 标签、运行真实材料 MD 或测量 GPU 吞吐。</p>
+<p>闭环例取 \(\varepsilon=0.01\)。逆时针单位圆的解析净功为 \(0.0628318531\)；512 边形逐边精确积分的实际结果为 \(0.0628302760\)，加密折线趋近圆，反向路径变号，\(\varepsilon=0\) 的负对照净功为零。这里“逐边精确”指线性场在线段上用中点法的解析性质，不是浮点数没有舍入误差。</p>
+<p>截断检查以精确分数验证端点及导数，确认常数延拓只有 \(C^2\)。谐振子使用相同总时长 \(T=100\)，得到下列实跑结果；所有量都是无量纲。有限采样的最大误差接近理论包络，不强行写成与包络严格相等。</p>
+<div class="table-scroll"><table><thead><tr><th>时间步 \(h\)</th><th>步数</th><th>实测 \(\max_n|H_n-H_0|\)</th></tr></thead><tbody><tr><td>0.2</td><td>500</td><td>0.004999908448</td></tr><tr><td>0.1</td><td>1,000</td><td>0.001249995281</td></tr><tr><td>0.05</td><td>2,000</td><td>0.0003124999937</td></tr><tr><td>0.025</td><td>4,000</td><td>0.00007812499989</td></tr></tbody></table></div>
+<p>步长减半后误差约降为四分之一，与此谐振子的二阶包络一致。另一个负对照使用 \(h=2.1\) 运行 100 步，触发预设的能量误差大于 1 的失败条件。这些检查只验算闭路功、截断正则性和积分机制，没有检验真实邻居列表，也没有证明任意神经势的长期稳定性。</p>
+
+<h2 id="zh-acceptance">7. 真实模型怎样验收，才能不被漂亮曲线误导</h2>
+<p>先固定目标物理问题：电子结构参考方法、元素与电荷/自旋条件、晶胞、单位、初始构型、质量和速度。不要把相邻轨迹帧随机分散到训练与测试两边；按材料、分子家族或完整轨迹隔离，并把选择 cutoff、步长和精度的开发集与最终验收集分开。</p>
+<p>随后分层排查。第一层用有限差分对照自动微分的能量梯度，并对直接力接口做小闭环探针；差分间距也要扫描，过小会放大舍入，过大则混入截断误差。第二层让原子缓慢穿越 cutoff 和邻居排序交界，检查能量、力及所需阶数的导数是否跳变。第三层在无恒温器的 NVE 中，用相同初值和相同物理时长扫描步长，再比较数值精度；先排除实现错误，再决定是否要改模型。</p>
+<p>建议同时报告每原子能量偏移曲线、最大绝对偏移、拟合漂移斜率和失败轨迹比例，并给出时间区间与单位。最大偏移的单位可为能量/原子，斜率则是能量/原子/时间，不能互换。这是本文建议的统计口径，未声称它就是 eSEN 图中误差的精确定义。只看首尾差可能恰好落在同一振荡相位；只看平均值则可能隐藏少数崩溃轨迹。</p>
+<p>通过数值一致性后，再用独立参考检验力、能量差、声子或目标物性。温度控制可能掩盖能量注入，因此 NVT 温度稳定不能代替 NVE 诊断；反过来，NVE 中动能与势能交换导致的瞬时温度变化也不自动表示失败。对于声子等导数敏感任务，还要扫描位移尺度，区分模型误差与有限差分误差。</p>
+<p>最终需要保留两张分开的成绩单：模型是否以可接受成本稳定求解自己的动力学，以及这种动力学是否足够接近要研究的体系。若保守且稳定却偏离参考物性，应检查训练覆盖、电子结构标签和模型表达；若静态误差很低而轨迹漂移，应检查梯度一致性、图的边界与积分设置。把失败定位到可检验的环节，比再增加一个平均误差指标更有用。</p>
+<p>资料核对工具：使用 <a href="https://arxiv.org/abs/2609.00065">Kassis、Agarwal、He、Patel 与 Brueckner（2026），Scientific Agent Skills</a> 中的 citation-management 流程核对出版元数据。该工具引用不作为本文物理结论的证据。</p><section class="article-sources" aria-label="参考资料"><h2>参考资料</h2><ol><li><a href="https://proceedings.mlr.press/v267/fu25h.html">Fu et al. — Learning Smooth and Expressive Interatomic Potentials for Physical Property Prediction. ICML 2025, PMLR 267:17875–17893 (publication metadata date; conference July 13–19, 2025)</a> · 2025-10-06 · 查阅 2026-10-07</li><li><a href="https://arxiv.org/html/2502.12147v2">eSEN full-text preprint v2 (first submitted 2025-02-17)</a> · 2025-04-23 · 查阅 2026-10-07</li><li><a href="https://ase.gitlab.io/ase/ase/md.html">ASE molecular dynamics documentation: time steps and the NVE ensemble</a> · 查阅 2026-10-07</li><li><a href="https://docs.ase-lib.org/_modules/ase/md/verlet.html">ASE official VelocityVerlet source documentation</a> · 查阅 2026-10-07</li><li><a href="https://arxiv.org/abs/2609.00065">Kassis, T.; Agarwal, V.; He, Y.; Patel, D.; Brueckner, A. M. — Scientific Agent Skills: A Library of Procedural Knowledge for Research Agents (reference-checking tool)</a> · 2026-08-30 · 查阅 2026-10-07</li></ol></section></article>
+<article class="blog-article" data-article-language="en" lang="en" hidden><header><div class="blog-post-meta"><time datetime="2026-10-07">2026-10-07</time><span>Technical Notes</span><span>Youcheng Li · 利友诚</span></div><h1>Why can molecular dynamics drift despite low force error? Conservative forces, smooth cutoffs, and time steps through eSEN</h1><p class="article-summary">Checkable loop-work, cutoff-derivative, and Verlet oscillator examples separate the potential, computation, and integrator. Includes executed synthetic checks and a proposed protocol for real models.</p></header><nav class="blog-toc" aria-label="Contents"><h2>Contents</h2><ol><li><a href="#en-energy">1. What is conserved: total energy, not potential energy</a></li><li><a href="#en-loop">2. A small force error can leave nonzero work around a closed path</a></li><li><a href="#en-cutoff">3. A negative gradient still requires smooth cutoffs and neighbor changes</a></li><li><a href="#en-verlet">4. Smooth conservative forces do not freeze discrete-time energy</a></li><li><a href="#en-implementation">5. Implementation and cost per unit of simulated time</a></li><li><a href="#en-checks">6. What was actually run for this article</a></li><li><a href="#en-acceptance">7. Accepting real models without being misled by attractive curves</a></li></ol></nav><p>If an interatomic model predicts forces more accurately on a test set, is it necessarily better for molecular dynamics? The <a href="https://proceedings.mlr.press/v267/fu25h.html">ICML 2025 eSEN paper</a> supplies a counterexample. In Table 1, the direct-force variant has an MPTrj force MAE of 43.62, versus 43.96 for baseline eSEN, both in \(\mathrm{meV}/\text{Å}\). Yet the former shows pronounced energy drift in the paper's specified NVE tests. This comparison does not make every direct-force model unusable; it shows that static error does not test every structure required by dynamics.</p>
+<p>This is an analysis of a foundational report whose preprint first appeared on February 17, 2025, not a new release today. Starting from its question, hand-checkable examples separate three issues: <strong>consistency between forces and one energy function, smoothness of the implemented computation, and an appropriate integration time step.</strong> Actual synthetic checks and a proposed acceptance protocol follow. The synthetic results are not an eSEN or DFT reproduction.</p>
+
+<h2 id="en-energy">1. What is conserved: total energy, not potential energy</h2>
+<p>Let \(R\in\mathbb R^{N\times3}\) denote atomic coordinates, \(Z\) fixed element identities, and \(L\) a fixed cell; other electronic-state conditions are also fixed. The model outputs scalar potential energy \(E_\theta(R;Z,L)\). Consider classical dynamics without external driving, a thermostat, or constraint forces, with constant masses \(m_i\) and sufficiently smooth energy in the region visited. Kinetic and potential energy can continually exchange. NVE preserves their sum:</p>
+<div class="math-block">\[\begin{aligned}F_i&=-\nabla_{R_i}E_\theta,\qquad m_i\dot v_i=F_i,\\H_\theta(R,v)&=\sum_i\frac{m_i}{2}\lVert v_i\rVert^2+E_\theta(R).\end{aligned}\]</div>
+<p>Substituting Newton's equation into the chain rule gives the continuous-time cancellation:</p>
+<div class="math-block">\[\frac{\mathrm dH_\theta}{\mathrm dt}=\sum_i v_i\cdot\left(m_i\dot v_i+\nabla_{R_i}E_\theta\right)=0.\]</div>
+<p>The same energy function must appear on both sides. If an interface reports one energy head but advances coordinates using an unconstrained, separate force head, its logged “total energy” need not correspond to the equation being integrated. Even when the identity holds, it preserves the model's own \(H_\theta\): an incorrect but smooth potential can produce a numerically stable, incorrect trajectory. Conservation and agreement with reference physics are separate acceptance criteria.</p>
+
+<h2 id="en-loop">2. A small force error can leave nonzero work around a closed path</h2>
+<p>Consider a dimensionless example with two generalized coordinates. It tests a mathematical mechanism, not a real material model satisfying every atomic symmetry. The baseline energy is \(E_0(x,y)=(x^2+y^2)/2\), with force \(F_0=(-x,-y)\). Add a small rotational component:</p>
+<div class="math-block">\[F_\varepsilon(x,y)=(-x-\varepsilon y,\,-y+\varepsilon x).\]</div>
+<p>On the unit circle, the Euclidean norm of the force error is exactly \(|\varepsilon|\), which can be arbitrarily small. But along the counterclockwise unit circle \(r(t)=(\cos t,\sin t)\), its work is:</p>
+<div class="math-block">\[\oint F_\varepsilon\cdot\mathrm dr=\int_0^{2\pi}\varepsilon\,\mathrm dt=2\pi\varepsilon.\]</div>
+<p>The conservative baseline contributes no net work around the loop, whereas the rotational error continually contributes along its direction. Repeating this prescribed path in the same direction accumulates work. This is a path integral, not a claim that unconstrained dynamics must follow the unit circle. It is enough to show that small pointwise error does not imply a globally single-valued potential.</p>
+<p>The issue is also visible locally. Smooth gradient forces require a symmetric Jacobian, while this field satisfies:</p>
+<div class="math-block">\[\frac{\partial F_y}{\partial x}-\frac{\partial F_x}{\partial y}=2\varepsilon\ne0.\]</div>
+<p>Centered cross-derivative differences and small closed-loop integrals are therefore useful debugging probes. Passing finitely many probes does not prove conservation throughout configuration space; discontinuities and topology require separate attention. Rotational equivariance cannot replace the condition either: transformation under rotation and existence of a potential are different questions.</p>
+
+<h2 id="en-cutoff">3. A negative gradient still requires smooth cutoffs and neighbor changes</h2>
+<p>Automatic differentiation differentiates the computation actually executed. If neighbor selection abruptly switches branches, correct gradients inside each branch do not repair the boundary. A hard nearest-neighbor count deserves scrutiny: when neighbors \(K\) and \(K+1\) exchange rank, their species, directions, and messages may differ, so an arbitrarily small coordinate change can replace a finite contribution. If the cap is never reached, this mechanism does not occur; a numeric cap in a configuration alone is not proof of failure.</p>
+<p>A distance cutoff presents a separate issue. Setting a nonzero interaction directly to zero outside \(r_c\) introduces a discontinuity. To see what a repair entails, choose \(r_{\mathrm{on}}&lt;r_c\), define \(s=(r-r_{\mathrm{on}})/(r_c-r_{\mathrm{on}})\), and use this teaching switching function:</p>
+<div class="math-block">\[c(s)=\begin{cases}1,&amp;s\le0,\\1-10s^3+15s^4-6s^5,&amp;0&lt;s&lt;1,\\0,&amp;s\ge1.\end{cases}\]</div>
+<p>Its first and second derivatives vanish at both endpoints, so the constant extension is \(C^2\). But its interior third derivative is \(-60\) at both ends, while the exterior value is zero. It is therefore not \(C^3\), much less infinitely smooth. This is our checkable example, not the official eSEN envelope, and it does not establish smoothness of an entire network.</p>
+<p>For a radial energy term \(E(r)=c(s)\phi(r)\), the generalized radial force in the transition region is:</p>
+<div class="math-block">\[F_r=-\frac{\mathrm dE}{\mathrm dr}=-c(s)\phi'(r)-\frac{c'(s)\phi(r)}{r_c-r_{\mathrm{on}}}.\]</div>
+<p>The second term cannot be omitted. Computing an original force and then multiplying it by a cutoff is generally different from differentiating the complete cutoff-modified energy. In message-passing models, normalization, gates, neighbor caches, and all branches must also allow an edge's contribution to vanish as intended. Multiplying by one smooth function is not a proof about the whole computation.</p>
+<p>The <a href="https://arxiv.org/html/2502.12147v2">eSEN design ablations</a> provide practical examples, comparing direct-force, neighbor-limit, and no-envelope variants. They motivate the diagnostic sequence here; a particular variant drifting under a particular test is not promoted into an architectural theorem for every graph network.</p>
+<figure><img src="assets/smooth-potentials-energy-drift-en.svg" width="640" height="1600" alt="Original four-layer checklist: smooth energy and consistent gradient forces; neighbor selection and cutoff implementation; integration time step and numerical precision; then separate checks of NVE total-energy drift and accuracy against independent DFT or property references. Low test error and energy conservation alone do not establish physical reliability." loading="lazy"><figcaption>Original analytical framework, not measured data or a reproduction of the paper's architecture. NVE consistency and independent property accuracy require separate checks; time-step and precision scans are proposed diagnostics.</figcaption><p class="figure-link"><a href="assets/smooth-potentials-energy-drift-en.svg" target="_blank" rel="noopener noreferrer">Open full-size figure ↗</a></p></figure>
+
+<h2 id="en-verlet">4. Smooth conservative forces do not freeze discrete-time energy</h2>
+<p>The <a href="https://ase.gitlab.io/ase/ase/md.html">ASE NVE documentation</a> emphasizes time-step selection. Its <a href="https://docs.ase-lib.org/_modules/ase/md/verlet.html">VelocityVerlet implementation</a> applies a half momentum step, a full coordinate step, and a second half momentum step. For the unconstrained setting considered here, with time step \(h\), this becomes:</p>
+<div class="math-block">\[\begin{aligned}v_{n+1/2}&=v_n+\frac h2M^{-1}F(R_n),\\R_{n+1}&=R_n+h v_{n+1/2},\\v_{n+1}&=v_{n+1/2}+\frac h2M^{-1}F(R_{n+1}),\end{aligned}\]</div>
+<p>Here \(M\) is the diagonal mass matrix for flattened coordinates. Caching the previous force requires only one force evaluation at a new configuration per step after initialization. Constraints, variable cells, and stochastic heat baths are outside this simplified update and cannot be silently included.</p>
+<p>The simplest check is a one-dimensional harmonic oscillator with dimensionless \(m=\omega=1\), \(q_0=1\), and \(v_0=0\), so \(F(q)=-q\). Combining the steps yields a linear update:</p>
+<div class="math-block">\[\begin{pmatrix}q_{n+1}\\v_{n+1}\end{pmatrix}=\begin{pmatrix}1-h^2/2&amp;h\\-h(1-h^2/4)&amp;1-h^2/2\end{pmatrix}\begin{pmatrix}q_n\\v_n\end{pmatrix}.\]</div>
+<p>The matrix has determinant one. For \(0&lt;h&lt;2\), its eigenvalues lie on the unit circle. With \(\vartheta=2\arcsin(h/2)\), the initial conditions give the directly verifiable solution:</p>
+<div class="math-block">\[\begin{aligned}q_n&amp;=\cos(n\vartheta),\\v_n&amp;=-\sqrt{1-h^2/4}\sin(n\vartheta),\\H_n-H_0&amp;=-\frac{h^2}{8}\sin^2(n\vartheta).\end{aligned}\]</div>
+<p>The physically defined total energy exhibits bounded oscillations of amplitude at most \(h^2/8\), rather than remaining exactly constant at each step. This special update also preserves a modified quadratic form exactly; that does not give every general potential an equally simple exact invariant. Beyond the \(h=2\) stability boundary, even perfectly correct conservative forces can produce divergence.</p>
+<p>Two distinctions follow: bounded oscillation differs from secular drift, and improvement from a smaller step does not establish physical accuracy of the potential. High-frequency vibrations, short-range repulsion, floating-point rounding, and nonsmooth operations change usable steps in real systems. The dimensionless “2” here cannot be converted into a universal femtosecond recommendation.</p>
+
+<h2 id="en-implementation">5. Implementation and cost per unit of simulated time</h2>
+<p>A minimal auditable implementation keeps coordinate gradients, predicts scalar energy per structure, and obtains forces from that same energy. The following is interface pseudocode, not a neural-network training run performed here:</p>
+<pre><code>from torch.autograd import grad
+
+R.requires_grad_(True)
+E = energy_model(R, Z, cell)          # one scalar per structure
+F = -grad(E.sum(), R, create_graph=training)[0]
+# During training, force loss must backpropagate through F.
+# During MD, keep coordinate gradients enabled; detach between steps.</code></pre>
+<p>One reverse pass from scalar energy provides all coordinate gradients; a separate reverse pass per coordinate is unnecessary. Training on force loss differentiates through the energy's coordinate derivative, involving mixed second derivatives. Detaching early merely to save memory changes the objective. Inference need not retain a training graph across time steps, but the calculation used to obtain forces cannot run entirely with gradients disabled.</p>
+<p>With \(L_{\mathrm{msg}}\) short-range message-passing layers, average degree \(z\), and fixed feature dimensions, message computation scales with \(L_{\mathrm{msg}}Nz\). Graph construction, reverse differentiation for forces, stored activations, and device communication add costs. At fixed density and cutoff, \(z\) may be approximately constant; high density, expanded cutoffs, and fully connected graphs violate that simplification. No unmeasured speed multiplier is claimed here.</p>
+<p>The more direct budget is cost per unit of simulated time. If a force evaluation takes \(C_F\) and a trajectory lasts \(T\), the leading cost is approximately \(C_FT/h\). Over the same \(T\), testing \(h,h/2,h/4\) takes roughly \(1+2+4=7\) times the force calls of one baseline trajectory, not three times. A model with faster force calls may still be more expensive if it requires a much smaller step. Report graph-inclusive time, peak memory, atom count, hardware, precision, and the step that passes acceptance together.</p>
+
+<h2 id="en-checks">6. What was actually run for this article</h2>
+<p>Download the <a href="https://youchengli.com/blog/code/smooth_potential_checks.py">standard-library Python check script</a> and run <code>python3 smooth_potential_checks.py</code>. It passed on Python 3.12.14 on macOS arm64 and was independently reviewed and rerun. It uses double-precision floating point and exact fractions, without model weights, DFT labels, real-material MD, or GPU-throughput measurements.</p>
+<p>For the loop example, \(\varepsilon=0.01\). Analytic counterclockwise unit-circle work is \(0.0628318531\); the actual 512-sided polygon result is \(0.0628302760\). Segmentwise exact integration converges to the circle as the polygon is refined, reverse traversal flips its sign, and the \(\varepsilon=0\) negative control gives zero work. “Segmentwise exact” refers to midpoint integration of a linear field on each straight segment, not the absence of floating-point rounding.</p>
+<p>Exact fractions check cutoff endpoints and derivatives, confirming only \(C^2\) regularity after constant extension. The oscillator uses the same total time \(T=100\) for each run, producing the measured values below. Every quantity is dimensionless. A finite sampled maximum approaches the analytic envelope; it is not asserted to equal it exactly.</p>
+<div class="table-scroll"><table><thead><tr><th>Time step \(h\)</th><th>Steps</th><th>Measured \(\max_n|H_n-H_0|\)</th></tr></thead><tbody><tr><td>0.2</td><td>500</td><td>0.004999908448</td></tr><tr><td>0.1</td><td>1,000</td><td>0.001249995281</td></tr><tr><td>0.05</td><td>2,000</td><td>0.0003124999937</td></tr><tr><td>0.025</td><td>4,000</td><td>0.00007812499989</td></tr></tbody></table></div>
+<p>Halving the step reduces error by approximately a factor of four, consistent with this oscillator's second-order envelope. A separate negative control uses \(h=2.1\) for 100 steps and triggers the prespecified failure condition of energy error exceeding one. These checks validate loop work, cutoff regularity, and the integration mechanism. They do not test real neighbor lists or prove long-time stability of arbitrary neural potentials.</p>
+
+<h2 id="en-acceptance">7. Accepting real models without being misled by attractive curves</h2>
+<p>First freeze the physical problem: electronic-structure reference method, elements and charge/spin conditions, cell, units, initial configurations, masses, and velocities. Avoid distributing adjacent trajectory frames randomly between training and test sets. Separate materials, molecular families, or complete trajectories, and keep the development set used to select cutoffs, steps, and precision distinct from final acceptance data.</p>
+<p>Then diagnose by layer. First compare finite differences with automatic energy gradients and probe direct-force interfaces with small loops. Scan finite-difference spacing too: too small amplifies rounding, while too large introduces truncation error. Second move atoms slowly across cutoff and neighbor-ranking boundaries, looking for jumps in energy, force, and required derivative orders. Third scan time steps over identical physical durations and initial conditions in NVE without a thermostat, then compare numerical precision. Eliminate implementation errors before deciding to change the model.</p>
+<p>Report per-atom energy-offset traces, maximum absolute offsets, fitted drift slopes, and failed-trajectory fractions, with time intervals and units. A maximum offset may have units of energy per atom; a slope has energy per atom per time. They are not interchangeable. These are proposed reporting conventions, not a claim about the exact definition used in eSEN's plotted error. Endpoint differences can land on the same oscillation phase, while averages can hide a small number of failed trajectories.</p>
+<p>After numerical consistency passes, test forces, energy differences, phonons, or target properties against independent references. Temperature control can hide energy injection, so stable NVT temperature does not replace NVE diagnostics. Conversely, instantaneous temperature changes from kinetic/potential exchange in NVE are not automatically failures. For derivative-sensitive tasks such as phonons, scan displacement sizes to separate model errors from finite-difference errors.</p>
+<p>Keep two distinct scorecards: whether the model stably integrates its own dynamics at acceptable cost, and whether those dynamics approximate the intended system. If a conservative, stable model misses reference properties, examine training coverage, electronic-structure labels, and representation. If static error is low but trajectories drift, examine gradient consistency, computational boundaries, and integration settings. Locating a failure in a testable component is more useful than adding another aggregate error metric.</p>
+<p>Reference-checking tools: the citation-management workflow from <a href="https://arxiv.org/abs/2609.00065">Kassis, Agarwal, He, Patel, and Brueckner (2026), Scientific Agent Skills</a> helped verify publication metadata. This tooling citation is not evidence for the physical conclusions.</p><section class="article-sources" aria-label="Sources"><h2>Sources</h2><ol><li><a href="https://proceedings.mlr.press/v267/fu25h.html">Fu et al. — Learning Smooth and Expressive Interatomic Potentials for Physical Property Prediction. ICML 2025, PMLR 267:17875–17893 (publication metadata date; conference July 13–19, 2025)</a> · 2025-10-06 · Accessed 2026-10-07</li><li><a href="https://arxiv.org/html/2502.12147v2">eSEN full-text preprint v2 (first submitted 2025-02-17)</a> · 2025-04-23 · Accessed 2026-10-07</li><li><a href="https://ase.gitlab.io/ase/ase/md.html">ASE molecular dynamics documentation: time steps and the NVE ensemble</a> · Accessed 2026-10-07</li><li><a href="https://docs.ase-lib.org/_modules/ase/md/verlet.html">ASE official VelocityVerlet source documentation</a> · Accessed 2026-10-07</li><li><a href="https://arxiv.org/abs/2609.00065">Kassis, T.; Agarwal, V.; He, Y.; Patel, D.; Brueckner, A. M. — Scientific Agent Skills: A Library of Procedural Knowledge for Research Agents (reference-checking tool)</a> · 2026-08-30 · Accessed 2026-10-07</li></ol></section></article>
+      <section class="blog-author" aria-labelledby="blog-author-name">
+        <img class="blog-author-photo" src="../resources/avatar.jpg" alt="利友诚" data-blog-i18n-alt="authorPhotoAlt" width="104" height="104" loading="lazy">
+        <div class="blog-author-content">
+          <p class="blog-author-eyebrow" data-blog-i18n="authorEyebrow">关于作者</p>
+          <h2 id="blog-author-name" data-blog-i18n="authorName">利友诚 · Youcheng Li</h2>
+          <div class="blog-author-copy">
+            <p data-blog-i18n="authorIntroduction">北京大学智能学院人工智能专业博士研究生，导师为王立威教授；Isoplex Intelligence（壹索智能）联合创始人兼 CTO。</p>
+            <p data-blog-i18n="authorResearch">研究关注医疗人工智能、生成式基础模型、诊断推理与科学智能体。以第一作者或共同第一作者身份在 Nature Biomedical Engineering、Scientific Data、KDD 和 PLOS Computational Biology 发表研究。</p>
+          </div>
+          <nav class="blog-author-links" aria-label="了解作者" data-blog-i18n-aria="authorLinksLabel">
+            <a href="../research.html" data-blog-i18n="authorResearchLink">研究与论文</a>
+            <a href="../experience.html" data-blog-i18n="authorExperienceLink">创业与经历</a>
+            <a href="mailto:youchengli@stu.pku.edu.cn" data-blog-i18n="authorContactLink">邮件联系</a>
+          </nav>
+        </div>
+      </section>
+      <footer class="site-footer"><span>© 2026 Youcheng Li · 利友诚</span><a href="mailto:youchengli@stu.pku.edu.cn">联系我</a></footer>
+    </div></main>
+  </div>
+  <script src="../config/site-config.js"></script>
+  <script src="../config/site-config.zh.js"></script>
+  <script src="../js/site-language.js"></script>
+  <script src="../js/modern-script.js"></script>
+  <script src="../js/single-page-app.js"></script>
+  <script src="../js/blog-i18n.js"></script>
+  <script src="../js/blog-article.js"></script>
+</body>
+</html>
