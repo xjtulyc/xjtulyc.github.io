@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="1410" viewBox="0 0 640 1410" role="img" aria-labelledby="title desc" xml:lang="zh-CN">
+<title id="title">算力预付：三本账分开看</title><desc id="desc">通用算力预付款机制示意，不对应任何特定公司的交易关系。买方预付，供应方收到资金，其中只有可支配部分可用于建设。电力、冷却、网络和集群需完成交付与验收，形成可用服务；供应方仍承担交付义务。之后分为两条独立逻辑：供应方按合同履约确认收入，随服务期或用量；买方还需要外部付费或内部业务增量，判断续约与回本，面临未用满和需求变化风险。买方商业回报不是供应方合同收入确认的前置箭头。现金到账、合同收入和终端商业回报分别检验。本图非实验数据。</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#355C7D" stroke-width="1.5"/></marker></defs>
+<style>text{font-family:Arial,'PingFang SC','Microsoft YaHei',sans-serif;fill:#1F2933}.heading{font-weight:700}.accent{fill:#355C7D}.secondary{fill:#526171}.muted{fill:#607080}</style>
+<rect width="640" height="1410" fill="#F7F8FA"/>
+<text x="32" y="49" font-size="34" class="heading" text-anchor="start">算力预付：三本账分开看</text>
+<text x="32" y="86" font-size="26" class="secondary" text-anchor="start">现金先到，不等于收入与回报已实现</text>
+<rect x="48" y="120" width="544" height="70" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="165" font-size="32" class="heading" text-anchor="middle">买方预付款</text>
+<path d="M320 196 V213" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="48" y="220" width="544" height="116" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="264" font-size="30" class="heading accent" text-anchor="middle">01  供应方收到预付资金</text>
+<text x="320" y="309" font-size="28" class="" text-anchor="middle">建设只动用可支配部分</text>
+<path d="M320 342 V361" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="48" y="368" width="544" height="170" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="411" font-size="30" class="heading" text-anchor="middle">电力、冷却、网络与集群</text>
+<text x="320" y="456" font-size="28" class="" text-anchor="middle">完成交付与验收</text>
+<text x="320" y="514" font-size="26" class="secondary" text-anchor="middle">供应方风险：交付义务</text>
+<path d="M320 544 V563" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="48" y="570" width="544" height="70" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="615" font-size="32" class="heading" text-anchor="middle">可用服务</text>
+<path d="M320 646 V665 H36 V1023" fill="none" stroke="#355C7D" stroke-width="2.5"/>
+<path d="M36 778 H67" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M36 1023 H67" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="74" y="690" width="516" height="176" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="332" y="733" font-size="30" class="heading accent" text-anchor="middle">02  供应方合同收入</text>
+<text x="332" y="787" font-size="28" class="" text-anchor="middle">履行合同义务时确认</text>
+<text x="332" y="836" font-size="28" class="secondary" text-anchor="middle">随服务期或用量</text>
+<rect x="74" y="908" width="516" height="230" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="332" y="953" font-size="30" class="heading accent" text-anchor="middle">03  买方商业回报</text>
+<text x="332" y="1003" font-size="28" class="" text-anchor="middle">外部付费或内部业务增量</text>
+<text x="332" y="1049" font-size="28" class="" text-anchor="middle">用于判断续约与回本</text>
+<text x="332" y="1115" font-size="26" class="secondary" text-anchor="middle">买方风险：未用满或需求变化</text>
+<rect x="40" y="1170" width="560" height="124" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1221" font-size="30" class="heading" text-anchor="middle">现金到账、合同收入与商业回报</text>
+<text x="320" y="1266" font-size="28" class="heading" text-anchor="middle">需要分别检验</text>
+<text x="320" y="1346" font-size="24" class="muted" text-anchor="middle">原创机制示意 · 非实验数据</text>
+<text x="320" y="1387" font-size="24" class="muted" text-anchor="middle">不表示任何特定公司的交易关系</text>
+</svg>

@@ -35,6 +35,41 @@
     }
   },
   {
+    "title": "算力预付款改变了什么？从 Oracle 与腾讯看 AI 扩张的现金时差",
+    "summary": "预付款能缩小建设资金缺口，却不会自动消除交付与需求风险。从 Oracle 和腾讯财报出发，区分现金、可用服务、收入与终端回报，并推导需要验收和检验的经济条件。",
+    "tags": [
+      "AI 基础设施",
+      "云计算",
+      "现金流",
+      "商业判断"
+    ],
+    "date": "2026-10-07",
+    "category": "business",
+    "url": "blog/compute-prepayments-risk.html",
+    "translations": {
+      "zh": {
+        "title": "算力预付款改变了什么？从 Oracle 与腾讯看 AI 扩张的现金时差",
+        "summary": "预付款能缩小建设资金缺口，却不会自动消除交付与需求风险。从 Oracle 和腾讯财报出发，区分现金、可用服务、收入与终端回报，并推导需要验收和检验的经济条件。",
+        "tags": [
+          "AI 基础设施",
+          "云计算",
+          "现金流",
+          "商业判断"
+        ]
+      },
+      "en": {
+        "title": "What compute prepayments change: Oracle, Tencent, and the cash timing of AI expansion",
+        "summary": "Prepayments can narrow construction funding gaps without automatically removing delivery or demand risk. Oracle and Tencent disclosures help separate cash, usable service, revenue, and end-use returns—and define what to test.",
+        "tags": [
+          "AI infrastructure",
+          "Cloud computing",
+          "Cash flow",
+          "Business perspectives"
+        ]
+      }
+    }
+  },
+  {
     "title": "结构正确，为何亲和力仍可能不可靠？从 AlphaFold 3 到 Boltz-2",
     "summary": "从结合态与游离态的统计权重出发，推导姿态不足以确定亲和力的原因，检查 Boltz-2 的标签与单位，并提出防泄漏、带基线的评估方案。本文未运行实验。",
     "tags": [
