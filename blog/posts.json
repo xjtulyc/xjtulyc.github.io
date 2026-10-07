@@ -35,6 +35,41 @@
     }
   },
   {
+    "title": "MLA 如何省下 KV 缓存：矩阵吸收与不变的 softmax 温度",
+    "summary": "从同一 MLA 的展开与吸收路径推导缓存压缩，解释 RoPE 的障碍、192 与 576 维的缩放陷阱，以及显存节省为何不能直接换成速度。附可复现代数校验。",
+    "tags": [
+      "LLM",
+      "MLA",
+      "KV Cache",
+      "推理系统"
+    ],
+    "date": "2026-10-07",
+    "category": "technical",
+    "url": "blog/mla-cache-absorption.html",
+    "translations": {
+      "zh": {
+        "title": "MLA 如何省下 KV 缓存：矩阵吸收与不变的 softmax 温度",
+        "summary": "从同一 MLA 的展开与吸收路径推导缓存压缩，解释 RoPE 的障碍、192 与 576 维的缩放陷阱，以及显存节省为何不能直接换成速度。附可复现代数校验。",
+        "tags": [
+          "LLM",
+          "MLA",
+          "KV Cache",
+          "推理系统"
+        ]
+      },
+      "en": {
+        "title": "How MLA saves the KV cache: matrix absorption without changing softmax temperature",
+        "summary": "Derive cache compression through two paths of the same MLA, examine RoPE and the 192-versus-576 scaling trap, and separate memory savings from speed. Includes reproducible algebra checks.",
+        "tags": [
+          "LLM",
+          "MLA",
+          "KV Cache",
+          "Inference systems"
+        ]
+      }
+    }
+  },
+  {
     "title": "算力预付款改变了什么？从 Oracle 与腾讯看 AI 扩张的现金时差",
     "summary": "预付款能缩小建设资金缺口，却不会自动消除交付与需求风险。从 Oracle 和腾讯财报出发，区分现金、可用服务、收入与终端回报，并推导需要验收和检验的经济条件。",
     "tags": [

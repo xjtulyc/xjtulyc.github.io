@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="1740" viewBox="0 0 640 1740" role="img" aria-labelledby="title desc" xml:lang="en">
+<title id="title">MLA: shared cache, per-head compute</title><desc id="desc">Original MLA mechanism schematic. Each historical token keeps only an r-dimensional joint latent c_j and an s-dimensional shared positional key k_j^R in the long-lived cache. For each current head, apply the transpose of its key up-projection to the content query, obtaining an r-dimensional query, and retain a separate positional query. Add latent content and positional scores, keeping the scale based on the original content and positional dimensions, not the latent width. Run softmax per head; use that head’s same attention weights to aggregate cached c_j into its own r-dimensional z_t,i. Apply that head’s value up-projection, followed by the output projection. Attention weights and latent aggregates remain head-specific; do not merge z across heads before their value projections. Full historical keys and values need not be reconstructed. Not measured data.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#355C7D" stroke-width="1.5"/></marker></defs>
+<style>text{font-family:Arial,'PingFang SC','Microsoft YaHei',sans-serif;fill:#1F2933}.heading{font-weight:700}.accent{fill:#355C7D}.secondary{fill:#526171}.muted{fill:#607080}.symbol{font-family:ui-monospace,'SFMono-Regular',Consolas,monospace}</style>
+<rect width="640" height="1740" fill="#F7F8FA"/>
+<text x="32" y="49" font-size="30" class="heading" text-anchor="start">MLA: shared cache, per-head compute</text>
+<text x="32" y="86" font-size="26" class="secondary" text-anchor="start">Score and aggregate values in latent space</text>
+<rect x="48" y="114" width="544" height="66" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="157" font-size="32" class="heading" text-anchor="middle">Historical token x_j</text>
+<path d="M320 186 V211" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="40" y="218" width="560" height="216" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="258" font-size="28" class="heading accent" text-anchor="middle">Only these two parts stay cached</text>
+<rect x="56" y="280" width="252" height="136" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="182" y="317" font-size="32" class="heading symbol" text-anchor="middle">c_j</text>
+<text x="182" y="355" font-size="25" class="" text-anchor="middle">Shared KV latent</text>
+<text x="182" y="395" font-size="26" class="secondary" text-anchor="middle">r dimensions</text>
+<rect x="332" y="280" width="252" height="136" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="458" y="317" font-size="32" class="heading symbol" text-anchor="middle">k_j^R</text>
+<text x="458" y="355" font-size="25" class="" text-anchor="middle">Shared position key</text>
+<text x="458" y="395" font-size="26" class="secondary" text-anchor="middle">s dimensions</text>
+<path d="M50 349 H24 V1242 H41" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M606 326 H620 V907 H599" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="48" y="477" width="544" height="126" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="525" font-size="30" class="heading" text-anchor="middle">Query for the current head i</text>
+<text x="320" y="575" font-size="28" class="" text-anchor="middle">Content and position components</text>
+<path d="M320 609 V629" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="48" y="636" width="544" height="148" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="675" font-size="28" class="heading" text-anchor="middle">Absorb key projection into query</text>
+<text x="320" y="721" font-size="26" class="" text-anchor="middle">Apply its transpose to content query</text>
+<text x="320" y="765" font-size="26" class="secondary" text-anchor="middle">r-dim query; keep position separate</text>
+<path d="M320 790 V817" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="48" y="824" width="544" height="164" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="870" font-size="28" class="heading" text-anchor="middle">Combine content and position scores</text>
+<text x="320" y="923" font-size="26" class="secondary" text-anchor="middle">Keep the original content / position scale</text>
+<text x="320" y="965" font-size="26" class="secondary" text-anchor="middle">Do not rescale by latent width</text>
+<path d="M320 994 V1019" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="48" y="1026" width="544" height="110" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1070" font-size="28" class="heading" text-anchor="middle">Softmax separately for each head</text>
+<text x="320" y="1112" font-size="26" class="" text-anchor="middle">One attention weight set for this head</text>
+<path d="M320 1142 V1167" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="48" y="1174" width="544" height="124" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1221" font-size="28" class="heading" text-anchor="middle">Weight the cached c_j values</text>
+<text x="320" y="1270" font-size="28" class="" text-anchor="middle">Per-head z_t,i · r dimensions</text>
+<path d="M320 1304 V1329" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="48" y="1336" width="544" height="124" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1383" font-size="28" class="heading" text-anchor="middle">Apply this head’s value projection</text>
+<text x="320" y="1432" font-size="28" class="" text-anchor="middle">Map z_t,i to the value dimension</text>
+<path d="M320 1466 V1491" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="48" y="1498" width="544" height="72" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1545" font-size="32" class="heading" text-anchor="middle">Output projection</text>
+<text x="320" y="1620" font-size="26" class="heading" text-anchor="middle">Keep head-specific z until value projection</text>
+<text x="320" y="1664" font-size="26" class="secondary" text-anchor="middle">No full historical K / V reconstruction</text>
+<text x="320" y="1714" font-size="24" class="muted" text-anchor="middle">Original mechanism · Not measured data</text>
+</svg>
