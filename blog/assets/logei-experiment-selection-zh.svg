@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="1840" viewBox="0 0 640 1840" role="img" aria-labelledby="title desc" xml:lang="zh">
+<title id="title">LogEI：修复数值信号 用于实验选点</title><desc id="desc">原创解析单点实验选点机制示意，非实验曲线或测量数据。两条替代路径共享同一数据、同一高斯后验的均值与标准差，且本轮最好值固定。普通 EI 直接计算在负尾可能因相消和下溢得到零值，数值梯度失去有效信号。稳定 LogEI 从一开始稳定计算 log-h，而非对已经为零的 EI 取对数，以保留相对数值和搜索方向；这不保证梯度处处非零。在标准差为正、全局精确优化的条件下，两者理论最优点集合相同，但有限精度或局部优化可能选出不同实验点。选出的候选进入物理实验，新观测加入数据集后更新后验与最好值，形成下一轮闭环。LogEI 的数值实现不会改变训练后验。仍须检验后验校准、候选可行性、优化器与实验条件；数值稳定不证明科学发现或湿实验收益。</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#355C7D" stroke-width="1.5"/></marker></defs>
+<style>text{font-family:Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#1F2933}.heading{font-weight:700}.accent{fill:#355C7D}.secondary{fill:#526171}.muted{fill:#607080}</style>
+<rect width="640" height="1840" fill="#F7F8FA"/>
+<text x="32" y="48" font-size="34" class="heading" text-anchor="start">LogEI：修复数值信号</text>
+<text x="32" y="88" font-size="34" class="heading" text-anchor="start">用于实验选点</text>
+<text x="32" y="132" font-size="26" class="secondary" text-anchor="start">改变采集函数的数值实现，不改变后验</text>
+<rect x="44" y="164" width="548" height="150" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="207" font-size="30" class="heading" text-anchor="middle">同一个高斯后验</text>
+<text x="320" y="250" font-size="27" class="secondary" text-anchor="middle">同一数据 · 同一均值与不确定性</text>
+<text x="320" y="291" font-size="27" class="secondary" text-anchor="middle">最好值在本轮选点时固定</text>
+<text x="320" y="359" font-size="28" class="heading accent" text-anchor="middle">两条替代数值路径</text>
+<path d="M320 320 V335 H23 V730" fill="none" stroke="#355C7D" stroke-width="2.5"/>
+<rect x="64" y="390" width="514" height="172" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="436" font-size="28" class="heading" text-anchor="middle">普通 EI：直接计算</text>
+<text x="320" y="484" font-size="26" class="secondary" text-anchor="middle">负尾可能发生相消与下溢</text>
+<text x="320" y="529" font-size="26" class="secondary" text-anchor="middle">得到零值，数值梯度失去有效信号</text>
+<path d="M23 478 H56" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="64" y="606" width="514" height="246" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="651" font-size="30" class="heading accent" text-anchor="middle">稳定 LogEI</text>
+<text x="320" y="695" font-size="26" class="secondary" text-anchor="middle">从一开始稳定计算 log-h</text>
+<text x="320" y="736" font-size="26" class="secondary" text-anchor="middle">避免先把 EI 算成零再取对数</text>
+<text x="320" y="777" font-size="26" class="secondary" text-anchor="middle">保留相对数值与搜索方向</text>
+<text x="320" y="818" font-size="26" class="muted" text-anchor="middle">不保证梯度处处非零</text>
+<path d="M23 730 H56" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M584 478 H601 V889 H320 V915" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M584 730 H601" fill="none" stroke="#355C7D" stroke-width="2.5"/>
+<rect x="44" y="926" width="548" height="194" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="971" font-size="29" class="heading" text-anchor="middle">理论最优点集合相同</text>
+<text x="320" y="1014" font-size="27" class="secondary" text-anchor="middle">标准差为正 · 全局精确优化</text>
+<text x="320" y="1056" font-size="27" class="secondary" text-anchor="middle">有限精度或局部搜索中</text>
+<text x="320" y="1095" font-size="26" class="secondary" text-anchor="middle">实际选点仍可能不同</text>
+<path d="M320 1127 V1152" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="44" y="1163" width="548" height="126" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1210" font-size="27" class="heading" text-anchor="middle">选择候选 → 物理实验</text>
+<text x="320" y="1255" font-size="27" class="secondary" text-anchor="middle">在实验中获得新的测量</text>
+<path d="M320 1296 V1321" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="44" y="1332" width="548" height="122" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1379" font-size="28" class="heading" text-anchor="middle">新观测进入数据集</text>
+<text x="320" y="1422" font-size="27" class="secondary" text-anchor="middle">更新后验与最好值，开始下一轮</text>
+<path d="M599 1391 H624 V238 H601" fill="none" stroke="#355C7D" stroke-width="2.5" stroke-dasharray="7 6" marker-end="url(#arrow)"/>
+<rect x="44" y="1495" width="548" height="230" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="320" y="1539" font-size="29" class="heading" text-anchor="middle">数值修复之后，仍须核查</text>
+<text x="320" y="1580" font-size="27" class="secondary" text-anchor="middle">后验校准 · 候选可行性</text>
+<text x="320" y="1621" font-size="27" class="secondary" text-anchor="middle">优化器与实验条件</text>
+<text x="320" y="1663" font-size="26" class="secondary" text-anchor="middle">数值稳定本身不证明科学发现</text>
+<text x="320" y="1702" font-size="26" class="secondary" text-anchor="middle">也不证明湿实验收益</text>
+<text x="320" y="1781" font-size="24" class="muted" text-anchor="middle">解析单点选点示意 · 非实验曲线</text>
+<text x="320" y="1818" font-size="25" class="muted" text-anchor="middle">原创机制示意 · 非测量数据</text>
+</svg>

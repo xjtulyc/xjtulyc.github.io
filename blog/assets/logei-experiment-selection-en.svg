@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="1840" viewBox="0 0 640 1840" role="img" aria-labelledby="title desc" xml:lang="en">
+<title id="title">LogEI: a numerical repair for experiment selection</title><desc id="desc">Original mechanism illustration for analytic single-point experiment selection, not an experimental curve or measured data. Two alternative numerical paths share the same data, Gaussian posterior mean and standard deviation, and best value fixed for the current selection. Direct evaluation of ordinary EI can suffer negative-tail cancellation and underflow, producing zeros and ineffective numerical gradients. Stable LogEI computes log-h stably from the outset, rather than taking the logarithm of an EI value already rounded to zero, to preserve relative numerical values and search directions. Gradients are not guaranteed to be nonzero everywhere. With positive standard deviation and exact global optimization, the theoretical maximizing sets coincide; finite precision or local search can produce different practical selections. A selected point is tested physically, then its observation is added to the data to update the posterior and best value for the next round. The LogEI implementation does not change posterior training. Posterior calibration, candidate feasibility, optimizer behavior and experimental conditions still need checking. Numerical stability alone does not prove scientific discovery or wet-lab benefit.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#355C7D" stroke-width="1.5"/></marker></defs>
+<style>text{font-family:Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#1F2933}.heading{font-weight:700}.accent{fill:#355C7D}.secondary{fill:#526171}.muted{fill:#607080}</style>
+<rect width="640" height="1840" fill="#F7F8FA"/>
+<text x="32" y="48" font-size="34" class="heading" text-anchor="start">LogEI: a numerical repair</text>
+<text x="32" y="88" font-size="34" class="heading" text-anchor="start">for experiment selection</text>
+<text x="32" y="132" font-size="26" class="secondary" text-anchor="start">Change acquisition numerics, not the posterior</text>
+<rect x="44" y="164" width="548" height="150" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="207" font-size="30" class="heading" text-anchor="middle">The same Gaussian posterior</text>
+<text x="320" y="250" font-size="27" class="secondary" text-anchor="middle">Same data, mean and uncertainty</text>
+<text x="320" y="291" font-size="27" class="secondary" text-anchor="middle">Best value fixed for this selection</text>
+<text x="320" y="359" font-size="28" class="heading accent" text-anchor="middle">Two alternative numerical paths</text>
+<path d="M320 320 V335 H23 V730" fill="none" stroke="#355C7D" stroke-width="2.5"/>
+<rect x="64" y="390" width="514" height="172" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="436" font-size="28" class="heading" text-anchor="middle">Ordinary EI: direct evaluation</text>
+<text x="320" y="484" font-size="26" class="secondary" text-anchor="middle">Negative-tail cancellation / underflow</text>
+<text x="320" y="529" font-size="26" class="secondary" text-anchor="middle">Possible zeros and ineffective gradients</text>
+<path d="M23 478 H56" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="64" y="606" width="514" height="246" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="651" font-size="30" class="heading accent" text-anchor="middle">Stable LogEI</text>
+<text x="320" y="695" font-size="26" class="secondary" text-anchor="middle">Compute log-h stably from the outset</text>
+<text x="320" y="736" font-size="26" class="secondary" text-anchor="middle">Not the log of an already-zero EI</text>
+<text x="320" y="777" font-size="26" class="secondary" text-anchor="middle">Preserve relative values and directions</text>
+<text x="320" y="818" font-size="26" class="muted" text-anchor="middle">No promise of nonzero gradients</text>
+<path d="M23 730 H56" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M584 478 H601 V889 H320 V915" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M584 730 H601" fill="none" stroke="#355C7D" stroke-width="2.5"/>
+<rect x="44" y="926" width="548" height="194" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="971" font-size="29" class="heading" text-anchor="middle">Same theoretical maximizers</text>
+<text x="320" y="1014" font-size="27" class="secondary" text-anchor="middle">Positive standard deviation</text>
+<text x="320" y="1056" font-size="27" class="secondary" text-anchor="middle">and exact global optimization</text>
+<text x="320" y="1095" font-size="26" class="secondary" text-anchor="middle">Actual numerical selections can differ</text>
+<path d="M320 1127 V1152" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="44" y="1163" width="548" height="126" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1210" font-size="27" class="heading" text-anchor="middle">Choose a point → Physical experiment</text>
+<text x="320" y="1255" font-size="27" class="secondary" text-anchor="middle">Obtain a new measurement</text>
+<path d="M320 1296 V1321" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="44" y="1332" width="548" height="122" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1379" font-size="28" class="heading" text-anchor="middle">Add the observation to the data</text>
+<text x="320" y="1422" font-size="27" class="secondary" text-anchor="middle">Update the posterior and best value</text>
+<path d="M599 1391 H624 V238 H601" fill="none" stroke="#355C7D" stroke-width="2.5" stroke-dasharray="7 6" marker-end="url(#arrow)"/>
+<rect x="44" y="1495" width="548" height="230" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="320" y="1539" font-size="29" class="heading" text-anchor="middle">Still required after the repair</text>
+<text x="320" y="1580" font-size="27" class="secondary" text-anchor="middle">Posterior calibration · Feasibility</text>
+<text x="320" y="1621" font-size="27" class="secondary" text-anchor="middle">Optimizer and experimental checks</text>
+<text x="320" y="1663" font-size="26" class="secondary" text-anchor="middle">Numerical stability alone proves neither</text>
+<text x="320" y="1702" font-size="26" class="secondary" text-anchor="middle">scientific discovery nor wet-lab benefit</text>
+<text x="320" y="1781" font-size="24" class="muted" text-anchor="middle">Analytic single-point selection · No data curve</text>
+<text x="320" y="1818" font-size="25" class="muted" text-anchor="middle">Original mechanism · Not measured data</text>
+</svg>

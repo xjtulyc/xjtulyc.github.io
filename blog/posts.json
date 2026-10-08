@@ -1,5 +1,37 @@
 [
   {
+    "title": "贝叶斯实验选点为何需要稳定的 LogEI？",
+    "summary": "从高斯积分推导 EI 的负尾相消、下溢与稳定对数表达，执行可复现数值对照，并明确批量近似、噪声、预算和科学实验验证的边界。",
+    "tags": [
+      "AI4S",
+      "主动实验",
+      "贝叶斯优化"
+    ],
+    "date": "2026-10-08",
+    "category": "technical",
+    "url": "blog/logei-experiment-selection.html",
+    "translations": {
+      "zh": {
+        "title": "贝叶斯实验选点为何需要稳定的 LogEI？",
+        "summary": "从高斯积分推导 EI 的负尾相消、下溢与稳定对数表达，执行可复现数值对照，并明确批量近似、噪声、预算和科学实验验证的边界。",
+        "tags": [
+          "AI4S",
+          "主动实验",
+          "贝叶斯优化"
+        ]
+      },
+      "en": {
+        "title": "Why Bayesian Experiment Selection Needs Numerically Stable LogEI",
+        "summary": "Derive negative-tail cancellation, underflow, and stable log evaluation from the Gaussian EI integral; reproduce scalar checks and separate batch approximations, noise, budgets, and scientific validation.",
+        "tags": [
+          "AI4S",
+          "Active experimentation",
+          "Bayesian optimization"
+        ]
+      }
+    }
+  },
+  {
     "title": "GRPO 的组内归一化，究竟改变了什么？",
     "summary": "从有限组基线推导到二元策略的精确枚举，拆解减均值、除标准差和动态采样，说明训练信号与生成预算应怎样分别核算。",
     "tags": [
