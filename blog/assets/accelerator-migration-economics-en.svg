@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="1880" viewBox="0 0 640 1880" role="img" aria-labelledby="title desc" xml:lang="en">
+<title id="title">From interface reuse · to a viable switching option</title><desc id="desc">Original analysis, not measured data. Reusable Python, APIs and open implementations may reduce some adaptation and relearning work. A candidate platform must still pass three acceptance layers: numerics and model quality; production prefill, decode, cache, scheduling and service objectives; and recovery plus upgrade regression. Model or compiler upgrades trigger renewed acceptance. Assess fixed migration costs and ongoing operating costs under the same workload and planning horizon. Passing quality, cost and risk criteria can create an actionable purchasing alternative, which may improve bargaining leverage and delivery competition. Check open licensing, single-operator benchmarks and commercial-support availability separately. No price reduction or migration payback is guaranteed.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#355C7D" stroke-width="1.5"/></marker></defs>
+<style>text{font-family:Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#1F2933}.heading{font-weight:700}.accent{fill:#355C7D}.secondary{fill:#526171}.muted{fill:#607080}</style>
+<rect width="640" height="1880" fill="#F7F8FA"/>
+<text x="32" y="48" font-size="34" class="heading" text-anchor="start">From interface reuse</text>
+<text x="32" y="88" font-size="34" class="heading" text-anchor="start">to a viable switching option</text>
+<text x="32" y="132" font-size="26" class="secondary" text-anchor="start">How portability can widen purchasing choices</text>
+<rect x="40" y="162" width="560" height="122" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="206" font-size="30" class="heading" text-anchor="middle">Reusable Python / APIs</text>
+<text x="320" y="249" font-size="27" class="secondary" text-anchor="middle">and open implementations</text>
+<path d="M320 291 V319" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="40" y="330" width="560" height="122" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="375" font-size="29" class="heading" text-anchor="middle">Less adaptation and relearning</text>
+<text x="320" y="418" font-size="26" class="secondary" text-anchor="middle">for the portions that can be reused</text>
+<path d="M320 460 V485" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="40" y="496" width="560" height="568" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="539" font-size="30" class="heading accent" text-anchor="middle">Three acceptance layers</text>
+<rect x="60" y="566" width="520" height="110" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="608" font-size="28" class="heading" text-anchor="middle">01  Numerics and model quality</text>
+<text x="320" y="649" font-size="26" class="secondary" text-anchor="middle">Precision, quantization and task quality</text>
+<rect x="60" y="694" width="520" height="150" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="736" font-size="29" class="heading" text-anchor="middle">02  Production inference service</text>
+<text x="320" y="777" font-size="26" class="secondary" text-anchor="middle">Prefill / decode / cache / scheduling</text>
+<text x="320" y="818" font-size="26" class="secondary" text-anchor="middle">Real-load latency and error budgets</text>
+<rect x="60" y="862" width="520" height="110" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="904" font-size="28" class="heading" text-anchor="middle">03  Recovery and upgrade regression</text>
+<text x="320" y="947" font-size="26" class="secondary" text-anchor="middle">Recovery, rollback and compatibility</text>
+<text x="320" y="1014" font-size="26" class="secondary" text-anchor="middle">Model / compiler upgrades</text>
+<text x="320" y="1050" font-size="26" class="heading accent" text-anchor="middle">Repeat acceptance checks</text>
+<path d="M572 1023 H617 V540 H589" fill="none" stroke="#355C7D" stroke-width="2.2" stroke-dasharray="7 6" marker-end="url(#arrow)"/>
+<path d="M320 1072 V1097" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="40" y="1108" width="560" height="158" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1151" font-size="28" class="heading" text-anchor="middle">Assess migration and operating cost</text>
+<text x="320" y="1194" font-size="26" class="secondary" text-anchor="middle">Same workload and planning horizon</text>
+<text x="320" y="1237" font-size="27" class="secondary" text-anchor="middle">Fixed migration work + ongoing cost</text>
+<path d="M320 1274 V1301" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="40" y="1312" width="560" height="122" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1357" font-size="28" class="heading" text-anchor="middle">An actionable purchasing option</text>
+<text x="320" y="1400" font-size="27" class="secondary" text-anchor="middle">Acceptable quality, cost and risk</text>
+<path d="M320 1442 V1469" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="40" y="1480" width="560" height="122" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1525" font-size="30" class="heading accent" text-anchor="middle">Potential bargaining leverage</text>
+<text x="320" y="1568" font-size="27" class="secondary" text-anchor="middle">and stronger delivery competition</text>
+<rect x="40" y="1638" width="560" height="158" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="320" y="1682" font-size="28" class="heading" text-anchor="middle">Check independently</text>
+<text x="320" y="1725" font-size="26" class="secondary" text-anchor="middle">Open license · Single-operator tests</text>
+<text x="320" y="1766" font-size="26" class="secondary" text-anchor="middle">Available commercial support</text>
+<text x="320" y="1830" font-size="24" class="muted" text-anchor="middle">A conditional path, not guaranteed savings</text>
+<text x="320" y="1865" font-size="25" class="muted" text-anchor="middle">Original analysis · Not measured data</text>
+</svg>

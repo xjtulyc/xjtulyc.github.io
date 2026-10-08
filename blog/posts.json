@@ -32,6 +32,38 @@
     }
   },
   {
+    "title": "开源算力软件如何改变芯片采购议价权？",
+    "summary": "从 DeepSeek 的 Ascend 工具、NVIDIA Dynamo 与 AMD 软件优化出发，分析接口复用如何影响迁移固定成本，以及什么条件能让替代算力成为真实采购选项。",
+    "tags": [
+      "AI 算力",
+      "软件生态",
+      "商业判断"
+    ],
+    "date": "2026-10-08",
+    "category": "business",
+    "url": "blog/accelerator-migration-economics.html",
+    "translations": {
+      "zh": {
+        "title": "开源算力软件如何改变芯片采购议价权？",
+        "summary": "从 DeepSeek 的 Ascend 工具、NVIDIA Dynamo 与 AMD 软件优化出发，分析接口复用如何影响迁移固定成本，以及什么条件能让替代算力成为真实采购选项。",
+        "tags": [
+          "AI 算力",
+          "软件生态",
+          "商业判断"
+        ]
+      },
+      "en": {
+        "title": "How Does Open Compute Software Change Bargaining Power in AI Hardware?",
+        "summary": "DeepSeek’s Ascend tools, NVIDIA Dynamo, and AMD software optimization reveal how interface reuse can change fixed migration costs—and what makes alternative compute an executable procurement option.",
+        "tags": [
+          "AI infrastructure",
+          "Software ecosystems",
+          "Business analysis"
+        ]
+      }
+    }
+  },
+  {
     "title": "模型开放之后，谁能用好实验反馈？从 Lilly TuneLab 看 AI 制药平台的边界",
     "summary": "TuneLab 接入金斯瑞与科研数据工具后，价值能否从模型访问延伸到持续学习？关键在实验可比性、使用许可和对研发决策的增量价值，而非合作名单与调用量。",
     "tags": [
