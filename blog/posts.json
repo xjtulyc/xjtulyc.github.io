@@ -32,6 +32,38 @@
     }
   },
   {
+    "title": "FlashAttention 分块之后，如何保留全局 softmax？",
+    "summary": "从块内归一化的反例推导最大值、分母与未归一化加权和的合并，检验掩码和空行，并区分反向重算、HBM 访问、prefill 与 decode 的真实边界。",
+    "tags": [
+      "LLM",
+      "FlashAttention",
+      "在线归约"
+    ],
+    "date": "2026-10-08",
+    "category": "technical",
+    "url": "blog/online-softmax-attention.html",
+    "translations": {
+      "zh": {
+        "title": "FlashAttention 分块之后，如何保留全局 softmax？",
+        "summary": "从块内归一化的反例推导最大值、分母与未归一化加权和的合并，检验掩码和空行，并区分反向重算、HBM 访问、prefill 与 decode 的真实边界。",
+        "tags": [
+          "LLM",
+          "FlashAttention",
+          "在线归约"
+        ]
+      },
+      "en": {
+        "title": "How Does FlashAttention Preserve Global Softmax Across Tiles?",
+        "summary": "Derive mergeable maxima, denominators, and unnormalized weighted sums from a tile-local counterexample; check masks and empty rows, then separate backward recomputation, HBM traffic, prefill, and decode.",
+        "tags": [
+          "LLM",
+          "FlashAttention",
+          "Online reduction"
+        ]
+      }
+    }
+  },
+  {
     "title": "贝叶斯实验选点为何需要稳定的 LogEI？",
     "summary": "从高斯积分推导 EI 的负尾相消、下溢与稳定对数表达，执行可复现数值对照，并明确批量近似、噪声、预算和科学实验验证的边界。",
     "tags": [
