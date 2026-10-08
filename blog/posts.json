@@ -1,5 +1,37 @@
 [
   {
+    "title": "GRPO 的组内归一化，究竟改变了什么？",
+    "summary": "从有限组基线推导到二元策略的精确枚举，拆解减均值、除标准差和动态采样，说明训练信号与生成预算应怎样分别核算。",
+    "tags": [
+      "LLM",
+      "强化学习",
+      "GRPO"
+    ],
+    "date": "2026-10-08",
+    "category": "technical",
+    "url": "blog/grpo-group-normalization.html",
+    "translations": {
+      "zh": {
+        "title": "GRPO 的组内归一化，究竟改变了什么？",
+        "summary": "从有限组基线推导到二元策略的精确枚举，拆解减均值、除标准差和动态采样，说明训练信号与生成预算应怎样分别核算。",
+        "tags": [
+          "LLM",
+          "强化学习",
+          "GRPO"
+        ]
+      },
+      "en": {
+        "title": "What Does Group Normalization Change in GRPO?",
+        "summary": "Finite-group baseline derivations and exact Bernoulli enumeration separate mean subtraction, standard-deviation scaling, and dynamic sampling, connecting gradient signals to generation budgets.",
+        "tags": [
+          "LLM",
+          "Reinforcement learning",
+          "GRPO"
+        ]
+      }
+    }
+  },
+  {
     "title": "模型开放之后，谁能用好实验反馈？从 Lilly TuneLab 看 AI 制药平台的边界",
     "summary": "TuneLab 接入金斯瑞与科研数据工具后，价值能否从模型访问延伸到持续学习？关键在实验可比性、使用许可和对研发决策的增量价值，而非合作名单与调用量。",
     "tags": [

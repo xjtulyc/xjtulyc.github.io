@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="1780" viewBox="0 0 640 1780" role="img" aria-labelledby="title desc" xml:lang="zh">
+<title id="title">GRPO：组内比较与采样预算</title><desc id="desc">原创机制示意，非实测数据。同一问题从本轮固定的旧策略采样G个回答，验证器给出奖励，奖励与组统计作为停止梯度的常量。减去组内平均奖励后，同奖组的奖励优势为零；不表示KL、熵或其他损失项的梯度也为零。随后采用两种替代方案之一：除以统一固定正数，或按组内标准差缩放并保护零方差，后者改变问题间的相对权重。重新计算所采样回答token的对数概率并应用回答掩码，奖励优势路径的梯度回传策略的对数概率计算。单独列出可选DAPO式动态采样：在二值正确性设定下，丢弃全对或全错组并补充生成；保留组比例、包含丢弃组的总生成token和实际耗时应分别记录。图不承诺耗时变化，也不表示GRPO或DAPO完整算法仅有这些步骤。</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#355C7D" stroke-width="1.5"/></marker></defs>
+<style>text{font-family:Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#1F2933}.heading{font-weight:700}.accent{fill:#355C7D}.secondary{fill:#526171}.muted{fill:#607080}</style>
+<rect width="640" height="1780" fill="#F7F8FA"/>
+<text x="32" y="58" font-size="33" class="heading" text-anchor="start">GRPO：组内比较与采样预算</text>
+<text x="32" y="132" font-size="26" class="secondary" text-anchor="start">将奖励优势路径与生成成本分开看</text>
+<rect x="40" y="162" width="560" height="116" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="207" font-size="30" class="heading" text-anchor="middle">01  同一问题，采样 G 个回答</text>
+<text x="320" y="249" font-size="27" class="secondary" text-anchor="middle">由本轮固定的旧策略生成</text>
+<path d="M320 284 V309" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="40" y="318" width="560" height="150" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="361" font-size="30" class="heading" text-anchor="middle">02  验证器给出奖励</text>
+<text x="320" y="403" font-size="27" class="secondary" text-anchor="middle">奖励和组统计均视为常量</text>
+<text x="320" y="443" font-size="26" class="secondary" text-anchor="middle">不经评分过程回传梯度</text>
+<path d="M320 474 V503" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="40" y="512" width="560" height="126" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="558" font-size="30" class="heading" text-anchor="middle">03  减去组内平均奖励</text>
+<text x="320" y="601" font-size="27" class="secondary" text-anchor="middle">同奖组：奖励优势为零</text>
+<path d="M320 644 V660 H42 V959" fill="none" stroke="#355C7D" stroke-width="2.5"/>
+<text x="320" y="693" font-size="27" class="heading accent" text-anchor="middle">两种替代尺度</text>
+<rect x="80" y="724" width="480" height="122" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="769" font-size="29" class="heading accent" text-anchor="middle">A  固定尺度</text>
+<text x="320" y="809" font-size="26" class="secondary" text-anchor="middle">除以统一、固定的正数</text>
+<rect x="80" y="886" width="480" height="166" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="930" font-size="28" class="heading accent" text-anchor="middle">B  组内标准差</text>
+<text x="320" y="972" font-size="26" class="secondary" text-anchor="middle">按组内奖励的离散程度缩放</text>
+<text x="320" y="1012" font-size="26" class="secondary" text-anchor="middle">保护零方差；改变问题间权重</text>
+<path d="M42 785 H72" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M42 959 H72" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M566 785 H600 V1080 H320 V1107" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M566 969 H600" fill="none" stroke="#355C7D" stroke-width="2.5"/>
+<rect x="40" y="1120" width="560" height="194" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1163" font-size="30" class="heading" text-anchor="middle">04  掩码下的 token logprob</text>
+<text x="320" y="1207" font-size="26" class="secondary" text-anchor="middle">重算所采样回答的 token logprob</text>
+<text x="320" y="1245" font-size="27" class="secondary" text-anchor="middle">仅回答 token 计入奖励目标</text>
+<text x="320" y="1283" font-size="26" class="secondary" text-anchor="middle">梯度经 logprob 回传策略</text>
+<rect x="40" y="1362" width="560" height="298" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="320" y="1408" font-size="29" class="heading accent" text-anchor="middle">可选：DAPO 式动态采样</text>
+<text x="320" y="1450" font-size="27" class="secondary" text-anchor="middle">二值正确性：丢弃全对 / 全错组</text>
+<text x="320" y="1490" font-size="27" class="secondary" text-anchor="middle">继续生成，补足保留组</text>
+<path d="M60 1512 H580" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1554" font-size="27" class="secondary" text-anchor="middle">分别记录保留组比例</text>
+<text x="320" y="1593" font-size="26" class="secondary" text-anchor="middle">以及总生成 token 和实际耗时</text>
+<text x="320" y="1632" font-size="26" class="secondary" text-anchor="middle">丢弃组的生成也计入成本</text>
+<text x="320" y="1711" font-size="24" class="muted" text-anchor="middle">仅示奖励优势通路；其他损失项另计</text>
+<text x="320" y="1752" font-size="25" class="muted" text-anchor="middle">原创机制示意 · 非实测数据</text>
+</svg>

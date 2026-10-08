@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="1780" viewBox="0 0 640 1780" role="img" aria-labelledby="title desc" xml:lang="en">
+<title id="title">GRPO: relative rewards and sampling budgets</title><desc id="desc">Original mechanism illustration, not measured data. Sample G responses to one prompt using the old policy fixed for the round. A verifier supplies rewards; rewards and group statistics are treated as detached constants. Subtract the group mean: equal rewards produce zero reward advantage, not necessarily zero gradients from KL, entropy, or other losses. Choose one of two alternative scales: one fixed positive constant, or the group standard deviation with a zero-spread guard. The latter changes relative prompt weights. Recompute sampled response token log probabilities and apply a response mask; the reward-advantage path backpropagates through policy log probabilities. A separate optional DAPO-style dynamic-sampling panel is restricted to binary correctness: discard all-correct and all-incorrect groups and generate more to fill the retained batch. Report the retained-group fraction, all generated tokens including discarded groups, and elapsed time separately. No wall-time change is guaranteed. This is not the complete GRPO or DAPO algorithm.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#355C7D" stroke-width="1.5"/></marker></defs>
+<style>text{font-family:Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#1F2933}.heading{font-weight:700}.accent{fill:#355C7D}.secondary{fill:#526171}.muted{fill:#607080}</style>
+<rect width="640" height="1780" fill="#F7F8FA"/>
+<text x="32" y="48" font-size="34" class="heading" text-anchor="start">GRPO: relative rewards</text>
+<text x="32" y="88" font-size="34" class="heading" text-anchor="start">and sampling budgets</text>
+<text x="32" y="132" font-size="26" class="secondary" text-anchor="start">Separate the reward path from generation cost</text>
+<rect x="40" y="162" width="560" height="116" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="207" font-size="30" class="heading" text-anchor="middle">01  One prompt, G responses</text>
+<text x="320" y="249" font-size="27" class="secondary" text-anchor="middle">Sample with the fixed old policy</text>
+<path d="M320 284 V309" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="40" y="318" width="560" height="150" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="361" font-size="30" class="heading" text-anchor="middle">02  Verifier rewards</text>
+<text x="320" y="403" font-size="27" class="secondary" text-anchor="middle">Treat rewards and group statistics</text>
+<text x="320" y="443" font-size="26" class="secondary" text-anchor="middle">as constants: no gradient through scoring</text>
+<path d="M320 474 V503" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="40" y="512" width="560" height="126" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="558" font-size="30" class="heading" text-anchor="middle">03  Subtract the group mean</text>
+<text x="320" y="601" font-size="27" class="secondary" text-anchor="middle">Equal rewards: zero reward advantage</text>
+<path d="M320 644 V660 H42 V959" fill="none" stroke="#355C7D" stroke-width="2.5"/>
+<text x="320" y="693" font-size="27" class="heading accent" text-anchor="middle">Alternative scales</text>
+<rect x="80" y="724" width="480" height="122" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="769" font-size="29" class="heading accent" text-anchor="middle">A  Fixed scale</text>
+<text x="320" y="809" font-size="26" class="secondary" text-anchor="middle">Divide by one fixed positive constant</text>
+<rect x="80" y="886" width="480" height="166" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="930" font-size="28" class="heading accent" text-anchor="middle">B  Group standard deviation</text>
+<text x="320" y="972" font-size="26" class="secondary" text-anchor="middle">Scale by the group reward spread</text>
+<text x="320" y="1012" font-size="26" class="secondary" text-anchor="middle">Guard zero spread; reweight prompts</text>
+<path d="M42 785 H72" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M42 959 H72" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M566 785 H600 V1080 H320 V1107" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M566 969 H600" fill="none" stroke="#355C7D" stroke-width="2.5"/>
+<rect x="40" y="1120" width="560" height="194" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1163" font-size="30" class="heading" text-anchor="middle">04  Masked token logprobs</text>
+<text x="320" y="1207" font-size="26" class="secondary" text-anchor="middle">Recompute sampled response logprobs</text>
+<text x="320" y="1245" font-size="27" class="secondary" text-anchor="middle">Mask to response tokens</text>
+<text x="320" y="1283" font-size="26" class="secondary" text-anchor="middle">Policy gradients flow through logprobs</text>
+<rect x="40" y="1362" width="560" height="298" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="320" y="1408" font-size="29" class="heading accent" text-anchor="middle">Optional: DAPO-style sampling</text>
+<text x="320" y="1450" font-size="27" class="secondary" text-anchor="middle">Binary correctness: keep mixed groups</text>
+<text x="320" y="1490" font-size="27" class="secondary" text-anchor="middle">Resample to fill the retained batch</text>
+<path d="M60 1512 H580" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1554" font-size="27" class="secondary" text-anchor="middle">Report the retained-group fraction</text>
+<text x="320" y="1593" font-size="26" class="secondary" text-anchor="middle">and total generated tokens / wall time</text>
+<text x="320" y="1632" font-size="26" class="secondary" text-anchor="middle">Count discarded groups in the cost</text>
+<text x="320" y="1711" font-size="24" class="muted" text-anchor="middle">Reward-advantage path; other losses separate</text>
+<text x="320" y="1752" font-size="25" class="muted" text-anchor="middle">Original mechanism · Not measured data</text>
+</svg>
