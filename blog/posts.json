@@ -1,5 +1,37 @@
 [
   {
+    "title": "同一个模型，限制推理地域为何改变价格与交付？",
+    "summary": "从阿里地域配置、Claude 的 US-only 计价和微软主权 AI 框架，拆开存储、推理与运行控制，解释可采购集合、容量约束和地域溢价，并给出未来 6–24 个月的反证。",
+    "tags": [
+      "地域推理",
+      "AI 交付",
+      "云服务"
+    ],
+    "date": "2026-10-08",
+    "category": "business",
+    "url": "blog/regional-inference-economics.html",
+    "translations": {
+      "zh": {
+        "title": "同一个模型，限制推理地域为何改变价格与交付？",
+        "summary": "从阿里地域配置、Claude 的 US-only 计价和微软主权 AI 框架，拆开存储、推理与运行控制，解释可采购集合、容量约束和地域溢价，并给出未来 6–24 个月的反证。",
+        "tags": [
+          "地域推理",
+          "AI 交付",
+          "云服务"
+        ]
+      },
+      "en": {
+        "title": "Why Inference Geography Changes AI Pricing and Delivery",
+        "summary": "Use Alibaba region configurations, Claude US-only pricing, and Microsoft sovereign AI to separate storage, inference, and operations; examine procurement eligibility, capacity constraints, geographic premiums, and falsifiable 6–24-month indicators.",
+        "tags": [
+          "Inference geography",
+          "AI delivery",
+          "Cloud services"
+        ]
+      }
+    }
+  },
+  {
     "title": "贝叶斯实验选点为何需要稳定的 LogEI？",
     "summary": "从高斯积分推导 EI 的负尾相消、下溢与稳定对数表达，执行可复现数值对照，并明确批量近似、噪声、预算和科学实验验证的边界。",
     "tags": [

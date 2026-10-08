@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="1830" viewBox="0 0 640 1830" role="img" aria-labelledby="title desc" xml:lang="zh">
+<title id="title">同一个模型 · 推理地域为何影响交付？</title><desc id="desc">原创分析示意，非测量数据。接入端点与静态存储的位置、模型推理的允许地域是两个需要分别核查的控制，不能从接入或存储在某地域推出推理也在该地域。固定同一模型与已有节点集合，比较 Global 允许路由与指定地域的允许集合；地域限制只能保留或删去原路由，两种集合可能相等，不保证路由数量必然减少。嵌套集合是概念示意，不表示设备数量或严格缩小。地域约束可能改变调度与可用容量，但不能据此推断成本或延迟一定升降。应在实际负载下测量延迟、容量与运行成本，并单独记录 token 报价。客户同时验收功能、推理执行位置、工具与日志边界及服务性能，才能综合评价可交付的地域服务。新 region 扩建计划不代表当地模型与功能目前已经可用；具体范围取决于对应产品的支持条件。</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#355C7D" stroke-width="1.5"/></marker></defs>
+<style>text{font-family:Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#1F2933}.heading{font-weight:700}.accent{fill:#355C7D}.secondary{fill:#526171}.muted{fill:#607080}</style>
+<rect width="640" height="1830" fill="#F7F8FA"/>
+<text x="32" y="48" font-size="34" class="heading" text-anchor="start">同一个模型</text>
+<text x="32" y="88" font-size="34" class="heading" text-anchor="start">推理地域为何影响交付？</text>
+<text x="32" y="132" font-size="26" class="secondary" text-anchor="start">固定同一模型与已有节点，比较允许范围</text>
+<rect x="40" y="164" width="560" height="280" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="207" font-size="29" class="heading accent" text-anchor="middle">两个位置控制，分别核查</text>
+<rect x="60" y="232" width="520" height="90" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="268" font-size="27" class="heading" text-anchor="middle">接入端点 / 静态存储位置</text>
+<text x="320" y="305" font-size="26" class="secondary" text-anchor="middle">不能由此推定模型的推理位置</text>
+<rect x="60" y="340" width="520" height="86" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="376" font-size="27" class="heading" text-anchor="middle">模型推理的允许范围</text>
+<text x="320" y="413" font-size="26" class="secondary" text-anchor="middle">决定可以使用哪些计算区域</text>
+<path d="M320 451 V479" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="40" y="491" width="560" height="264" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="535" font-size="29" class="heading" text-anchor="middle">Global：已有节点中的允许池</text>
+<rect x="87" y="574" width="466" height="110" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="320" y="619" font-size="28" class="heading accent" text-anchor="middle">地域限制下的允许集合</text>
+<text x="320" y="662" font-size="27" class="secondary" text-anchor="middle">也可能与 Global 集合相同</text>
+<text x="320" y="730" font-size="25" class="muted" text-anchor="middle">集合只保留或删去原路由，非机器数量</text>
+<path d="M320 763 V794" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="40" y="806" width="560" height="154" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="850" font-size="30" class="heading" text-anchor="middle">路由选择受地域约束</text>
+<text x="320" y="893" font-size="27" class="secondary" text-anchor="middle">可能改变调度与可用容量</text>
+<text x="320" y="933" font-size="26" class="secondary" text-anchor="middle">延迟和成本方向不能仅凭此判断</text>
+<path d="M320 968 V993" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="40" y="1005" width="560" height="150" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1049" font-size="28" class="heading" text-anchor="middle">在实际负载下测量</text>
+<text x="320" y="1090" font-size="26" class="secondary" text-anchor="middle">延迟 · 可用容量 · 运行成本</text>
+<text x="320" y="1132" font-size="26" class="secondary" text-anchor="middle">报价中的 token 单价另行记录</text>
+<path d="M320 1163 V1188" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="40" y="1200" width="560" height="164" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1247" font-size="30" class="heading accent" text-anchor="middle">交付时共同验收</text>
+<text x="320" y="1293" font-size="27" class="secondary" text-anchor="middle">功能 · 推理执行位置</text>
+<text x="320" y="1336" font-size="26" class="secondary" text-anchor="middle">工具与日志边界 · 服务性能</text>
+<path d="M320 1372 V1399" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="40" y="1411" width="560" height="124" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1456" font-size="29" class="heading" text-anchor="middle">形成可交付的地域服务</text>
+<text x="320" y="1500" font-size="26" class="secondary" text-anchor="middle">综合评估服务承诺与实际总成本</text>
+<rect x="40" y="1581" width="560" height="150" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="320" y="1624" font-size="29" class="heading" text-anchor="middle">扩建新 region 的计划</text>
+<text x="320" y="1668" font-size="26" class="secondary" text-anchor="middle">仍须核对当地模型与功能可用性</text>
+<text x="320" y="1710" font-size="26" class="secondary" text-anchor="middle">计划不代表目前已经可用</text>
+<text x="320" y="1780" font-size="24" class="muted" text-anchor="middle">具体范围以对应产品的支持条件为准</text>
+<text x="320" y="1815" font-size="25" class="muted" text-anchor="middle">原创分析示意 · 非测量数据</text>
+</svg>

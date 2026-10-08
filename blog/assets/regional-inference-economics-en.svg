@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="1830" viewBox="0 0 640 1830" role="img" aria-labelledby="title desc" xml:lang="en">
+<title id="title">The same model · Different regional boundaries</title><desc id="desc">Original analysis, not measured data. Access-endpoint location and data-at-rest location are distinct from the permitted scope of model inference. Neither entry nor storage in a region establishes that inference executes there. Hold the same model and existing node set fixed, and compare the Global permitted routes with a region-constrained set. The constraint can only retain or remove original routes; the two sets may be equal, so fewer routes are not guaranteed. The nested sets are conceptual, not machine counts or evidence of a strict reduction. Regional constraints may alter scheduling and available capacity, but do not alone establish the direction of latency or cost. Measure latency, capacity and operating cost on the actual workload, and record quoted token prices separately. Jointly accept features, inference execution location, tool and log boundaries, and service performance to evaluate a deliverable regional service. A region-expansion plan is not evidence that the relevant models and features are already available there. Exact scope depends on the supported product.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#355C7D" stroke-width="1.5"/></marker></defs>
+<style>text{font-family:Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#1F2933}.heading{font-weight:700}.accent{fill:#355C7D}.secondary{fill:#526171}.muted{fill:#607080}</style>
+<rect width="640" height="1830" fill="#F7F8FA"/>
+<text x="32" y="48" font-size="34" class="heading" text-anchor="start">The same model</text>
+<text x="32" y="88" font-size="34" class="heading" text-anchor="start">Different regional boundaries</text>
+<text x="32" y="132" font-size="26" class="secondary" text-anchor="start">Same model and existing nodes; compare scope</text>
+<rect x="40" y="164" width="560" height="280" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="207" font-size="29" class="heading accent" text-anchor="middle">Independent location controls</text>
+<rect x="60" y="232" width="520" height="90" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="268" font-size="27" class="heading" text-anchor="middle">Access endpoint / data at rest</text>
+<text x="320" y="305" font-size="26" class="secondary" text-anchor="middle">Does not determine inference location</text>
+<rect x="60" y="340" width="520" height="86" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="376" font-size="27" class="heading" text-anchor="middle">Permitted model inference scope</text>
+<text x="320" y="413" font-size="26" class="secondary" text-anchor="middle">Defines the allowed compute regions</text>
+<path d="M320 451 V479" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="40" y="491" width="560" height="264" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="535" font-size="29" class="heading" text-anchor="middle">Global: permitted existing-node pool</text>
+<rect x="87" y="574" width="466" height="110" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="320" y="619" font-size="28" class="heading accent" text-anchor="middle">Regional permitted set</text>
+<text x="320" y="662" font-size="27" class="secondary" text-anchor="middle">May equal the Global pool</text>
+<text x="320" y="730" font-size="25" class="muted" text-anchor="middle">Keep or remove routes, not machine counts</text>
+<path d="M320 763 V794" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="40" y="806" width="560" height="154" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="850" font-size="30" class="heading" text-anchor="middle">Region-bounded routing choices</text>
+<text x="320" y="893" font-size="27" class="secondary" text-anchor="middle">May change scheduling and capacity</text>
+<text x="320" y="933" font-size="26" class="secondary" text-anchor="middle">No fixed latency or cost outcome</text>
+<path d="M320 968 V993" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="40" y="1005" width="560" height="150" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1049" font-size="28" class="heading" text-anchor="middle">Measure on the actual workload</text>
+<text x="320" y="1090" font-size="26" class="secondary" text-anchor="middle">Latency, capacity and operating cost</text>
+<text x="320" y="1132" font-size="26" class="secondary" text-anchor="middle">Keep quoted token prices separate</text>
+<path d="M320 1163 V1188" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="40" y="1200" width="560" height="164" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1247" font-size="30" class="heading accent" text-anchor="middle">Joint delivery acceptance</text>
+<text x="320" y="1293" font-size="27" class="secondary" text-anchor="middle">Features · Inference location</text>
+<text x="320" y="1336" font-size="26" class="secondary" text-anchor="middle">Tool / log boundaries · Service SLOs</text>
+<path d="M320 1372 V1399" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="40" y="1411" width="560" height="124" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1456" font-size="29" class="heading" text-anchor="middle">A deliverable regional service</text>
+<text x="320" y="1500" font-size="26" class="secondary" text-anchor="middle">Evaluate commitments and actual cost</text>
+<rect x="40" y="1581" width="560" height="150" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="320" y="1624" font-size="29" class="heading" text-anchor="middle">A region expansion plan</text>
+<text x="320" y="1668" font-size="26" class="secondary" text-anchor="middle">Check model and feature availability</text>
+<text x="320" y="1710" font-size="26" class="secondary" text-anchor="middle">A plan is not current availability</text>
+<text x="320" y="1780" font-size="24" class="muted" text-anchor="middle">Exact scope depends on the supported product</text>
+<text x="320" y="1815" font-size="25" class="muted" text-anchor="middle">Original analysis · Not measured data</text>
+</svg>
