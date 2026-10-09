@@ -1,5 +1,40 @@
 [
   {
+    "title": "BoltzGen 的几何编码：连续坐标如何稳定地解出序列？",
+    "summary": "从十四原子槽与官方计数解码器出发，推导身份稳定性的距离间隔条件，用色氨酸和槽置换反例区分坐标误差、离散身份与化学有效性，并连接去噪、预算和可检验对照。",
+    "tags": [
+      "AI4S",
+      "蛋白质设计",
+      "BoltzGen",
+      "扩散模型"
+    ],
+    "date": "2026-10-09",
+    "category": "technical",
+    "url": "blog/geometric-residue-decoding.html",
+    "translations": {
+      "zh": {
+        "title": "BoltzGen 的几何编码：连续坐标如何稳定地解出序列？",
+        "summary": "从十四原子槽与官方计数解码器出发，推导身份稳定性的距离间隔条件，用色氨酸和槽置换反例区分坐标误差、离散身份与化学有效性，并连接去噪、预算和可检验对照。",
+        "tags": [
+          "AI4S",
+          "蛋白质设计",
+          "BoltzGen",
+          "扩散模型"
+        ]
+      },
+      "en": {
+        "title": "BoltzGen’s Geometric Code: When Is a Decoded Sequence Stable?",
+        "summary": "Starting from fourteen atom slots and the official count decoder, derive a distance-margin condition for identity stability, separate coordinate error from chemical validity through counterexamples, and connect denoising to budgets and testable controls.",
+        "tags": [
+          "AI4S",
+          "Protein design",
+          "BoltzGen",
+          "Diffusion"
+        ]
+      }
+    }
+  },
+  {
     "title": "同一个模型，限制推理地域为何改变价格与交付？",
     "summary": "从阿里地域配置、Claude 的 US-only 计价和微软主权 AI 框架，拆开存储、推理与运行控制，解释可采购集合、容量约束和地域溢价，并给出未来 6–24 个月的反证。",
     "tags": [

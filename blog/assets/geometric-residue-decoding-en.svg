@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="2450" viewBox="0 0 640 2450" role="img" aria-labelledby="title desc" xml:lang="en">
+<title id="title">Discrete identity in geometry</title><desc id="desc">Original atom14 mechanism, not molecular coordinates or experimental data; arrows represent information flow. The fixed representation has 14 slots: the first four are backbone N, CA, C and O, and the later ten contain side-chain heavy atoms and virtual markers. For Thr, slots 1–7 are N, CA, C, O, CB, OG1 and CG2; slots 8–10 are markers at N and slots 11–14 are markers at O. These seven markers are not physical atoms. The pinned decoder assigns each later slot to its nearest backbone anchor and counts it only if the distance is at most 0.5 Å. Counts ordered as N, CA, C and O give (3,0,0,4) for Thr; unmatched patterns yield UNK. If N is the nearest anchor, a distance of 0.49 Å contributes to N while 0.51 Å does not contribute. These illustrative values show how a small geometric perturbation may cross a discrete boundary, not an experimental result. Continuous noise is denoised to geometry, followed by residue decoding. The Thr template retains the first seven slots and removes the seven marker slots. Independent chemical validation remains necessary.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#355C7D" stroke-width="1.5"/></marker></defs>
+<style>text{font-family:Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#1F2933}.heading{font-weight:700}.accent{fill:#355C7D}.secondary{fill:#526171}.muted{fill:#607080}.slot{font-family:Arial,"PingFang SC",sans-serif;font-weight:700}</style>
+<rect width="640" height="2450" fill="#F7F8FA"/>
+<text x="32" y="62" font-size="36" class="heading" text-anchor="start">Discrete identity in geometry</text>
+<text x="32" y="112" font-size="26" class="secondary" text-anchor="start">BoltzGen atom14 · A pinned decoder mechanism</text>
+<rect x="24" y="160" width="592" height="320" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="204" font-size="30" class="heading" text-anchor="middle">01 · A fixed 14-slot representation</text>
+<text x="320" y="249" font-size="27" class="secondary" text-anchor="middle">Slots 1–4: backbone N / CA / C / O</text>
+<text x="320" y="287" font-size="27" class="secondary" text-anchor="middle">Slots 5–14: side-chain atoms + markers</text>
+<rect x="46" y="312" width="68" height="56" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="80" y="351" font-size="32" class="slot" text-anchor="middle">1</text>
+<rect x="124" y="312" width="68" height="56" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="158" y="351" font-size="32" class="slot" text-anchor="middle">2</text>
+<rect x="202" y="312" width="68" height="56" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="236" y="351" font-size="32" class="slot" text-anchor="middle">3</text>
+<rect x="280" y="312" width="68" height="56" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="314" y="351" font-size="32" class="slot" text-anchor="middle">4</text>
+<rect x="358" y="312" width="68" height="56" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="392" y="351" font-size="32" class="slot" text-anchor="middle">5</text>
+<rect x="436" y="312" width="68" height="56" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="470" y="351" font-size="32" class="slot" text-anchor="middle">6</text>
+<rect x="514" y="312" width="68" height="56" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="548" y="351" font-size="32" class="slot" text-anchor="middle">7</text>
+<rect x="46" y="390" width="68" height="56" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="80" y="429" font-size="32" class="slot" text-anchor="middle">8</text>
+<rect x="124" y="390" width="68" height="56" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="158" y="429" font-size="32" class="slot" text-anchor="middle">9</text>
+<rect x="202" y="390" width="68" height="56" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="236" y="429" font-size="32" class="slot" text-anchor="middle">10</text>
+<rect x="280" y="390" width="68" height="56" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="314" y="429" font-size="32" class="slot" text-anchor="middle">11</text>
+<rect x="358" y="390" width="68" height="56" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="392" y="429" font-size="32" class="slot" text-anchor="middle">12</text>
+<rect x="436" y="390" width="68" height="56" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="470" y="429" font-size="32" class="slot" text-anchor="middle">13</text>
+<rect x="514" y="390" width="68" height="56" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="548" y="429" font-size="32" class="slot" text-anchor="middle">14</text>
+<rect x="24" y="508" width="592" height="460" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="553" font-size="30" class="heading" text-anchor="middle">02 · Thr: seven real heavy atoms</text>
+<text x="320" y="598" font-size="27" class="secondary" text-anchor="middle">4 backbone atoms + 3 side-chain atoms</text>
+<rect x="46" y="622" width="68" height="94" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="80" y="649" font-size="24" class="muted" text-anchor="middle">1</text>
+<text x="80" y="694" font-size="27" class="slot" text-anchor="middle">N</text>
+<rect x="124" y="622" width="68" height="94" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="158" y="649" font-size="24" class="muted" text-anchor="middle">2</text>
+<text x="158" y="694" font-size="27" class="slot" text-anchor="middle">CA</text>
+<rect x="202" y="622" width="68" height="94" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="236" y="649" font-size="24" class="muted" text-anchor="middle">3</text>
+<text x="236" y="694" font-size="27" class="slot" text-anchor="middle">C</text>
+<rect x="280" y="622" width="68" height="94" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="314" y="649" font-size="24" class="muted" text-anchor="middle">4</text>
+<text x="314" y="694" font-size="27" class="slot" text-anchor="middle">O</text>
+<rect x="358" y="622" width="68" height="94" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="392" y="649" font-size="24" class="muted" text-anchor="middle">5</text>
+<text x="392" y="694" font-size="27" class="slot" text-anchor="middle">CB</text>
+<rect x="436" y="622" width="68" height="94" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="470" y="649" font-size="24" class="muted" text-anchor="middle">6</text>
+<text x="470" y="694" font-size="27" class="slot" text-anchor="middle">OG1</text>
+<rect x="514" y="622" width="68" height="94" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="548" y="649" font-size="24" class="muted" text-anchor="middle">7</text>
+<text x="548" y="694" font-size="27" class="slot" text-anchor="middle">CG2</text>
+<text x="320" y="760" font-size="27" class="heading accent" text-anchor="middle">Seven remaining slots: virtual markers</text>
+<rect x="46" y="784" width="68" height="94" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="80" y="811" font-size="24" class="muted" text-anchor="middle">8</text>
+<text x="80" y="856" font-size="27" class="slot accent" text-anchor="middle">N</text>
+<rect x="124" y="784" width="68" height="94" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="158" y="811" font-size="24" class="muted" text-anchor="middle">9</text>
+<text x="158" y="856" font-size="27" class="slot accent" text-anchor="middle">N</text>
+<rect x="202" y="784" width="68" height="94" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="236" y="811" font-size="24" class="muted" text-anchor="middle">10</text>
+<text x="236" y="856" font-size="27" class="slot accent" text-anchor="middle">N</text>
+<rect x="280" y="784" width="68" height="94" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="314" y="811" font-size="24" class="muted" text-anchor="middle">11</text>
+<text x="314" y="856" font-size="27" class="slot accent" text-anchor="middle">O</text>
+<rect x="358" y="784" width="68" height="94" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="392" y="811" font-size="24" class="muted" text-anchor="middle">12</text>
+<text x="392" y="856" font-size="27" class="slot accent" text-anchor="middle">O</text>
+<rect x="436" y="784" width="68" height="94" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="470" y="811" font-size="24" class="muted" text-anchor="middle">13</text>
+<text x="470" y="856" font-size="27" class="slot accent" text-anchor="middle">O</text>
+<rect x="514" y="784" width="68" height="94" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="548" y="811" font-size="24" class="muted" text-anchor="middle">14</text>
+<text x="548" y="856" font-size="27" class="slot accent" text-anchor="middle">O</text>
+<text x="320" y="916" font-size="28" class="secondary" text-anchor="middle">3 markers at N · 4 markers at O</text>
+<text x="320" y="950" font-size="26" class="secondary" text-anchor="middle">Markers are not physical atoms.</text>
+<rect x="24" y="996" width="592" height="662" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1041" font-size="29" class="heading" text-anchor="middle">03 · Nearest-anchor counts, then lookup</text>
+<text x="320" y="1084" font-size="26" class="secondary" text-anchor="middle">Each later slot selects its nearest anchor</text>
+<text x="320" y="1124" font-size="26" class="secondary" text-anchor="middle">Count only when the distance is at most 0.5 Å</text>
+<rect x="52" y="1149" width="520" height="118" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1189" font-size="27" class="secondary" text-anchor="middle">Count order: N / CA / C / O</text>
+<text x="320" y="1236" font-size="32" class="heading accent" text-anchor="middle">(3, 0, 0, 4) → Thr</text>
+<text x="320" y="1310" font-size="28" class="secondary" text-anchor="middle">Unmatched count pattern → UNK</text>
+<rect x="52" y="1340" width="520" height="205" rx="8" fill="#F7F8FA" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1384" font-size="27" class="heading" text-anchor="middle">If N is the nearest anchor:</text>
+<text x="320" y="1430" font-size="30" class="secondary" text-anchor="middle">0.49 Å: count at N</text>
+<text x="320" y="1476" font-size="30" class="secondary" text-anchor="middle">0.51 Å: do not count</text>
+<text x="320" y="1518" font-size="24" class="muted" text-anchor="middle">Illustrative values, not measurements</text>
+<text x="320" y="1588" font-size="26" class="secondary" text-anchor="middle">Small geometry error does not ensure</text>
+<text x="320" y="1625" font-size="26" class="secondary" text-anchor="middle">stable residue identity.</text>
+<path d="M586 1599 H604 V1209 H579" fill="none" stroke="#355C7D" stroke-width="2.5" stroke-dasharray="7 6" marker-end="url(#arrow)"/>
+<rect x="24" y="1686" width="592" height="660" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1731" font-size="30" class="heading" text-anchor="middle">04 · From geometry to validation</text>
+<rect x="72" y="1760" width="496" height="65" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1802" font-size="28" class="secondary" text-anchor="middle">Continuous coordinate noise</text>
+<path d="M320 1833 V1854" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="72" y="1866" width="496" height="65" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1908" font-size="28" class="secondary" text-anchor="middle">Denoised 14-slot geometry</text>
+<path d="M320 1939 V1960" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="72" y="1972" width="496" height="65" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="2014" font-size="28" class="heading accent" text-anchor="middle">Discrete residue decoder</text>
+<path d="M320 2045 V2066" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="72" y="2078" width="496" height="110" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="2120" font-size="28" class="heading accent" text-anchor="middle">Thr template: retain slots 1–7</text>
+<text x="320" y="2160" font-size="28" class="secondary" text-anchor="middle">Remove marker slots 8–14</text>
+<path d="M320 2196 V2217" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="72" y="2229" width="496" height="65" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="2271" font-size="27" class="heading" text-anchor="middle">Chemical validation is still required</text>
+<text x="320" y="2323" font-size="25" class="secondary" text-anchor="middle">Decoding identity is not a chemistry check</text>
+<text x="320" y="2390" font-size="25" class="muted" text-anchor="middle">Original mechanism · Not experimental data</text>
+<text x="320" y="2426" font-size="24" class="muted" text-anchor="middle">Not molecular coordinates · Arrows = information flow</text>
+</svg>
