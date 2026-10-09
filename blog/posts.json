@@ -67,6 +67,41 @@
     }
   },
   {
+    "title": "AVI 高分代表什么？",
+    "summary": "从 AlphaGenome Atlas 的成对轨道预测、18 维特征与频率代理标签，推导原始 logit 和 PHRED 排名的含义，检验概率、归因、坐标与计算预算的边界。",
+    "tags": [
+      "AI4S",
+      "AlphaGenome Atlas",
+      "变异效应",
+      "排名与校准"
+    ],
+    "date": "2026-10-09",
+    "category": "technical",
+    "url": "blog/alphagenome-avi-ranking.html",
+    "translations": {
+      "zh": {
+        "title": "AVI 高分代表什么？",
+        "summary": "从 AlphaGenome Atlas 的成对轨道预测、18 维特征与频率代理标签，推导原始 logit 和 PHRED 排名的含义，检验概率、归因、坐标与计算预算的边界。",
+        "tags": [
+          "AI4S",
+          "AlphaGenome Atlas",
+          "变异效应",
+          "排名与校准"
+        ]
+      },
+      "en": {
+        "title": "What Does a High AVI Score Mean?",
+        "summary": "Follow AlphaGenome Atlas from paired tracks and 18 features through frequency proxy labels, raw logits and PHRED ranks, testing the boundaries of probability, attribution, coordinates and compute budgets.",
+        "tags": [
+          "AI4S",
+          "AlphaGenome Atlas",
+          "Variant effects",
+          "Ranking and calibration"
+        ]
+      }
+    }
+  },
+  {
     "title": "AI 药物许可卖什么？",
     "summary": "从英矽与 Lilly 的交易和 Isomorphic 的战略，拆解软件、研发交付与资产权利，解释证据交接、里程碑、收入确认和项目组合怎样决定商业持续性。",
     "tags": [

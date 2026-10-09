@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="2648" viewBox="0 0 640 2648" role="img" aria-labelledby="title desc" xml:lang="zh">
+<title id="title">AlphaGenome Atlas: AVI 分数的三层含义</title><desc id="desc">原创机制示意，非实验数据，没有模型运行、病例数据或实测曲线。第一层是 GRCh38 REF 与 ALT 的分子效应评分。输入包括十个 AlphaGenome 特征，即九个跨相关维度的最大绝对效应特征和一个合并剪接特征；再加入四个编码类特征、两个保守性特征和两个 indel 类型指示，共十八个。不同特征的最大值可能来自不同组织，不能据此拼成同一细胞的联合机制。active-allele 评分被排除；仅 AlphaGenome 特征与 Cactus 特征按训练集尺度归一化。第二层是 AVI：十六个主要特征与两个类型指示输入模型，六个模型原始 logit 取平均。gnomAD 罕见与常见频率代理标签经过分层平衡采样，仅作为训练监督旁路，并非直接的临床致病标签；模型选择使用功能实验和性状关联验证数据。第三层把输出映射到固定全 SNV 参照的 PHRED 排名；二十分表示全 SNV 参照前百分之一，不是百分之九十九的致病概率。indel 也映射到同一 SNV 参照。不能在筛选后的候选子集重新排名再冒充原始 AVI PHRED。后续需对照同一 biosample 的 REF 与 ALT 轨道，并结合原始实验、组织、表型、遗传方式与独立验证，形成解释假设和候选优先级，不能单独作出临床结论。</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#355C7D" stroke-width="1.5"/></marker></defs>
+<style>text{font-family:Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#1F2933}.heading{font-weight:700}.accent{fill:#355C7D}.secondary{fill:#526171}.muted{fill:#607080}</style>
+<rect width="640" height="2648" fill="#F7F8FA"/>
+<text x="32" y="62" font-size="37" class="heading" text-anchor="start">AlphaGenome Atlas</text>
+<text x="32" y="111" font-size="29" class="secondary" text-anchor="start">AVI 分数的三层含义</text>
+<rect x="24" y="154" width="592" height="688" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="198" font-size="29" class="heading" text-anchor="middle">01 · 分子效应与输入特征</text>
+<rect x="48" y="226" width="544" height="84" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="262" font-size="30" class="heading" text-anchor="middle">GRCh38：REF / ALT</text>
+<text x="320" y="294" font-size="25" class="secondary" text-anchor="middle">成对等位基因的分子效应评分</text>
+<path d="M320 318 V346" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="48" y="358" width="544" height="124" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="398" font-size="29" class="heading accent" text-anchor="middle">10 个 AlphaGenome 特征</text>
+<text x="320" y="438" font-size="26" class="secondary" text-anchor="middle">9 个最大绝对效应 + 1 个合并剪接</text>
+<text x="320" y="469" font-size="24" class="secondary" text-anchor="middle">跨相关组织、基因与评分维度汇总</text>
+<rect x="48" y="510" width="544" height="148" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="550" font-size="27" class="heading" text-anchor="middle">再加入 4 个编码类特征</text>
+<text x="320" y="589" font-size="26" class="secondary" text-anchor="middle">2 个保守性 + 2 个 indel 类型</text>
+<text x="320" y="631" font-size="30" class="heading accent" text-anchor="middle">共 18 个特征</text>
+<text x="320" y="698" font-size="26" class="secondary" text-anchor="middle">各特征最大值可能来自不同组织</text>
+<text x="320" y="734" font-size="26" class="secondary" text-anchor="middle">不能直接拼成同一细胞的联合机制</text>
+<text x="320" y="780" font-size="25" class="muted" text-anchor="middle">不使用 active-allele 评分</text>
+<text x="320" y="816" font-size="25" class="muted" text-anchor="middle">仅 AG 与 Cactus 使用训练集尺度</text>
+<rect x="24" y="870" width="592" height="622" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="916" font-size="29" class="heading" text-anchor="middle">02 · AVI 模型输出</text>
+<rect x="64" y="944" width="528" height="124" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="981" font-size="27" class="heading" text-anchor="middle">16 个主要特征 + 2 个类型指示</text>
+<text x="320" y="1017" font-size="25" class="secondary" text-anchor="middle">输入 AVI 模型</text>
+<text x="320" y="1051" font-size="28" class="heading accent" text-anchor="middle">6 个模型的原始 logit 取平均</text>
+<rect x="64" y="1104" width="528" height="156" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="320" y="1138" font-size="25" class="heading" text-anchor="middle">仅训练监督（旁路）</text>
+<text x="320" y="1176" font-size="28" class="heading" text-anchor="middle">gnomAD 频率代理标签</text>
+<text x="320" y="1214" font-size="25" class="secondary" text-anchor="middle">罕见 / 常见：分层、平衡采样</text>
+<text x="320" y="1247" font-size="24" class="secondary" text-anchor="middle">不是直接的临床致病标签</text>
+<path d="M58 1170 H42 V1006 H58" fill="none" stroke="#355C7D" stroke-width="2.5" stroke-dasharray="7 6" marker-end="url(#arrow)"/>
+<rect x="48" y="1296" width="544" height="96" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1334" font-size="27" class="heading" text-anchor="middle">模型选择看验证数据</text>
+<text x="320" y="1374" font-size="26" class="secondary" text-anchor="middle">功能实验与性状关联数据</text>
+<text x="320" y="1432" font-size="27" class="secondary" text-anchor="middle">得到模型排序信号</text>
+<text x="320" y="1468" font-size="27" class="heading accent" text-anchor="middle">不是直接的疾病概率</text>
+<rect x="24" y="1520" width="592" height="574" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1568" font-size="28" class="heading" text-anchor="middle">03 · 固定参照下的 PHRED 排名</text>
+<rect x="48" y="1594" width="544" height="108" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1635" font-size="26" class="heading" text-anchor="middle">固定参照：全 SNV 分数分布</text>
+<text x="320" y="1678" font-size="26" class="secondary" text-anchor="middle">由模型原始输出映射排名</text>
+<path d="M320 1710 V1732" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="48" y="1744" width="544" height="108" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1784" font-size="33" class="heading accent" text-anchor="middle">PHRED 20</text>
+<text x="320" y="1827" font-size="28" class="heading" text-anchor="middle">位于全 SNV 参照的前 1%</text>
+<text x="320" y="1896" font-size="27" class="heading accent" text-anchor="middle">不表示 99% 的致病概率</text>
+<text x="320" y="1940" font-size="26" class="secondary" text-anchor="middle">indel 也映射到同一 SNV 参照</text>
+<text x="320" y="1985" font-size="25" class="secondary" text-anchor="middle">不能在筛选后的候选集合重新排名</text>
+<text x="320" y="2021" font-size="25" class="secondary" text-anchor="middle">再把结果称作原始 AVI PHRED</text>
+<text x="320" y="2067" font-size="25" class="muted" text-anchor="middle">候选集合排名与原始分数分开报告</text>
+<rect x="24" y="2122" width="592" height="408" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="2168" font-size="28" class="heading" text-anchor="middle">证据回查：从排序到可检验假设</text>
+<rect x="48" y="2196" width="544" height="144" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="2234" font-size="26" class="secondary" text-anchor="middle">同一 biosample 的 REF / ALT 轨道</text>
+<text x="320" y="2276" font-size="26" class="secondary" text-anchor="middle">原始实验、组织与表型背景</text>
+<text x="320" y="2318" font-size="26" class="secondary" text-anchor="middle">遗传方式与独立验证</text>
+<path d="M320 2348 V2372" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="48" y="2384" width="544" height="110" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="2427" font-size="27" class="heading" text-anchor="middle">形成解释假设与候选优先级</text>
+<text x="320" y="2470" font-size="27" class="heading accent" text-anchor="middle">不能单独作出临床结论</text>
+<text x="320" y="2576" font-size="24" class="muted" text-anchor="middle">原创机制示意 · 非实验数据</text>
+<text x="320" y="2615" font-size="24" class="muted" text-anchor="middle">无模型运行、病例数据或实测曲线</text>
+</svg>
