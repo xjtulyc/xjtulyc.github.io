@@ -35,6 +35,38 @@
     }
   },
   {
+    "title": "Gated DeltaNet：遗忘什么，改写什么？",
+    "summary": "从残差写入推导门控次序、非正交干扰与因果分块，并用可复现 CPU 对照界定固定状态和混合模型的缓存预算。",
+    "tags": [
+      "LLM",
+      "Gated DeltaNet",
+      "线性注意力"
+    ],
+    "date": "2026-10-09",
+    "category": "technical",
+    "url": "blog/gated-delta-memory-update.html",
+    "translations": {
+      "zh": {
+        "title": "Gated DeltaNet：遗忘什么，改写什么？",
+        "summary": "从残差写入推导门控次序、非正交干扰与因果分块，并用可复现 CPU 对照界定固定状态和混合模型的缓存预算。",
+        "tags": [
+          "LLM",
+          "Gated DeltaNet",
+          "线性注意力"
+        ]
+      },
+      "en": {
+        "title": "Gated DeltaNet: What Gets Forgotten, and What Gets Rewritten?",
+        "summary": "Residual writing explains gate order, interference, and causal chunking. Reproducible CPU checks clarify fixed-state limits and hybrid-model cache budgets.",
+        "tags": [
+          "LLM",
+          "Gated DeltaNet",
+          "Linear attention"
+        ]
+      }
+    }
+  },
+  {
     "title": "AI 编程按额度计费，团队买到了什么？",
     "summary": "从 Copilot 与 Token Plan 的共享规则出发，推导额度错配、消耗尾部与预算中断的关系，判断哪些治理能力可能形成持续付费价值。",
     "tags": [

@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="2780" viewBox="0 0 640 2780" role="img" aria-labelledby="title desc" xml:lang="en">
+<title id="title">Gated memory: write and forget</title><desc id="desc">Original matrix arithmetic and mechanism, not training outcomes or GPU measurements. State S has value width times key width; fixed size does not mean lossless retention of arbitrary history. Additive writing, directional delta correction, and global decay followed by delta correction are alternative mechanisms rather than sequential stages. The correct gated order first scales the old state by α, then computes β times the residual using the decayed state’s read at a unit-L2 key, and writes along that key. The query is read from the updated state, with query scaling absorbed. A one-by-two teaching example uses previous state [1,2], α=0.5, β=1, key [1,0] and target value 3: the decayed state is [0.5,1], the residual write is 2.5 and the new state is [3,1]. Applying delta to the undecayed state first gives [3,2]; decaying the whole result instead incorrectly gives [1.5,1]. A second teaching-endpoint example uses α=β=1, unit key [1,1] divided by the square root of two, and target value zero. State [1,2] becomes [−0.5,0.5], so the read at query [1,0] changes from 1 to −0.5. This is interference between non-orthogonal addresses, not semantic-retrieval evidence. Separate execution branches show recurrent decoding, which updates a fixed matrix and reads at each step, and chunked prefill, which solves strictly lower-triangular residual dependencies and uses a decay-weighted causal readout including the diagonal. Full-attention layers in hybrid models still retain KV that grows with context length.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#355C7D" stroke-width="1.5"/></marker></defs>
+<style>text{font-family:Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#1F2933}.heading{font-weight:700}.accent{fill:#355C7D}.secondary{fill:#526171}.muted{fill:#607080}</style>
+<rect width="640" height="2780" fill="#F7F8FA"/>
+<text x="32" y="62" font-size="35" class="heading" text-anchor="start">Gated memory: write and forget</text>
+<text x="32" y="110" font-size="25" class="secondary" text-anchor="start">Decay first, then correct along the current key</text>
+<rect x="24" y="154" width="592" height="420" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="200" font-size="30" class="heading" text-anchor="middle">01 · Fixed size is not lossless history</text>
+<rect x="48" y="226" width="544" height="66" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="268" font-size="29" class="heading accent" text-anchor="middle">State S: value width × key width</text>
+<text x="320" y="333" font-size="25" class="secondary" text-anchor="middle">No lossless record of arbitrary history</text>
+<text x="320" y="377" font-size="27" class="heading" text-anchor="middle">Three alternatives, not sequential stages</text>
+<text x="320" y="423" font-size="27" class="secondary" text-anchor="middle">Additive write: accumulate associations</text>
+<text x="320" y="466" font-size="27" class="secondary" text-anchor="middle">Delta write: correct along the current key</text>
+<text x="320" y="509" font-size="27" class="secondary" text-anchor="middle">Gated delta: decay first, then correct</text>
+<rect x="24" y="602" width="592" height="804" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="648" font-size="30" class="heading" text-anchor="middle">02 · Order changes the new write</text>
+<text x="320" y="691" font-size="28" class="secondary" text-anchor="middle">Previous state [1, 2] (a 1 × 2 matrix)</text>
+<text x="320" y="731" font-size="28" class="secondary" text-anchor="middle">α = 0.5 · β = 1</text>
+<text x="320" y="771" font-size="27" class="secondary" text-anchor="middle">Unit key k = [1, 0] · Target value v = 3</text>
+<rect x="48" y="795" width="544" height="88" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="830" font-size="26" class="heading" text-anchor="middle">Decay the whole state first</text>
+<text x="320" y="868" font-size="32" class="heading accent" text-anchor="middle">[0.5, 1]</text>
+<path d="M320 891 V912" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="48" y="925" width="544" height="88" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="960" font-size="26" class="heading" text-anchor="middle">Residual from the decayed read</text>
+<text x="320" y="998" font-size="32" class="heading accent" text-anchor="middle">3 − 0.5 = 2.5</text>
+<path d="M320 1021 V1042" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="48" y="1056" width="544" height="88" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1091" font-size="26" class="heading" text-anchor="middle">Write along the current key</text>
+<text x="320" y="1129" font-size="32" class="heading accent" text-anchor="middle">New state [3, 1]</text>
+<rect x="48" y="1182" width="544" height="166" rx="8" fill="#F7F8FA" stroke="#D9E1E8" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="320" y="1226" font-size="28" class="heading" text-anchor="middle">Wrong order (comparison)</text>
+<text x="320" y="1264" font-size="27" class="secondary" text-anchor="middle">Delta first, then decay the whole state</text>
+<text x="320" y="1310" font-size="32" class="heading" text-anchor="middle">[3, 2] → [1.5, 1]</text>
+<text x="320" y="1376" font-size="25" class="muted" text-anchor="middle">β = 1 is a teaching endpoint</text>
+<rect x="24" y="1434" width="592" height="540" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1479" font-size="29" class="heading" text-anchor="middle">03 · Non-orthogonal interference</text>
+<text x="320" y="1524" font-size="28" class="secondary" text-anchor="middle">α = 1 · β = 1 · v = 0</text>
+<text x="320" y="1566" font-size="28" class="secondary" text-anchor="middle">Unit key k = [1, 1] / √2</text>
+<rect x="48" y="1600" width="544" height="96" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1640" font-size="27" class="secondary" text-anchor="middle">Previous state → New state</text>
+<text x="320" y="1680" font-size="32" class="heading accent" text-anchor="middle">[1, 2] → [−0.5, 0.5]</text>
+<rect x="48" y="1730" width="544" height="100" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1772" font-size="28" class="heading" text-anchor="middle">Read at query e₁ = [1, 0]</text>
+<text x="320" y="1816" font-size="36" class="heading accent" text-anchor="middle">1 → −0.5</text>
+<text x="320" y="1876" font-size="25" class="secondary" text-anchor="middle">Another address can change even without decay</text>
+<text x="320" y="1916" font-size="25" class="secondary" text-anchor="middle">Geometric interference, not semantic evidence</text>
+<text x="320" y="1951" font-size="24" class="muted" text-anchor="middle">α and β are teaching endpoints</text>
+<rect x="24" y="2002" width="592" height="662" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="2047" font-size="30" class="heading" text-anchor="middle">04 · Two uses, two execution paths</text>
+<text x="320" y="2090" font-size="26" class="secondary" text-anchor="middle">Different executions of the same recurrence</text>
+<rect x="60" y="2118" width="532" height="148" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="2160" font-size="29" class="heading" text-anchor="middle">Recurrent decoding</text>
+<text x="320" y="2203" font-size="27" class="secondary" text-anchor="middle">Update fixed-size S at each step</text>
+<text x="320" y="2243" font-size="27" class="secondary" text-anchor="middle">Read query q using the updated S</text>
+<rect x="60" y="2302" width="532" height="188" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="2345" font-size="29" class="heading accent" text-anchor="middle">Chunked prefill</text>
+<text x="320" y="2387" font-size="26" class="secondary" text-anchor="middle">Strictly lower-triangular residual solve</text>
+<text x="320" y="2426" font-size="27" class="secondary" text-anchor="middle">Decay-weighted causal readout</text>
+<text x="320" y="2465" font-size="26" class="secondary" text-anchor="middle">Include the current-position diagonal</text>
+<path d="M44 2105 V2192 H54" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M44 2192 V2396 H54" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="48" y="2530" width="544" height="100" rx="8" fill="#F7F8FA" stroke="#D9E1E8" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="320" y="2573" font-size="26" class="heading" text-anchor="middle">Hybrid full-attention layers still retain KV</text>
+<text x="320" y="2616" font-size="27" class="secondary" text-anchor="middle">Their KV grows with context length</text>
+<text x="320" y="2714" font-size="25" class="muted" text-anchor="middle">Original matrix arithmetic and mechanism</text>
+<text x="320" y="2752" font-size="25" class="muted" text-anchor="middle">Not training outcomes or GPU measurements</text>
+</svg>
