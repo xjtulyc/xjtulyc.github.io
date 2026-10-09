@@ -67,6 +67,38 @@
     }
   },
   {
+    "title": "AI 药物许可卖什么？",
+    "summary": "从英矽与 Lilly 的交易和 Isomorphic 的战略，拆解软件、研发交付与资产权利，解释证据交接、里程碑、收入确认和项目组合怎样决定商业持续性。",
+    "tags": [
+      "AI4S",
+      "药物资产许可",
+      "商业判断"
+    ],
+    "date": "2026-10-09",
+    "category": "business",
+    "url": "blog/ai-drug-license-economics.html",
+    "translations": {
+      "zh": {
+        "title": "AI 药物许可卖什么？",
+        "summary": "从英矽与 Lilly 的交易和 Isomorphic 的战略，拆解软件、研发交付与资产权利，解释证据交接、里程碑、收入确认和项目组合怎样决定商业持续性。",
+        "tags": [
+          "AI4S",
+          "药物资产许可",
+          "商业判断"
+        ]
+      },
+      "en": {
+        "title": "What Does an AI Drug License Actually Sell?",
+        "summary": "Insilico–Lilly and Isomorphic reveal distinct software, research, and asset-rights contracts. Evidence handover, milestones, revenue recognition, and correlated projects shape commercial persistence.",
+        "tags": [
+          "AI4S",
+          "Drug-asset licensing",
+          "Business analysis"
+        ]
+      }
+    }
+  },
+  {
     "title": "AI 编程按额度计费，团队买到了什么？",
     "summary": "从 Copilot 与 Token Plan 的共享规则出发，推导额度错配、消耗尾部与预算中断的关系，判断哪些治理能力可能形成持续付费价值。",
     "tags": [
