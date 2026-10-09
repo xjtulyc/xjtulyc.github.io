@@ -35,6 +35,38 @@
     }
   },
   {
+    "title": "AI 编程按额度计费，团队买到了什么？",
+    "summary": "从 Copilot 与 Token Plan 的共享规则出发，推导额度错配、消耗尾部与预算中断的关系，判断哪些治理能力可能形成持续付费价值。",
+    "tags": [
+      "AI 编程",
+      "额度计费",
+      "商业判断"
+    ],
+    "date": "2026-10-09",
+    "category": "business",
+    "url": "blog/ai-credit-pooling-economics.html",
+    "translations": {
+      "zh": {
+        "title": "AI 编程按额度计费，团队买到了什么？",
+        "summary": "从 Copilot 与 Token Plan 的共享规则出发，推导额度错配、消耗尾部与预算中断的关系，判断哪些治理能力可能形成持续付费价值。",
+        "tags": [
+          "AI 编程",
+          "额度计费",
+          "商业判断"
+        ]
+      },
+      "en": {
+        "title": "When AI Coding Moves to Credits, What Does a Team Actually Buy?",
+        "summary": "Copilot and Token Plan expose different sharing rules. An analysis of allowance mismatch, consumption tails, and budget interruption explains when governance may earn sustained payment.",
+        "tags": [
+          "AI coding",
+          "Credit billing",
+          "Business analysis"
+        ]
+      }
+    }
+  },
+  {
     "title": "同一个模型，限制推理地域为何改变价格与交付？",
     "summary": "从阿里地域配置、Claude 的 US-only 计价和微软主权 AI 框架，拆开存储、推理与运行控制，解释可采购集合、容量约束和地域溢价，并给出未来 6–24 个月的反证。",
     "tags": [

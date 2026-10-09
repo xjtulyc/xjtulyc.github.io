@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="2530" viewBox="0 0 640 2530" role="img" aria-labelledby="title desc" xml:lang="en">
+<title id="title">Pooled credits do not finish tasks</title><desc id="desc">Original conceptual mechanism, not measured outcomes. Seat fees provide a current-cycle service-use allowance that is reduced by actual metered use; it is not a bank balance. Under an assumed common cycle, common unit price, full pooling and no individual hard caps, A and B each receive 100 units. A uses 160 and B uses 40. Separate metering produces overage of 60 for A and zero for B, with 60 unused units at B. Under full pooling, both total use and total allowance are 200, so overage is zero. These are synthetic allowance units, not product prices or user data, and they do not represent any vendor’s actual pooling rules. Check contractual pool scope, cycle, expiry and overage; credit counts cannot be compared directly across vendors. Remaining credit, user limits, and applicable enabled stop rules gate execution or a pause and request for more budget. A budget alert does not automatically mean a hard stop. AI token usage and Runner/Actions resource usage from a workflow session are metered separately, then the work is accepted against task criteria. Pooling may reduce simultaneous unused allowance and overage, but it does not guarantee plan completion.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#355C7D" stroke-width="1.5"/></marker></defs>
+<style>text{font-family:Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#1F2933}.heading{font-weight:700}.accent{fill:#355C7D}.secondary{fill:#526171}.muted{fill:#607080}</style>
+<rect width="640" height="2530" fill="#F7F8FA"/>
+<text x="32" y="62" font-size="35" class="heading" text-anchor="start">Pooled credits do not finish tasks</text>
+<text x="32" y="110" font-size="25" class="secondary" text-anchor="start">Reduce idle credit plus overage; verify outcomes</text>
+<rect x="24" y="154" width="592" height="400" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="200" font-size="30" class="heading" text-anchor="middle">01 · From seat fees to service usage</text>
+<rect x="60" y="226" width="520" height="58" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="265" font-size="29" class="secondary" text-anchor="middle">Seat fees</text>
+<path d="M320 292 V313" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="60" y="324" width="520" height="58" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="363" font-size="29" class="heading accent" text-anchor="middle">Allowance for the current cycle</text>
+<path d="M320 390 V411" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="60" y="422" width="520" height="58" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="461" font-size="29" class="secondary" text-anchor="middle">Deduct measured service usage</text>
+<text x="320" y="522" font-size="26" class="secondary" text-anchor="middle">Service-use allowance, not a bank balance</text>
+<rect x="24" y="582" width="592" height="810" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="627" font-size="30" class="heading" text-anchor="middle">02 · Same use, different overage</text>
+<text x="320" y="672" font-size="26" class="secondary" text-anchor="middle">Assume one cycle, one price, full pooling</text>
+<text x="320" y="710" font-size="26" class="secondary" text-anchor="middle">No individual hard caps in this example</text>
+<rect x="48" y="738" width="544" height="214" rx="8" fill="#F7F8FA" stroke="#D9E1E8" stroke-width="2"/>
+<path d="M48 794 H592 M48 873 H592" fill="none" stroke="#D9E1E8" stroke-width="2"/>
+<text x="106" y="776" font-size="27" class="heading" text-anchor="middle">User</text>
+<text x="248" y="776" font-size="27" class="heading" text-anchor="middle">Credit</text>
+<text x="390" y="776" font-size="27" class="heading" text-anchor="middle">Use</text>
+<text x="529" y="776" font-size="27" class="heading" text-anchor="middle">Overage</text>
+<text x="106" y="845" font-size="32" class="secondary" text-anchor="middle">A</text>
+<text x="248" y="845" font-size="32" class="secondary" text-anchor="middle">100</text>
+<text x="390" y="845" font-size="32" class="secondary" text-anchor="middle">160</text>
+<text x="529" y="845" font-size="32" class="heading accent" text-anchor="middle">60</text>
+<text x="106" y="925" font-size="32" class="secondary" text-anchor="middle">B</text>
+<text x="248" y="925" font-size="32" class="secondary" text-anchor="middle">100</text>
+<text x="390" y="925" font-size="32" class="secondary" text-anchor="middle">40</text>
+<text x="529" y="925" font-size="32" class="heading accent" text-anchor="middle">0</text>
+<rect x="48" y="980" width="264" height="108" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<rect x="328" y="980" width="264" height="108" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="180" y="1020" font-size="27" class="heading" text-anchor="middle">Separate overage</text>
+<text x="180" y="1066" font-size="38" class="heading accent" text-anchor="middle">60</text>
+<text x="460" y="1020" font-size="27" class="heading" text-anchor="middle">Pooled overage</text>
+<text x="460" y="1066" font-size="38" class="heading accent" text-anchor="middle">0</text>
+<text x="320" y="1133" font-size="27" class="secondary" text-anchor="middle">Separate: B leaves 60; A exceeds by 60</text>
+<text x="320" y="1173" font-size="27" class="secondary" text-anchor="middle">Pooled: total use 200; total credit 200</text>
+<rect x="48" y="1210" width="544" height="154" rx="8" fill="#F7F8FA" stroke="#D9E1E8" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="320" y="1251" font-size="24" class="secondary" text-anchor="middle">Assumed units, not product prices or user data</text>
+<text x="320" y="1291" font-size="24" class="secondary" text-anchor="middle">Check pool scope, cycle, expiry and overage</text>
+<text x="320" y="1331" font-size="24" class="heading accent" text-anchor="middle">Do not compare raw credits across vendors</text>
+<rect x="24" y="1420" width="592" height="450" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1466" font-size="30" class="heading" text-anchor="middle">03 · Gate execution with explicit rules</text>
+<rect x="60" y="1494" width="520" height="92" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1533" font-size="28" class="heading accent" text-anchor="middle">Remaining credit · User limits</text>
+<text x="320" y="1571" font-size="27" class="secondary" text-anchor="middle">Applicable and enabled stop rules</text>
+<path d="M320 1594 V1618 H180 V1637" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M320 1618 H460 V1637" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="48" y="1648" width="264" height="100" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<rect x="328" y="1648" width="264" height="100" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="180" y="1708" font-size="28" class="heading" text-anchor="middle">Allow execution</text>
+<text x="460" y="1687" font-size="27" class="heading" text-anchor="middle">Pause / request</text>
+<text x="460" y="1726" font-size="27" class="heading" text-anchor="middle">more budget</text>
+<text x="320" y="1803" font-size="27" class="secondary" text-anchor="middle">Budget alerts do not imply a hard stop</text>
+<text x="320" y="1842" font-size="26" class="secondary" text-anchor="middle">Check product rules and enabled settings</text>
+<rect x="24" y="1898" width="592" height="514" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="1944" font-size="30" class="heading" text-anchor="middle">04 · Metering still needs acceptance</text>
+<rect x="72" y="1972" width="496" height="66" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="2015" font-size="29" class="heading" text-anchor="middle">One workflow session</text>
+<path d="M320 2046 V2068 H180 V2088" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M320 2068 H460 V2088" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="48" y="2100" width="264" height="100" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<rect x="328" y="2100" width="264" height="100" rx="8" fill="#EDF2F6" stroke="#D9E1E8" stroke-width="2"/>
+<text x="180" y="2140" font-size="27" class="heading accent" text-anchor="middle">AI tokens</text>
+<text x="180" y="2178" font-size="27" class="secondary" text-anchor="middle">Usage ledger</text>
+<text x="460" y="2140" font-size="27" class="heading accent" text-anchor="middle">Runner / Actions</text>
+<text x="460" y="2178" font-size="27" class="secondary" text-anchor="middle">Resource ledger</text>
+<path d="M180 2208 V2230 H320 V2250" fill="none" stroke="#355C7D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M460 2208 V2230 H320" fill="none" stroke="#355C7D" stroke-width="2.5"/>
+<rect x="60" y="2262" width="520" height="60" rx="8" fill="#FFFFFF" stroke="#D9E1E8" stroke-width="2"/>
+<text x="320" y="2302" font-size="29" class="heading" text-anchor="middle">Accept against task criteria</text>
+<text x="320" y="2361" font-size="26" class="secondary" text-anchor="middle">Check the two metering bases separately</text>
+<text x="320" y="2396" font-size="26" class="heading accent" text-anchor="middle">Pooling does not guarantee plan completion</text>
+<text x="320" y="2470" font-size="25" class="muted" text-anchor="middle">Original conceptual mechanism · Not outcome data</text>
+<text x="320" y="2506" font-size="24" class="muted" text-anchor="middle">Assumed units · Not any vendor’s actual plan</text>
+</svg>
