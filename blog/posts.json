@@ -1,5 +1,40 @@
 [
   {
+    "title": "RoPE 改频率后，旧 KV cache 还能用吗？",
+    "summary": "从同频旋转推导相对位置与混合相位误差，沿固定版本实现检查缓存顺序，用两层算例区分局部重相位、历史重建和长上下文能力。",
+    "tags": [
+      "LLM",
+      "RoPE",
+      "KV cache",
+      "长上下文"
+    ],
+    "date": "2026-10-10",
+    "category": "technical",
+    "url": "blog/rope-frequency-cache.html",
+    "translations": {
+      "zh": {
+        "title": "RoPE 改频率后，旧 KV cache 还能用吗？",
+        "summary": "从同频旋转推导相对位置与混合相位误差，沿固定版本实现检查缓存顺序，用两层算例区分局部重相位、历史重建和长上下文能力。",
+        "tags": [
+          "LLM",
+          "RoPE",
+          "KV cache",
+          "长上下文"
+        ]
+      },
+      "en": {
+        "title": "RoPE Changes: Is the KV Cache Valid?",
+        "summary": "Derive relative position and mixed-phase error, inspect a pinned implementation, and use a two-layer example to separate local rephasing, historical reconstruction and long-context capability.",
+        "tags": [
+          "LLM",
+          "RoPE",
+          "KV cache",
+          "Long context"
+        ]
+      }
+    }
+  },
+  {
     "title": "BoltzGen 的几何编码：连续坐标如何稳定地解出序列？",
     "summary": "从十四原子槽与官方计数解码器出发，推导身份稳定性的距离间隔条件，用色氨酸和槽置换反例区分坐标误差、离散身份与化学有效性，并连接去噪、预算和可检验对照。",
     "tags": [
